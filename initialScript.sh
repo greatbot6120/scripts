@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#Author: Ivan Liprandi
+#Purpose of this script: some notes about the bash scripting
+
+#TO VIEW:
+    #read --help
+
 #Using arguments
 
 echo "$0"               #$0 is the name of the script itself
@@ -24,5 +30,28 @@ echo "${setOfNames[2]} has ${setOfAges[4]} years old"
 echo ${setOfNames[*]}                                                     #prints the entire array
 unset setOfAges[3]                                                        #this will remove fourth element  
 unset setOfAges                                                           #this will remove all elements
+
+#Variable scope
+
+localVariable="my dog stepped on a bee"
+export localVariable                    #this commands provide outside scope for $localVariable
+./secondScript.sh 
+echo $localVariable                     #even if the variable is modified in ./secondScript with the echo 
+                                        #command here in ./initialScript the value hasn't changed
+commandToExecute=$(pwd)
+echo $commandToExecute
+
+#Input from the user
+
+echo -n "Hello $USER! May I ask your name: "
+read
+echo "Hello $REPLY"
+
+read -p "Enter again your name: " namePrompt    #Using the -p option to enter a name variable to store
+echo "Hello $namePrompt" 
+
+
+
+
 
 exit 0
