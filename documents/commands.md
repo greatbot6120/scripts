@@ -145,3 +145,13747 @@ NOTES
 
 APT 1.8.2.3                                      27 January 2019                                           APT(8)
 ```
+
+### arch
+
+```
+ARCH(1)                                                   User Commands                                                   ARCH(1)
+
+NAME
+       arch - print machine hardware name (same as uname -m)
+
+SYNOPSIS
+       arch [OPTION]...
+
+DESCRIPTION
+       Print machine architecture.
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+AUTHOR
+       Written by David MacKenzie and Karel Zak.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report arch translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright  ©  2018  Free  Software  Foundation,  Inc.   License  GPLv3+:  GNU  GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       uname(1), uname(2)
+
+       Full documentation at: <https://www.gnu.org/software/coreutils/arch>
+       or available locally via: info '(coreutils) arch invocation'
+
+GNU coreutils 8.30                                        February 2019                                                   ARCH(1)
+```
+
+### basename
+
+```
+BASENAME(1)                                               User Commands                                               BASENAME(1)
+
+NAME
+       basename - strip directory and suffix from filenames
+
+SYNOPSIS
+       basename NAME [SUFFIX]
+       basename OPTION... NAME...
+
+DESCRIPTION
+       Print NAME with any leading directory components removed.  If specified, also remove a trailing SUFFIX.
+
+       Mandatory arguments to long options are mandatory for short options too.
+
+       -a, --multiple
+              support multiple arguments and treat each as a NAME
+
+       -s, --suffix=SUFFIX
+              remove a trailing SUFFIX; implies -a
+
+       -z, --zero
+              end each output line with NUL, not newline
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+EXAMPLES
+       basename /usr/bin/sort
+              -> "sort"
+
+       basename include/stdio.h .h
+              -> "stdio"
+
+       basename -s .h include/stdio.h
+              -> "stdio"
+
+       basename -a any/str1 any/str2
+              -> "str1" followed by "str2"
+
+AUTHOR
+       Written by David MacKenzie.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report basename translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright  ©  2018  Free  Software  Foundation,  Inc.   License  GPLv3+:  GNU  GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       dirname(1), readlink(1)
+
+       Full documentation at: <https://www.gnu.org/software/coreutils/basename>
+       or available locally via: info '(coreutils) basename invocation'
+
+GNU coreutils 8.30                                        February 2019                                               BASENAME(1)
+```
+
+### bash
+
+```
+BASH(1)                                              General Commands Manual                                              BASH(1)
+
+NAME
+       bash - GNU Bourne-Again SHell
+
+SYNOPSIS
+       bash [options] [command_string | file]
+
+COPYRIGHT
+       Bash is Copyright (C) 1989-2018 by the Free Software Foundation, Inc.
+
+DESCRIPTION
+       Bash  is an sh-compatible command language interpreter that executes commands read from the standard input or from a file.
+       Bash also incorporates useful features from the Korn and C shells (ksh and csh).
+
+       Bash is intended to be a conformant implementation of the Shell and Utilities portion  of  the  IEEE  POSIX  specification
+       (IEEE Standard 1003.1).  Bash can be configured to be POSIX-conformant by default.
+
+OPTIONS
+       All  of  the single-character shell options documented in the description of the set builtin command, including -o, can be
+       used as options when the shell is invoked.  In addition, bash interprets the following options when it is invoked:
+
+       -c        If the -c option is present, then commands are read from the first non-option argument command_string.  If there
+                 are arguments after the command_string, the first argument is assigned to $0 and any remaining arguments are as‐
+                 signed to the positional parameters.  The assignment to $0 sets the name of the shell, which is used in  warning
+                 and error messages.
+       -i        If the -i option is present, the shell is interactive.
+       -l        Make bash act as if it had been invoked as a login shell (see INVOCATION below).
+       -r        If the -r option is present, the shell becomes restricted (see RESTRICTED SHELL below).
+       -s        If  the -s option is present, or if no arguments remain after option processing, then commands are read from the
+                 standard input.  This option allows the positional parameters to be set when invoking an  interactive  shell  or
+                 when reading input through a pipe.
+       -v        Print shell input lines as they are read.
+       -x        Print commands and their arguments as they are executed.
+       -D        A list of all double-quoted strings preceded by $ is printed on the standard output.  These are the strings that
+                 are subject to language translation when the current locale is not C or POSIX.  This implies the -n  option;  no
+                 commands will be executed.
+       [-+]O [shopt_option]
+                 shopt_option  is  one of the shell options accepted by the shopt builtin (see SHELL BUILTIN COMMANDS below).  If
+                 shopt_option is present, -O sets the value of that option; +O unsets it.  If shopt_option is not  supplied,  the
+                 names  and  values of the shell options accepted by shopt are printed on the standard output.  If the invocation
+                 option is +O, the output is displayed in a format that may be reused as input.
+       --        A -- signals the end of options and disables further option processing.  Any arguments after the -- are  treated
+                 as filenames and arguments.  An argument of - is equivalent to --.
+
+       Bash  also  interprets a number of multi-character options.  These options must appear on the command line before the sin‐
+       gle-character options to be recognized.
+
+       --debugger
+              Arrange for the debugger profile to be executed before the shell starts.  Turns on extended debugging mode (see the
+              description of the extdebug option to the shopt builtin below).
+       --dump-po-strings
+              Equivalent to -D, but the output is in the GNU gettext po (portable object) file format.
+       --dump-strings
+              Equivalent to -D.
+       --help Display a usage message on standard output and exit successfully.
+       --init-file file
+       --rcfile file
+              Execute  commands  from  file instead of the system wide initialization file /etc/bash.bashrc and the standard per‐
+              sonal initialization file ~/.bashrc if the shell is interactive (see INVOCATION below).
+
+       --login
+              Equivalent to -l.
+
+       --noediting
+              Do not use the GNU readline library to read command lines when the shell is interactive.
+
+       --noprofile
+              Do not read either the  system-wide  startup  file  /etc/profile  or  any  of  the  personal  initialization  files
+              ~/.bash_profile,  ~/.bash_login,  or  ~/.profile.  By default, bash reads these files when it is invoked as a login
+              shell (see INVOCATION below).
+
+       --norc Do not read and execute the system wide initialization file /etc/bash.bashrc and the personal  initialization  file
+              ~/.bashrc if the shell is interactive.  This option is on by default if the shell is invoked as sh.
+
+       --posix
+              Change  the  behavior  of  bash  where  the default operation differs from the POSIX standard to match the standard
+              (posix mode).  See SEE ALSO below for a reference to a document that details how posix mode affects  bash's  behav‐
+              ior.
+
+       --restricted
+              The shell becomes restricted (see RESTRICTED SHELL below).
+
+       --verbose
+              Equivalent to -v.
+
+       --version
+              Show version information for this instance of bash on the standard output and exit successfully.
+
+ARGUMENTS
+       If arguments remain after option processing, and neither the -c nor the -s option has been supplied, the first argument is
+       assumed to be the name of a file containing shell commands.  If bash is invoked in this fashion, $0 is set to the name  of
+       the  file,  and  the positional parameters are set to the remaining arguments.  Bash reads and executes commands from this
+       file, then exits.  Bash's exit status is the exit status of the last command executed in the script.  If no  commands  are
+       executed,  the  exit  status is 0.  An attempt is first made to open the file in the current directory, and, if no file is
+       found, then the shell searches the directories in PATH for the script.
+
+INVOCATION
+       A login shell is one whose first character of argument zero is a -, or one started with the --login option.
+
+       An interactive shell is one started without non-option arguments (unless -s is specified) and without the -c option  whose
+       standard  input and error are both connected to terminals (as determined by isatty(3)), or one started with the -i option.
+       PS1 is set and $- includes i if bash is interactive, allowing a shell script or a startup file to test this state.
+
+       The following paragraphs describe how bash executes its startup files.  If any of the files exist but cannot be read, bash
+       reports an error.  Tildes are expanded in filenames as described below under Tilde Expansion in the EXPANSION section.
+
+       When  bash is invoked as an interactive login shell, or as a non-interactive shell with the --login option, it first reads
+       and executes commands from the file /etc/profile, if that file exists.  After reading that file, it looks for ~/.bash_pro‐
+       file,  ~/.bash_login, and ~/.profile, in that order, and reads and executes commands from the first one that exists and is
+       readable.  The --noprofile option may be used when the shell is started to inhibit this behavior.
+
+       When an interactive login shell exits, or a non-interactive login shell executes the exit builtin command, bash reads  and
+       executes commands from the file ~/.bash_logout, if it exists.
+
+       When an interactive shell that is not a login shell is started, bash reads and executes commands from /etc/bash.bashrc and
+       ~/.bashrc, if these files exist.  This may be inhibited by using the --norc option.  The --rcfile file option  will  force
+       bash to read and execute commands from file instead of /etc/bash.bashrc and ~/.bashrc.
+
+       When  bash is started non-interactively, to run a shell script, for example, it looks for the variable BASH_ENV in the en‐
+       vironment, expands its value if it appears there, and uses the expanded value as the name of a file to read  and  execute.
+       Bash behaves as if the following command were executed:
+              if [ -n "$BASH_ENV" ]; then . "$BASH_ENV"; fi
+       but the value of the PATH variable is not used to search for the filename.
+
+       If  bash  is  invoked  with the name sh, it tries to mimic the startup behavior of historical versions of sh as closely as
+       possible, while conforming to the POSIX standard as well.  When invoked as an interactive login shell, or  a  non-interac‐
+       tive  shell  with  the --login option, it first attempts to read and execute commands from /etc/profile and ~/.profile, in
+       that order.  The --noprofile option may be used to inhibit this behavior.  When invoked as an interactive shell  with  the
+       name sh, bash looks for the variable ENV, expands its value if it is defined, and uses the expanded value as the name of a
+       file to read and execute.  Since a shell invoked as sh does not attempt to  read  and  execute  commands  from  any  other
+       startup  files,  the  --rcfile option has no effect.  A non-interactive shell invoked with the name sh does not attempt to
+       read any other startup files.  When invoked as sh, bash enters posix mode after the startup files are read.
+
+       When bash is started in posix mode, as with the --posix command line option, it follows the  POSIX  standard  for  startup
+       files.   In  this  mode, interactive shells expand the ENV variable and commands are read and executed from the file whose
+       name is the expanded value.  No other startup files are read.
+
+       Bash attempts to determine when it is being run with its standard input connected to a network connection,  as  when  exe‐
+       cuted  by  the  remote shell daemon, usually rshd, or the secure shell daemon sshd.  If bash determines it is being run in
+       this fashion, it reads and executes commands from ~/.bashrc and ~/.bashrc, if these files exist and are readable.  It will
+       not do this if invoked as sh.  The --norc option may be used to inhibit this behavior, and the --rcfile option may be used
+       to force another file to be read, but neither rshd nor sshd generally invoke the shell with those options or allow them to
+       be specified.
+
+       If the shell is started with the effective user (group) id not equal to the real user (group) id, and the -p option is not
+       supplied, no startup files are read, shell functions are not inherited from the environment, the SHELLOPTS, BASHOPTS,  CD‐
+       PATH,  and  GLOBIGNORE  variables, if they appear in the environment, are ignored, and the effective user id is set to the
+       real user id.  If the -p option is supplied at invocation, the startup behavior is the same, but the effective user id  is
+       not reset.
+
+DEFINITIONS
+       The following definitions are used throughout the rest of this document.
+       blank  A space or tab.
+       word   A sequence of characters considered as a single unit by the shell.  Also known as a token.
+       name   A word consisting only of alphanumeric characters and underscores, and beginning with an alphabetic character or an
+              underscore.  Also referred to as an identifier.
+       metacharacter
+              A character that, when unquoted, separates words.  One of the following:
+              |  & ; ( ) < > space tab newline
+       control operator
+              A token that performs a control function.  It is one of the following symbols:
+              || & && ; ;; ;& ;;& ( ) | |& <newline>
+
+RESERVED WORDS
+       Reserved words are words that have a special meaning to the shell.  The following words are recognized  as  reserved  when
+       unquoted  and  either the first word of a simple command (see SHELL GRAMMAR below) or the third word of a case or for com‐
+       mand:
+
+       ! case  coproc  do done elif else esac fi for function if in select then until while { } time [[ ]]
+
+SHELL GRAMMAR
+   Simple Commands
+       A simple command is a sequence of optional variable assignments followed by blank-separated words  and  redirections,  and
+       terminated  by  a  control operator.  The first word specifies the command to be executed, and is passed as argument zero.
+       The remaining words are passed as arguments to the invoked command.
+
+       The return value of a simple command is its exit status, or 128+n if the command is terminated by signal n.
+
+   Pipelines
+       A pipeline is a sequence of one or more commands separated by one of the control operators | or  |&.   The  format  for  a
+       pipeline is:
+
+              [time [-p]] [ ! ] command [ [|⎪|&] command2 ... ]
+
+       The  standard  output  of command is connected via a pipe to the standard input of command2.  This connection is performed
+       before any redirections specified by the command (see REDIRECTION below).  If |& is used, command's standard error, in ad‐
+       dition  to  its  standard  output, is connected to command2's standard input through the pipe; it is shorthand for 2>&1 |.
+       This implicit redirection of the standard error to the standard output is performed after any  redirections  specified  by
+       the command.
+
+       The  return  status  of  a  pipeline  is  the  exit status of the last command, unless the pipefail option is enabled.  If
+       pipefail is enabled, the pipeline's return status is the value of the last (rightmost) command to  exit  with  a  non-zero
+       status,  or  zero if all commands exit successfully.  If the reserved word !  precedes a pipeline, the exit status of that
+       pipeline is the logical negation of the exit status as described above.  The shell waits for all commands in the  pipeline
+       to terminate before returning a value.
+
+       If  the  time reserved word precedes a pipeline, the elapsed as well as user and system time consumed by its execution are
+       reported when the pipeline terminates.  The -p option changes the output format to that  specified  by  POSIX.   When  the
+       shell is in posix mode, it does not recognize time as a reserved word if the next token begins with a `-'.  The TIMEFORMAT
+       variable may be set to a format string that specifies how the timing information should be displayed; see the  description
+       of TIMEFORMAT under Shell Variables below.
+
+       When  the  shell is in posix mode, time may be followed by a newline.  In this case, the shell displays the total user and
+       system time consumed by the shell and its children.  The TIMEFORMAT variable may be used to specify the format of the time
+       information.
+
+       Each command in a pipeline is executed as a separate process (i.e., in a subshell).  See COMMAND EXECUTION ENVIRONMENT for
+       a description of a subshell environment.  If the lastpipe option is enabled using the shopt builtin (see  the  description
+       of shopt below), the last element of a pipeline may be run by the shell process.
+
+   Lists
+       A list is a sequence of one or more pipelines separated by one of the operators ;, &, &&, or ||, and optionally terminated
+       by one of ;, &, or <newline>.
+
+       Of these list operators, && and || have equal precedence, followed by ; and &, which have equal precedence.
+
+       A sequence of one or more newlines may appear in a list instead of a semicolon to delimit commands.
+
+       If a command is terminated by the control operator &, the shell executes the command in the background in a subshell.  The
+       shell  does  not  wait  for the command to finish, and the return status is 0.  These are referred to as asynchronous com‐
+       mands.  Commands separated by a ; are executed sequentially; the shell waits for each command to terminate in  turn.   The
+       return status is the exit status of the last command executed.
+
+       AND  and  OR lists are sequences of one or more pipelines separated by the && and || control operators, respectively.  AND
+       and OR lists are executed with left associativity.  An AND list has the form
+
+              command1 && command2
+
+       command2 is executed if, and only if, command1 returns an exit status of zero (success).
+
+       An OR list has the form
+
+              command1 || command2
+
+       command2 is executed if, and only if, command1 returns a non-zero exit status.  The return status of AND and OR  lists  is
+       the exit status of the last command executed in the list.
+
+   Compound Commands
+       A  compound  command  is  one of the following.  In most cases a list in a command's description may be separated from the
+       rest of the command by one or more newlines, and may be followed by a newline in place of a semicolon.
+
+       (list) list is executed in a subshell environment (see COMMAND EXECUTION ENVIRONMENT  below).   Variable  assignments  and
+              builtin  commands that affect the shell's environment do not remain in effect after the command completes.  The re‐
+              turn status is the exit status of list.
+
+       { list; }
+              list is simply executed in the current shell environment.  list must be terminated with  a  newline  or  semicolon.
+              This  is known as a group command.  The return status is the exit status of list.  Note that unlike the metacharac‐
+              ters ( and ), { and } are reserved words and must occur where a reserved word is permitted to be recognized.  Since
+              they do not cause a word break, they must be separated from list by whitespace or another shell metacharacter.
+
+       ((expression))
+              The  expression  is  evaluated according to the rules described below under ARITHMETIC EVALUATION.  If the value of
+              the expression is non-zero, the return status is 0; otherwise the return status is 1.  This is  exactly  equivalent
+              to let "expression".
+
+       [[ expression ]]
+              Return  a  status  of 0 or 1 depending on the evaluation of the conditional expression expression.  Expressions are
+              composed of the primaries described below under CONDITIONAL EXPRESSIONS.  Word splitting and pathname expansion are
+              not performed on the words between the [[ and ]]; tilde expansion, parameter and variable expansion, arithmetic ex‐
+              pansion, command substitution, process substitution, and quote removal are performed.  Conditional  operators  such
+              as -f must be unquoted to be recognized as primaries.
+
+              When used with [[, the < and > operators sort lexicographically using the current locale.
+
+       See  the  description  of  the  test builtin command (section SHELL BUILTIN COMMANDS below) for the handling of parameters
+       (i.e.  missing parameters).
+
+       When the == and != operators are used, the string to the right of the operator is considered a pattern and matched accord‐
+       ing  to  the rules described below under Pattern Matching, as if the extglob shell option were enabled.  The = operator is
+       equivalent to ==.  If the nocasematch shell option is enabled, the match is performed without regard to the case of alpha‐
+       betic  characters.   The return value is 0 if the string matches (==) or does not match (!=) the pattern, and 1 otherwise.
+       Any part of the pattern may be quoted to force the quoted portion to be matched as a string.
+
+       An additional binary operator, =~, is available, with the same precedence as == and !=.  When it is used,  the  string  to
+       the right of the operator is considered a POSIX extended regular expression and matched accordingly (as in regex(3)).  The
+       return value is 0 if the string matches the pattern, and 1 otherwise.  If the regular expression is  syntactically  incor‐
+       rect,  the conditional expression's return value is 2.  If the nocasematch shell option is enabled, the match is performed
+       without regard to the case of alphabetic characters.  Any part of the pattern may be quoted to force the quoted portion to
+       be  matched as a string.  Bracket expressions in regular expressions must be treated carefully, since normal quoting char‐
+       acters lose their meanings between brackets.  If the pattern is stored in a shell variable, quoting the variable expansion
+       forces  the entire pattern to be matched as a string.  Substrings matched by parenthesized subexpressions within the regu‐
+       lar expression are saved in the array variable BASH_REMATCH.  The element of BASH_REMATCH with index 0 is the  portion  of
+       the  string matching the entire regular expression.  The element of BASH_REMATCH with index n is the portion of the string
+       matching the nth parenthesized subexpression.
+
+       Expressions may be combined using the following operators, listed in decreasing order of precedence:
+
+              ( expression )
+                     Returns the value of expression.  This may be used to override the normal precedence of operators.
+              ! expression
+                     True if expression is false.
+              expression1 && expression2
+                     True if both expression1 and expression2 are true.
+              expression1 || expression2
+                     True if either expression1 or expression2 is true.
+
+              The && and || operators do not evaluate expression2 if the value of expression1 is sufficient to determine the  re‐
+              turn value of the entire conditional expression.
+
+       for name [ [ in [ word ... ] ] ; ] do list ; done
+              The  list  of words following in is expanded, generating a list of items.  The variable name is set to each element
+              of this list in turn, and list is executed each time.  If the in word is omitted, the  for  command  executes  list
+              once for each positional parameter that is set (see PARAMETERS below).  The return status is the exit status of the
+              last command that executes.  If the expansion of the items following in results in an empty list, no  commands  are
+              executed, and the return status is 0.
+
+       for (( expr1 ; expr2 ; expr3 )) ; do list ; done
+              First, the arithmetic expression expr1 is evaluated according to the rules described below under ARITHMETIC EVALUA‐
+              TION.  The arithmetic expression expr2 is then evaluated repeatedly until it evaluates to zero.   Each  time  expr2
+              evaluates  to  a non-zero value, list is executed and the arithmetic expression expr3 is evaluated.  If any expres‐
+              sion is omitted, it behaves as if it evaluates to 1.  The return value is the exit status of the  last  command  in
+              list that is executed, or false if any of the expressions is invalid.
+
+       select name [ in word ] ; do list ; done
+              The  list  of  words following in is expanded, generating a list of items.  The set of expanded words is printed on
+              the standard error, each preceded by a number.  If the in word is omitted, the positional  parameters  are  printed
+              (see  PARAMETERS  below).   The  PS3 prompt is then displayed and a line read from the standard input.  If the line
+              consists of a number corresponding to one of the displayed words, then the value of name is set to that  word.   If
+              the  line  is  empty,  the words and prompt are displayed again.  If EOF is read, the command completes.  Any other
+              value read causes name to be set to null.  The line read is saved in the variable REPLY.  The list is executed  af‐
+              ter  each  selection  until  a break command is executed.  The exit status of select is the exit status of the last
+              command executed in list, or zero if no commands were executed.
+
+       case word in [ [(] pattern [ | pattern ] ... ) list ;; ] ... esac
+              A case command first expands word, and tries to match it against each pattern in turn, using the matching rules de‐
+              scribed  under  Pattern  Matching below.  The word is expanded using tilde expansion, parameter and variable expan‐
+              sion, arithmetic expansion, command substitution, process substitution and quote removal.  Each pattern examined is
+              expanded  using  tilde expansion, parameter and variable expansion, arithmetic expansion, command substitution, and
+              process substitution.  If the nocasematch shell option is enabled, the match is performed  without  regard  to  the
+              case  of  alphabetic characters.  When a match is found, the corresponding list is executed.  If the ;; operator is
+              used, no subsequent matches are attempted after the first pattern match.  Using ;& in place of ;; causes  execution
+              to  continue  with the list associated with the next set of patterns.  Using ;;& in place of ;; causes the shell to
+              test the next pattern list in the statement, if any, and execute any associated list on a  successful  match.   The
+              exit status is zero if no pattern matches.  Otherwise, it is the exit status of the last command executed in list.
+
+       if list; then list; [ elif list; then list; ] ... [ else list; ] fi
+              The if list is executed.  If its exit status is zero, the then list is executed.  Otherwise, each elif list is exe‐
+              cuted in turn, and if its exit status is zero, the corresponding then list is executed and the  command  completes.
+              Otherwise, the else list is executed, if present.  The exit status is the exit status of the last command executed,
+              or zero if no condition tested true.
+
+       while list-1; do list-2; done
+       until list-1; do list-2; done
+              The while command continuously executes the list list-2 as long as the last command in the list list-1  returns  an
+              exit  status of zero.  The until command is identical to the while command, except that the test is negated: list-2
+              is executed as long as the last command in list-1 returns a non-zero exit status.  The exit status of the while and
+              until commands is the exit status of the last command executed in list-2, or zero if none was executed.
+
+   Coprocesses
+       A  coprocess  is  a  shell command preceded by the coproc reserved word.  A coprocess is executed asynchronously in a sub‐
+       shell, as if the command had been terminated with the & control operator, with a two-way pipe established between the exe‐
+       cuting shell and the coprocess.
+
+       The format for a coprocess is:
+
+              coproc [NAME] command [redirections]
+
+       This  creates  a coprocess named NAME.  If NAME is not supplied, the default name is COPROC.  NAME must not be supplied if
+       command is a simple command (see above); otherwise, it is interpreted as the first word of the simple command.   When  the
+       coprocess  is  executed, the shell creates an array variable (see Arrays below) named NAME in the context of the executing
+       shell.  The standard output of command is connected via a pipe to a file descriptor in the executing shell, and that  file
+       descriptor is assigned to NAME[0].  The standard input of command is connected via a pipe to a file descriptor in the exe‐
+       cuting shell, and that file descriptor is assigned to NAME[1].  This pipe is established before any redirections specified
+       by  the command (see REDIRECTION below).  The file descriptors can be utilized as arguments to shell commands and redirec‐
+       tions using standard word expansions.  Other than those created to execute command and process substitutions, the file de‐
+       scriptors  are  not  available in subshells.  The process ID of the shell spawned to execute the coprocess is available as
+       the value of the variable NAME_PID.  The wait builtin command may be used to wait for the coprocess to terminate.
+
+       Since the coprocess is created as an asynchronous command, the coproc command always returns success.  The  return  status
+       of a coprocess is the exit status of command.
+
+   Shell Function Definitions
+       A shell function is an object that is called like a simple command and executes a compound command with a new set of posi‐
+       tional parameters.  Shell functions are declared as follows:
+
+       name () compound-command [redirection]
+       function name [()] compound-command [redirection]
+              This defines a function named name.  The reserved word function is optional.  If the function reserved word is sup‐
+              plied,  the  parentheses are optional.  The body of the function is the compound command compound-command (see Com‐
+              pound Commands above).  That command is usually a list of commands between { and }, but may be any  command  listed
+              under  Compound  Commands above, with one exception: If the function reserved word is used, but the parentheses are
+              not supplied, the braces are required.  compound-command is executed whenever name is specified as the  name  of  a
+              simple  command.   When in posix mode, name may not be the name of one of the POSIX special builtins.  Any redirec‐
+              tions (see REDIRECTION below) specified when a function is defined are performed when  the  function  is  executed.
+              The  exit status of a function definition is zero unless a syntax error occurs or a readonly function with the same
+              name already exists.  When executed, the exit status of a function is the exit status of the last command  executed
+              in the body.  (See FUNCTIONS below.)
+
+COMMENTS
+       In  a  non-interactive shell, or an interactive shell in which the interactive_comments option to the shopt builtin is en‐
+       abled (see SHELL BUILTIN COMMANDS below), a word beginning with # causes that word and all remaining  characters  on  that
+       line  to  be  ignored.  An interactive shell without the interactive_comments option enabled does not allow comments.  The
+       interactive_comments option is on by default in interactive shells.
+
+QUOTING
+       Quoting is used to remove the special meaning of certain characters or words to the shell.  Quoting can be used to disable
+       special  treatment for special characters, to prevent reserved words from being recognized as such, and to prevent parame‐
+       ter expansion.
+
+       Each of the metacharacters listed above under DEFINITIONS has special meaning to the shell and must be quoted if it is  to
+       represent itself.
+
+       When  the command history expansion facilities are being used (see HISTORY EXPANSION below), the history expansion charac‐
+       ter, usually !, must be quoted to prevent history expansion.
+
+       There are three quoting mechanisms: the escape character, single quotes, and double quotes.
+
+       A non-quoted backslash (\) is the escape character.  It preserves the literal value of the next  character  that  follows,
+       with  the exception of <newline>.  If a \<newline> pair appears, and the backslash is not itself quoted, the \<newline> is
+       treated as a line continuation (that is, it is removed from the input stream and effectively ignored).
+
+       Enclosing characters in single quotes preserves the literal value of each character within the quotes.  A single quote may
+       not occur between single quotes, even when preceded by a backslash.
+
+       Enclosing  characters in double quotes preserves the literal value of all characters within the quotes, with the exception
+       of $, `, \, and, when history expansion is enabled, !.  When the shell is in posix mode, the  !  has  no  special  meaning
+       within  double quotes, even when history expansion is enabled.  The characters $ and ` retain their special meaning within
+       double quotes.  The backslash retains its special meaning only when followed by one of the following characters: $, `,  ",
+       \, or <newline>.  A double quote may be quoted within double quotes by preceding it with a backslash.  If enabled, history
+       expansion will be performed unless an !  appearing in double quotes is escaped using a backslash.  The backslash preceding
+       the !  is not removed.
+
+       The special parameters * and @ have special meaning when in double quotes (see PARAMETERS below).
+
+       Words of the form $'string' are treated specially.  The word expands to string, with backslash-escaped characters replaced
+       as specified by the ANSI C standard.  Backslash escape sequences, if present, are decoded as follows:
+              \a     alert (bell)
+              \b     backspace
+              \e
+              \E     an escape character
+              \f     form feed
+              \n     new line
+              \r     carriage return
+              \t     horizontal tab
+              \v     vertical tab
+              \\     backslash
+              \'     single quote
+              \"     double quote
+              \?     question mark
+              \nnn   the eight-bit character whose value is the octal value nnn (one to three octal digits)
+              \xHH   the eight-bit character whose value is the hexadecimal value HH (one or two hex digits)
+              \uHHHH the Unicode (ISO/IEC 10646) character whose value is the hexadecimal value HHHH (one to four hex digits)
+              \UHHHHHHHH
+                     the Unicode (ISO/IEC 10646) character whose value is the hexadecimal value HHHHHHHH (one to eight  hex  dig‐
+                     its)
+              \cx    a control-x character
+
+       The expanded result is single-quoted, as if the dollar sign had not been present.
+
+       A  double-quoted string preceded by a dollar sign ($"string") will cause the string to be translated according to the cur‐
+       rent locale.  If the current locale is C or POSIX, the dollar sign is ignored.  If the string is translated and  replaced,
+       the replacement is double-quoted.
+
+PARAMETERS
+       A  parameter  is  an entity that stores values.  It can be a name, a number, or one of the special characters listed below
+       under Special Parameters.  A variable is a parameter denoted by a name.  A variable has a  value  and  zero  or  more  at‐
+       tributes.  Attributes are assigned using the declare builtin command (see declare below in SHELL BUILTIN COMMANDS).
+
+       A  parameter is set if it has been assigned a value.  The null string is a valid value.  Once a variable is set, it may be
+       unset only by using the unset builtin command (see SHELL BUILTIN COMMANDS below).
+
+       A variable may be assigned to by a statement of the form
+
+              name=[value]
+
+       If value is not given, the variable is assigned the null string.  All values undergo tilde expansion, parameter and  vari‐
+       able  expansion, command substitution, arithmetic expansion, and quote removal (see EXPANSION below).  If the variable has
+       its integer attribute set, then value is evaluated as an arithmetic expression even if the $((...)) expansion is not  used
+       (see  Arithmetic  Expansion  below).  Word splitting is not performed, with the exception of "$@" as explained below under
+       Special Parameters.  Pathname expansion is not performed.  Assignment statements may  also  appear  as  arguments  to  the
+       alias,  declare,  typeset, export, readonly, and local builtin commands (declaration commands).  When in posix mode, these
+       builtins may appear in a command after one or more instances of the command builtin and retain these assignment  statement
+       properties.
+
+       In  the context where an assignment statement is assigning a value to a shell variable or array index, the += operator can
+       be used to append to or add to the variable's previous value.  This includes arguments to builtin commands such as declare
+       that  accept  assignment statements (declaration commands).  When += is applied to a variable for which the integer attri‐
+       bute has been set, value is evaluated as an arithmetic expression and added to the variable's current value, which is also
+       evaluated.   When += is applied to an array variable using compound assignment (see Arrays below), the variable's value is
+       not unset (as it is when using =), and new values are appended to the array beginning at one greater than the array's max‐
+       imum index (for indexed arrays) or added as additional key-value pairs in an associative array.  When applied to a string-
+       valued variable, value is expanded and appended to the variable's value.
+
+       A variable can be assigned the nameref attribute using the -n option to the declare or local builtin commands (see the de‐
+       scriptions  of declare and local below) to create a nameref, or a reference to another variable.  This allows variables to
+       be manipulated indirectly.  Whenever the nameref variable is referenced, assigned to, unset, or has its  attributes  modi‐
+       fied  (other  than  using  or  changing the nameref attribute itself), the operation is actually performed on the variable
+       specified by the nameref variable's value.  A nameref is commonly used within shell functions to refer to a variable whose
+       name  is  passed  as  an  argument to the function.  For instance, if a variable name is passed to a shell function as its
+       first argument, running
+              declare -n ref=$1
+       inside the function creates a nameref variable ref whose value is the variable name passed as the first argument.   Refer‐
+       ences and assignments to ref, and changes to its attributes, are treated as references, assignments, and attribute modifi‐
+       cations to the variable whose name was passed as $1.  If the control variable in a for loop has the nameref attribute, the
+       list  of  words  can  be a list of shell variables, and a name reference will be established for each word in the list, in
+       turn, when the loop is executed.  Array variables cannot be given the nameref attribute.  However, nameref  variables  can
+       reference  array  variables  and  subscripted  array  variables.   Namerefs  can be unset using the -n option to the unset
+       builtin.  Otherwise, if unset is executed with the name of a nameref variable as an argument, the variable  referenced  by
+       the nameref variable will be unset.
+
+   Positional Parameters
+       A positional parameter is a parameter denoted by one or more digits, other than the single digit 0.  Positional parameters
+       are assigned from the shell's arguments when it is invoked, and may be reassigned using the set  builtin  command.   Posi‐
+       tional  parameters  may not be assigned to with assignment statements.  The positional parameters are temporarily replaced
+       when a shell function is executed (see FUNCTIONS below).
+
+       When a positional parameter consisting of more than a single digit is expanded, it must be enclosed in braces (see  EXPAN‐
+       SION below).
+
+   Special Parameters
+       The  shell  treats  several  parameters specially.  These parameters may only be referenced; assignment to them is not al‐
+       lowed.
+       *      Expands to the positional parameters, starting from one.  When the expansion is not within double quotes, each  po‐
+              sitional  parameter expands to a separate word.  In contexts where it is performed, those words are subject to fur‐
+              ther word splitting and pathname expansion.  When the expansion occurs within double quotes, it expands to a single
+              word  with the value of each parameter separated by the first character of the IFS special variable.  That is, "$*"
+              is equivalent to "$1c$2c...", where c is the first character of the value of the IFS variable.  If  IFS  is  unset,
+              the parameters are separated by spaces.  If IFS is null, the parameters are joined without intervening separators.
+       @      Expands  to  the positional parameters, starting from one.  In contexts where word splitting is performed, this ex‐
+              pands each positional parameter to a separate word; if not within double quotes, these words are  subject  to  word
+              splitting.   In  contexts where word splitting is not performed, this expands to a single word with each positional
+              parameter separated by a space.  When the expansion occurs within double quotes, each parameter expands to a  sepa‐
+              rate  word.  That is, "$@" is equivalent to "$1" "$2" ...  If the double-quoted expansion occurs within a word, the
+              expansion of the first parameter is joined with the beginning part of the original word, and the expansion  of  the
+              last  parameter  is  joined with the last part of the original word.  When there are no positional parameters, "$@"
+              and $@ expand to nothing (i.e., they are removed).
+       #      Expands to the number of positional parameters in decimal.
+       ?      Expands to the exit status of the most recently executed foreground pipeline.
+       -      Expands to the current option flags as specified upon invocation, by the set builtin command, or those set  by  the
+              shell itself (such as the -i option).
+       $      Expands  to  the process ID of the shell.  In a () subshell, it expands to the process ID of the current shell, not
+              the subshell.
+       !      Expands to the process ID of the job most recently placed into the background, whether executed as an  asynchronous
+              command or using the bg builtin (see JOB CONTROL below).
+       0      Expands  to the name of the shell or shell script.  This is set at shell initialization.  If bash is invoked with a
+              file of commands, $0 is set to the name of that file.  If bash is started with the -c option, then $0 is set to the
+              first  argument  after  the string to be executed, if one is present.  Otherwise, it is set to the filename used to
+              invoke bash, as given by argument zero.
+       _      At shell startup, set to the absolute pathname used to invoke the shell or shell script being executed as passed in
+              the  environment  or argument list.  Subsequently, expands to the last argument to the previous simple command exe‐
+              cuted in the foreground, after expansion.  Also set to the full pathname used to invoke each command  executed  and
+              placed  in the environment exported to that command.  When checking mail, this parameter holds the name of the mail
+              file currently being checked.
+
+   Shell Variables
+       The following variables are set by the shell:
+
+       BASH   Expands to the full filename used to invoke this instance of bash.
+       BASHOPTS
+              A colon-separated list of enabled shell options.  Each word in the list is a valid argument for the  -s  option  to
+              the shopt builtin command (see SHELL BUILTIN COMMANDS below).  The options appearing in BASHOPTS are those reported
+              as on by shopt.  If this variable is in the environment when bash starts up, each shell option in the list will  be
+              enabled before reading any startup files.  This variable is read-only.
+       BASHPID
+              Expands  to  the process ID of the current bash process.  This differs from $$ under certain circumstances, such as
+              subshells that do not require bash to be re-initialized.  Assignments to BASHPID have no effect.  If BASHPID is un‐
+              set, it loses its special properties, even if it is subsequently reset.
+       BASH_ALIASES
+              An  associative  array variable whose members correspond to the internal list of aliases as maintained by the alias
+              builtin.  Elements added to this array appear in the alias list; however, unsetting array elements  currently  does
+              not  cause  aliases  to be removed from the alias list.  If BASH_ALIASES is unset, it loses its special properties,
+              even if it is subsequently reset.
+       BASH_ARGC
+              An array variable whose values are the number of parameters in each frame of the current bash execution call stack.
+              The  number  of parameters to the current subroutine (shell function or script executed with . or source) is at the
+              top of the stack.  When a subroutine is executed, the number of parameters passed is pushed  onto  BASH_ARGC.   The
+              shell  sets BASH_ARGC only when in extended debugging mode (see the description of the extdebug option to the shopt
+              builtin below).  Setting extdebug after the shell has started to execute a script,  or  referencing  this  variable
+              when extdebug is not set, may result in inconsistent values.
+       BASH_ARGV
+              An  array  variable containing all of the parameters in the current bash execution call stack.  The final parameter
+              of the last subroutine call is at the top of the stack; the first parameter of the initial call is at  the  bottom.
+              When  a  subroutine  is executed, the parameters supplied are pushed onto BASH_ARGV.  The shell sets BASH_ARGV only
+              when in extended debugging mode (see the description of the extdebug option to the shopt builtin  below).   Setting
+              extdebug  after  the  shell has started to execute a script, or referencing this variable when extdebug is not set,
+              may result in inconsistent values.
+       BASH_ARGV0
+              When referenced, this variable expands to the name of the shell or shell script (identical to $0; see the  descrip‐
+              tion  of special parameter 0 above).  Assignment to BASH_ARGV0 causes the value assigned to also be assigned to $0.
+              If BASH_ARGV0 is unset, it loses its special properties, even if it is subsequently reset.
+       BASH_CMDS
+              An associative array variable whose members correspond to the internal hash table of commands as maintained by  the
+              hash  builtin.   Elements added to this array appear in the hash table; however, unsetting array elements currently
+              does not cause command names to be removed from the hash table.  If BASH_CMDS is unset, it loses its special  prop‐
+              erties, even if it is subsequently reset.
+       BASH_COMMAND
+              The command currently being executed or about to be executed, unless the shell is executing a command as the result
+              of a trap, in which case it is the command executing at the time of the trap.
+       BASH_EXECUTION_STRING
+              The command argument to the -c invocation option.
+       BASH_LINENO
+              An array variable whose members are the line numbers in source files where each corresponding  member  of  FUNCNAME
+              was invoked.  ${BASH_LINENO[$i]} is the line number in the source file (${BASH_SOURCE[$i+1]}) where ${FUNCNAME[$i]}
+              was called (or ${BASH_LINENO[$i-1]} if referenced within another shell function).  Use LINENO to obtain the current
+              line number.
+       BASH_LOADABLES_PATH
+              A  colon-separated  list of directories in which the shell looks for dynamically loadable builtins specified by the
+              enable command.
+       BASH_REMATCH
+              An array variable whose members are assigned by the =~ binary operator to the [[ conditional command.  The  element
+              with  index 0 is the portion of the string matching the entire regular expression.  The element with index n is the
+              portion of the string matching the nth parenthesized subexpression.  This variable is read-only.
+       BASH_SOURCE
+              An array variable whose members are the source filenames where the corresponding shell function names in the  FUNC‐
+              NAME  array variable are defined.  The shell function ${FUNCNAME[$i]} is defined in the file ${BASH_SOURCE[$i]} and
+              called from ${BASH_SOURCE[$i+1]}.
+       BASH_SUBSHELL
+              Incremented by one within each subshell or subshell environment when the shell begins executing  in  that  environ‐
+              ment.  The initial value is 0.
+       BASH_VERSINFO
+              A readonly array variable whose members hold version information for this instance of bash.  The values assigned to
+              the array members are as follows:
+              BASH_VERSINFO[0]        The major version number (the release).
+              BASH_VERSINFO[1]        The minor version number (the version).
+              BASH_VERSINFO[2]        The patch level.
+              BASH_VERSINFO[3]        The build version.
+              BASH_VERSINFO[4]        The release status (e.g., beta1).
+              BASH_VERSINFO[5]        The value of MACHTYPE.
+       BASH_VERSION
+              Expands to a string describing the version of this instance of bash.
+       COMP_CWORD
+              An index into ${COMP_WORDS} of the word containing the current cursor position.  This variable is available only in
+              shell functions invoked by the programmable completion facilities (see Programmable Completion below).
+       COMP_KEY
+              The key (or final key of a key sequence) used to invoke the current completion function.
+       COMP_LINE
+              The  current command line.  This variable is available only in shell functions and external commands invoked by the
+              programmable completion facilities (see Programmable Completion below).
+       COMP_POINT
+              The index of the current cursor position relative to the beginning of the current command.  If the  current  cursor
+              position is at the end of the current command, the value of this variable is equal to ${#COMP_LINE}.  This variable
+              is available only in shell functions and external commands invoked by the programmable completion  facilities  (see
+              Programmable Completion below).
+       COMP_TYPE
+              Set  to  an integer value corresponding to the type of completion attempted that caused a completion function to be
+              called: TAB, for normal completion, ?, for listing completions after successive tabs, !, for  listing  alternatives
+              on  partial word completion, @, to list completions if the word is not unmodified, or %, for menu completion.  This
+              variable is available only in shell functions and external commands invoked by the programmable completion  facili‐
+              ties (see Programmable Completion below).
+       COMP_WORDBREAKS
+              The  set  of  characters  that  the readline library treats as word separators when performing word completion.  If
+              COMP_WORDBREAKS is unset, it loses its special properties, even if it is subsequently reset.
+       COMP_WORDS
+              An array variable (see Arrays below) consisting of the individual words in the current command line.  The  line  is
+              split  into words as readline would split it, using COMP_WORDBREAKS as described above.  This variable is available
+              only in shell functions invoked by the programmable completion facilities (see Programmable Completion below).
+       COPROC An array variable (see Arrays below) created to hold the file descriptors for output from and input to  an  unnamed
+              coprocess (see Coprocesses above).
+       DIRSTACK
+              An array variable (see Arrays below) containing the current contents of the directory stack.  Directories appear in
+              the stack in the order they are displayed by the dirs builtin.  Assigning to members of this array variable may  be
+              used to modify directories already in the stack, but the pushd and popd builtins must be used to add and remove di‐
+              rectories.  Assignment to this variable will not change the current directory.  If DIRSTACK is unset, it loses  its
+              special properties, even if it is subsequently reset.
+       EPOCHREALTIME
+              Each time this parameter is referenced, it expands to the number of seconds since the Unix Epoch (see time(3)) as a
+              floating point value with micro-second granularity.  Assignments to EPOCHREALTIME are ignored.  If EPOCHREALTIME is
+              unset, it loses its special properties, even if it is subsequently reset.
+       EPOCHSECONDS
+              Each  time  this  parameter  is referenced, it expands to the number of seconds since the Unix Epoch (see time(3)).
+              Assignments to EPOCHSECONDS are ignored.  If EPOCHSECONDS is unset, it loses its special properties, even if it  is
+              subsequently reset.
+       EUID   Expands to the effective user ID of the current user, initialized at shell startup.  This variable is readonly.
+       FUNCNAME
+              An  array  variable containing the names of all shell functions currently in the execution call stack.  The element
+              with index 0 is the name of any currently-executing shell function.  The bottom-most  element  (the  one  with  the
+              highest  index)  is "main".  This variable exists only when a shell function is executing.  Assignments to FUNCNAME
+              have no effect.  If FUNCNAME is unset, it loses its special properties, even if it is subsequently reset.
+
+              This variable can be used with BASH_LINENO and BASH_SOURCE.  Each element of FUNCNAME has corresponding elements in
+              BASH_LINENO  and  BASH_SOURCE  to  describe the call stack.  For instance, ${FUNCNAME[$i]} was called from the file
+              ${BASH_SOURCE[$i+1]} at line number ${BASH_LINENO[$i]}.  The caller builtin displays the current call  stack  using
+              this information.
+       GROUPS An  array variable containing the list of groups of which the current user is a member.  Assignments to GROUPS have
+              no effect.  If GROUPS is unset, it loses its special properties, even if it is subsequently reset.
+       HISTCMD
+              The history number, or index in the history list, of the current command.  If HISTCMD is unset, it loses  its  spe‐
+              cial properties, even if it is subsequently reset.
+       HOSTNAME
+              Automatically set to the name of the current host.
+       HOSTTYPE
+              Automatically  set to a string that uniquely describes the type of machine on which bash is executing.  The default
+              is system-dependent.
+       LINENO Each time this parameter is referenced, the shell substitutes a decimal number representing the current  sequential
+              line number (starting with 1) within a script or function.  When not in a script or function, the value substituted
+              is not guaranteed to be meaningful.  If LINENO is unset, it loses its special properties,  even  if  it  is  subse‐
+              quently reset.
+       MACHTYPE
+              Automatically  set to a string that fully describes the system type on which bash is executing, in the standard GNU
+              cpu-company-system format.  The default is system-dependent.
+       MAPFILE
+              An array variable (see Arrays below) created to hold the text read by the mapfile builtin when no variable name  is
+              supplied.
+       OLDPWD The previous working directory as set by the cd command.
+       OPTARG The value of the last option argument processed by the getopts builtin command (see SHELL BUILTIN COMMANDS below).
+       OPTIND The index of the next argument to be processed by the getopts builtin command (see SHELL BUILTIN COMMANDS below).
+       OSTYPE Automatically  set to a string that describes the operating system on which bash is executing.  The default is sys‐
+              tem-dependent.
+       PIPESTATUS
+              An array variable (see Arrays below) containing a list of exit status values from the  processes  in  the  most-re‐
+              cently-executed foreground pipeline (which may contain only a single command).
+       PPID   The process ID of the shell's parent.  This variable is readonly.
+       PWD    The current working directory as set by the cd command.
+       RANDOM Each  time this parameter is referenced, a random integer between 0 and 32767 is generated.  The sequence of random
+              numbers may be initialized by assigning a value to RANDOM.  If RANDOM is unset, it loses  its  special  properties,
+              even if it is subsequently reset.
+       READLINE_LINE
+              The contents of the readline line buffer, for use with "bind -x" (see SHELL BUILTIN COMMANDS below).
+       READLINE_POINT
+              The position of the insertion point in the readline line buffer, for use with "bind -x" (see SHELL BUILTIN COMMANDS
+              below).
+       REPLY  Set to the line of input read by the read builtin command when no arguments are supplied.
+       SECONDS
+              Each time this parameter is referenced, the number of seconds since shell invocation is returned.  If  a  value  is
+              assigned  to  SECONDS,  the value returned upon subsequent references is the number of seconds since the assignment
+              plus the value assigned.  If SECONDS is unset, it loses its special properties, even if it is subsequently reset.
+       SHELLOPTS
+              A colon-separated list of enabled shell options.  Each word in the list is a valid argument for the  -o  option  to
+              the  set builtin command (see SHELL BUILTIN COMMANDS below).  The options appearing in SHELLOPTS are those reported
+              as on by set -o.  If this variable is in the environment when bash starts up, each shell option in the list will be
+              enabled before reading any startup files.  This variable is read-only.
+       SHLVL  Incremented by one each time an instance of bash is started.
+       UID    Expands to the user ID of the current user, initialized at shell startup.  This variable is readonly.
+
+       The following variables are used by the shell.  In some cases, bash assigns a default value to a variable; these cases are
+       noted below.
+
+       BASH_COMPAT
+              The value is used to set the shell's compatibility level.  See the description of the  shopt  builtin  below  under
+              SHELL BUILTIN COMMANDS for a description of the various compatibility levels and their effects.  The value may be a
+              decimal number (e.g., 4.2) or an integer (e.g., 42) corresponding to the desired compatibility level.  If BASH_COM‐
+              PAT is unset or set to the empty string, the compatibility level is set to the default for the current version.  If
+              BASH_COMPAT is set to a value that is not one of the valid compatibility levels, the shell prints an error  message
+              and sets the compatibility level to the default for the current version.  The valid compatibility levels correspond
+              to the compatibility options accepted by the shopt builtin described below (for example, compat42  means  that  4.2
+              and 42 are valid values).  The current version is also a valid value.
+       BASH_ENV
+              If  this  parameter is set when bash is executing a shell script, its value is interpreted as a filename containing
+              commands to initialize the shell, as in ~/.bashrc.  The value of BASH_ENV is subjected to parameter expansion, com‐
+              mand substitution, and arithmetic expansion before being interpreted as a filename.  PATH is not used to search for
+              the resultant filename.
+       BASH_XTRACEFD
+              If set to an integer corresponding to a valid file descriptor, bash will write the trace output generated when  set
+              -x is enabled to that file descriptor.  The file descriptor is closed when BASH_XTRACEFD is unset or assigned a new
+              value.  Unsetting BASH_XTRACEFD or assigning it the empty string causes the trace output to be sent to the standard
+              error.  Note that setting BASH_XTRACEFD to 2 (the standard error file descriptor) and then unsetting it will result
+              in the standard error being closed.
+       CDPATH The search path for the cd command.  This is a colon-separated list of directories in which  the  shell  looks  for
+              destination directories specified by the cd command.  A sample value is ".:~:/usr".
+       CHILD_MAX
+              Set  the  number of exited child status values for the shell to remember.  Bash will not allow this value to be de‐
+              creased below a POSIX-mandated minimum, and there is a maximum value (currently 8192) that  this  may  not  exceed.
+              The minimum value is system-dependent.
+       COLUMNS
+              Used  by  the select compound command to determine the terminal width when printing selection lists.  Automatically
+              set if the checkwinsize option is enabled or in an interactive shell upon receipt of a SIGWINCH.
+       COMPREPLY
+              An array variable from which bash reads the possible completions generated by a shell function invoked by the  pro‐
+              grammable  completion  facility (see Programmable Completion below).  Each array element contains one possible com‐
+              pletion.
+       EMACS  If bash finds this variable in the environment when the shell starts with value "t", it assumes that the  shell  is
+              running in an Emacs shell buffer and disables line editing.
+       ENV    Similar to BASH_ENV; used when the shell is invoked in posix mode.
+       EXECIGNORE
+              A  colon-separated  list  of  shell patterns (see Pattern Matching) defining the list of filenames to be ignored by
+              command search using PATH.  Files whose full pathnames match one of these patterns are  not  considered  executable
+              files  for  the purposes of completion and command execution via PATH lookup.  This does not affect the behavior of
+              the [, test, and [[ commands.  Full pathnames in the command hash table are not subject to  EXECIGNORE.   Use  this
+              variable  to  ignore shared library files that have the executable bit set, but are not executable files.  The pat‐
+              tern matching honors the setting of the extglob shell option.
+       FCEDIT The default editor for the fc builtin command.
+       FIGNORE
+              A colon-separated list of suffixes to ignore when performing filename completion (see READLINE below).  A  filename
+              whose  suffix matches one of the entries in FIGNORE is excluded from the list of matched filenames.  A sample value
+              is ".o:~" (Quoting is needed when assigning a value to this variable, which contains tildes).
+       FUNCNEST
+              If set to a numeric value greater than 0, defines a maximum function nesting level.  Function invocations that  ex‐
+              ceed this nesting level will cause the current command to abort.
+       GLOBIGNORE
+              A  colon-separated  list of patterns defining the set of file names to be ignored by pathname expansion.  If a file
+              name matched by a pathname expansion pattern also matches one of the patterns in GLOBIGNORE, it is removed from the
+              list of matches.
+       HISTCONTROL
+              A colon-separated list of values controlling how commands are saved on the history list.  If the list of values in‐
+              cludes ignorespace, lines which begin with a space character are not saved in the history list.   A  value  of  ig‐
+              noredups  causes lines matching the previous history entry to not be saved.  A value of ignoreboth is shorthand for
+              ignorespace and ignoredups.  A value of erasedups causes all previous lines matching the current line to be removed
+              from  the  history  list before that line is saved.  Any value not in the above list is ignored.  If HISTCONTROL is
+              unset, or does not include a valid value, all lines read by the shell parser are saved on the history list, subject
+              to  the  value of HISTIGNORE.  The second and subsequent lines of a multi-line compound command are not tested, and
+              are added to the history regardless of the value of HISTCONTROL.
+       HISTFILE
+              The name of the file in which command history is saved (see HISTORY below).  The default value is  ~/.bash_history.
+              If unset, the command history is not saved when a shell exits.
+       HISTFILESIZE
+              The  maximum  number  of  lines contained in the history file.  When this variable is assigned a value, the history
+              file is truncated, if necessary, to contain no more than that number of lines by removing the oldest entries.   The
+              history  file  is  also truncated to this size after writing it when a shell exits.  If the value is 0, the history
+              file is truncated to zero size.  Non-numeric values and numeric values less  than  zero  inhibit  truncation.   The
+              shell sets the default value to the value of HISTSIZE after reading any startup files.
+       HISTIGNORE
+              A  colon-separated  list  of patterns used to decide which command lines should be saved on the history list.  Each
+              pattern is anchored at the beginning of the line and must match the complete line (no implicit  `*'  is  appended).
+              Each  pattern is tested against the line after the checks specified by HISTCONTROL are applied.  In addition to the
+              normal shell pattern matching characters, `&' matches the previous history line.  `&' may be escaped using a  back‐
+              slash;  the  backslash  is removed before attempting a match.  The second and subsequent lines of a multi-line com‐
+              pound command are not tested, and are added to the history regardless of the  value  of  HISTIGNORE.   The  pattern
+              matching honors the setting of the extglob shell option.
+       HISTSIZE
+              The number of commands to remember in the command history (see HISTORY below).  If the value is 0, commands are not
+              saved in the history list.  Numeric values less than zero result in every command being saved on the  history  list
+              (there is no limit).  The shell sets the default value to 500 after reading any startup files.
+       HISTTIMEFORMAT
+              If  this variable is set and not null, its value is used as a format string for strftime(3) to print the time stamp
+              associated with each history entry displayed by the history builtin.  If this variable  is  set,  time  stamps  are
+              written  to the history file so they may be preserved across shell sessions.  This uses the history comment charac‐
+              ter to distinguish timestamps from other history lines.
+       HOME   The home directory of the current user; the default argument for the cd builtin command.  The value of  this  vari‐
+              able is also used when performing tilde expansion.
+       HOSTFILE
+              Contains the name of a file in the same format as /etc/hosts that should be read when the shell needs to complete a
+              hostname.  The list of possible hostname completions may be changed while the shell is running; the next time host‐
+              name  completion  is  attempted  after the value is changed, bash adds the contents of the new file to the existing
+              list.  If HOSTFILE is set, but has no value, or does not name a readable file, bash attempts to read /etc/hosts  to
+              obtain the list of possible hostname completions.  When HOSTFILE is unset, the hostname list is cleared.
+       IFS    The Internal Field Separator that is used for word splitting after expansion and to split lines into words with the
+              read builtin command.  The default value is ``<space><tab><newline>''.
+       IGNOREEOF
+              Controls the action of an interactive shell on receipt of an EOF character as the sole input.  If set, the value is
+              the  number  of consecutive EOF characters which must be typed as the first characters on an input line before bash
+              exits.  If the variable exists but does not have a numeric value, or has no value, the default value is 10.  If  it
+              does not exist, EOF signifies the end of input to the shell.
+       INPUTRC
+              The filename for the readline startup file, overriding the default of ~/.inputrc (see READLINE below).
+       INSIDE_EMACS
+              If  this variable appears in the environment when the shell starts, bash assumes that it is running inside an Emacs
+              shell buffer and may disable line editing, depending on the value of TERM.
+       LANG   Used to determine the locale category for any category not specifically selected with a variable starting with LC_.
+       LC_ALL This variable overrides the value of LANG and any other LC_ variable specifying a locale category.
+       LC_COLLATE
+              This variable determines the collation order used when sorting the results of pathname  expansion,  and  determines
+              the  behavior of range expressions, equivalence classes, and collating sequences within pathname expansion and pat‐
+              tern matching.
+       LC_CTYPE
+              This variable determines the interpretation of characters and the behavior of character classes within pathname ex‐
+              pansion and pattern matching.
+       LC_MESSAGES
+              This variable determines the locale used to translate double-quoted strings preceded by a $.
+       LC_NUMERIC
+              This variable determines the locale category used for number formatting.
+       LC_TIME
+              This variable determines the locale category used for data and time formatting.
+       LINES  Used by the select compound command to determine the column length for printing selection lists.  Automatically set
+              if the checkwinsize option is enabled or in an interactive shell upon receipt of a SIGWINCH.
+       MAIL   If this parameter is set to a file or directory name and the MAILPATH variable is not set, bash informs the user of
+              the arrival of mail in the specified file or Maildir-format directory.
+       MAILCHECK
+              Specifies  how  often  (in seconds) bash checks for mail.  The default is 60 seconds.  When it is time to check for
+              mail, the shell does so before displaying the primary prompt.  If this variable is unset, or set to a value that is
+              not a number greater than or equal to zero, the shell disables mail checking.
+       MAILPATH
+              A  colon-separated list of filenames to be checked for mail.  The message to be printed when mail arrives in a par‐
+              ticular file may be specified by separating the filename from the message with a `?'.  When used in the text of the
+              message, $_ expands to the name of the current mailfile.  Example:
+              MAILPATH='/var/mail/bfox?"You have mail":~/shell-mail?"$_ has mail!"'
+              Bash can be configured to supply a default value for this variable (there is no value by default), but the location
+              of the user mail files that it uses is system dependent (e.g., /var/mail/$USER).
+       OPTERR If set to the value 1, bash displays error messages generated by the getopts builtin  command  (see  SHELL  BUILTIN
+              COMMANDS below).  OPTERR is initialized to 1 each time the shell is invoked or a shell script is executed.
+       PATH   The  search  path  for commands.  It is a colon-separated list of directories in which the shell looks for commands
+              (see COMMAND EXECUTION below).  A zero-length (null) directory name in the value of PATH indicates the current  di‐
+              rectory.  A null directory name may appear as two adjacent colons, or as an initial or trailing colon.  The default
+              path is system-dependent, and is set by the administrator who installs bash.  A common value is ``/usr/local/bin:
+              /usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin''.
+       POSIXLY_CORRECT
+              If  this  variable  is  in the environment when bash starts, the shell enters posix mode before reading the startup
+              files, as if the --posix invocation option had been supplied.  If it is set while the shell is  running,  bash  en‐
+              ables posix mode, as if the command set -o posix had been executed.  When the shell enters posix mode, it sets this
+              variable if it was not already set.
+       PROMPT_COMMAND
+              If set, the value is executed as a command prior to issuing each primary prompt.
+       PROMPT_DIRTRIM
+              If set to a number greater than zero, the value is used as the number of trailing directory  components  to  retain
+              when  expanding the \w and \W prompt string escapes (see PROMPTING below).  Characters removed are replaced with an
+              ellipsis.
+       PS0    The value of this parameter is expanded (see PROMPTING below) and displayed by interactive shells after  reading  a
+              command and before the command is executed.
+       PS1    The  value  of this parameter is expanded (see PROMPTING below) and used as the primary prompt string.  The default
+              value is ``\s-\v\$ ''.
+       PS2    The value of this parameter is expanded as with PS1 and used as the secondary prompt string.  The  default  is  ``>
+              ''.
+       PS3    The value of this parameter is used as the prompt for the select command (see SHELL GRAMMAR above).
+       PS4    The value of this parameter is expanded as with PS1 and the value is printed before each command bash displays dur‐
+              ing an execution trace.  The first character of the expanded value of PS4 is replicated multiple times,  as  neces‐
+              sary, to indicate multiple levels of indirection.  The default is ``+ ''.
+       SHELL  The  full pathname to the shell is kept in this environment variable.  If it is not set when the shell starts, bash
+              assigns to it the full pathname of the current user's login shell.
+       TIMEFORMAT
+              The value of this parameter is used as a format string specifying how the timing information for pipelines prefixed
+              with the time reserved word should be displayed.  The % character introduces an escape sequence that is expanded to
+              a time value or other information.  The escape sequences and their meanings are as follows; the braces  denote  op‐
+              tional portions.
+              %%        A literal %.
+              %[p][l]R  The elapsed time in seconds.
+              %[p][l]U  The number of CPU seconds spent in user mode.
+              %[p][l]S  The number of CPU seconds spent in system mode.
+              %P        The CPU percentage, computed as (%U + %S) / %R.
+
+              The optional p is a digit specifying the precision, the number of fractional digits after a decimal point.  A value
+              of 0 causes no decimal point or fraction to be output.  At most three places after the decimal point may be  speci‐
+              fied; values of p greater than 3 are changed to 3.  If p is not specified, the value 3 is used.
+
+              The  optional  l  specifies  a  longer format, including minutes, of the form MMmSS.FFs.  The value of p determines
+              whether or not the fraction is included.
+
+              If this variable is not set, bash acts as if it had the value $'\nreal\t%3lR\nuser\t%3lU\nsys\t%3lS'.  If the value
+              is null, no timing information is displayed.  A trailing newline is added when the format string is displayed.
+       TMOUT  If set to a value greater than zero, TMOUT is treated as the default timeout for the read builtin.  The select com‐
+              mand terminates if input does not arrive after TMOUT seconds when input is coming from a terminal.  In an  interac‐
+              tive shell, the value is interpreted as the number of seconds to wait for a line of input after issuing the primary
+              prompt.  Bash terminates after waiting for that number of seconds if a complete line of input does not arrive.
+       TMPDIR If set, bash uses its value as the name of a directory in which bash creates temporary files for the shell's use.
+       auto_resume
+              This variable controls how the shell interacts with the user and job control.  If this variable is set, single word
+              simple commands without redirections are treated as candidates for resumption of an existing stopped job.  There is
+              no ambiguity allowed; if there is more than one job beginning with the string typed, the job most recently accessed
+              is  selected.   The  name  of  a stopped job, in this context, is the command line used to start it.  If set to the
+              value exact, the string supplied must match the name of a stopped job exactly; if set to substring, the string sup‐
+              plied  needs  to match a substring of the name of a stopped job.  The substring value provides functionality analo‐
+              gous to the %?  job identifier (see JOB CONTROL below).  If set to any other value, the supplied string must  be  a
+              prefix of a stopped job's name; this provides functionality analogous to the %string job identifier.
+       histchars
+              The  two  or  three characters which control history expansion and tokenization (see HISTORY EXPANSION below).  The
+              first character is the history expansion character, the character which signals the start of a  history  expansion,
+              normally  `!'.  The second character is the quick substitution character, which is used as shorthand for re-running
+              the previous command entered, substituting one string for another in the command.  The default  is  `^'.   The  op‐
+              tional  third  character is the character which indicates that the remainder of the line is a comment when found as
+              the first character of a word, normally `#'.  The history comment  character  causes  history  substitution  to  be
+              skipped  for  the remaining words on the line.  It does not necessarily cause the shell parser to treat the rest of
+              the line as a comment.
+
+   Arrays
+       Bash provides one-dimensional indexed and associative array variables.  Any variable may be used as an indexed array;  the
+       declare  builtin will explicitly declare an array.  There is no maximum limit on the size of an array, nor any requirement
+       that members be indexed or assigned contiguously.  Indexed arrays are referenced using integers (including arithmetic  ex‐
+       pressions) and are zero-based; associative arrays are referenced using arbitrary strings.  Unless otherwise noted, indexed
+       array indices must be non-negative integers.
+
+       An indexed array is created automatically if any variable is assigned to using the syntax name[subscript]=value.  The sub‐
+       script is treated as an arithmetic expression that must evaluate to a number.  To explicitly declare an indexed array, use
+       declare -a name (see SHELL BUILTIN COMMANDS below).  declare -a name[subscript] is also accepted;  the  subscript  is  ig‐
+       nored.
+
+       Associative arrays are created using declare -A name.
+
+       Attributes  may be specified for an array variable using the declare and readonly builtins.  Each attribute applies to all
+       members of an array.
+
+       Arrays are assigned to using compound assignments of the form name=(value1 ... valuen), where each value is  of  the  form
+       [subscript]=string.   Indexed  array assignments do not require anything but string.  When assigning to indexed arrays, if
+       the optional brackets and subscript are supplied, that index is assigned to; otherwise the index of the  element  assigned
+       is the last index assigned to by the statement plus one.  Indexing starts at zero.
+
+       When assigning to an associative array, the subscript is required.
+
+       This  syntax  is  also  accepted by the declare builtin.  Individual array elements may be assigned to using the name[sub‐
+       script]=value syntax introduced above.  When assigning to an indexed array, if name is subscripted by a  negative  number,
+       that  number is interpreted as relative to one greater than the maximum index of name, so negative indices count back from
+       the end of the array, and an index of -1 references the last element.
+
+       Any element of an array may be referenced using ${name[subscript]}.  The braces are required to avoid conflicts with path‐
+       name  expansion.   If subscript is @ or *, the word expands to all members of name.  These subscripts differ only when the
+       word appears within double quotes.  If the word is double-quoted, ${name[*]} expands to a single word with  the  value  of
+       each  array  member  separated  by the first character of the IFS special variable, and ${name[@]} expands each element of
+       name to a separate word.  When there are no array members, ${name[@]} expands to nothing.  If the double-quoted  expansion
+       occurs within a word, the expansion of the first parameter is joined with the beginning part of the original word, and the
+       expansion of the last parameter is joined with the last part of the original word.  This is analogous to the expansion  of
+       the  special  parameters * and @ (see Special Parameters above).  ${#name[subscript]} expands to the length of ${name[sub‐
+       script]}.  If subscript is * or @, the expansion is the number of elements in the array.  If the subscript used to  refer‐
+       ence  an  element  of  an indexed array evaluates to a number less than zero, it is interpreted as relative to one greater
+       than the maximum index of the array, so negative indices count back from the end of the array, and an index of  -1  refer‐
+       ences the last element.
+
+       Referencing  an array variable without a subscript is equivalent to referencing the array with a subscript of 0.  Any ref‐
+       erence to a variable using a valid subscript is legal, and bash will create an array if necessary.
+
+       An array variable is considered set if a subscript has been assigned a value.  The null string is a valid value.
+
+       It is possible to obtain the keys (indices) of an array as well as the values.  ${!name[@]} and ${!name[*]} expand to  the
+       indices  assigned  in array variable name.  The treatment when in double quotes is similar to the expansion of the special
+       parameters @ and * within double quotes.
+
+       The unset builtin is used to destroy arrays.  unset name[subscript] destroys the array element  at  index  subscript,  for
+       both indexed and associative arrays.  Negative subscripts to indexed arrays are interpreted as described above.  Unsetting
+       the last element of an array variable does not unset the variable.  unset name, where name is an array, or unset name[sub‐
+       script], where subscript is * or @, removes the entire array.
+
+       When using a variable name with a subscript as an argument to a command, such as with unset, without using the word expan‐
+       sion syntax described above, the argument is subject to pathname expansion.  If pathname expansion is not desired, the ar‐
+       gument should be quoted.
+
+       The  declare,  local, and readonly builtins each accept a -a option to specify an indexed array and a -A option to specify
+       an associative array.  If both options are supplied, -A takes precedence.  The read builtin accepts a -a option to  assign
+       a list of words read from the standard input to an array.  The set and declare builtins display array values in a way that
+       allows them to be reused as assignments.
+
+EXPANSION
+       Expansion is performed on the command line after it has been split into words.  There are seven kinds  of  expansion  per‐
+       formed:  brace  expansion,  tilde expansion, parameter and variable expansion, command substitution, arithmetic expansion,
+       word splitting, and pathname expansion.
+
+       The order of expansions is: brace expansion; tilde expansion, parameter and variable expansion, arithmetic expansion,  and
+       command substitution (done in a left-to-right fashion); word splitting; and pathname expansion.
+
+       On  systems  that  can support it, there is an additional expansion available: process substitution.  This is performed at
+       the same time as tilde, parameter, variable, and arithmetic expansion and command substitution.
+
+       After these expansions are performed, quote characters present in the original word are  removed  unless  they  have  been
+       quoted themselves (quote removal).
+
+       Only  brace expansion, word splitting, and pathname expansion can increase the number of words of the expansion; other ex‐
+       pansions expand a single word to a single word.  The only exceptions to this are the expansions of "$@" and  "${name[@]}",
+       and, in most cases, $* and ${name[*]} as explained above (see PARAMETERS).
+
+   Brace Expansion
+       Brace  expansion is a mechanism by which arbitrary strings may be generated.  This mechanism is similar to pathname expan‐
+       sion, but the filenames generated need not exist.  Patterns to be brace expanded take the form of  an  optional  preamble,
+       followed  by  either a series of comma-separated strings or a sequence expression between a pair of braces, followed by an
+       optional postscript.  The preamble is prefixed to each string contained within the braces, and the postscript is then  ap‐
+       pended to each resulting string, expanding left to right.
+
+       Brace  expansions  may  be  nested.  The results of each expanded string are not sorted; left to right order is preserved.
+       For example, a{d,c,b}e expands into `ade ace abe'.
+
+       A sequence expression takes the form {x..y[..incr]}, where x and y are either integers or single characters, and incr,  an
+       optional increment, is an integer.  When integers are supplied, the expression expands to each number between x and y, in‐
+       clusive.  Supplied integers may be prefixed with 0 to force each term to have the same width.  When either x or  y  begins
+       with a zero, the shell attempts to force all generated terms to contain the same number of digits, zero-padding where nec‐
+       essary.  When characters are supplied, the expression expands to each character lexicographically between x and y,  inclu‐
+       sive, using the default C locale.  Note that both x and y must be of the same type.  When the increment is supplied, it is
+       used as the difference between each term.  The default increment is 1 or -1 as appropriate.
+
+       Brace expansion is performed before any other expansions, and any characters special to other expansions are preserved  in
+       the  result.  It is strictly textual.  Bash does not apply any syntactic interpretation to the context of the expansion or
+       the text between the braces.
+
+       A correctly-formed brace expansion must contain unquoted opening and closing braces, and at least one unquoted comma or  a
+       valid sequence expression.  Any incorrectly formed brace expansion is left unchanged.  A { or , may be quoted with a back‐
+       slash to prevent its being considered part of a brace expression.  To avoid conflicts with parameter expansion, the string
+       ${ is not considered eligible for brace expansion, and inhibits brace expansion until the closing }.
+
+       This  construct is typically used as shorthand when the common prefix of the strings to be generated is longer than in the
+       above example:
+
+              mkdir /usr/local/src/bash/{old,new,dist,bugs}
+       or
+              chown root /usr/{ucb/{ex,edit},lib/{ex?.?*,how_ex}}
+
+       Brace expansion introduces a slight incompatibility with historical versions of sh.  sh does not treat opening or  closing
+       braces  specially when they appear as part of a word, and preserves them in the output.  Bash removes braces from words as
+       a consequence of brace expansion.  For example, a word entered to sh as file{1,2} appears identically in the output.   The
+       same  word  is output as file1 file2 after expansion by bash.  If strict compatibility with sh is desired, start bash with
+       the +B option or disable brace expansion with the +B option to the set command (see SHELL BUILTIN COMMANDS below).
+
+   Tilde Expansion
+       If a word begins with an unquoted tilde character (`~'), all of the characters preceding the first unquoted slash (or  all
+       characters,  if  there is no unquoted slash) are considered a tilde-prefix.  If none of the characters in the tilde-prefix
+       are quoted, the characters in the tilde-prefix following the tilde are treated as a possible login name.   If  this  login
+       name is the null string, the tilde is replaced with the value of the shell parameter HOME.  If HOME is unset, the home di‐
+       rectory of the user executing the shell is substituted instead.  Otherwise, the tilde-prefix is replaced with the home di‐
+       rectory associated with the specified login name.
+
+       If  the  tilde-prefix  is a `~+', the value of the shell variable PWD replaces the tilde-prefix.  If the tilde-prefix is a
+       `~-', the value of the shell variable OLDPWD, if it is set, is substituted.  If the characters following the tilde in  the
+       tilde-prefix  consist  of  a number N, optionally prefixed by a `+' or a `-', the tilde-prefix is replaced with the corre‐
+       sponding element from the directory stack, as it would be displayed by the dirs builtin invoked with the  tilde-prefix  as
+       an  argument.  If the characters following the tilde in the tilde-prefix consist of a number without a leading `+' or `-',
+       `+' is assumed.
+
+       If the login name is invalid, or the tilde expansion fails, the word is unchanged.
+
+       Each variable assignment is checked for unquoted tilde-prefixes immediately following a : or the first =.  In these cases,
+       tilde  expansion is also performed.  Consequently, one may use filenames with tildes in assignments to PATH, MAILPATH, and
+       CDPATH, and the shell assigns the expanded value.
+
+       Bash also performs tilde expansion on words satisfying the conditions of variable assignments (as  described  above  under
+       PARAMETERS)  when they appear as arguments to simple commands.  Bash does not do this, except for the declaration commands
+       listed above, when in posix mode.
+
+   Parameter Expansion
+       The `$' character introduces parameter expansion, command substitution, or arithmetic expansion.  The  parameter  name  or
+       symbol  to be expanded may be enclosed in braces, which are optional but serve to protect the variable to be expanded from
+       characters immediately following it which could be interpreted as part of the name.
+
+       When braces are used, the matching ending brace is the first `}' not escaped by a backslash or within a quoted string, and
+       not within an embedded arithmetic expansion, command substitution, or parameter expansion.
+
+       ${parameter}
+              The  value of parameter is substituted.  The braces are required when parameter is a positional parameter with more
+              than one digit, or when parameter is followed by a character which is not to be interpreted as part  of  its  name.
+              The parameter is a shell parameter as described above PARAMETERS) or an array reference (Arrays).
+
+       If  the first character of parameter is an exclamation point (!), and parameter is not a nameref, it introduces a level of
+       indirection.  Bash uses the value formed by expanding the rest of parameter as the new parameter; this  is  then  expanded
+       and  that  value is used in the rest of the expansion, rather than the expansion of the original parameter.  This is known
+       as indirect expansion.  The value is subject to tilde expansion, parameter expansion, command substitution, and arithmetic
+       expansion.   If  parameter is a nameref, this expands to the name of the parameter referenced by parameter instead of per‐
+       forming the complete indirect expansion.  The exceptions to this are the expansions of  ${!prefix*}  and  ${!name[@]}  de‐
+       scribed below.  The exclamation point must immediately follow the left brace in order to introduce indirection.
+
+       In  each of the cases below, word is subject to tilde expansion, parameter expansion, command substitution, and arithmetic
+       expansion.
+
+       When not performing substring expansion, using the forms documented below (e.g., :-), bash tests for a parameter  that  is
+       unset or null.  Omitting the colon results in a test only for a parameter that is unset.
+
+       ${parameter:-word}
+              Use  Default Values.  If parameter is unset or null, the expansion of word is substituted.  Otherwise, the value of
+              parameter is substituted.
+       ${parameter:=word}
+              Assign Default Values.  If parameter is unset or null, the expansion of word is assigned to parameter.   The  value
+              of parameter is then substituted.  Positional parameters and special parameters may not be assigned to in this way.
+       ${parameter:?word}
+              Display  Error if Null or Unset.  If parameter is null or unset, the expansion of word (or a message to that effect
+              if word is not present) is written to the standard error and the shell, if it is not  interactive,  exits.   Other‐
+              wise, the value of parameter is substituted.
+       ${parameter:+word}
+              Use  Alternate  Value.   If  parameter is null or unset, nothing is substituted, otherwise the expansion of word is
+              substituted.
+       ${parameter:offset}
+       ${parameter:offset:length}
+              Substring Expansion.  Expands to up to length characters of the value of parameter starting at the character speci‐
+              fied  by  offset.  If parameter is @, an indexed array subscripted by @ or *, or an associative array name, the re‐
+              sults differ as described below.  If length is omitted, expands to the substring of the value of parameter starting
+              at  the  character specified by offset and extending to the end of the value.  length and offset are arithmetic ex‐
+              pressions (see ARITHMETIC EVALUATION below).
+
+              If offset evaluates to a number less than zero, the value is used as an offset in characters from the  end  of  the
+              value  of  parameter.  If length evaluates to a number less than zero, it is interpreted as an offset in characters
+              from the end of the value of parameter rather than a number of characters, and the expansion is the characters  be‐
+              tween  offset  and that result.  Note that a negative offset must be separated from the colon by at least one space
+              to avoid being confused with the :- expansion.
+
+              If parameter is @, the result is length positional parameters beginning at offset.  A negative offset is taken rel‐
+              ative  to  one  greater than the greatest positional parameter, so an offset of -1 evaluates to the last positional
+              parameter.  It is an expansion error if length evaluates to a number less than zero.
+
+              If parameter is an indexed array name subscripted by @ or *, the result is the length members of the  array  begin‐
+              ning  with  ${parameter[offset]}.  A negative offset is taken relative to one greater than the maximum index of the
+              specified array.  It is an expansion error if length evaluates to a number less than zero.
+
+              Substring expansion applied to an associative array produces undefined results.
+
+              Substring indexing is zero-based unless the positional parameters are used, in which case the indexing starts at  1
+              by default.  If offset is 0, and the positional parameters are used, $0 is prefixed to the list.
+
+       ${!prefix*}
+       ${!prefix@}
+              Names  matching  prefix.   Expands  to the names of variables whose names begin with prefix, separated by the first
+              character of the IFS special variable.  When @ is used and the expansion appears within double quotes,  each  vari‐
+              able name expands to a separate word.
+
+       ${!name[@]}
+       ${!name[*]}
+              List  of  array  keys.  If name is an array variable, expands to the list of array indices (keys) assigned in name.
+              If name is not an array, expands to 0 if name is set and null otherwise.  When @ is used and the expansion  appears
+              within double quotes, each key expands to a separate word.
+
+       ${#parameter}
+              Parameter  length.  The length in characters of the value of parameter is substituted.  If parameter is * or @, the
+              value substituted is the number of positional parameters.  If parameter is an array name subscripted by * or @, the
+              value  substituted  is the number of elements in the array.  If parameter is an indexed array name subscripted by a
+              negative number, that number is interpreted as relative to one greater than the maximum index of parameter, so neg‐
+              ative indices count back from the end of the array, and an index of -1 references the last element.
+
+       ${parameter#word}
+       ${parameter##word}
+              Remove  matching  prefix  pattern.   The  word  is expanded to produce a pattern just as in pathname expansion, and
+              matched against the expanded value of parameter using the rules described under Pattern  Matching  below.   If  the
+              pattern  matches the beginning of the value of parameter, then the result of the expansion is the expanded value of
+              parameter with the shortest matching pattern (the ``#'' case) or the longest matching  pattern  (the  ``##''  case)
+              deleted.   If  parameter  is @ or *, the pattern removal operation is applied to each positional parameter in turn,
+              and the expansion is the resultant list.  If parameter is an array variable subscripted with @ or  *,  the  pattern
+              removal operation is applied to each member of the array in turn, and the expansion is the resultant list.
+
+       ${parameter%word}
+       ${parameter%%word}
+              Remove  matching  suffix  pattern.   The  word  is expanded to produce a pattern just as in pathname expansion, and
+              matched against the expanded value of parameter using the rules described under Pattern  Matching  below.   If  the
+              pattern  matches a trailing portion of the expanded value of parameter, then the result of the expansion is the ex‐
+              panded value of parameter with the shortest matching pattern (the ``%'' case) or the longest matching pattern  (the
+              ``%%''  case) deleted.  If parameter is @ or *, the pattern removal operation is applied to each positional parame‐
+              ter in turn, and the expansion is the resultant list.  If parameter is an array variable subscripted with @  or  *,
+              the  pattern  removal  operation is applied to each member of the array in turn, and the expansion is the resultant
+              list.
+
+       ${parameter/pattern/string}
+              Pattern substitution.  The pattern is expanded to produce a pattern just as in pathname expansion, Parameter is ex‐
+              panded  and  the  longest match of pattern against its value is replaced with string.  The match is performed using
+              the rules described under Pattern Matching below.  If pattern begins with /, all matches of  pattern  are  replaced
+              with  string.  Normally only the first match is replaced.  If pattern begins with #, it must match at the beginning
+              of the expanded value of parameter.  If pattern begins with %, it must match at the end of the  expanded  value  of
+              parameter.   If  string is null, matches of pattern are deleted and the / following pattern may be omitted.  If the
+              nocasematch shell option is enabled, the match is performed without regard to the case  of  alphabetic  characters.
+              If  parameter is @ or *, the substitution operation is applied to each positional parameter in turn, and the expan‐
+              sion is the resultant list.  If parameter is an array variable subscripted with @ or *, the substitution  operation
+              is applied to each member of the array in turn, and the expansion is the resultant list.
+
+       ${parameter^pattern}
+       ${parameter^^pattern}
+       ${parameter,pattern}
+       ${parameter,,pattern}
+              Case  modification.   This  expansion  modifies the case of alphabetic characters in parameter.  The pattern is ex‐
+              panded to produce a pattern just as in pathname expansion.  Each character in the expanded value  of  parameter  is
+              tested  against  pattern, and, if it matches the pattern, its case is converted.  The pattern should not attempt to
+              match more than one character.  The ^ operator converts lowercase letters matching pattern to uppercase; the ,  op‐
+              erator  converts  matching uppercase letters to lowercase.  The ^^ and ,, expansions convert each matched character
+              in the expanded value; the ^ and , expansions match and convert only the first character in the expanded value.  If
+              pattern  is omitted, it is treated like a ?, which matches every character.  If parameter is @ or *, the case modi‐
+              fication operation is applied to each positional parameter in turn, and the expansion is the  resultant  list.   If
+              parameter  is  an array variable subscripted with @ or *, the case modification operation is applied to each member
+              of the array in turn, and the expansion is the resultant list.
+
+       ${parameter@operator}
+              Parameter transformation.  The expansion is either a transformation of the value of parameter or information  about
+              parameter itself, depending on the value of operator.  Each operator is a single letter:
+
+              Q      The expansion is a string that is the value of parameter quoted in a format that can be reused as input.
+              E      The  expansion  is  a string that is the value of parameter with backslash escape sequences expanded as with
+                     the $'...' quoting mechanism.
+              P      The expansion is a string that is the result of expanding the value of parameter as  if  it  were  a  prompt
+                     string (see PROMPTING below).
+              A      The expansion is a string in the form of an assignment statement or declare command that, if evaluated, will
+                     recreate parameter with its attributes and value.
+              a      The expansion is a string consisting of flag values representing parameter's attributes.
+
+              If parameter is @ or *, the operation is applied to each positional parameter in turn, and the expansion is the re‐
+              sultant  list.   If parameter is an array variable subscripted with @ or *, the operation is applied to each member
+              of the array in turn, and the expansion is the resultant list.
+
+              The result of the expansion is subject to word splitting and pathname expansion as described below.
+
+   Command Substitution
+       Command substitution allows the output of a command to replace the command name.  There are two forms:
+
+              $(command)
+       or
+              `command`
+
+       Bash performs the expansion by executing command in a subshell environment and replacing the command substitution with the
+       standard  output  of  the command, with any trailing newlines deleted.  Embedded newlines are not deleted, but they may be
+       removed during word splitting.  The command substitution $(cat file) can be replaced by  the  equivalent  but  faster  $(<
+       file).
+
+       When  the  old-style backquote form of substitution is used, backslash retains its literal meaning except when followed by
+       $, `, or \.  The first backquote not preceded by a backslash terminates the command substitution.  When using  the  $(com‐
+       mand) form, all characters between the parentheses make up the command; none are treated specially.
+
+       Command  substitutions  may  be  nested.   To  nest when using the backquoted form, escape the inner backquotes with back‐
+       slashes.
+
+       If the substitution appears within double quotes, word splitting and pathname expansion are not performed on the results.
+
+   Arithmetic Expansion
+       Arithmetic expansion allows the evaluation of an arithmetic expression and the substitution of the result.  The format for
+       arithmetic expansion is:
+
+              $((expression))
+
+       The old format $[expression] is deprecated and will be removed in upcoming versions of bash.
+
+       The  expression  is  treated  as if it were within double quotes, but a double quote inside the parentheses is not treated
+       specially.  All tokens in the expression undergo parameter and variable expansion, command  substitution,  and  quote  re‐
+       moval.  The result is treated as the arithmetic expression to be evaluated.  Arithmetic expansions may be nested.
+
+       The  evaluation  is  performed according to the rules listed below under ARITHMETIC EVALUATION.  If expression is invalid,
+       bash prints a message indicating failure and no substitution occurs.
+
+   Process Substitution
+       Process substitution allows a process's input or output to be referred to using a filename.  It takes the form of  <(list)
+       or  >(list).   The  process  list  is run asynchronously, and its input or output appears as a filename.  This filename is
+       passed as an argument to the current command as the result of the expansion.  If the >(list) form is used, writing to  the
+       file  will  provide  input for list.  If the <(list) form is used, the file passed as an argument should be read to obtain
+       the output of list.  Process substitution is supported on systems that support named pipes (FIFOs) or the  /dev/fd  method
+       of naming open files.
+
+       When  available, process substitution is performed simultaneously with parameter and variable expansion, command substitu‐
+       tion, and arithmetic expansion.
+
+   Word Splitting
+       The shell scans the results of parameter expansion, command substitution, and arithmetic  expansion  that  did  not  occur
+       within double quotes for word splitting.
+
+       The  shell  treats  each  character of IFS as a delimiter, and splits the results of the other expansions into words using
+       these characters as field terminators.  If IFS is unset, or its value is exactly <space><tab><newline>, the default,  then
+       sequences of <space>, <tab>, and <newline> at the beginning and end of the results of the previous expansions are ignored,
+       and any sequence of IFS characters not at the beginning or end serves to delimit words.  If IFS has a value other than the
+       default,  then  sequences of the whitespace characters space, tab, and newline are ignored at the beginning and end of the
+       word, as long as the whitespace character is in the value of IFS (an IFS whitespace character).  Any character in IFS that
+       is  not IFS whitespace, along with any adjacent IFS whitespace characters, delimits a field.  A sequence of IFS whitespace
+       characters is also treated as a delimiter.  If the value of IFS is null, no word splitting occurs.
+
+       Explicit null arguments ("" or '') are retained and passed to commands as empty strings.   Unquoted  implicit  null  argu‐
+       ments,  resulting  from the expansion of parameters that have no values, are removed.  If a parameter with no value is ex‐
+       panded within double quotes, a null argument results and is retained and passed to a command as an empty string.   When  a
+       quoted  null  argument  appears as part of a word whose expansion is non-null, the null argument is removed.  That is, the
+       word -d'' becomes -d after word splitting and null argument removal.
+
+       Note that if no expansion occurs, no splitting is performed.
+
+   Pathname Expansion
+       After word splitting, unless the -f option has been set, bash scans each word for the characters *, ?, and [.  If  one  of
+       these characters appears, then the word is regarded as a pattern, and replaced with an alphabetically sorted list of file‐
+       names matching the pattern (see Pattern Matching below).  If no matching filenames are found, and the shell  option  null‐
+       glob is not enabled, the word is left unchanged.  If the nullglob option is set, and no matches are found, the word is re‐
+       moved.  If the failglob shell option is set, and no matches are found, an error message is printed and the command is  not
+       executed.   If  the  shell  option  nocaseglob is enabled, the match is performed without regard to the case of alphabetic
+       characters.  Note that when using range expressions like [a-z] (see below), letters of the other case may be included, de‐
+       pending on the setting of LC_COLLATE.  When a pattern is used for pathname expansion, the character ``.''  at the start of
+       a name or immediately following a slash must be matched explicitly, unless the shell option dotglob is set.  The filenames
+       ``.''  and ``..''  must always be matched explicitly, even if dotglob is set.  In other cases, the ``.''  character is not
+       treated specially.  When matching a pathname, the slash character must always be matched explicitly by a slash in the pat‐
+       tern,  but  in  other  matching contexts it can be matched by a special pattern character as described below under Pattern
+       Matching.  See the description of shopt below under SHELL BUILTIN COMMANDS for a description of the nocaseglob,  nullglob,
+       failglob, and dotglob shell options.
+
+       The  GLOBIGNORE  shell  variable  may be used to restrict the set of file names matching a pattern.  If GLOBIGNORE is set,
+       each matching file name that also matches one of the patterns in GLOBIGNORE is removed from the list of matches.   If  the
+       nocaseglob  option is set, the matching against the patterns in GLOBIGNORE is performed without regard to case.  The file‐
+       names ``.''  and ``..''  are always ignored when GLOBIGNORE is set and not null.  However, setting GLOBIGNORE  to  a  non-
+       null value has the effect of enabling the dotglob shell option, so all other filenames beginning with a ``.''  will match.
+       To get the old behavior of ignoring filenames beginning with a ``.'', make ``.*''  one of the patterns in GLOBIGNORE.  The
+       dotglob option is disabled when GLOBIGNORE is unset.  The pattern matching honors the setting of the extglob shell option.
+
+       Pattern Matching
+
+       Any  character  that appears in a pattern, other than the special pattern characters described below, matches itself.  The
+       NUL character may not occur in a pattern.  A backslash escapes the following character; the  escaping  backslash  is  dis‐
+       carded when matching.  The special pattern characters must be quoted if they are to be matched literally.
+
+       The special pattern characters have the following meanings:
+
+              *      Matches  any string, including the null string.  When the globstar shell option is enabled, and * is used in
+                     a pathname expansion context, two adjacent *s used as a single pattern will match all files and zero or more
+                     directories  and subdirectories.  If followed by a /, two adjacent *s will match only directories and subdi‐
+                     rectories.
+              ?      Matches any single character.
+              [...]  Matches any one of the enclosed characters.  A pair of characters separated by a hyphen denotes a range  ex‐
+                     pression;  any character that falls between those two characters, inclusive, using the current locale's col‐
+                     lating sequence and character set, is matched.  If the first character following the [ is a !  or a  ^  then
+                     any  character  not enclosed is matched.  The sorting order of characters in range expressions is determined
+                     by the current locale and the values of the LC_COLLATE or LC_ALL shell variables, if  set.   To  obtain  the
+                     traditional  interpretation  of  range  expressions,  where  [a-d] is equivalent to [abcd], set value of the
+                     LC_ALL shell variable to C, or enable the globasciiranges shell option.  A - may be matched by including  it
+                     as the first or last character in the set.  A ] may be matched by including it as the first character in the
+                     set.
+
+                     Within [ and ], character classes can be specified using the syntax [:class:], where class  is  one  of  the
+                     following classes defined in the POSIX standard:
+                     alnum alpha ascii blank cntrl digit graph lower print punct space upper word xdigit
+                     A  character class matches any character belonging to that class.  The word character class matches letters,
+                     digits, and the character _.
+
+                     Within [ and ], an equivalence class can be specified using the syntax [=c=], which matches  all  characters
+                     with the same collation weight (as defined by the current locale) as the character c.
+
+                     Within [ and ], the syntax [.symbol.] matches the collating symbol symbol.
+
+       If  the  extglob  shell  option is enabled using the shopt builtin, several extended pattern matching operators are recog‐
+       nized.  In the following description, a pattern-list is a list of one or more patterns separated by a |.   Composite  pat‐
+       terns may be formed using one or more of the following sub-patterns:
+
+              ?(pattern-list)
+                     Matches zero or one occurrence of the given patterns
+              *(pattern-list)
+                     Matches zero or more occurrences of the given patterns
+              +(pattern-list)
+                     Matches one or more occurrences of the given patterns
+              @(pattern-list)
+                     Matches one of the given patterns
+              !(pattern-list)
+                     Matches anything except one of the given patterns
+
+       Complicated  extended pattern matching against long strings is slow, especially when the patterns contain alternations and
+       the strings contain multiple matches.  Using separate matches against shorter strings, or using arrays of strings  instead
+       of a single long string, may be faster.
+
+   Quote Removal
+       After the preceding expansions, all unquoted occurrences of the characters \, ', and " that did not result from one of the
+       above expansions are removed.
+
+REDIRECTION
+       Before a command is executed, its input and output may be redirected using a special notation interpreted  by  the  shell.
+       Redirection  allows  commands'  file  handles  to be duplicated, opened, closed, made to refer to different files, and can
+       change the files the command reads from and writes to.  Redirection may also be used to modify file handles in the current
+       shell  execution  environment.  The following redirection operators may precede or appear anywhere within a simple command
+       or may follow a command.  Redirections are processed in the order they appear, from left to right.
+
+       Each redirection that may be preceded by a file descriptor number may instead be preceded by a word of the form {varname}.
+       In  this case, for each redirection operator except >&- and <&-, the shell will allocate a file descriptor greater than or
+       equal to 10 and assign it to varname.  If >&- or <&- is preceded by {varname}, the value of varname defines the  file  de‐
+       scriptor to close.  If {varname} is supplied, the redirection persists beyond the scope of the command, allowing the shell
+       programmer to manage the file descriptor himself.
+
+       In the following descriptions, if the file descriptor number is omitted, and the first character of the redirection opera‐
+       tor is <, the redirection refers to the standard input (file descriptor 0).  If the first character of the redirection op‐
+       erator is >, the redirection refers to the standard output (file descriptor 1).
+
+       The word following the redirection operator in the following descriptions, unless otherwise noted, is subjected  to  brace
+       expansion,  tilde  expansion, parameter and variable expansion, command substitution, arithmetic expansion, quote removal,
+       pathname expansion, and word splitting.  If it expands to more than one word, bash reports an error.
+
+       Note that the order of redirections is significant.  For example, the command
+
+              ls > dirlist 2>&1
+
+       directs both standard output and standard error to the file dirlist, while the command
+
+              ls 2>&1 > dirlist
+
+       directs only the standard output to file dirlist, because the standard error was duplicated from the standard  output  be‐
+       fore the standard output was redirected to dirlist.
+
+       Bash  handles several filenames specially when they are used in redirections, as described in the following table.  If the
+       operating system on which bash is running provides these special files, bash will use them; otherwise it will emulate them
+       internally with the behavior described below.
+
+              /dev/fd/fd
+                     If fd is a valid integer, file descriptor fd is duplicated.
+              /dev/stdin
+                     File descriptor 0 is duplicated.
+              /dev/stdout
+                     File descriptor 1 is duplicated.
+              /dev/stderr
+                     File descriptor 2 is duplicated.
+              /dev/tcp/host/port
+                     If  host  is  a valid hostname or Internet address, and port is an integer port number or service name, bash
+                     attempts to open the corresponding TCP socket.
+              /dev/udp/host/port
+                     If host is a valid hostname or Internet address, and port is an integer port number or  service  name,  bash
+                     attempts to open the corresponding UDP socket.
+
+       A failure to open or create a file causes the redirection to fail.
+
+       Redirections  using  file  descriptors greater than 9 should be used with care, as they may conflict with file descriptors
+       the shell uses internally.
+
+       Note that the exec builtin command can make redirections take effect in the current shell.
+
+   Redirecting Input
+       Redirection of input causes the file whose name results from the expansion of word to be opened for reading  on  file  de‐
+       scriptor n, or the standard input (file descriptor 0) if n is not specified.
+
+       The general format for redirecting input is:
+
+              [n]<word
+
+   Redirecting Output
+       Redirection  of  output causes the file whose name results from the expansion of word to be opened for writing on file de‐
+       scriptor n, or the standard output (file descriptor 1) if n is not specified.  If the file does not exist it  is  created;
+       if it does exist it is truncated to zero size.
+
+       The general format for redirecting output is:
+
+              [n]>word
+
+       If  the redirection operator is >, and the noclobber option to the set builtin has been enabled, the redirection will fail
+       if the file whose name results from the expansion of word exists and is a regular file.  If the  redirection  operator  is
+       >|,  or  the redirection operator is > and the noclobber option to the set builtin command is not enabled, the redirection
+       is attempted even if the file named by word exists.
+
+   Appending Redirected Output
+       Redirection of output in this fashion causes the file whose name results from the expansion of word to be opened  for  ap‐
+       pending  on file descriptor n, or the standard output (file descriptor 1) if n is not specified.  If the file does not ex‐
+       ist it is created.
+
+       The general format for appending output is:
+
+              [n]>>word
+
+   Redirecting Standard Output and Standard Error
+       This construct allows both the standard output (file descriptor 1) and the standard error output (file descriptor 2) to be
+       redirected to the file whose name is the expansion of word.
+
+       There are two formats for redirecting standard output and standard error:
+
+              &>word
+       and
+              >&word
+
+       Of the two forms, the first is preferred.  This is semantically equivalent to
+
+              >word 2>&1
+
+       When  using the second form, word may not expand to a number or -.  If it does, other redirection operators apply (see Du‐
+       plicating File Descriptors below) for compatibility reasons.
+
+   Appending Standard Output and Standard Error
+       This construct allows both the standard output (file descriptor 1) and the standard error output (file descriptor 2) to be
+       appended to the file whose name is the expansion of word.
+
+       The format for appending standard output and standard error is:
+
+              &>>word
+
+       This is semantically equivalent to
+
+              >>word 2>&1
+
+       (see Duplicating File Descriptors below).
+
+   Here Documents
+       This  type of redirection instructs the shell to read input from the current source until a line containing only delimiter
+       (with no trailing blanks) is seen.  All of the lines read up to that point are then used as the standard  input  (or  file
+       descriptor n if n is specified) for a command.
+
+       The format of here-documents is:
+
+              [n]<<[-]word
+                      here-document
+              delimiter
+
+       No  parameter  and  variable  expansion, command substitution, arithmetic expansion, or pathname expansion is performed on
+       word.  If any part of word is quoted, the delimiter is the result of quote removal on word, and the lines in the here-doc‐
+       ument are not expanded.  If word is unquoted, all lines of the here-document are subjected to parameter expansion, command
+       substitution, and arithmetic expansion, the character sequence \<newline> is ignored, and \ must  be  used  to  quote  the
+       characters \, $, and `.
+
+       If  the redirection operator is <<-, then all leading tab characters are stripped from input lines and the line containing
+       delimiter.  This allows here-documents within shell scripts to be indented in a natural fashion.
+
+   Here Strings
+       A variant of here documents, the format is:
+
+              [n]<<<word
+
+       The word undergoes tilde expansion, parameter and variable expansion,  command  substitution,  arithmetic  expansion,  and
+       quote  removal.  Pathname expansion and word splitting are not performed.  The result is supplied as a single string, with
+       a newline appended, to the command on its standard input (or file descriptor n if n is specified).
+
+   Duplicating File Descriptors
+       The redirection operator
+
+              [n]<&word
+
+       is used to duplicate input file descriptors.  If word expands to one or more digits, the file descriptor denoted by  n  is
+       made to be a copy of that file descriptor.  If the digits in word do not specify a file descriptor open for input, a redi‐
+       rection error occurs.  If word evaluates to -, file descriptor n is closed.  If n is not  specified,  the  standard  input
+       (file descriptor 0) is used.
+
+       The operator
+
+              [n]>&word
+
+       is used similarly to duplicate output file descriptors.  If n is not specified, the standard output (file descriptor 1) is
+       used.  If the digits in word do not specify a file descriptor open for output, a redirection error occurs.  If word evalu‐
+       ates  to -, file descriptor n is closed.  As a special case, if n is omitted, and word does not expand to one or more dig‐
+       its or -, the standard output and standard error are redirected as described previously.
+
+   Moving File Descriptors
+       The redirection operator
+
+              [n]<&digit-
+
+       moves the file descriptor digit to file descriptor n, or the standard input (file descriptor 0) if  n  is  not  specified.
+       digit is closed after being duplicated to n.
+
+       Similarly, the redirection operator
+
+              [n]>&digit-
+
+       moves the file descriptor digit to file descriptor n, or the standard output (file descriptor 1) if n is not specified.
+
+   Opening File Descriptors for Reading and Writing
+       The redirection operator
+
+              [n]<>word
+
+       causes  the file whose name is the expansion of word to be opened for both reading and writing on file descriptor n, or on
+       file descriptor 0 if n is not specified.  If the file does not exist, it is created.
+
+ALIASES
+       Aliases allow a string to be substituted for a word when it is used as the first word of  a  simple  command.   The  shell
+       maintains  a list of aliases that may be set and unset with the alias and unalias builtin commands (see SHELL BUILTIN COM‐
+       MANDS below).  The first word of each simple command, if unquoted, is checked to see if it has an alias.  If so, that word
+       is  replaced by the text of the alias.  The characters /, $, `, and = and any of the shell metacharacters or quoting char‐
+       acters listed above may not appear in an alias name.  The replacement text may contain any valid  shell  input,  including
+       shell  metacharacters.   The  first word of the replacement text is tested for aliases, but a word that is identical to an
+       alias being expanded is not expanded a second time.  This means that one may alias ls to ls -F,  for  instance,  and  bash
+       does  not  try  to recursively expand the replacement text.  If the last character of the alias value is a blank, then the
+       next command word following the alias is also checked for alias expansion.
+
+       Aliases are created and listed with the alias command, and removed with the unalias command.
+
+       There is no mechanism for using arguments in the replacement text.  If arguments are needed, a shell  function  should  be
+       used (see FUNCTIONS below).
+
+       Aliases are not expanded when the shell is not interactive, unless the expand_aliases shell option is set using shopt (see
+       the description of shopt under SHELL BUILTIN COMMANDS below).
+
+       The rules concerning the definition and use of aliases are somewhat confusing.  Bash always reads at  least  one  complete
+       line  of  input,  and  all lines that make up a compound command, before executing any of the commands on that line or the
+       compound command.  Aliases are expanded when a command is read, not when it is executed.  Therefore, an  alias  definition
+       appearing  on  the  same  line as another command does not take effect until the next line of input is read.  The commands
+       following the alias definition on that line are not affected by the new alias.  This behavior is also an issue when  func‐
+       tions are executed.  Aliases are expanded when a function definition is read, not when the function is executed, because a
+       function definition is itself a command.  As a consequence, aliases defined in a function are not  available  until  after
+       that  function is executed.  To be safe, always put alias definitions on a separate line, and do not use alias in compound
+       commands.
+
+       For almost every purpose, aliases are superseded by shell functions.
+
+FUNCTIONS
+       A shell function, defined as described above under SHELL GRAMMAR, stores a series of commands for later  execution.   When
+       the  name of a shell function is used as a simple command name, the list of commands associated with that function name is
+       executed.  Functions are executed in the context of the current shell; no new process is created to interpret  them  (con‐
+       trast  this  with the execution of a shell script).  When a function is executed, the arguments to the function become the
+       positional parameters during its execution.  The special parameter # is updated to reflect the change.  Special  parameter
+       0  is unchanged.  The first element of the FUNCNAME variable is set to the name of the function while the function is exe‐
+       cuting.
+
+       All other aspects of the shell execution environment are identical between a function and its  caller  with  these  excep‐
+       tions: the DEBUG and RETURN traps (see the description of the trap builtin under SHELL BUILTIN COMMANDS below) are not in‐
+       herited unless the function has been given the trace attribute (see the description of the declare builtin below)  or  the
+       -o  functrace shell option has been enabled with the set builtin (in which case all functions inherit the DEBUG and RETURN
+       traps), and the ERR trap is not inherited unless the -o errtrace shell option has been enabled.
+
+       Variables local to the function may be declared with the local builtin command.  Ordinarily, variables  and  their  values
+       are  shared  between  the  function  and its caller.  If a variable is declared local, the variable's visible scope is re‐
+       stricted to that function and its children (including the functions it calls).  Local variables  "shadow"  variables  with
+       the  same name declared at previous scopes.  For instance, a local variable declared in a function hides a global variable
+       of the same name: references and assignments refer to the local variable, leaving the global  variable  unmodified.   When
+       the function returns, the global variable is once again visible.
+
+       The  shell  uses dynamic scoping to control a variable's visibility within functions.  With dynamic scoping, visible vari‐
+       ables and their values are a result of the sequence of function calls that caused execution to reach the current function.
+       The  value  of  a variable that a function sees depends on its value within its caller, if any, whether that caller is the
+       "global" scope or another shell function.  This is also the value that a local variable  declaration  "shadows",  and  the
+       value that is restored when the function returns.
+
+       For  example, if a variable var is declared as local in function func1, and func1 calls another function func2, references
+       to var made from within func2 will resolve to the local variable var from func1, shadowing any global variable named var.
+
+       The unset builtin also acts using the same dynamic scope: if a variable is local to the current scope,  unset  will  unset
+       it;  otherwise  the  unset will refer to the variable found in any calling scope as described above.  If a variable at the
+       current local scope is unset, it will remain so until it is reset in that scope or until the function returns.   Once  the
+       function  returns,  any instance of the variable at a previous scope will become visible.  If the unset acts on a variable
+       at a previous scope, any instance of a variable with that name that had been shadowed will become visible.
+
+       The FUNCNEST variable, if set to a numeric value greater than 0, defines a maximum function nesting level.  Function invo‐
+       cations that exceed the limit cause the entire command to abort.
+
+       If  the  builtin command return is executed in a function, the function completes and execution resumes with the next com‐
+       mand after the function call.  Any command associated with the RETURN trap is executed before execution resumes.   When  a
+       function  completes,  the  values of the positional parameters and the special parameter # are restored to the values they
+       had prior to the function's execution.
+
+       Function names and definitions may be listed with the -f option to the declare or typeset builtin commands.  The -F option
+       to  declare  or typeset will list the function names only (and optionally the source file and line number, if the extdebug
+       shell option is enabled).  Functions may be exported so that subshells automatically have them defined with the -f  option
+       to the export builtin.  A function definition may be deleted using the -f option to the unset builtin.
+
+       Functions  may be recursive.  The FUNCNEST variable may be used to limit the depth of the function call stack and restrict
+       the number of function invocations.  By default, no limit is imposed on the number of recursive calls.
+
+ARITHMETIC EVALUATION
+       The shell allows arithmetic expressions to be evaluated, under certain circumstances (see the let and declare builtin com‐
+       mands,  the  (( compound command, and Arithmetic Expansion).  Evaluation is done in fixed-width integers with no check for
+       overflow, though division by 0 is trapped and flagged as an error.  The operators and their precedence, associativity, and
+       values  are the same as in the C language.  The following list of operators is grouped into levels of equal-precedence op‐
+       erators.  The levels are listed in order of decreasing precedence.
+
+       id++ id--
+              variable post-increment and post-decrement
+       - +    unary minus and plus
+       ++id --id
+              variable pre-increment and pre-decrement
+       ! ~    logical and bitwise negation
+       **     exponentiation
+       * / %  multiplication, division, remainder
+       + -    addition, subtraction
+       << >>  left and right bitwise shifts
+       <= >= < >
+              comparison
+       == !=  equality and inequality
+       &      bitwise AND
+       ^      bitwise exclusive OR
+       |      bitwise OR
+       &&     logical AND
+       ||     logical OR
+       expr?expr:expr
+              conditional operator
+       = *= /= %= += -= <<= >>= &= ^= |=
+              assignment
+       expr1 , expr2
+              comma
+
+       Shell variables are allowed as operands; parameter expansion is performed before the expression is evaluated.   Within  an
+       expression, shell variables may also be referenced by name without using the parameter expansion syntax.  A shell variable
+       that is null or unset evaluates to 0 when referenced by name without using the parameter expansion syntax.  The value of a
+       variable is evaluated as an arithmetic expression when it is referenced, or when a variable which has been given the inte‐
+       ger attribute using declare -i is assigned a value.  A null value evaluates to 0.  A shell variable need not have its  in‐
+       teger attribute turned on to be used in an expression.
+
+       Constants  with a leading 0 are interpreted as octal numbers.  A leading 0x or 0X denotes hexadecimal.  Otherwise, numbers
+       take the form [base#]n, where the optional base is a decimal number between 2 and 64 representing the arithmetic base, and
+       n  is a number in that base.  If base# is omitted, then base 10 is used.  When specifying n, the digits greater than 9 are
+       represented by the lowercase letters, the uppercase letters, @, and _, in that order.  If base is less than  or  equal  to
+       36, lowercase and uppercase letters may be used interchangeably to represent numbers between 10 and 35.
+
+       Operators  are  evaluated in order of precedence.  Sub-expressions in parentheses are evaluated first and may override the
+       precedence rules above.
+
+CONDITIONAL EXPRESSIONS
+       Conditional expressions are used by the [[ compound command and the test and [ builtin commands to  test  file  attributes
+       and  perform  string  and arithmetic comparisons.  The test abd [ commands determine their behavior based on the number of
+       arguments; see the descriptions of those commands for any other command-specific actions.
+
+       Expressions are formed from the following unary or binary primaries.  Bash handles several filenames specially  when  they
+       are  used  in  expressions.   If the operating system on which bash is running provides these special files, bash will use
+       them; otherwise it will emulate them internally with this behavior: If any file argument to one of the primaries is of the
+       form  /dev/fd/n,  then  file  descriptor n is checked.  If the file argument to one of the primaries is one of /dev/stdin,
+       /dev/stdout, or /dev/stderr, file descriptor 0, 1, or 2, respectively, is checked.
+
+       Unless otherwise specified, primaries that operate on files follow symbolic links and operate on the target of  the  link,
+       rather than the link itself.
+
+       When  used  with  [[, the < and > operators sort lexicographically using the current locale.  The test command sorts using
+       ASCII ordering.
+
+       -a file
+              True if file exists.
+       -b file
+              True if file exists and is a block special file.
+       -c file
+              True if file exists and is a character special file.
+       -d file
+              True if file exists and is a directory.
+       -e file
+              True if file exists.
+       -f file
+              True if file exists and is a regular file.
+       -g file
+              True if file exists and is set-group-id.
+       -h file
+              True if file exists and is a symbolic link.
+       -k file
+              True if file exists and its ``sticky'' bit is set.
+       -p file
+              True if file exists and is a named pipe (FIFO).
+       -r file
+              True if file exists and is readable.
+       -s file
+              True if file exists and has a size greater than zero.
+       -t fd  True if file descriptor fd is open and refers to a terminal.
+       -u file
+              True if file exists and its set-user-id bit is set.
+       -w file
+              True if file exists and is writable.
+       -x file
+              True if file exists and is executable.
+       -G file
+              True if file exists and is owned by the effective group id.
+       -L file
+              True if file exists and is a symbolic link.
+       -N file
+              True if file exists and has been modified since it was last read.
+       -O file
+              True if file exists and is owned by the effective user id.
+       -S file
+              True if file exists and is a socket.
+       file1 -ef file2
+              True if file1 and file2 refer to the same device and inode numbers.
+       file1 -nt file2
+              True if file1 is newer (according to modification date) than file2, or if file1 exists and file2 does not.
+       file1 -ot file2
+              True if file1 is older than file2, or if file2 exists and file1 does not.
+       -o optname
+              True if the shell option optname is enabled.  See the list of options under the description of the -o option to the
+              set builtin below.
+       -v varname
+              True if the shell variable varname is set (has been assigned a value).
+       -R varname
+              True if the shell variable varname is set and is a name reference.
+       -z string
+              True if the length of string is zero.
+       string
+       -n string
+              True if the length of string is non-zero.
+
+       string1 == string2
+       string1 = string2
+              True  if  the strings are equal.  = should be used with the test command for POSIX conformance.  When used with the
+              [[ command, this performs pattern matching as described above (Compound Commands).
+
+       string1 != string2
+              True if the strings are not equal.
+
+       string1 < string2
+              True if string1 sorts before string2 lexicographically.
+
+       string1 > string2
+              True if string1 sorts after string2 lexicographically.
+
+       arg1 OP arg2
+              OP is one of -eq, -ne, -lt, -le, -gt, or -ge.  These arithmetic binary operators return true if arg1 is  equal  to,
+              not equal to, less than, less than or equal to, greater than, or greater than or equal to arg2, respectively.  Arg1
+              and arg2 may be positive or negative integers.  When used with the [[ command,  Arg1  and  Arg2  are  evaluated  as
+              arithmetic expressions  (see ARITHMETIC EVALUATION above).
+
+SIMPLE COMMAND EXPANSION
+       When  a  simple command is executed, the shell performs the following expansions, assignments, and redirections, from left
+       to right, in the following order.
+
+       1.     The words that the parser has marked as variable assignments (those preceding the command  name)  and  redirections
+              are saved for later processing.
+
+       2.     The words that are not variable assignments or redirections are expanded.  If any words remain after expansion, the
+              first word is taken to be the name of the command and the remaining words are the arguments.
+
+       3.     Redirections are performed as described above under REDIRECTION.
+
+       4.     The text after the = in each variable assignment undergoes tilde expansion, parameter expansion, command  substitu‐
+              tion, arithmetic expansion, and quote removal before being assigned to the variable.
+
+       If  no  command name results, the variable assignments affect the current shell environment.  Otherwise, the variables are
+       added to the environment of the executed command and do not affect the current shell environment.  If any of  the  assign‐
+       ments attempts to assign a value to a readonly variable, an error occurs, and the command exits with a non-zero status.
+
+       If  no  command  name results, redirections are performed, but do not affect the current shell environment.  A redirection
+       error causes the command to exit with a non-zero status.
+
+       If there is a command name left after expansion, execution proceeds as described below.  Otherwise, the command exits.  If
+       one of the expansions contained a command substitution, the exit status of the command is the exit status of the last com‐
+       mand substitution performed.  If there were no command substitutions, the command exits with a status of zero.
+
+COMMAND EXECUTION
+       After a command has been split into words, if it results in a simple command and an optional list of arguments,  the  fol‐
+       lowing actions are taken.
+
+       If  the command name contains no slashes, the shell attempts to locate it.  If there exists a shell function by that name,
+       that function is invoked as described above in FUNCTIONS.  If the name does not match a function, the shell  searches  for
+       it in the list of shell builtins.  If a match is found, that builtin is invoked.
+
+       If the name is neither a shell function nor a builtin, and contains no slashes, bash searches each element of the PATH for
+       a directory containing an executable file by that name.  Bash uses a hash table to remember the  full  pathnames  of  exe‐
+       cutable  files  (see hash under SHELL BUILTIN COMMANDS below).  A full search of the directories in PATH is performed only
+       if the command is not found in the hash table.  If the search is unsuccessful, the shell  searches  for  a  defined  shell
+       function  named command_not_found_handle.  If that function exists, it is invoked in a separate execution environment with
+       the original command and the original command's arguments as its arguments, and the function's  exit  status  becomes  the
+       exit status of that subshell.  If that function is not defined, the shell prints an error message and returns an exit sta‐
+       tus of 127.
+
+       If the search is successful, or if the command name contains one or more slashes, the shell executes the named program  in
+       a separate execution environment.  Argument 0 is set to the name given, and the remaining arguments to the command are set
+       to the arguments given, if any.
+
+       If this execution fails because the file is not in executable format, and the file is not a directory, it is assumed to be
+       a  shell  script, a file containing shell commands.  A subshell is spawned to execute it.  This subshell reinitializes it‐
+       self, so that the effect is as if a new shell had been invoked to handle the script, with the exception that the locations
+       of commands remembered by the parent (see hash below under SHELL BUILTIN COMMANDS) are retained by the child.
+
+       If the program is a file beginning with #!, the remainder of the first line specifies an interpreter for the program.  The
+       shell executes the specified interpreter on operating systems that do not handle this executable format  themselves.   The
+       arguments to the interpreter consist of a single optional argument following the interpreter name on the first line of the
+       program, followed by the name of the program, followed by the command arguments, if any.
+
+COMMAND EXECUTION ENVIRONMENT
+       The shell has an execution environment, which consists of the following:
+
+       •      open files inherited by the shell at invocation, as modified by redirections supplied to the exec builtin
+
+       •      the current working directory as set by cd, pushd, or popd, or inherited by the shell at invocation
+
+       •      the file creation mode mask as set by umask or inherited from the shell's parent
+
+       •      current traps set by trap
+
+       •      shell parameters that are set by variable assignment or with set or inherited from the shell's parent in the  envi‐
+              ronment
+
+       •      shell functions defined during execution or inherited from the shell's parent in the environment
+
+       •      options enabled at invocation (either by default or with command-line arguments) or by set
+
+       •      options enabled by shopt
+
+       •      shell aliases defined with alias
+
+       •      various process IDs, including those of background jobs, the value of $$, and the value of PPID
+
+       When  a simple command other than a builtin or shell function is to be executed, it is invoked in a separate execution en‐
+       vironment that consists of the following.  Unless otherwise noted, the values are inherited from the shell.
+
+       •      the shell's open files, plus any modifications and additions specified by redirections to the command
+
+       •      the current working directory
+
+       •      the file creation mode mask
+
+       •      shell variables and functions marked for export, along with variables exported for the command, passed in the envi‐
+              ronment
+
+       •      traps caught by the shell are reset to the values inherited from the shell's parent, and traps ignored by the shell
+              are ignored
+
+       A command invoked in this separate environment cannot affect the shell's execution environment.
+
+       Command substitution, commands grouped with parentheses, and asynchronous commands are invoked in a  subshell  environment
+       that is a duplicate of the shell environment, except that traps caught by the shell are reset to the values that the shell
+       inherited from its parent at invocation.  Builtin commands that are invoked as part of a pipeline are also executed  in  a
+       subshell environment.  Changes made to the subshell environment cannot affect the shell's execution environment.
+
+       Subshells  spawned to execute command substitutions inherit the value of the -e option from the parent shell.  When not in
+       posix mode, bash clears the -e option in such subshells.
+
+       If a command is followed by a & and job control is not active, the default standard input for the  command  is  the  empty
+       file /dev/null.  Otherwise, the invoked command inherits the file descriptors of the calling shell as modified by redirec‐
+       tions.
+
+ENVIRONMENT
+       When a program is invoked it is given an array of strings called the environment.  This is a list of name-value pairs,  of
+       the form name=value.
+
+       The  shell  provides  several  ways to manipulate the environment.  On invocation, the shell scans its own environment and
+       creates a parameter for each name found, automatically marking it for export to child processes.   Executed  commands  in‐
+       herit  the environment.  The export and declare -x commands allow parameters and functions to be added to and deleted from
+       the environment.  If the value of a parameter in the environment is modified, the new value becomes part of  the  environ‐
+       ment,  replacing  the old.  The environment inherited by any executed command consists of the shell's initial environment,
+       whose values may be modified in the shell, less any pairs removed by the unset command, plus any additions via the  export
+       and declare -x commands.
+
+       The  environment  for  any  simple command or function may be augmented temporarily by prefixing it with parameter assign‐
+       ments, as described above in PARAMETERS.  These assignment statements affect only the environment seen by that command.
+
+       If the -k option is set (see the set builtin command below), then all parameter assignments are placed in the  environment
+       for a command, not just those that precede the command name.
+
+       When  bash  invokes an external command, the variable _ is set to the full filename of the command and passed to that com‐
+       mand in its environment.
+
+EXIT STATUS
+       The exit status of an executed command is the value returned by the waitpid system call or equivalent function.  Exit sta‐
+       tuses  fall  between  0  and 255, though, as explained below, the shell may use values above 125 specially.  Exit statuses
+       from shell builtins and compound commands are also limited to this range.  Under certain circumstances, the shell will use
+       special values to indicate specific failure modes.
+
+       For  the  shell's purposes, a command which exits with a zero exit status has succeeded.  An exit status of zero indicates
+       success.  A non-zero exit status indicates failure.  When a command terminates on a fatal signal N, bash uses the value of
+       128+N as the exit status.
+
+       If  a command is not found, the child process created to execute it returns a status of 127.  If a command is found but is
+       not executable, the return status is 126.
+
+       If a command fails because of an error during expansion or redirection, the exit status is greater than zero.
+
+       Shell builtin commands return a status of 0 (true) if successful, and non-zero (false) if an error occurs while they  exe‐
+       cute.   All  builtins  return  an exit status of 2 to indicate incorrect usage, generally invalid options or missing argu‐
+       ments.
+
+       Bash itself returns the exit status of the last command executed, unless a syntax error occurs, in  which  case  it  exits
+       with a non-zero value.  See also the exit builtin command below.
+
+SIGNALS
+       When  bash  is  interactive,  in the absence of any traps, it ignores SIGTERM (so that kill 0 does not kill an interactive
+       shell), and SIGINT is caught and handled (so that the wait builtin is interruptible).  In all cases, bash ignores SIGQUIT.
+       If job control is in effect, bash ignores SIGTTIN, SIGTTOU, and SIGTSTP.
+
+       Non-builtin  commands run by bash have signal handlers set to the values inherited by the shell from its parent.  When job
+       control is not in effect, asynchronous commands ignore SIGINT and SIGQUIT in addition to these inherited  handlers.   Com‐
+       mands  run  as  a  result  of command substitution ignore the keyboard-generated job control signals SIGTTIN, SIGTTOU, and
+       SIGTSTP.
+
+       The shell exits by default upon receipt of a SIGHUP.  Before exiting, an interactive shell resends the SIGHUP to all jobs,
+       running  or  stopped.   Stopped  jobs  are sent SIGCONT to ensure that they receive the SIGHUP.  To prevent the shell from
+       sending the signal to a particular job, it should be removed from the jobs  table  with  the  disown  builtin  (see  SHELL
+       BUILTIN COMMANDS below) or marked to not receive SIGHUP using disown -h.
+
+       If the huponexit shell option has been set with shopt, bash sends a SIGHUP to all jobs when an interactive login shell ex‐
+       its.
+
+       If bash is waiting for a command to complete and receives a signal for which a trap has been set, the trap will not be ex‐
+       ecuted  until the command completes.  When bash is waiting for an asynchronous command via the wait builtin, the reception
+       of a signal for which a trap has been set will cause the wait builtin to return immediately with an  exit  status  greater
+       than 128, immediately after which the trap is executed.
+
+JOB CONTROL
+       Job control refers to the ability to selectively stop (suspend) the execution of processes and continue (resume) their ex‐
+       ecution at a later point.  A user typically employs this facility via an interactive interface supplied jointly by the op‐
+       erating system kernel's terminal driver and bash.
+
+       The shell associates a job with each pipeline.  It keeps a table of currently executing jobs, which may be listed with the
+       jobs command.  When bash starts a job asynchronously (in the background), it prints a line that looks like:
+
+              [1] 25647
+
+       indicating that this job is job number 1 and that the process ID of the last process in the pipeline associated with  this
+       job  is  25647.   All of the processes in a single pipeline are members of the same job.  Bash uses the job abstraction as
+       the basis for job control.
+
+       To facilitate the implementation of the user interface to job control, the operating system maintains the notion of a cur‐
+       rent  terminal  process group ID.  Members of this process group (processes whose process group ID is equal to the current
+       terminal process group ID) receive keyboard-generated signals such as SIGINT.  These processes are said to be in the fore‐
+       ground.   Background  processes are those whose process group ID differs from the terminal's; such processes are immune to
+       keyboard-generated signals.  Only foreground processes are allowed to read from or, if the user  so  specifies  with  stty
+       tostop,  write  to the terminal.  Background processes which attempt to read from (write to when stty tostop is in effect)
+       the terminal are sent a SIGTTIN (SIGTTOU) signal by the kernel's terminal  driver,  which,  unless  caught,  suspends  the
+       process.
+
+       If  the  operating  system  on which bash is running supports job control, bash contains facilities to use it.  Typing the
+       suspend character (typically ^Z, Control-Z) while a process is running causes that process to be stopped and returns  con‐
+       trol to bash.  Typing the delayed suspend character (typically ^Y, Control-Y) causes the process to be stopped when it at‐
+       tempts to read input from the terminal, and control to be returned to bash.  The user may then  manipulate  the  state  of
+       this  job,  using the bg command to continue it in the background, the fg command to continue it in the foreground, or the
+       kill command to kill it.  A ^Z takes effect immediately, and has the additional side effect of causing pending output  and
+       typeahead to be discarded.
+
+       There are a number of ways to refer to a job in the shell.  The character % introduces a job specification (jobspec).  Job
+       number n may be referred to as %n.  A job may also be referred to using a prefix of the name used to start it, or using  a
+       substring  that  appears in its command line.  For example, %ce refers to a stopped ce job.  If a prefix matches more than
+       one job, bash reports an error.  Using %?ce, on the other hand, refers to any job containing the string ce in its  command
+       line.   If the substring matches more than one job, bash reports an error.  The symbols %% and %+ refer to the shell's no‐
+       tion of the current job, which is the last job stopped while it was in the foreground or started in the  background.   The
+       previous  job may be referenced using %-.  If there is only a single job, %+ and %- can both be used to refer to that job.
+       In output pertaining to jobs (e.g., the output of the jobs command), the current job is always flagged with a +,  and  the
+       previous job with a -.  A single % (with no accompanying job specification) also refers to the current job.
+
+       Simply  naming  a  job can be used to bring it into the foreground: %1 is a synonym for ``fg %1'', bringing job 1 from the
+       background into the foreground.  Similarly, ``%1 &'' resumes job 1 in the background, equivalent to ``bg %1''.
+
+       The shell learns immediately whenever a job changes state.  Normally, bash waits until it is about to print a  prompt  be‐
+       fore  reporting  changes  in  a job's status so as to not interrupt any other output.  If the -b option to the set builtin
+       command is enabled, bash reports such changes immediately.  Any trap on SIGCHLD is executed for each child that exits.
+
+       If an attempt to exit bash is made while jobs are stopped (or, if the checkjobs shell option has been  enabled  using  the
+       shopt  builtin,  running), the shell prints a warning message, and, if the checkjobs option is enabled, lists the jobs and
+       their statuses.  The jobs command may then be used to inspect their status.  If a second attempt to exit is  made  without
+       an intervening command, the shell does not print another warning, and any stopped jobs are terminated.
+
+       When  the  shell is waiting for a job or process using the wait builtin, and job control is enabled, wait will return when
+       the job changes state. The -f option will force wait to wait until the job or process terminates before returning.
+
+PROMPTING
+       When executing interactively, bash displays the primary prompt PS1 when it is ready to read a command, and  the  secondary
+       prompt  PS2 when it needs more input to complete a command.  Bash displays PS0 after it reads a command but before execut‐
+       ing it.  Bash displays PS4 as described above before tracing each command when the -x  option  is  enabled.   Bash  allows
+       these  prompt  strings  to be customized by inserting a number of backslash-escaped special characters that are decoded as
+       follows:
+              \a     an ASCII bell character (07)
+              \d     the date in "Weekday Month Date" format (e.g., "Tue May 26")
+              \D{format}
+                     the format is passed to strftime(3) and the result is inserted into the prompt string; an empty  format  re‐
+                     sults in a locale-specific time representation.  The braces are required
+              \e     an ASCII escape character (033)
+              \h     the hostname up to the first `.'
+              \H     the hostname
+              \j     the number of jobs currently managed by the shell
+              \l     the basename of the shell's terminal device name
+              \n     newline
+              \r     carriage return
+              \s     the name of the shell, the basename of $0 (the portion following the final slash)
+              \t     the current time in 24-hour HH:MM:SS format
+              \T     the current time in 12-hour HH:MM:SS format
+              \@     the current time in 12-hour am/pm format
+              \A     the current time in 24-hour HH:MM format
+              \u     the username of the current user
+              \v     the version of bash (e.g., 2.00)
+              \V     the release of bash, version + patch level (e.g., 2.00.0)
+              \w     the  current  working  directory,  with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM
+                     variable)
+              \W     the basename of the current working directory, with $HOME abbreviated with a tilde
+              \!     the history number of this command
+              \#     the command number of this command
+              \$     if the effective UID is 0, a #, otherwise a $
+              \nnn   the character corresponding to the octal number nnn
+              \\     a backslash
+              \[     begin a sequence of non-printing characters, which could be used to embed a terminal control  sequence  into
+                     the prompt
+              \]     end a sequence of non-printing characters
+
+       The  command  number  and the history number are usually different: the history number of a command is its position in the
+       history list, which may include commands restored from the history file (see HISTORY below), while the command  number  is
+       the  position  in  the sequence of commands executed during the current shell session.  After the string is decoded, it is
+       expanded via parameter expansion, command substitution, arithmetic expansion, and quote removal, subject to the  value  of
+       the promptvars shell option (see the description of the shopt command under SHELL BUILTIN COMMANDS below).
+
+READLINE
+       This  is the library that handles reading input when using an interactive shell, unless the --noediting option is given at
+       shell invocation.  Line editing is also used when using the -e option to the read builtin.  By default, the  line  editing
+       commands are similar to those of Emacs.  A vi-style line editing interface is also available.  Line editing can be enabled
+       at any time using the -o emacs or -o vi options to the set builtin (see SHELL BUILTIN COMMANDS below).  To turn  off  line
+       editing after the shell is running, use the +o emacs or +o vi options to the set builtin.
+
+   Readline Notation
+       In  this  section,  the  Emacs-style  notation is used to denote keystrokes.  Control keys are denoted by C-key, e.g., C-n
+       means Control-N.  Similarly, meta keys are denoted by M-key, so M-x means Meta-X.  (On keyboards without a meta  key,  M-x
+       means  ESC  x,  i.e.,  press  the Escape key then the x key.  This makes ESC the meta prefix.  The combination M-C-x means
+       ESC-Control-x, or press the Escape key then hold the Control key while pressing the x key.)
+
+       Readline commands may be given numeric arguments, which normally act as a repeat count.  Sometimes,  however,  it  is  the
+       sign  of  the  argument  that is significant.  Passing a negative argument to a command that acts in the forward direction
+       (e.g., kill-line) causes that command to act in a backward direction.  Commands whose  behavior  with  arguments  deviates
+       from this are noted below.
+
+       When  a  command  is  described  as  killing text, the text deleted is saved for possible future retrieval (yanking).  The
+       killed text is saved in a kill ring.  Consecutive kills cause the text to be accumulated  into  one  unit,  which  can  be
+       yanked all at once.  Commands which do not kill text separate the chunks of text on the kill ring.
+
+   Readline Initialization
+       Readline  is  customized by putting commands in an initialization file (the inputrc file).  The name of this file is taken
+       from the value of the INPUTRC variable.  If that variable is unset, the default is ~/.inputrc.  When a program which  uses
+       the  readline  library  starts up, the initialization file is read, and the key bindings and variables are set.  There are
+       only a few basic constructs allowed in the readline initialization file.  Blank lines are ignored.  Lines beginning with a
+       #  are  comments.  Lines beginning with a $ indicate conditional constructs.  Other lines denote key bindings and variable
+       settings.
+
+       The default key-bindings may be changed with an inputrc file.  Other programs that use this library may add their own com‐
+       mands and bindings.
+
+       For example, placing
+
+              M-Control-u: universal-argument
+       or
+              C-Meta-u: universal-argument
+       into the inputrc would make M-C-u execute the readline command universal-argument.
+
+       The following symbolic character names are recognized: RUBOUT, DEL, ESC, LFD, NEWLINE, RET, RETURN, SPC, SPACE, and TAB.
+
+       In  addition  to  command  names, readline allows keys to be bound to a string that is inserted when the key is pressed (a
+       macro).
+
+   Readline Key Bindings
+       The syntax for controlling key bindings in the inputrc file is simple.  All that is required is the name of the command or
+       the  text  of  a macro and a key sequence to which it should be bound.  The name may be specified in one of two ways: as a
+       symbolic key name, possibly with Meta- or Control- prefixes, or as a key sequence.
+
+       When using the form keyname:function-name or macro, keyname is the name of a key spelled out in English.  For example:
+
+              Control-u: universal-argument
+              Meta-Rubout: backward-kill-word
+              Control-o: "> output"
+
+       In the above example, C-u is bound to the function universal-argument, M-DEL is bound to the function  backward-kill-word,
+       and  C-o  is  bound  to  run the macro expressed on the right hand side (that is, to insert the text ``> output'' into the
+       line).
+
+       In the second form, "keyseq":function-name or macro, keyseq differs from keyname above in that strings denoting an  entire
+       key sequence may be specified by placing the sequence within double quotes.  Some GNU Emacs style key escapes can be used,
+       as in the following example, but the symbolic character names are not recognized.
+
+              "\C-u": universal-argument
+              "\C-x\C-r": re-read-init-file
+              "\e[11~": "Function Key 1"
+
+       In  this  example,  C-u  is  again  bound  to  the  function  universal-argument.   C-x  C-r  is  bound  to  the  function
+       re-read-init-file, and ESC [ 1 1 ~ is bound to insert the text ``Function Key 1''.
+
+       The full set of GNU Emacs style escape sequences is
+              \C-    control prefix
+              \M-    meta prefix
+              \e     an escape character
+              \\     backslash
+              \"     literal "
+              \'     literal '
+
+       In addition to the GNU Emacs style escape sequences, a second set of backslash escapes is available:
+              \a     alert (bell)
+              \b     backspace
+              \d     delete
+              \f     form feed
+              \n     newline
+              \r     carriage return
+              \t     horizontal tab
+              \v     vertical tab
+              \nnn   the eight-bit character whose value is the octal value nnn (one to three digits)
+              \xHH   the eight-bit character whose value is the hexadecimal value HH (one or two hex digits)
+
+       When  entering the text of a macro, single or double quotes must be used to indicate a macro definition.  Unquoted text is
+       assumed to be a function name.  In the macro body, the backslash escapes described above  are  expanded.   Backslash  will
+       quote any other character in the macro text, including " and '.
+
+       Bash allows the current readline key bindings to be displayed or modified with the bind builtin command.  The editing mode
+       may be switched during interactive use by using the -o option to the set builtin command (see SHELL BUILTIN  COMMANDS  be‐
+       low).
+
+   Readline Variables
+       Readline has variables that can be used to further customize its behavior.  A variable may be set in the inputrc file with
+       a statement of the form
+
+              set variable-name value
+
+       Except where noted, readline variables can take the values On or Off (without  regard  to  case).   Unrecognized  variable
+       names  are  ignored.  When a variable value is read, empty or null values, "on" (case-insensitive), and "1" are equivalent
+       to On.  All other values are equivalent to Off.  The variables and their default values are:
+
+       bell-style (audible)
+              Controls what happens when readline wants to ring the terminal bell.  If set to  none,  readline  never  rings  the
+              bell.   If  set to visible, readline uses a visible bell if one is available.  If set to audible, readline attempts
+              to ring the terminal's bell.
+       bind-tty-special-chars (On)
+              If set to On, readline attempts to bind the control characters treated specially by the kernel's terminal driver to
+              their readline equivalents.
+       blink-matching-paren (Off)
+              If  set to On, readline attempts to briefly move the cursor to an opening parenthesis when a closing parenthesis is
+              inserted.
+       colored-completion-prefix (Off)
+              If set to On, when listing completions, readline displays the common prefix of the set of possible completions  us‐
+              ing a different color.  The color definitions are taken from the value of the LS_COLORS environment variable.
+       colored-stats (Off)
+              If set to On, readline displays possible completions using different colors to indicate their file type.  The color
+              definitions are taken from the value of the LS_COLORS environment variable.
+       comment-begin (``#'')
+              The string that is inserted when the readline insert-comment command is executed.  This command is bound to M-#  in
+              emacs mode and to # in vi command mode.
+       completion-display-width (-1)
+              The  number of screen columns used to display possible matches when performing completion.  The value is ignored if
+              it is less than 0 or greater than the terminal screen width.  A value of 0 will cause matches to be  displayed  one
+              per line.  The default value is -1.
+       completion-ignore-case (Off)
+              If set to On, readline performs filename matching and completion in a case-insensitive fashion.
+       completion-map-case (Off)
+              If  set to On, and completion-ignore-case is enabled, readline treats hyphens (-) and underscores (_) as equivalent
+              when performing case-insensitive filename matching and completion.
+       completion-prefix-display-length (0)
+              The length in characters of the common prefix of a list of possible completions that is displayed without modifica‐
+              tion.   When set to a value greater than zero, common prefixes longer than this value are replaced with an ellipsis
+              when displaying possible completions.
+       completion-query-items (100)
+              This determines when the user is queried about viewing the number of possible completions generated by  the  possi‐
+              ble-completions  command.  It may be set to any integer value greater than or equal to zero.  If the number of pos‐
+              sible completions is greater than or equal to the value of this variable, the user  is  asked  whether  or  not  he
+              wishes to view them; otherwise they are simply listed on the terminal.
+       convert-meta (On)
+              If  set  to  On, readline will convert characters with the eighth bit set to an ASCII key sequence by stripping the
+              eighth bit and prefixing an escape character (in effect, using escape as the meta prefix).  The default is On,  but
+              readline will set it to Off if the locale contains eight-bit characters.
+       disable-completion (Off)
+              If  set  to  On, readline will inhibit word completion.  Completion characters will be inserted into the line as if
+              they had been mapped to self-insert.
+       echo-control-characters (On)
+              When set to On, on operating systems that indicate they support it, readline echoes a character corresponding to  a
+              signal generated from the keyboard.
+       editing-mode (emacs)
+              Controls whether readline begins with a set of key bindings similar to Emacs or vi.  editing-mode can be set to ei‐
+              ther emacs or vi.
+       emacs-mode-string (@)
+              If the show-mode-in-prompt variable is enabled, this string is displayed immediately before the last  line  of  the
+              primary prompt when emacs editing mode is active.  The value is expanded like a key binding, so the standard set of
+              meta- and control prefixes and backslash escape sequences is available.  Use the \1 and \2 escapes to begin and end
+              sequences of non-printing characters, which can be used to embed a terminal control sequence into the mode string.
+       enable-bracketed-paste (Off)
+              When  set  to  On,  readline will configure the terminal in a way that will enable it to insert each paste into the
+              editing buffer as a single string of characters, instead of treating each character as if it had been read from the
+              keyboard.  This can prevent pasted characters from being interpreted as editing commands.
+       enable-keypad (Off)
+              When  set  to  On, readline will try to enable the application keypad when it is called.  Some systems need this to
+              enable the arrow keys.
+       enable-meta-key (On)
+              When set to On, readline will try to enable any meta modifier key the terminal claims to support when it is called.
+              On many terminals, the meta key is used to send eight-bit characters.
+       expand-tilde (Off)
+              If set to On, tilde expansion is performed when readline attempts word completion.
+       history-preserve-point (Off)
+              If  set  to  On,  the history code attempts to place point at the same location on each history line retrieved with
+              previous-history or next-history.
+       history-size (unset)
+              Set the maximum number of history entries saved in the history list.  If set to zero, any existing history  entries
+              are  deleted  and no new entries are saved.  If set to a value less than zero, the number of history entries is not
+              limited.  By default, the number of history entries is set to the value of the HISTSIZE shell variable.  If an  at‐
+              tempt is made to set history-size to a non-numeric value, the maximum number of history entries will be set to 500.
+       horizontal-scroll-mode (Off)
+              When  set  to On, makes readline use a single line for display, scrolling the input horizontally on a single screen
+              line when it becomes longer than the screen width rather than wrapping to a new line.
+       input-meta (Off)
+              If set to On, readline will enable eight-bit input (that is, it will not strip the eighth bit from  the  characters
+              it  reads),  regardless of what the terminal claims it can support.  The name meta-flag is a synonym for this vari‐
+              able.  The default is Off, but readline will set it to On if the locale contains eight-bit characters.
+       isearch-terminators (``C-[C-J'')
+              The string of characters that should terminate an incremental search without subsequently executing  the  character
+              as  a command.  If this variable has not been given a value, the characters ESC and C-J will terminate an incremen‐
+              tal search.
+       keymap (emacs)
+              Set the current readline keymap.  The set of valid keymap names is emacs, emacs-standard,  emacs-meta,  emacs-ctlx,
+              vi, vi-command, and vi-insert.  vi is equivalent to vi-command; emacs is equivalent to emacs-standard.  The default
+              value is emacs; the value of editing-mode also affects the default keymap.
+       keyseq-timeout (500)
+              Specifies the duration readline will wait for a character when reading an ambiguous key sequence (one that can form
+              a  complete  key  sequence  using  the input read so far, or can take additional input to complete a longer key se‐
+              quence).  If no input is received within the timeout, readline will use the shorter but complete key sequence.  The
+              value  is specified in milliseconds, so a value of 1000 means that readline will wait one second for additional in‐
+              put.  If this variable is set to a value less than or equal to zero, or to a non-numeric value, readline will  wait
+              until another key is pressed to decide which key sequence to complete.
+       mark-directories (On)
+              If set to On, completed directory names have a slash appended.
+       mark-modified-lines (Off)
+              If set to On, history lines that have been modified are displayed with a preceding asterisk (*).
+       mark-symlinked-directories (Off)
+              If  set  to On, completed names which are symbolic links to directories have a slash appended (subject to the value
+              of mark-directories).
+       match-hidden-files (On)
+              This variable, when set to On, causes readline to match files whose names begin with a `.' (hidden files) when per‐
+              forming  filename  completion.   If  set to Off, the leading `.' must be supplied by the user in the filename to be
+              completed.
+       menu-complete-display-prefix (Off)
+              If set to On, menu completion displays the common prefix of the list of possible completions (which may  be  empty)
+              before cycling through the list.
+       output-meta (Off)
+              If  set to On, readline will display characters with the eighth bit set directly rather than as a meta-prefixed es‐
+              cape sequence.  The default is Off, but readline will set it to On if the locale contains eight-bit characters.
+       page-completions (On)
+              If set to On, readline uses an internal more-like pager to display a screenful of possible completions at a time.
+       print-completions-horizontally (Off)
+              If set to On, readline will display completions with matches sorted horizontally in alphabetical order, rather than
+              down the screen.
+       revert-all-at-newline (Off)
+              If  set  to  On, readline will undo all changes to history lines before returning when accept-line is executed.  By
+              default, history lines may be modified and retain individual undo lists across calls to readline.
+       show-all-if-ambiguous (Off)
+              This alters the default behavior of the completion functions.  If set to On, words which have more than one  possi‐
+              ble completion cause the matches to be listed immediately instead of ringing the bell.
+       show-all-if-unmodified (Off)
+              This alters the default behavior of the completion functions in a fashion similar to show-all-if-ambiguous.  If set
+              to On, words which have more than one possible completion without any possible  partial  completion  (the  possible
+              completions don't share a common prefix) cause the matches to be listed immediately instead of ringing the bell.
+       show-mode-in-prompt (Off)
+              If set to On, add a string to the beginning of the prompt indicating the editing mode: emacs, vi command, or vi in‐
+              sertion.  The mode strings are user-settable (e.g., emacs-mode-string).
+       skip-completed-text (Off)
+              If set to On, this alters the default completion behavior when inserting a single match into the line.   It's  only
+              active  when  performing  completion in the middle of a word.  If enabled, readline does not insert characters from
+              the completion that match characters after point in the word being completed, so portions of the word following the
+              cursor are not duplicated.
+       vi-cmd-mode-string ((cmd))
+              If  the  show-mode-in-prompt  variable is enabled, this string is displayed immediately before the last line of the
+              primary prompt when vi editing mode is active and in command mode.  The value is expanded like a  key  binding,  so
+              the  standard set of meta- and control prefixes and backslash escape sequences is available.  Use the \1 and \2 es‐
+              capes to begin and end sequences of non-printing characters, which can be used to embed a terminal control sequence
+              into the mode string.
+       vi-ins-mode-string ((ins))
+              If  the  show-mode-in-prompt  variable is enabled, this string is displayed immediately before the last line of the
+              primary prompt when vi editing mode is active and in insertion mode.  The value is expanded like a key binding,  so
+              the  standard set of meta- and control prefixes and backslash escape sequences is available.  Use the \1 and \2 es‐
+              capes to begin and end sequences of non-printing characters, which can be used to embed a terminal control sequence
+              into the mode string.
+       visible-stats (Off)
+              If  set  to  On, a character denoting a file's type as reported by stat(2) is appended to the filename when listing
+              possible completions.
+
+   Readline Conditional Constructs
+       Readline implements a facility similar in spirit to the conditional compilation features of the C preprocessor  which  al‐
+       lows key bindings and variable settings to be performed as the result of tests.  There are four parser directives used.
+
+       $if    The $if construct allows bindings to be made based on the editing mode, the terminal being used, or the application
+              using readline.  The text of the test, after any comparison operator,
+               extends to the end of the line; unless otherwise noted, no characters are required to isolate it.
+
+              mode   The mode= form of the $if directive is used to test whether readline is in emacs or vi mode.   This  may  be
+                     used  in  conjunction  with  the set keymap command, for instance, to set bindings in the emacs-standard and
+                     emacs-ctlx keymaps only if readline is starting out in emacs mode.
+
+              term   The term= form may be used to include terminal-specific key bindings, perhaps to bind the key sequences out‐
+                     put  by  the  terminal's function keys.  The word on the right side of the = is tested against both the full
+                     name of the terminal and the portion of the terminal name before the first -.  This allows sun to match both
+                     sun and sun-cmd, for instance.
+
+              version
+                     The version test may be used to perform comparisons against specific readline versions.  The version expands
+                     to the current readline version.  The set of comparison operators includes =, (and ==), !=, <=, >=,  <,  and
+                     >.  The version number supplied on the right side of the operator consists of a major version number, an op‐
+                     tional decimal point, and an optional minor version (e.g., 7.1). If the minor version is omitted, it is  as‐
+                     sumed  to  be 0.  The operator may be separated from the string version and from the version number argument
+                     by whitespace.
+
+              application
+                     The application construct is used to include application-specific settings.  Each program using the readline
+                     library  sets  the application name, and an initialization file can test for a particular value.  This could
+                     be used to bind key sequences to functions useful for a specific program.  For instance, the following  com‐
+                     mand adds a key sequence that quotes the current or previous word in bash:
+
+                     $if Bash
+                     # Quote the current or previous word
+                     "\C-xq": "\eb\"\ef\""
+                     $endif
+
+              variable
+                     The variable construct provides simple equality tests for readline variables and values.  The permitted com‐
+                     parison operators are =, ==, and !=.  The variable name must be separated from the  comparison  operator  by
+                     whitespace;  the operator may be separated from the value on the right hand side by whitespace.  Both string
+                     and boolean variables may be tested. Boolean variables must be tested against the values on and off.
+
+       $endif This command, as seen in the previous example, terminates an $if command.
+
+       $else  Commands in this branch of the $if directive are executed if the test fails.
+
+       $include
+              This directive takes a single filename as an argument and reads commands and bindings from that file.  For example,
+              the following directive would read /etc/inputrc:
+
+              $include  /etc/inputrc
+
+   Searching
+       Readline  provides commands for searching through the command history (see HISTORY below) for lines containing a specified
+       string.  There are two search modes: incremental and non-incremental.
+
+       Incremental searches begin before the user has finished typing the search string.  As each character of the search  string
+       is  typed,  readline displays the next entry from the history matching the string typed so far.  An incremental search re‐
+       quires only as many characters as needed to find the desired history entry.  The characters present in the  value  of  the
+       isearch-terminators  variable are used to terminate an incremental search.  If that variable has not been assigned a value
+       the Escape and Control-J characters will terminate an incremental search.  Control-G will abort an incremental search  and
+       restore the original line.  When the search is terminated, the history entry containing the search string becomes the cur‐
+       rent line.
+
+       To find other matching entries in the history list, type Control-S or Control-R as appropriate.  This will search backward
+       or  forward  in the history for the next entry matching the search string typed so far.  Any other key sequence bound to a
+       readline command will terminate the search and execute that command.  For instance, a newline will  terminate  the  search
+       and accept the line, thereby executing the command from the history list.
+
+       Readline  remembers  the  last  incremental search string.  If two Control-Rs are typed without any intervening characters
+       defining a new search string, any remembered search string is used.
+
+       Non-incremental searches read the entire search string before starting to search for matching history lines.   The  search
+       string may be typed by the user or be part of the contents of the current line.
+
+   Readline Command Names
+       The following is a list of the names of the commands and the default key sequences to which they are bound.  Command names
+       without an accompanying key sequence are unbound by default.  In the following descriptions, point refers to  the  current
+       cursor  position, and mark refers to a cursor position saved by the set-mark command.  The text between the point and mark
+       is referred to as the region.
+
+   Commands for Moving
+       beginning-of-line (C-a)
+              Move to the start of the current line.
+       end-of-line (C-e)
+              Move to the end of the line.
+       forward-char (C-f)
+              Move forward a character.
+       backward-char (C-b)
+              Move back a character.
+       forward-word (M-f)
+              Move forward to the end of the next word.  Words are composed of alphanumeric characters (letters and digits).
+       backward-word (M-b)
+              Move back to the start of the current or previous word.  Words are composed of alphanumeric characters (letters and
+              digits).
+       shell-forward-word
+              Move forward to the end of the next word.  Words are delimited by non-quoted shell metacharacters.
+       shell-backward-word
+              Move back to the start of the current or previous word.  Words are delimited by non-quoted shell metacharacters.
+       previous-screen-line
+              Attempt  to  move point to the same physical screen column on the previous physical screen line. This will not have
+              the desired effect if the current Readline line does not take up more than one physical line or  if  point  is  not
+              greater than the length of the prompt plus the screen width.
+       next-screen-line
+              Attempt  to  move point to the same physical screen column on the next physical screen line. This will not have the
+              desired effect if the current Readline line does not take up more than one physical line or if the  length  of  the
+              current Readline line is not greater than the length of the prompt plus the screen width.
+       clear-screen (C-l)
+              Clear  the  screen  leaving  the current line at the top of the screen.  With an argument, refresh the current line
+              without clearing the screen.
+       redraw-current-line
+              Refresh the current line.
+
+   Commands for Manipulating the History
+       accept-line (Newline, Return)
+              Accept the line regardless of where the cursor is.  If this line is non-empty, add it to the history list according
+              to the state of the HISTCONTROL variable.  If the line is a modified history line, then restore the history line to
+              its original state.
+       previous-history (C-p)
+              Fetch the previous command from the history list, moving back in the list.
+       next-history (C-n)
+              Fetch the next command from the history list, moving forward in the list.
+       beginning-of-history (M-<)
+              Move to the first line in the history.
+       end-of-history (M->)
+              Move to the end of the input history, i.e., the line currently being entered.
+       reverse-search-history (C-r)
+              Search backward starting at the current line and moving `up' through the history as necessary.  This is  an  incre‐
+              mental search.
+       forward-search-history (C-s)
+              Search  forward starting at the current line and moving `down' through the history as necessary.  This is an incre‐
+              mental search.
+       non-incremental-reverse-search-history (M-p)
+              Search backward through the history starting at the current line using a non-incremental search for a  string  sup‐
+              plied by the user.
+       non-incremental-forward-search-history (M-n)
+              Search forward through the history using a non-incremental search for a string supplied by the user.
+       history-search-forward
+              Search  forward  through  the  history  for  the string of characters between the start of the current line and the
+              point.  This is a non-incremental search.
+       history-search-backward
+              Search backward through the history for the string of characters between the start of  the  current  line  and  the
+              point.  This is a non-incremental search.
+       history-substring-search-backward
+              Search backward through the history for the string of characters between the start of the current line and the cur‐
+              rent cursor position (the point).  The search string may match anywhere in a history line.  This is a non-incremen‐
+              tal search.
+       history-substring-search-forward
+              Search  forward  through  the  history  for  the string of characters between the start of the current line and the
+              point.  The search string may match anywhere in a history line.  This is a non-incremental search.
+       yank-nth-arg (M-C-y)
+              Insert the first argument to the previous command (usually the second word on the previous line) at point.  With an
+              argument n, insert the nth word from the previous command (the words in the previous command begin with word 0).  A
+              negative argument inserts the nth word from the end of the previous command.  Once the argument n is computed,  the
+              argument is extracted as if the "!n" history expansion had been specified.
+       yank-last-arg (M-., M-_)
+              Insert the last argument to the previous command (the last word of the previous history entry).  With a numeric ar‐
+              gument, behave exactly like yank-nth-arg.  Successive calls to yank-last-arg move back through  the  history  list,
+              inserting  the  last  word (or the word specified by the argument to the first call) of each line in turn.  Any nu‐
+              meric argument supplied to these successive calls determines the direction to move through the history.  A negative
+              argument  switches  the direction through the history (back or forward).  The history expansion facilities are used
+              to extract the last word, as if the "!$" history expansion had been specified.
+       shell-expand-line (M-C-e)
+              Expand the line as the shell does.  This performs alias and history expansion as well as all of the shell word  ex‐
+              pansions.  See HISTORY EXPANSION below for a description of history expansion.
+       history-expand-line (M-^)
+              Perform history expansion on the current line.  See HISTORY EXPANSION below for a description of history expansion.
+       magic-space
+              Perform history expansion on the current line and insert a space.  See HISTORY EXPANSION below for a description of
+              history expansion.
+       alias-expand-line
+              Perform alias expansion on the current line.  See ALIASES above for a description of alias expansion.
+       history-and-alias-expand-line
+              Perform history and alias expansion on the current line.
+       insert-last-argument (M-., M-_)
+              A synonym for yank-last-arg.
+       operate-and-get-next (C-o)
+              Accept the current line for execution and fetch the next line relative to the current line  from  the  history  for
+              editing.  A numeric argument, if supplied, specifies the history entry to use instead of the current line.
+       edit-and-execute-command (C-x C-e)
+              Invoke  an  editor  on the current command line, and execute the result as shell commands.  Bash attempts to invoke
+              $VISUAL, $EDITOR, and emacs as the editor, in that order.
+
+   Commands for Changing Text
+       end-of-file (usually C-d)
+              The character indicating end-of-file as set, for example, by ``stty''.  If this character is read when there are no
+              characters  on  the line, and point is at the beginning of the line, Readline interprets it as the end of input and
+              returns EOF.
+       delete-char (C-d)
+              Delete the character at point.  If this function is bound to the same character as the tty EOF  character,  as  C-d
+              commonly is, see above for the effects.
+       backward-delete-char (Rubout)
+              Delete the character behind the cursor.  When given a numeric argument, save the deleted text on the kill ring.
+       forward-backward-delete-char
+              Delete the character under the cursor, unless the cursor is at the end of the line, in which case the character be‐
+              hind the cursor is deleted.
+       quoted-insert (C-q, C-v)
+              Add the next character typed to the line verbatim.  This is how to insert characters like C-q, for example.
+       tab-insert (C-v TAB)
+              Insert a tab character.
+       self-insert (a, b, A, 1, !, ...)
+              Insert the character typed.
+       transpose-chars (C-t)
+              Drag the character before point forward over the character at point, moving point forward as well.  If point is  at
+              the end of the line, then this transposes the two characters before point.  Negative arguments have no effect.
+       transpose-words (M-t)
+              Drag  the word before point past the word after point, moving point over that word as well.  If point is at the end
+              of the line, this transposes the last two words on the line.
+       upcase-word (M-u)
+              Uppercase the current (or following) word.  With a negative argument, uppercase the previous word, but do not  move
+              point.
+       downcase-word (M-l)
+              Lowercase  the current (or following) word.  With a negative argument, lowercase the previous word, but do not move
+              point.
+       capitalize-word (M-c)
+              Capitalize the current (or following) word.  With a negative argument, capitalize the previous  word,  but  do  not
+              move point.
+       overwrite-mode
+              Toggle  overwrite  mode.  With an explicit positive numeric argument, switches to overwrite mode.  With an explicit
+              non-positive numeric argument, switches to insert mode.  This command affects only emacs mode; vi mode  does  over‐
+              write differently.  Each call to readline() starts in insert mode.  In overwrite mode, characters bound to self-in‐
+              sert replace the text at point rather than pushing the text to the right.  Characters bound to backward-delete-char
+              replace the character before point with a space.  By default, this command is unbound.
+
+   Killing and Yanking
+       kill-line (C-k)
+              Kill the text from point to the end of the line.
+       backward-kill-line (C-x Rubout)
+              Kill backward to the beginning of the line.
+       unix-line-discard (C-u)
+              Kill backward from point to the beginning of the line.  The killed text is saved on the kill-ring.
+       kill-whole-line
+              Kill all characters on the current line, no matter where point is.
+       kill-word (M-d)
+              Kill  from point to the end of the current word, or if between words, to the end of the next word.  Word boundaries
+              are the same as those used by forward-word.
+       backward-kill-word (M-Rubout)
+              Kill the word behind point.  Word boundaries are the same as those used by backward-word.
+       shell-kill-word
+              Kill from point to the end of the current word, or if between words, to the end of the next word.  Word  boundaries
+              are the same as those used by shell-forward-word.
+       shell-backward-kill-word
+              Kill the word behind point.  Word boundaries are the same as those used by shell-backward-word.
+       unix-word-rubout (C-w)
+              Kill the word behind point, using white space as a word boundary.  The killed text is saved on the kill-ring.
+       unix-filename-rubout
+              Kill  the  word behind point, using white space and the slash character as the word boundaries.  The killed text is
+              saved on the kill-ring.
+       delete-horizontal-space (M-\)
+              Delete all spaces and tabs around point.
+       kill-region
+              Kill the text in the current region.
+       copy-region-as-kill
+              Copy the text in the region to the kill buffer.
+       copy-backward-word
+              Copy the word before point to the kill buffer.  The word boundaries are the same as backward-word.
+       copy-forward-word
+              Copy the word following point to the kill buffer.  The word boundaries are the same as forward-word.
+       yank (C-y)
+              Yank the top of the kill ring into the buffer at point.
+       yank-pop (M-y)
+              Rotate the kill ring, and yank the new top.  Only works following yank or yank-pop.
+
+   Numeric Arguments
+       digit-argument (M-0, M-1, ..., M--)
+              Add this digit to the argument already accumulating, or start a new argument.  M-- starts a negative argument.
+       universal-argument
+              This is another way to specify an argument.  If this command is followed by one or more digits, optionally  with  a
+              leading  minus  sign,  those  digits  define the argument.  If the command is followed by digits, executing univer‐
+              sal-argument again ends the numeric argument, but is otherwise ignored.  As a special case, if this command is  im‐
+              mediately  followed  by a character that is neither a digit nor minus sign, the argument count for the next command
+              is multiplied by four.  The argument count is initially one, so executing this function the first  time  makes  the
+              argument count four, a second time makes the argument count sixteen, and so on.
+
+   Completing
+       complete (TAB)
+              Attempt  to  perform completion on the text before point.  Bash attempts completion treating the text as a variable
+              (if the text begins with $), username (if the text begins with ~), hostname (if the text begins with @), or command
+              (including aliases and functions) in turn.  If none of these produces a match, filename completion is attempted.
+       possible-completions (M-?)
+              List the possible completions of the text before point.
+       insert-completions (M-*)
+              Insert all completions of the text before point that would have been generated by possible-completions.
+       menu-complete
+              Similar  to  complete,  but replaces the word to be completed with a single match from the list of possible comple‐
+              tions.  Repeated execution of menu-complete steps through the list of possible completions, inserting each match in
+              turn.  At the end of the list of completions, the bell is rung (subject to the setting of bell-style) and the orig‐
+              inal text is restored.  An argument of n moves n positions forward in the list of matches; a negative argument  may
+              be used to move backward through the list.  This command is intended to be bound to TAB, but is unbound by default.
+       menu-complete-backward
+              Identical  to  menu-complete,  but moves backward through the list of possible completions, as if menu-complete had
+              been given a negative argument.  This command is unbound by default.
+       delete-char-or-list
+              Deletes the character under the cursor if not at the beginning or end of the line (like delete-char).   If  at  the
+              end of the line, behaves identically to possible-completions.  This command is unbound by default.
+       complete-filename (M-/)
+              Attempt filename completion on the text before point.
+       possible-filename-completions (C-x /)
+              List the possible completions of the text before point, treating it as a filename.
+       complete-username (M-~)
+              Attempt completion on the text before point, treating it as a username.
+       possible-username-completions (C-x ~)
+              List the possible completions of the text before point, treating it as a username.
+       complete-variable (M-$)
+              Attempt completion on the text before point, treating it as a shell variable.
+       possible-variable-completions (C-x $)
+              List the possible completions of the text before point, treating it as a shell variable.
+       complete-hostname (M-@)
+              Attempt completion on the text before point, treating it as a hostname.
+       possible-hostname-completions (C-x @)
+              List the possible completions of the text before point, treating it as a hostname.
+       complete-command (M-!)
+              Attempt  completion  on the text before point, treating it as a command name.  Command completion attempts to match
+              the text against aliases, reserved words, shell functions, shell builtins, and  finally  executable  filenames,  in
+              that order.
+       possible-command-completions (C-x !)
+              List the possible completions of the text before point, treating it as a command name.
+       dynamic-complete-history (M-TAB)
+              Attempt  completion  on  the text before point, comparing the text against lines from the history list for possible
+              completion matches.
+       dabbrev-expand
+              Attempt menu completion on the text before point, comparing the text against lines from the history list for possi‐
+              ble completion matches.
+       complete-into-braces (M-{)
+              Perform  filename  completion  and  insert  the  list of possible completions enclosed within braces so the list is
+              available to the shell (see Brace Expansion above).
+
+   Keyboard Macros
+       start-kbd-macro (C-x ()
+              Begin saving the characters typed into the current keyboard macro.
+       end-kbd-macro (C-x ))
+              Stop saving the characters typed into the current keyboard macro and store the definition.
+       call-last-kbd-macro (C-x e)
+              Re-execute the last keyboard macro defined, by making the characters in the macro appear as if typed  at  the  key‐
+              board.
+       print-last-kbd-macro ()
+              Print the last keyboard macro defined in a format suitable for the inputrc file.
+
+   Miscellaneous
+       re-read-init-file (C-x C-r)
+              Read in the contents of the inputrc file, and incorporate any bindings or variable assignments found there.
+       abort (C-g)
+              Abort the current editing command and ring the terminal's bell (subject to the setting of bell-style).
+       do-lowercase-version (M-A, M-B, M-x, ...)
+              If  the  metafied  character  x is uppercase, run the command that is bound to the corresponding metafied lowercase
+              character.  The behavior is undefined if x is already lowercase.
+       prefix-meta (ESC)
+              Metafy the next character typed.  ESC f is equivalent to Meta-f.
+       undo (C-_, C-x C-u)
+              Incremental undo, separately remembered for each line.
+       revert-line (M-r)
+              Undo all changes made to this line.  This is like executing the undo command enough times to return the line to its
+              initial state.
+       tilde-expand (M-&)
+              Perform tilde expansion on the current word.
+       set-mark (C-@, M-<space>)
+              Set the mark to the point.  If a numeric argument is supplied, the mark is set to that position.
+       exchange-point-and-mark (C-x C-x)
+              Swap  the  point with the mark.  The current cursor position is set to the saved position, and the old cursor posi‐
+              tion is saved as the mark.
+       character-search (C-])
+              A character is read and point is moved to the next occurrence of that character.  A  negative  count  searches  for
+              previous occurrences.
+       character-search-backward (M-C-])
+              A character is read and point is moved to the previous occurrence of that character.  A negative count searches for
+              subsequent occurrences.
+       skip-csi-sequence
+              Read enough characters to consume a multi-key sequence such as those defined for keys like Home and End.  Such  se‐
+              quences begin with a Control Sequence Indicator (CSI), usually ESC-[.  If this sequence is bound to "\[", keys pro‐
+              ducing such sequences will have no effect unless explicitly bound to a readline command, instead of inserting stray
+              characters into the editing buffer.  This is unbound by default, but usually bound to ESC-[.
+       insert-comment (M-#)
+              Without  a  numeric  argument, the value of the readline comment-begin variable is inserted at the beginning of the
+              current line.  If a numeric argument is supplied, this command acts as a toggle: if the characters at the beginning
+              of the line do not match the value of comment-begin, the value is inserted, otherwise the characters in comment-be‐
+              gin are deleted from the beginning of the line.  In either case, the line is accepted as  if  a  newline  had  been
+              typed.   The default value of comment-begin causes this command to make the current line a shell comment.  If a nu‐
+              meric argument causes the comment character to be removed, the line will be executed by the shell.
+       glob-complete-word (M-g)
+              The word before point is treated as a pattern for pathname expansion, with an asterisk implicitly  appended.   This
+              pattern is used to generate a list of matching filenames for possible completions.
+       glob-expand-word (C-x *)
+              The  word  before  point  is treated as a pattern for pathname expansion, and the list of matching filenames is in‐
+              serted, replacing the word.  If a numeric argument is supplied, an asterisk is appended before pathname expansion.
+       glob-list-expansions (C-x g)
+              The list of expansions that would have been generated by glob-expand-word is displayed, and the  line  is  redrawn.
+              If a numeric argument is supplied, an asterisk is appended before pathname expansion.
+       dump-functions
+              Print  all  of  the  functions and their key bindings to the readline output stream.  If a numeric argument is sup‐
+              plied, the output is formatted in such a way that it can be made part of an inputrc file.
+       dump-variables
+              Print all of the settable readline variables and their values to the readline output stream.  If a numeric argument
+              is supplied, the output is formatted in such a way that it can be made part of an inputrc file.
+       dump-macros
+              Print all of the readline key sequences bound to macros and the strings they output.  If a numeric argument is sup‐
+              plied, the output is formatted in such a way that it can be made part of an inputrc file.
+       display-shell-version (C-x C-v)
+              Display version information about the current instance of bash.
+
+   Programmable Completion
+       When word completion is attempted for an argument to a command for which a completion specification (a compspec) has  been
+       defined using the complete builtin (see SHELL BUILTIN COMMANDS below), the programmable completion facilities are invoked.
+
+       First,  the command name is identified.  If the command word is the empty string (completion attempted at the beginning of
+       an empty line), any compspec defined with the -E option to complete is used.  If a compspec has been defined for that com‐
+       mand, the compspec is used to generate the list of possible completions for the word.  If the command word is a full path‐
+       name, a compspec for the full pathname is searched for first.  If no compspec is found for the full pathname,  an  attempt
+       is  made to find a compspec for the portion following the final slash.  If those searches do not result in a compspec, any
+       compspec defined with the -D option to complete is used as the default.  If there is no default  compspec,  bash  attempts
+       alias  expansion on the command word as a final resort, and attempts to find a compspec for the command word from any suc‐
+       cessful expansion.
+
+       Once a compspec has been found, it is used to generate the list of matching words.  If a compspec is not  found,  the  de‐
+       fault bash completion as described above under Completing is performed.
+
+       First,  the  actions  specified by the compspec are used.  Only matches which are prefixed by the word being completed are
+       returned.  When the -f or -d option is used for filename or directory name completion, the shell variable FIGNORE is  used
+       to filter the matches.
+
+       Any completions specified by a pathname expansion pattern to the -G option are generated next.  The words generated by the
+       pattern need not match the word being completed.  The GLOBIGNORE shell variable is not used to filter the matches, but the
+       FIGNORE variable is used.
+
+       Next, the string specified as the argument to the -W option is considered.  The string is first split using the characters
+       in the IFS special variable as delimiters.  Shell quoting is honored.  Each word is then expanded using  brace  expansion,
+       tilde  expansion, parameter and variable expansion, command substitution, and arithmetic expansion, as described above un‐
+       der EXPANSION.  The results are split using the rules described above under Word Splitting.  The results of the  expansion
+       are prefix-matched against the word being completed, and the matching words become the possible completions.
+
+       After  these  matches  have been generated, any shell function or command specified with the -F and -C options is invoked.
+       When the command or function is invoked, the COMP_LINE, COMP_POINT, COMP_KEY, and COMP_TYPE variables are assigned  values
+       as  described  above under Shell Variables.  If a shell function is being invoked, the COMP_WORDS and COMP_CWORD variables
+       are also set.  When the function or command is invoked, the first argument ($1) is the name of the command whose arguments
+       are being completed, the second argument ($2) is the word being completed, and the third argument ($3) is the word preced‐
+       ing the word being completed on the current command line.  No filtering of the generated completions against the word  be‐
+       ing completed is performed; the function or command has complete freedom in generating the matches.
+
+       Any  function specified with -F is invoked first.  The function may use any of the shell facilities, including the compgen
+       builtin described below, to generate the matches.  It must put the possible completions in the COMPREPLY  array  variable,
+       one per array element.
+
+       Next, any command specified with the -C option is invoked in an environment equivalent to command substitution.  It should
+       print a list of completions, one per line, to the standard output.  Backslash may be used to escape a newline,  if  neces‐
+       sary.
+
+       After  all of the possible completions are generated, any filter specified with the -X option is applied to the list.  The
+       filter is a pattern as used for pathname expansion; a & in the pattern is replaced with the text of the  word  being  com‐
+       pleted.   A literal & may be escaped with a backslash; the backslash is removed before attempting a match.  Any completion
+       that matches the pattern will be removed from the list.  A leading ! negates the pattern; in this case any completion  not
+       matching  the  pattern will be removed.  If the nocasematch shell option is enabled, the match is performed without regard
+       to the case of alphabetic characters.
+
+       Finally, any prefix and suffix specified with the -P and -S options are added to each member of the completion  list,  and
+       the result is returned to the readline completion code as the list of possible completions.
+
+       If  the  previously-applied  actions do not generate any matches, and the -o dirnames option was supplied to complete when
+       the compspec was defined, directory name completion is attempted.
+
+       If the -o plusdirs option was supplied to complete when the compspec was defined, directory name completion  is  attempted
+       and any matches are added to the results of the other actions.
+
+       By  default,  if a compspec is found, whatever it generates is returned to the completion code as the full set of possible
+       completions.  The default bash completions are not attempted, and the readline default of filename completion is disabled.
+       If  the -o bashdefault option was supplied to complete when the compspec was defined, the bash default completions are at‐
+       tempted if the compspec generates no matches.  If the -o default option was supplied to complete when the compspec was de‐
+       fined,  readline's  default completion will be performed if the compspec (and, if attempted, the default bash completions)
+       generate no matches.
+
+       When a compspec indicates that directory name completion is desired, the programmable completion functions force  readline
+       to append a slash to completed names which are symbolic links to directories, subject to the value of the mark-directories
+       readline variable, regardless of the setting of the mark-symlinked-directories readline variable.
+
+       There is some support for dynamically modifying completions.  This is most useful when used in combination with a  default
+       completion specified with complete -D.  It's possible for shell functions executed as completion handlers to indicate that
+       completion should be retried by returning an exit status of 124.  If a shell function returns 124, and changes  the  comp‐
+       spec  associated with the command on which completion is being attempted (supplied as the first argument when the function
+       is executed), programmable completion restarts from the beginning, with an attempt to find a new compspec  for  that  com‐
+       mand.   This  allows a set of completions to be built dynamically as completion is attempted, rather than being loaded all
+       at once.
+
+       For instance, assuming that there is a library of compspecs, each kept in a file corresponding to the name of the command,
+       the following default completion function would load completions dynamically:
+
+       _completion_loader()
+       {
+            . "/etc/bash_completion.d/$1.sh" >/dev/null 2>&1 && return 124
+       }
+       complete -D -F _completion_loader -o bashdefault -o default
+
+HISTORY
+       When  the  -o  history option to the set builtin is enabled, the shell provides access to the command history, the list of
+       commands previously typed.  The value of the HISTSIZE variable is used as the number of commands  to  save  in  a  history
+       list.   The  text of the last HISTSIZE commands (default 500) is saved.  The shell stores each command in the history list
+       prior to parameter and variable expansion (see EXPANSION above) but after history expansion is performed, subject  to  the
+       values of the shell variables HISTIGNORE and HISTCONTROL.
+
+       On  startup,  the history is initialized from the file named by the variable HISTFILE (default ~/.bash_history).  The file
+       named by the value of HISTFILE is truncated, if necessary, to contain no more than the number of lines  specified  by  the
+       value  of HISTFILESIZE.  If HISTFILESIZE is unset, or set to null, a non-numeric value, or a numeric value less than zero,
+       the history file is not truncated.  When the history file is read, lines beginning with the history comment character fol‐
+       lowed  immediately  by a digit are interpreted as timestamps for the following history line.  These timestamps are option‐
+       ally displayed depending on the value of the HISTTIMEFORMAT variable.  When a shell with history enabled exits,  the  last
+       $HISTSIZE  lines  are  copied  from the history list to $HISTFILE.  If the histappend shell option is enabled (see the de‐
+       scription of shopt under SHELL BUILTIN COMMANDS below), the lines are appended to the history file, otherwise the  history
+       file  is overwritten.  If HISTFILE is unset, or if the history file is unwritable, the history is not saved.  If the HIST‐
+       TIMEFORMAT variable is set, time stamps are written to the history file, marked with the  history  comment  character,  so
+       they may be preserved across shell sessions.  This uses the history comment character to distinguish timestamps from other
+       history lines.  After saving the history, the history file is truncated to contain no more than  HISTFILESIZE  lines.   If
+       HISTFILESIZE  is  unset,  or  set to null, a non-numeric value, or a numeric value less than zero, the history file is not
+       truncated.
+
+       The builtin command fc (see SHELL BUILTIN COMMANDS below) may be used to list or edit and re-execute a portion of the his‐
+       tory  list.   The history builtin may be used to display or modify the history list and manipulate the history file.  When
+       using command-line editing, search commands are available in each editing mode that provide access to the history list.
+
+       The shell allows control over which commands are saved on the history list.  The HISTCONTROL and HISTIGNORE variables  may
+       be set to cause the shell to save only a subset of the commands entered.  The cmdhist shell option, if enabled, causes the
+       shell to attempt to save each line of a multi-line command in the same history entry, adding semicolons where necessary to
+       preserve  syntactic correctness.  The lithist shell option causes the shell to save the command with embedded newlines in‐
+       stead of semicolons.  See the description of the shopt builtin below under SHELL BUILTIN COMMANDS for information on  set‐
+       ting and unsetting shell options.
+
+HISTORY EXPANSION
+       The  shell  supports  a history expansion feature that is similar to the history expansion in csh.  This section describes
+       what syntax features are available.  This feature is enabled by default for interactive shells, and can be disabled  using
+       the  +H  option to the set builtin command (see SHELL BUILTIN COMMANDS below).  Non-interactive shells do not perform his‐
+       tory expansion by default.
+
+       History expansions introduce words from the history list into the input stream, making it easy to repeat commands,  insert
+       the arguments to a previous command into the current input line, or fix errors in previous commands quickly.
+
+       History  expansion  is  performed immediately after a complete line is read, before the shell breaks it into words, and is
+       performed on each line individually without taking quoting on previous lines into account.  It takes place in  two  parts.
+       The  first  is to determine which line from the history list to use during substitution.  The second is to select portions
+       of that line for inclusion into the current one.  The line selected from the history is the event,  and  the  portions  of
+       that  line  that are acted upon are words.  Various modifiers are available to manipulate the selected words.  The line is
+       broken into words in the same fashion as when reading input, so that several metacharacter-separated words  surrounded  by
+       quotes  are  considered one word.  History expansions are introduced by the appearance of the history expansion character,
+       which is ! by default.  Only backslash (\) and single quotes can quote the history expansion character,  but  the  history
+       expansion  character  is  also  treated  as  quoted if it immediately precedes the closing double quote in a double-quoted
+       string.
+
+       Several characters inhibit history expansion if found immediately following the history expansion character, even if it is
+       unquoted: space, tab, newline, carriage return, and =.  If the extglob shell option is enabled, ( will also inhibit expan‐
+       sion.
+
+       Several shell options settable with the shopt builtin may be used to tailor the behavior of  history  expansion.   If  the
+       histverify  shell  option is enabled (see the description of the shopt builtin below), and readline is being used, history
+       substitutions are not immediately passed to the shell parser.  Instead, the expanded line is reloaded  into  the  readline
+       editing  buffer for further modification.  If readline is being used, and the histreedit shell option is enabled, a failed
+       history substitution will be reloaded into the readline editing buffer for correction.   The  -p  option  to  the  history
+       builtin command may be used to see what a history expansion will do before using it.  The -s option to the history builtin
+       may be used to add commands to the end of the history list without actually executing them, so that they are available for
+       subsequent recall.
+
+       The  shell  allows  control  of  the  various  characters  used by the history expansion mechanism (see the description of
+       histchars above under Shell Variables).  The shell uses the history comment character  to  mark  history  timestamps  when
+       writing the history file.
+
+   Event Designators
+       An  event designator is a reference to a command line entry in the history list.  Unless the reference is absolute, events
+       are relative to the current position in the history list.
+
+       !      Start a history substitution, except when followed by a blank, newline, carriage return, = or ( (when  the  extglob
+              shell option is enabled using the shopt builtin).
+       !n     Refer to command line n.
+       !-n    Refer to the current command minus n.
+       !!     Refer to the previous command.  This is a synonym for `!-1'.
+       !string
+              Refer to the most recent command preceding the current position in the history list starting with string.
+       !?string[?]
+              Refer  to the most recent command preceding the current position in the history list containing string.  The trail‐
+              ing ? may be omitted if string is followed immediately by a newline.
+       ^string1^string2^
+              Quick  substitution.   Repeat  the   previous   command,   replacing   string1   with   string2.    Equivalent   to
+              ``!!:s/string1/string2/'' (see Modifiers below).
+       !#     The entire command line typed so far.
+
+   Word Designators
+       Word  designators  are  used  to select desired words from the event.  A : separates the event specification from the word
+       designator.  It may be omitted if the word designator begins with a ^, $, *, -, or %.  Words are numbered from the  begin‐
+       ning  of  the  line, with the first word being denoted by 0 (zero).  Words are inserted into the current line separated by
+       single spaces.
+
+       0 (zero)
+              The zeroth word.  For the shell, this is the command word.
+       n      The nth word.
+       ^      The first argument.  That is, word 1.
+       $      The last word.  This is usually the last argument, but will expand to the zeroth word if there is only one word  in
+              the line.
+       %      The word matched by the most recent `?string?' search.
+       x-y    A range of words; `-y' abbreviates `0-y'.
+       *      All  of  the  words but the zeroth.  This is a synonym for `1-$'.  It is not an error to use * if there is just one
+              word in the event; the empty string is returned in that case.
+       x*     Abbreviates x-$.
+       x-     Abbreviates x-$ like x*, but omits the last word.
+
+       If a word designator is supplied without an event specification, the previous command is used as the event.
+
+   Modifiers
+       After the optional word designator, there may appear a sequence of one or more of the following modifiers,  each  preceded
+       by a `:'.
+
+       h      Remove a trailing filename component, leaving only the head.
+       t      Remove all leading filename components, leaving the tail.
+       r      Remove a trailing suffix of the form .xxx, leaving the basename.
+       e      Remove all but the trailing suffix.
+       p      Print the new command but do not execute it.
+       q      Quote the substituted words, escaping further substitutions.
+       x      Quote the substituted words as with q, but break into words at blanks and newlines.
+       s/old/new/
+              Substitute  new  for  the first occurrence of old in the event line.  Any delimiter can be used in place of /.  The
+              final delimiter is optional if it is the last character of the event line.  The delimiter may be quoted in old  and
+              new with a single backslash.  If & appears in new, it is replaced by old.  A single backslash will quote the &.  If
+              old is null, it is set to the last old substituted, or, if no previous history substitutions took place,  the  last
+              string in a !?string[?]  search.
+       &      Repeat the previous substitution.
+       g      Cause  changes  to  be  applied  over  the  entire  event  line.   This  is  used  in  conjunction with `:s' (e.g.,
+              `:gs/old/new/') or `:&'.  If used with `:s', any delimiter can be used in place of /, and the  final  delimiter  is
+              optional if it is the last character of the event line.  An a may be used as a synonym for g.
+       G      Apply the following `s' modifier once to each word in the event line.
+
+SHELL BUILTIN COMMANDS
+       Unless  otherwise  noted, each builtin command documented in this section as accepting options preceded by - accepts -- to
+       signify the end of the options.  The :, true, false, and test/[ builtins do not accept options and do not  treat  --  spe‐
+       cially.   The exit, logout, return, break, continue, let, and shift builtins accept and process arguments beginning with -
+       without requiring --.  Other builtins that accept arguments but are not specified as accepting options interpret arguments
+       beginning with - as invalid options and require -- to prevent this interpretation.
+       : [arguments]
+              No  effect; the command does nothing beyond expanding arguments and performing any specified redirections.  The re‐
+              turn status is zero.
+
+        .  filename [arguments]
+       source filename [arguments]
+              Read and execute commands from filename in the current shell environment and return the exit  status  of  the  last
+              command  executed  from filename.  If filename does not contain a slash, filenames in PATH are used to find the di‐
+              rectory containing filename.  The file searched for in PATH need not be executable.  When  bash  is  not  in  posix
+              mode, the current directory is searched if no file is found in PATH.  If the sourcepath option to the shopt builtin
+              command is turned off, the PATH is not searched.  If any arguments are supplied, they become the positional parame‐
+              ters  when  filename is executed.  Otherwise the positional parameters are unchanged.  If the -T option is enabled,
+              source inherits any trap on DEBUG; if it is not, any DEBUG trap string is saved and restored  around  the  call  to
+              source, and source unsets the DEBUG trap while it executes.  If -T is not set, and the sourced file changes the DE‐
+              BUG trap, the new value is retained when source completes.  The return status is the status of the last command ex‐
+              ited within the script (0 if no commands are executed), and false if filename is not found or cannot be read.
+
+       alias [-p] [name[=value] ...]
+              Alias  with  no arguments or with the -p option prints the list of aliases in the form alias name=value on standard
+              output.  When arguments are supplied, an alias is defined for each name whose value is given.  A trailing space  in
+              value  causes  the next word to be checked for alias substitution when the alias is expanded.  For each name in the
+              argument list for which no value is supplied, the name and value of the alias is printed.  Alias returns  true  un‐
+              less a name is given for which no alias has been defined.
+
+       bg [jobspec ...]
+              Resume  each suspended job jobspec in the background, as if it had been started with &.  If jobspec is not present,
+              the shell's notion of the current job is used.  bg jobspec returns 0 unless run when job control  is  disabled  or,
+              when run with job control enabled, any specified jobspec was not found or was started without job control.
+
+       bind [-m keymap] [-lpsvPSVX]
+       bind [-m keymap] [-q function] [-u function] [-r keyseq]
+       bind [-m keymap] -f filename
+       bind [-m keymap] -x keyseq:shell-command
+       bind [-m keymap] keyseq:function-name
+       bind [-m keymap] keyseq:readline-command
+              Display  current  readline key and function bindings, bind a key sequence to a readline function or macro, or set a
+              readline variable.  Each non-option argument is a command as it would appear in .inputrc, but each binding or  com‐
+              mand  must be passed as a separate argument; e.g., '"\C-x\C-r": re-read-init-file'.  Options, if supplied, have the
+              following meanings:
+              -m keymap
+                     Use keymap as the keymap to be affected by the subsequent bindings.   Acceptable  keymap  names  are  emacs,
+                     emacs-standard, emacs-meta, emacs-ctlx, vi, vi-move, vi-command, and vi-insert.  vi is equivalent to vi-com‐
+                     mand (vi-move is also a synonym); emacs is equivalent to emacs-standard.
+              -l     List the names of all readline functions.
+              -p     Display readline function names and bindings in such a way that they can be re-read.
+              -P     List current readline function names and bindings.
+              -s     Display readline key sequences bound to macros and the strings they output in such a way that  they  can  be
+                     re-read.
+              -S     Display readline key sequences bound to macros and the strings they output.
+              -v     Display readline variable names and values in such a way that they can be re-read.
+              -V     List current readline variable names and values.
+              -f filename
+                     Read key bindings from filename.
+              -q function
+                     Query about which keys invoke the named function.
+              -u function
+                     Unbind all keys bound to the named function.
+              -r keyseq
+                     Remove any current binding for keyseq.
+              -x keyseq:shell-command
+                     Cause  shell-command  to  be executed whenever keyseq is entered.  When shell-command is executed, the shell
+                     sets the READLINE_LINE variable to the contents of the readline line buffer and the READLINE_POINT  variable
+                     to  the current location of the insertion point.  If the executed command changes the value of READLINE_LINE
+                     or READLINE_POINT, those new values will be reflected in the editing state.
+              -X     List all key sequences bound to shell commands and the associated commands in a format that can be reused as
+                     input.
+
+              The return value is 0 unless an unrecognized option is given or an error occurred.
+
+       break [n]
+              Exit  from within a for, while, until, or select loop.  If n is specified, break n levels.  n must be ≥ 1.  If n is
+              greater than the number of enclosing loops, all enclosing loops are exited.  The return value is 0 unless n is  not
+              greater than or equal to 1.
+
+       builtin shell-builtin [arguments]
+              Execute  the specified shell builtin, passing it arguments, and return its exit status.  This is useful when defin‐
+              ing a function whose name is the same as a shell builtin, retaining the functionality of  the  builtin  within  the
+              function.   The  cd  builtin  is commonly redefined this way.  The return status is false if shell-builtin is not a
+              shell builtin command.
+
+       caller [expr]
+              Returns the context of any active subroutine call (a shell function or a script  executed  with  the  .  or  source
+              builtins).  Without expr, caller displays the line number and source filename of the current subroutine call.  If a
+              non-negative integer is supplied as expr, caller displays the line number, subroutine name, and source file  corre‐
+              sponding to that position in the current execution call stack.  This extra information may be used, for example, to
+              print a stack trace.  The current frame is frame 0.  The return value is 0 unless the shell is not executing a sub‐
+              routine call or expr does not correspond to a valid position in the call stack.
+
+       cd [-L|[-P [-e]] [-@]] [dir]
+              Change  the current directory to dir.  if dir is not supplied, the value of the HOME shell variable is the default.
+              Any additional arguments following dir are ignored.  The variable CDPATH defines the search path for the  directory
+              containing dir: each directory name in CDPATH is searched for dir.  Alternative directory names in CDPATH are sepa‐
+              rated by a colon (:).  A null directory name in CDPATH is the same as the current directory, i.e., ``.''.   If  dir
+              begins  with a slash (/), then CDPATH is not used.  The -P option causes cd to use the physical directory structure
+              by resolving symbolic links while traversing dir and before processing instances of .. in dir (see also the -P  op‐
+              tion  to  the  set builtin command); the -L option forces symbolic links to be followed by resolving the link after
+              processing instances of .. in dir.  If .. appears in dir, it is processed  by  removing  the  immediately  previous
+              pathname  component  from  dir, back to a slash or the beginning of dir.  If the -e option is supplied with -P, and
+              the current working directory cannot be successfully determined after a successful directory change, cd will return
+              an unsuccessful status.  On systems that support it, the -@ option presents the extended attributes associated with
+              a file as a directory.  An argument of - is converted to $OLDPWD before the directory change is  attempted.   If  a
+              non-empty  directory  name from CDPATH is used, or if - is the first argument, and the directory change is success‐
+              ful, the absolute pathname of the new working directory is written to the standard output.   The  return  value  is
+              true if the directory was successfully changed; false otherwise.
+
+       command [-pVv] command [arg ...]
+              Run command with args suppressing the normal shell function lookup.  Only builtin commands or commands found in the
+              PATH are executed.  If the -p option is given, the search for command is performed using a default value  for  PATH
+              that is guaranteed to find all of the standard utilities.  If either the -V or -v option is supplied, a description
+              of command is printed.  The -v option causes a single word indicating the command or filename used to  invoke  com‐
+              mand  to  be displayed; the -V option produces a more verbose description.  If the -V or -v option is supplied, the
+              exit status is 0 if command was found, and 1 if not.  If neither option is supplied and an error occurred  or  com‐
+              mand cannot be found, the exit status is 127.  Otherwise, the exit status of the command builtin is the exit status
+              of command.
+
+       compgen [option] [word]
+              Generate possible completion matches for word according to the options, which may be any  option  accepted  by  the
+              complete  builtin with the exception of -p and -r, and write the matches to the standard output.  When using the -F
+              or -C options, the various shell variables set by the programmable completion facilities, while available, will not
+              have useful values.
+
+              The  matches  will  be generated in the same way as if the programmable completion code had generated them directly
+              from a completion specification with the same flags.  If word is specified, only those  completions  matching  word
+              will be displayed.
+
+              The return value is true unless an invalid option is supplied, or no matches were generated.
+
+       complete [-abcdefgjksuv] [-o comp-option] [-DEI] [-A action] [-G globpat] [-W wordlist] [-F function] [-C command]
+              [-X filterpat] [-P prefix] [-S suffix] name [name ...]
+       complete -pr [-DEI] [name ...]
+              Specify  how  arguments  to each name should be completed.  If the -p option is supplied, or if no options are sup‐
+              plied, existing completion specifications are printed in a way that allows them to be reused as input.  The -r  op‐
+              tion removes a completion specification for each name, or, if no names are supplied, all completion specifications.
+              The -D option indicates that other supplied options and actions should apply to the ``default'' command completion;
+              that  is, completion attempted on a command for which no completion has previously been defined.  The -E option in‐
+              dicates that other supplied options and actions should apply to ``empty'' command completion; that  is,  completion
+              attempted on a blank line.  The -I option indicates that other supplied options and actions should apply to comple‐
+              tion on the inital non-assignment word on the line, or after a command delimiter such as ; or |, which  is  usually
+              command  name  completion.  If multiple options are supplied, the -D option takes precedence over -E, and both take
+              precedence over -I.  If any of -D, -E, or -I are supplied, any other name arguments are ignored; these  completions
+              only apply to the case specified by the option.
+
+              The  process of applying these completion specifications when word completion is attempted is described above under
+              Programmable Completion.
+
+              Other options, if specified, have the following meanings.  The arguments to the -G, -W, and  -X  options  (and,  if
+              necessary,  the  -P  and -S options) should be quoted to protect them from expansion before the complete builtin is
+              invoked.
+              -o comp-option
+                      The comp-option controls several aspects of the compspec's behavior beyond the simple generation of comple‐
+                      tions.  comp-option may be one of:
+                      bashdefault
+                              Perform the rest of the default bash completions if the compspec generates no matches.
+                      default Use readline's default filename completion if the compspec generates no matches.
+                      dirnames
+                              Perform directory name completion if the compspec generates no matches.
+                      filenames
+                              Tell  readline  that the compspec generates filenames, so it can perform any filename-specific pro‐
+                              cessing (like adding a slash to directory names, quoting special characters, or suppressing  trail‐
+                              ing spaces).  Intended to be used with shell functions.
+                      noquote Tell  readline not to quote the completed words if they are filenames (quoting filenames is the de‐
+                              fault).
+                      nosort  Tell readline not to sort the list of possible completions alphabetically.
+                      nospace Tell readline not to append a space (the default) to words completed at the end of the line.
+                      plusdirs
+                              After any matches defined by the compspec are generated, directory name completion is attempted and
+                              any matches are added to the results of the other actions.
+              -A action
+                      The action may be one of the following to generate a list of possible completions:
+                      alias   Alias names.  May also be specified as -a.
+                      arrayvar
+                              Array variable names.
+                      binding Readline key binding names.
+                      builtin Names of shell builtin commands.  May also be specified as -b.
+                      command Command names.  May also be specified as -c.
+                      directory
+                              Directory names.  May also be specified as -d.
+                      disabled
+                              Names of disabled shell builtins.
+                      enabled Names of enabled shell builtins.
+                      export  Names of exported shell variables.  May also be specified as -e.
+                      file    File names.  May also be specified as -f.
+                      function
+                              Names of shell functions.
+                      group   Group names.  May also be specified as -g.
+                      helptopic
+                              Help topics as accepted by the help builtin.
+                      hostname
+                              Hostnames, as taken from the file specified by the HOSTFILE shell variable.
+                      job     Job names, if job control is active.  May also be specified as -j.
+                      keyword Shell reserved words.  May also be specified as -k.
+                      running Names of running jobs, if job control is active.
+                      service Service names.  May also be specified as -s.
+                      setopt  Valid arguments for the -o option to the set builtin.
+                      shopt   Shell option names as accepted by the shopt builtin.
+                      signal  Signal names.
+                      stopped Names of stopped jobs, if job control is active.
+                      user    User names.  May also be specified as -u.
+                      variable
+                              Names of all shell variables.  May also be specified as -v.
+              -C command
+                      command is executed in a subshell environment, and its output is used as the possible completions.
+              -F function
+                      The  shell  function function is executed in the current shell environment.  When the function is executed,
+                      the first argument ($1) is the name of the command whose arguments are being completed, the second argument
+                      ($2)  is  the  word  being completed, and the third argument ($3) is the word preceding the word being com‐
+                      pleted on the current command line.  When it finishes, the possible  completions  are  retrieved  from  the
+                      value of the COMPREPLY array variable.
+              -G globpat
+                      The pathname expansion pattern globpat is expanded to generate the possible completions.
+              -P prefix
+                      prefix is added at the beginning of each possible completion after all other options have been applied.
+              -S suffix
+                      suffix is appended to each possible completion after all other options have been applied.
+              -W wordlist
+                      The  wordlist  is  split using the characters in the IFS special variable as delimiters, and each resultant
+                      word is expanded.  Shell quoting is honored within wordlist, in order to provide a mechanism for the  words
+                      to  contain  shell metacharacters or characters in the value of IFS.  The possible completions are the mem‐
+                      bers of the resultant list which match the word being completed.
+              -X filterpat
+                      filterpat is a pattern as used for pathname expansion.  It is applied to the list of  possible  completions
+                      generated  by  the  preceding options and arguments, and each completion matching filterpat is removed from
+                      the list.  A leading ! in filterpat negates the pattern; in this case, any completion not matching  filter‐
+                      pat is removed.
+
+              The  return value is true unless an invalid option is supplied, an option other than -p or -r is supplied without a
+              name argument, an attempt is made to remove a completion specification for a name for which  no  specification  ex‐
+              ists, or an error occurs adding a completion specification.
+
+       compopt [-o option] [-DEI] [+o option] [name]
+              Modify  completion  options for each name according to the options, or for the currently-executing completion if no
+              names are supplied.  If no options are given, display the completion options for each name or the  current  comple‐
+              tion.  The possible values of option are those valid for the complete builtin described above.  The -D option indi‐
+              cates that other supplied options should apply to the ``default'' command completion; that is, completion attempted
+              on  a command for which no completion has previously been defined.  The -E option indicates that other supplied op‐
+              tions should apply to ``empty'' command completion; that is, completion attempted on a blank line.  The  -I  option
+              indicates  that other supplied options should apply to completion on the inital non-assignment word on the line, or
+              after a command delimiter such as ; or |, which is usually command name completion.
+
+              The return value is true unless an invalid option is supplied, an attempt is made to modify the options for a  name
+              for which no completion specification exists, or an output error occurs.
+
+       continue [n]
+              Resume the next iteration of the enclosing for, while, until, or select loop.  If n is specified, resume at the nth
+              enclosing loop.  n must be ≥ 1.  If n is greater than the number of enclosing loops, the last enclosing  loop  (the
+              ``top-level'' loop) is resumed.  The return value is 0 unless n is not greater than or equal to 1.
+
+       declare [-aAfFgilnrtux] [-p] [name[=value] ...]
+       typeset [-aAfFgilnrtux] [-p] [name[=value] ...]
+              Declare variables and/or give them attributes.  If no names are given then display the values of variables.  The -p
+              option will display the attributes and values of each name.  When -p is used with name  arguments,  additional  op‐
+              tions,  other  than  -f  and  -F, are ignored.  When -p is supplied without name arguments, it will display the at‐
+              tributes and values of all variables having the attributes specified by the additional options.  If  no  other  op‐
+              tions  are  supplied with -p, declare will display the attributes and values of all shell variables.  The -f option
+              will restrict the display to shell functions.  The -F option inhibits the display of function definitions; only the
+              function  name  and  attributes  are printed.  If the extdebug shell option is enabled using shopt, the source file
+              name and line number where each name is defined are displayed as well.  The -F option implies -f.   The  -g  option
+              forces  variables to be created or modified at the global scope, even when declare is executed in a shell function.
+              It is ignored in all other cases.  The following options can be used to restrict output to variables with the spec‐
+              ified attribute or to give variables attributes:
+              -a     Each name is an indexed array variable (see Arrays above).
+              -A     Each name is an associative array variable (see Arrays above).
+              -f     Use function names only.
+              -i     The  variable is treated as an integer; arithmetic evaluation (see ARITHMETIC EVALUATION above) is performed
+                     when the variable is assigned a value.
+              -l     When the variable is assigned a value, all upper-case characters are converted to  lower-case.   The  upper-
+                     case attribute is disabled.
+              -n     Give  each  name the nameref attribute, making it a name reference to another variable.  That other variable
+                     is defined by the value of name.  All references, assignments, and attribute modifications to  name,  except
+                     those  using  or changing the -n attribute itself, are performed on the variable referenced by name's value.
+                     The nameref attribute cannot be applied to array variables.
+              -r     Make names readonly.  These names cannot then be assigned values by subsequent assignment statements or  un‐
+                     set.
+              -t     Give  each  name  the trace attribute.  Traced functions inherit the DEBUG and RETURN traps from the calling
+                     shell.  The trace attribute has no special meaning for variables.
+              -u     When the variable is assigned a value, all lower-case characters are converted to  upper-case.   The  lower-
+                     case attribute is disabled.
+              -x     Mark names for export to subsequent commands via the environment.
+
+              Using `+' instead of `-' turns off the attribute instead, with the exceptions that +a and +A may not be used to de‐
+              stroy array variables and +r will not remove the readonly attribute.  When used in a function, declare and  typeset
+              make  each name local, as with the local command, unless the -g option is supplied.  If a variable name is followed
+              by =value, the value of the variable is set to value.  When using -a or -A and the compound  assignment  syntax  to
+              create array variables, additional attributes do not take effect until subsequent assignments.  The return value is
+              0 unless an invalid option is encountered, an attempt is made to define a function using ``-f foo=bar'', an attempt
+              is made to assign a value to a readonly variable, an attempt is made to assign a value to an array variable without
+              using the compound assignment syntax (see Arrays above), one of the names is not a valid shell  variable  name,  an
+              attempt  is  made  to turn off readonly status for a readonly variable, an attempt is made to turn off array status
+              for an array variable, or an attempt is made to display a non-existent function with -f.
+
+       dirs [-clpv] [+n] [-n]
+              Without options, displays the list of currently remembered directories.  The default display is on  a  single  line
+              with  directory names separated by spaces.  Directories are added to the list with the pushd command; the popd com‐
+              mand removes entries from the list.  The current directory is always the first directory in the stack.
+              -c     Clears the directory stack by deleting all of the entries.
+              -l     Produces a listing using full pathnames; the default listing format uses a tilde to denote the  home  direc‐
+                     tory.
+              -p     Print the directory stack with one entry per line.
+              -v     Print the directory stack with one entry per line, prefixing each entry with its index in the stack.
+              +n     Displays the nth entry counting from the left of the list shown by dirs when invoked without options, start‐
+                     ing with zero.
+              -n     Displays the nth entry counting from the right of the list shown  by  dirs  when  invoked  without  options,
+                     starting with zero.
+
+              The return value is 0 unless an invalid option is supplied or n indexes beyond the end of the directory stack.
+
+       disown [-ar] [-h] [jobspec ... | pid ... ]
+              Without  options, remove each jobspec from the table of active jobs.  If jobspec is not present, and neither the -a
+              nor the -r option is supplied, the current job is used.  If the -h option is given, each  jobspec  is  not  removed
+              from  the table, but is marked so that SIGHUP is not sent to the job if the shell receives a SIGHUP.  If no jobspec
+              is supplied, the -a option means to remove or mark all jobs; the -r option without a jobspec argument restricts op‐
+              eration to running jobs.  The return value is 0 unless a jobspec does not specify a valid job.
+
+       echo [-neE] [arg ...]
+              Output  the  args, separated by spaces, followed by a newline.  The return status is 0 unless a write error occurs.
+              If -n is specified, the trailing newline is suppressed.  If the -e option is given, interpretation of the following
+              backslash-escaped  characters  is  enabled.   The -E option disables the interpretation of these escape characters,
+              even on systems where they are interpreted by default.  The xpg_echo shell option may be used to dynamically deter‐
+              mine whether or not echo expands these escape characters by default.  echo does not interpret -- to mean the end of
+              options.  echo interprets the following escape sequences:
+              \a     alert (bell)
+              \b     backspace
+              \c     suppress further output
+              \e
+              \E     an escape character
+              \f     form feed
+              \n     new line
+              \r     carriage return
+              \t     horizontal tab
+              \v     vertical tab
+              \\     backslash
+              \0nnn  the eight-bit character whose value is the octal value nnn (zero to three octal digits)
+              \xHH   the eight-bit character whose value is the hexadecimal value HH (one or two hex digits)
+              \uHHHH the Unicode (ISO/IEC 10646) character whose value is the hexadecimal value HHHH (one to four hex digits)
+              \UHHHHHHHH
+                     the Unicode (ISO/IEC 10646) character whose value is the hexadecimal value HHHHHHHH (one to eight  hex  dig‐
+                     its)
+
+       enable [-a] [-dnps] [-f filename] [name ...]
+              Enable  and disable builtin shell commands.  Disabling a builtin allows a disk command which has the same name as a
+              shell builtin to be executed without specifying a full pathname,  even  though  the  shell  normally  searches  for
+              builtins  before  disk commands.  If -n is used, each name is disabled; otherwise, names are enabled.  For example,
+              to use the test binary found via the PATH instead of the shell builtin version, run ``enable -n test''.  The -f op‐
+              tion  means to load the new builtin command name from shared object filename, on systems that support dynamic load‐
+              ing.  The -d option will delete a builtin previously loaded with -f.  If no name arguments are given, or if the  -p
+              option  is supplied, a list of shell builtins is printed.  With no other option arguments, the list consists of all
+              enabled shell builtins.  If -n is supplied, only disabled builtins are  printed.   If  -a  is  supplied,  the  list
+              printed includes all builtins, with an indication of whether or not each is enabled.  If -s is supplied, the output
+              is restricted to the POSIX special builtins.  The return value is 0 unless a name is not a shell builtin  or  there
+              is an error loading a new builtin from a shared object.
+
+       eval [arg ...]
+              The  args  are read and concatenated together into a single command.  This command is then read and executed by the
+              shell, and its exit status is returned as the value of eval.  If there are no args, or only  null  arguments,  eval
+              returns 0.
+
+       exec [-cl] [-a name] [command [arguments]]
+              If  command is specified, it replaces the shell.  No new process is created.  The arguments become the arguments to
+              command.  If the -l option is supplied, the shell places a dash at the beginning of the zeroth argument  passed  to
+              command.   This  is what login(1) does.  The -c option causes command to be executed with an empty environment.  If
+              -a is supplied, the shell passes name as the zeroth argument to the executed command.  If command  cannot  be  exe‐
+              cuted  for  some reason, a non-interactive shell exits, unless the execfail shell option is enabled.  In that case,
+              it returns failure.  An interactive shell returns failure if the file cannot be executed.  A subshell exits  uncon‐
+              ditionally  if exec fails.  If command is not specified, any redirections take effect in the current shell, and the
+              return status is 0.  If there is a redirection error, the return status is 1.
+
+       exit [n]
+              Cause the shell to exit with a status of n.  If n is omitted, the exit status is that of the last command executed.
+              A trap on EXIT is executed before the shell terminates.
+
+       export [-fn] [name[=word]] ...
+       export -p
+              The supplied names are marked for automatic export to the environment of subsequently executed commands.  If the -f
+              option is given, the names refer to functions.  If no names are given, or if the -p option is supplied, a  list  of
+              names of all exported variables is printed.  The -n option causes the export property to be removed from each name.
+              If a variable name is followed by =word, the value of the variable is set to word.  export returns an  exit  status
+              of  0  unless  an invalid option is encountered, one of the names is not a valid shell variable name, or -f is sup‐
+              plied with a name that is not a function.
+
+       fc [-e ename] [-lnr] [first] [last]
+       fc -s [pat=rep] [cmd]
+              The first form selects a range of commands from first to last from the history list and displays or edits  and  re-
+              executes them.  First and last may be specified as a string (to locate the last command beginning with that string)
+              or as a number (an index into the history list, where a negative number is used as an offset from the current  com‐
+              mand number).  If last is not specified, it is set to the current command for listing (so that ``fc -l -10'' prints
+              the last 10 commands) and to first otherwise.  If first is not specified, it is set to  the  previous  command  for
+              editing and -16 for listing.
+
+              The  -n  option suppresses the command numbers when listing.  The -r option reverses the order of the commands.  If
+              the -l option is given, the commands are listed on standard output.  Otherwise, the editor given by  ename  is  in‐
+              voked  on  a  file containing those commands.  If ename is not given, the value of the FCEDIT variable is used, and
+              the value of EDITOR if FCEDIT is not set.  If neither variable is set, vi is used.  When editing is  complete,  the
+              edited commands are echoed and executed.
+
+              In  the  second form, command is re-executed after each instance of pat is replaced by rep.  Command is interpreted
+              the same as first above.  A useful alias to use with this is ``r="fc -s"'', so that typing ``r cc'' runs  the  last
+              command beginning with ``cc'' and typing ``r'' re-executes the last command.
+
+              If  the  first form is used, the return value is 0 unless an invalid option is encountered or first or last specify
+              history lines out of range.  If the -e option is supplied, the return value is the value of the last  command  exe‐
+              cuted  or  failure  if an error occurs with the temporary file of commands.  If the second form is used, the return
+              status is that of the command re-executed, unless cmd does not specify a valid history line, in which case  fc  re‐
+              turns failure.
+
+       fg [jobspec]
+              Resume  jobspec  in  the foreground, and make it the current job.  If jobspec is not present, the shell's notion of
+              the current job is used.  The return value is that of the command placed into the foreground,  or  failure  if  run
+              when job control is disabled or, when run with job control enabled, if jobspec does not specify a valid job or job‐
+              spec specifies a job that was started without job control.
+
+       getopts optstring name [args]
+              getopts is used by shell procedures to parse positional parameters.  optstring contains the option characters to be
+              recognized; if a character is followed by a colon, the option is expected to have an argument, which should be sep‐
+              arated from it by white space.  The colon and question mark characters may not be used as option characters.   Each
+              time it is invoked, getopts places the next option in the shell variable name, initializing name if it does not ex‐
+              ist, and the index of the next argument to be processed into the variable OPTIND.  OPTIND is initialized to 1  each
+              time  the  shell  or  a shell script is invoked.  When an option requires an argument, getopts places that argument
+              into the variable OPTARG.  The shell does not reset OPTIND automatically; it must be manually reset between  multi‐
+              ple calls to getopts within the same shell invocation if a new set of parameters is to be used.
+
+              When  the end of options is encountered, getopts exits with a return value greater than zero.  OPTIND is set to the
+              index of the first non-option argument, and name is set to ?.
+
+              getopts normally parses the positional parameters, but if more arguments are given in args,  getopts  parses  those
+              instead.
+
+              getopts  can  report errors in two ways.  If the first character of optstring is a colon, silent error reporting is
+              used.  In normal operation, diagnostic messages are printed when invalid options or missing  option  arguments  are
+              encountered.   If the variable OPTERR is set to 0, no error messages will be displayed, even if the first character
+              of optstring is not a colon.
+
+              If an invalid option is seen, getopts places ? into name and, if not silent, prints an error message and unsets OP‐
+              TARG.  If getopts is silent, the option character found is placed in OPTARG and no diagnostic message is printed.
+
+              If  a  required  argument is not found, and getopts is not silent, a question mark (?) is placed in name, OPTARG is
+              unset, and a diagnostic message is printed.  If getopts is silent, then a colon (:) is placed in name and OPTARG is
+              set to the option character found.
+
+              getopts  returns  true if an option, specified or unspecified, is found.  It returns false if the end of options is
+              encountered or an error occurs.
+
+       hash [-lr] [-p filename] [-dt] [name]
+              Each time hash is invoked, the full pathname of the command name is determined  by  searching  the  directories  in
+              $PATH  and  remembered.   Any  previously-remembered  pathname is discarded.  If the -p option is supplied, no path
+              search is performed, and filename is used as the full filename of the command.  The -r option causes the  shell  to
+              forget  all  remembered  locations.  The -d option causes the shell to forget the remembered location of each name.
+              If the -t option is supplied, the full pathname to which each name corresponds is printed.  If multiple name  argu‐
+              ments are supplied with -t, the name is printed before the hashed full pathname.  The -l option causes output to be
+              displayed in a format that may be reused as input.  If no arguments are given, or if only -l is supplied,  informa‐
+              tion  about remembered commands is printed.  The return status is true unless a name is not found or an invalid op‐
+              tion is supplied.
+
+       help [-dms] [pattern]
+              Display helpful information about builtin commands.  If pattern is specified, help gives detailed help on all  com‐
+              mands matching pattern; otherwise help for all the builtins and shell control structures is printed.
+              -d     Display a short description of each pattern
+              -m     Display the description of each pattern in a manpage-like format
+              -s     Display only a short usage synopsis for each pattern
+
+              The return status is 0 unless no command matches pattern.
+
+       history [n]
+       history -c
+       history -d offset
+       history -d start-end
+       history -anrw [filename]
+       history -p arg [arg ...]
+       history -s arg [arg ...]
+              With no options, display the command history list with line numbers.  Lines listed with a * have been modified.  An
+              argument of n lists only the last n lines.  If the shell variable HISTTIMEFORMAT is set and not null, it is used as
+              a  format string for strftime(3) to display the time stamp associated with each displayed history entry.  No inter‐
+              vening blank is printed between the formatted time stamp and the history line.  If filename is supplied, it is used
+              as  the  name of the history file; if not, the value of HISTFILE is used.  Options, if supplied, have the following
+              meanings:
+              -c     Clear the history list by deleting all the entries.
+              -d offset
+                     Delete the history entry at position offset.  If offset is negative, it is interpreted as  relative  to  one
+                     greater  than  the last history position, so negative indices count back from the end of the history, and an
+                     index of -1 refers to the current history -d command.
+              -d start-end
+                     Delete the history entries between positions start and end, inclusive.  Positive  and  negative  values  for
+                     start and end are interpreted as described above.
+              -a     Append  the  ``new'' history lines to the history file.  These are history lines entered since the beginning
+                     of the current bash session, but not already appended to the history file.
+              -n     Read the history lines not already read from the history file into the  current  history  list.   These  are
+                     lines appended to the history file since the beginning of the current bash session.
+              -r     Read the contents of the history file and append them to the current history list.
+              -w     Write the current history list to the history file, overwriting the history file's contents.
+              -p     Perform  history substitution on the following args and display the result on the standard output.  Does not
+                     store the results in the history list.  Each arg must be quoted to disable normal history expansion.
+              -s     Store the args in the history list as a single entry.  The last command in the history list is  removed  be‐
+                     fore the args are added.
+
+              If  the HISTTIMEFORMAT variable is set, the time stamp information associated with each history entry is written to
+              the history file, marked with the history comment character.  When the history file is read, lines  beginning  with
+              the  history comment character followed immediately by a digit are interpreted as timestamps for the following his‐
+              tory entry.  The return value is 0 unless an invalid option is encountered, an error occurs while reading or  writ‐
+              ing  the  history file, an invalid offset is supplied as an argument to -d, or the history expansion supplied as an
+              argument to -p fails.
+
+       jobs [-lnprs] [ jobspec ... ]
+       jobs -x command [ args ... ]
+              The first form lists the active jobs.  The options have the following meanings:
+              -l     List process IDs in addition to the normal information.
+              -n     Display information only about jobs that have changed status since the user was last notified of their  sta‐
+                     tus.
+              -p     List only the process ID of the job's process group leader.
+              -r     Display only running jobs.
+              -s     Display only stopped jobs.
+
+              If  jobspec is given, output is restricted to information about that job.  The return status is 0 unless an invalid
+              option is encountered or an invalid jobspec is supplied.
+
+              If the -x option is supplied, jobs replaces any jobspec found in command or args  with  the  corresponding  process
+              group ID, and executes command passing it args, returning its exit status.
+
+       kill [-s sigspec | -n signum | -sigspec] [pid | jobspec] ...
+       kill -l|-L [sigspec | exit_status]
+              Send  the signal named by sigspec or signum to the processes named by pid or jobspec.  sigspec is either a case-in‐
+              sensitive signal name such as SIGKILL (with or without the SIG prefix) or a signal number; signum is a signal  num‐
+              ber.   If sigspec is not present, then SIGTERM is assumed.  An argument of -l lists the signal names.  If any argu‐
+              ments are supplied when -l is given, the names of the signals corresponding to the arguments are  listed,  and  the
+              return  status is 0.  The exit_status argument to -l is a number specifying either a signal number or the exit sta‐
+              tus of a process terminated by a signal.  The -L option is equivalent to -l.  kill returns true  if  at  least  one
+              signal was successfully sent, or false if an error occurs or an invalid option is encountered.
+
+       let arg [arg ...]
+              Each  arg is an arithmetic expression to be evaluated (see ARITHMETIC EVALUATION above).  If the last arg evaluates
+              to 0, let returns 1; 0 is returned otherwise.
+
+       local [option] [name[=value] ... | - ]
+              For each argument, a local variable named name is created, and assigned value.  The option can be any  of  the  op‐
+              tions  accepted  by  declare.   When local is used within a function, it causes the variable name to have a visible
+              scope restricted to that function and its children.  If name is -, the set of shell options is made  local  to  the
+              function in which local is invoked: shell options changed using the set builtin inside the function are restored to
+              their original values when the function returns.  With no operands, local writes a list of local variables  to  the
+              standard  output.   It is an error to use local when not within a function.  The return status is 0 unless local is
+              used outside a function, an invalid name is supplied, or name is a readonly variable.
+
+       logout Exit a login shell.
+
+       mapfile [-d delim] [-n count] [-O origin] [-s count] [-t] [-u fd] [-C callback] [-c quantum] [array]
+       readarray [-d delim] [-n count] [-O origin] [-s count] [-t] [-u fd] [-C callback] [-c quantum] [array]
+              Read lines from the standard input into the indexed array variable array, or from file descriptor fd if the -u  op‐
+              tion is supplied.  The variable MAPFILE is the default array.  Options, if supplied, have the following meanings:
+              -d     The  first  character  of  delim is used to terminate each input line, rather than newline.  If delim is the
+                     empty string, mapfile will terminate a line when it reads a NUL character.
+              -n     Copy at most count lines.  If count is 0, all lines are copied.
+              -O     Begin assigning to array at index origin.  The default index is 0.
+              -s     Discard the first count lines read.
+              -t     Remove a trailing delim (default newline) from each line read.
+              -u     Read lines from file descriptor fd instead of the standard input.
+              -C     Evaluate callback each time quantum lines are read.  The -c option specifies quantum.
+              -c     Specify the number of lines read between each call to callback.
+
+              If -C is specified without -c, the default quantum is 5000.  When callback is evaluated, it is supplied  the  index
+              of  the  next  array  element  to  be assigned and the line to be assigned to that element as additional arguments.
+              callback is evaluated after the line is read but before the array element is assigned.
+
+              If not supplied with an explicit origin, mapfile will clear array before assigning to it.
+
+              mapfile returns successfully unless an invalid  option  or  option  argument  is  supplied,  array  is  invalid  or
+              unassignable, or if array is not an indexed array.
+
+       popd [-n] [+n] [-n]
+              Removes  entries  from  the directory stack.  With no arguments, removes the top directory from the stack, and per‐
+              forms a cd to the new top directory.  Arguments, if supplied, have the following meanings:
+              -n     Suppresses the normal change of directory when removing directories from the stack, so that only  the  stack
+                     is manipulated.
+              +n     Removes  the  nth  entry counting from the left of the list shown by dirs, starting with zero.  For example:
+                     ``popd +0'' removes the first directory, ``popd +1'' the second.
+              -n     Removes the nth entry counting from the right of the list shown by dirs, starting with zero.   For  example:
+                     ``popd -0'' removes the last directory, ``popd -1'' the next to last.
+
+              If  the popd command is successful, a dirs is performed as well, and the return status is 0.  popd returns false if
+              an invalid option is encountered, the directory stack is empty, a non-existent directory stack entry is  specified,
+              or the directory change fails.
+
+       printf [-v var] format [arguments]
+              Write  the  formatted  arguments  to the standard output under the control of the format.  The -v option causes the
+              output to be assigned to the variable var rather than being printed to the standard output.
+
+              The format is a character string which contains three types of objects: plain characters, which are  simply  copied
+              to  standard  output, character escape sequences, which are converted and copied to the standard output, and format
+              specifications, each of which causes printing of the  next  successive  argument.   In  addition  to  the  standard
+              printf(1) format specifications, printf interprets the following extensions:
+              %b     causes printf to expand backslash escape sequences in the corresponding argument in the same way as echo -e.
+              %q     causes printf to output the corresponding argument in a format that can be reused as shell input.
+              %(datefmt)T
+                     causes  printf  to  output  the  date-time  string resulting from using datefmt as a format string for strf‐
+                     time(3).  The corresponding argument is an integer representing the number of seconds since the epoch.   Two
+                     special  argument  values  may be used: -1 represents the current time, and -2 represents the time the shell
+                     was invoked.  If no argument is specified, conversion behaves as if -1 had been given.  This is an exception
+                     to the usual printf behavior.
+
+              Arguments  to  non-string format specifiers are treated as C constants, except that a leading plus or minus sign is
+              allowed, and if the leading character is a single or double quote, the value is the ASCII value  of  the  following
+              character.
+
+              The  format is reused as necessary to consume all of the arguments.  If the format requires more arguments than are
+              supplied, the extra format specifications behave as if a zero value or null string, as appropriate, had  been  sup‐
+              plied.  The return value is zero on success, non-zero on failure.
+
+       pushd [-n] [+n] [-n]
+       pushd [-n] [dir]
+              Adds  a directory to the top of the directory stack, or rotates the stack, making the new top of the stack the cur‐
+              rent working directory.  With no arguments, pushd exchanges the top two directories and returns 0, unless  the  di‐
+              rectory stack is empty.  Arguments, if supplied, have the following meanings:
+              -n     Suppresses the normal change of directory when rotating or adding directories to the stack, so that only the
+                     stack is manipulated.
+              +n     Rotates the stack so that the nth directory (counting from the left of the list shown by dirs, starting with
+                     zero) is at the top.
+              -n     Rotates  the  stack  so  that the nth directory (counting from the right of the list shown by dirs, starting
+                     with zero) is at the top.
+              dir    Adds dir to the directory stack at the top, making it the new current working directory as if  it  had  been
+                     supplied as the argument to the cd builtin.
+
+              If the pushd command is successful, a dirs is performed as well.  If the first form is used, pushd returns 0 unless
+              the cd to dir fails.  With the second form, pushd returns 0 unless the directory stack is empty, a non-existent di‐
+              rectory stack element is specified, or the directory change to the specified new current directory fails.
+
+       pwd [-LP]
+              Print  the  absolute pathname of the current working directory.  The pathname printed contains no symbolic links if
+              the -P option is supplied or the -o physical option to the set builtin command is enabled.  If  the  -L  option  is
+              used, the pathname printed may contain symbolic links.  The return status is 0 unless an error occurs while reading
+              the name of the current directory or an invalid option is supplied.
+
+       read [-ers] [-a aname] [-d delim] [-i text] [-n nchars] [-N nchars] [-p prompt] [-t timeout] [-u fd] [name ...]
+              One line is read from the standard input, or from the file descriptor fd supplied as an argument to the -u  option,
+              split  into  words  as  described above under Word Splitting, and the first word is assigned to the first name, the
+              second word to the second name, and so on.  If there are more words than names, the remaining words and  their  in‐
+              tervening  delimiters  are  assigned  to  the  last name.  If there are fewer words read from the input stream than
+              names, the remaining names are assigned empty values.  The characters in IFS are used to split the line into  words
+              using  the same rules the shell uses for expansion (described above under Word Splitting).  The backslash character
+              (\) may be used to remove any special meaning for the next character read and for line continuation.   Options,  if
+              supplied, have the following meanings:
+              -a aname
+                     The words are assigned to sequential indices of the array variable aname, starting at 0.  aname is unset be‐
+                     fore any new values are assigned.  Other name arguments are ignored.
+              -d delim
+                     The first character of delim is used to terminate the input line, rather than  newline.   If  delim  is  the
+                     empty string, read will terminate a line when it reads a NUL character.
+              -e     If  the  standard input is coming from a terminal, readline (see READLINE above) is used to obtain the line.
+                     Readline uses the current (or default, if line editing was not previously active) editing settings, but uses
+                     Readline's default filename completion.
+              -i text
+                     If readline is being used to read the line, text is placed into the editing buffer before editing begins.
+              -n nchars
+                     read  returns after reading nchars characters rather than waiting for a complete line of input, but honors a
+                     delimiter if fewer than nchars characters are read before the delimiter.
+              -N nchars
+                     read returns after reading exactly nchars characters rather than waiting for a complete line of  input,  un‐
+                     less  EOF  is  encountered or read times out.  Delimiter characters encountered in the input are not treated
+                     specially and do not cause read to return until nchars characters are read.  The result is not split on  the
+                     characters  in IFS; the intent is that the variable is assigned exactly the characters read (with the excep‐
+                     tion of backslash; see the -r option below).
+              -p prompt
+                     Display prompt on standard error, without a trailing newline, before attempting  to  read  any  input.   The
+                     prompt is displayed only if input is coming from a terminal.
+              -r     Backslash does not act as an escape character.  The backslash is considered to be part of the line.  In par‐
+                     ticular, a backslash-newline pair may not then be used as a line continuation.
+              -s     Silent mode.  If input is coming from a terminal, characters are not echoed.
+              -t timeout
+                     Cause read to time out and return failure if a complete line of input (or a specified number of  characters)
+                     is not read within timeout seconds.  timeout may be a decimal number with a fractional portion following the
+                     decimal point.  This option is only effective if read is reading input from a terminal, pipe, or other  spe‐
+                     cial  file; it has no effect when reading from regular files.  If read times out, read saves any partial in‐
+                     put read into the specified variable name.  If timeout is 0, read returns  immediately,  without  trying  to
+                     read any data.  The exit status is 0 if input is available on the specified file descriptor, non-zero other‐
+                     wise.  The exit status is greater than 128 if the timeout is exceeded.
+              -u fd  Read input from file descriptor fd.
+
+              If no names are supplied, the line read is assigned to the variable REPLY.  The exit status is zero, unless end-of-
+              file  is  encountered,  read  times out (in which case the status is greater than 128), a variable assignment error
+              (such as assigning to a readonly variable) occurs, or an invalid file descriptor is supplied as the argument to -u.
+
+       readonly [-aAf] [-p] [name[=word] ...]
+              The given names are marked readonly; the values of these names may not be changed by subsequent assignment.  If the
+              -f  option  is supplied, the functions corresponding to the names are so marked.  The -a option restricts the vari‐
+              ables to indexed arrays; the -A option restricts the variables to associative arrays.  If  both  options  are  sup‐
+              plied,  -A  takes precedence.  If no name arguments are given, or if the -p option is supplied, a list of all read‐
+              only names is printed.  The other options may be used to restrict the output to a subset of  the  set  of  readonly
+              names.  The -p option causes output to be displayed in a format that may be reused as input.  If a variable name is
+              followed by =word, the value of the variable is set to word.  The return status is 0 unless an  invalid  option  is
+              encountered, one of the names is not a valid shell variable name, or -f is supplied with a name that is not a func‐
+              tion.
+
+       return [n]
+              Causes a function to stop executing and return the value specified by n to its caller.  If n is omitted, the return
+              status  is  that  of  the last command executed in the function body.  If return is executed by a trap handler, the
+              last command used to determine the status is the last command executed before the trap handler.  If return is  exe‐
+              cuted  during  a DEBUG trap, the last command used to determine the status is the last command executed by the trap
+              handler before return was invoked.  If return is used outside a function, but during execution of a script by the .
+              (source)  command,  it causes the shell to stop executing that script and return either n or the exit status of the
+              last command executed within the script as the exit status of the script.  If n is supplied, the  return  value  is
+              its  least  significant  8 bits.  The return status is non-zero if return is supplied a non-numeric argument, or is
+              used outside a function and not during execution of a script by . or source.  Any command associated with  the  RE‐
+              TURN trap is executed before execution resumes after the function or script.
+
+       set [--abefhkmnptuvxBCEHPT] [-o option-name] [arg ...]
+       set [+abefhkmnptuvxBCEHPT] [+o option-name] [arg ...]
+              Without  options,  the  name and value of each shell variable are displayed in a format that can be reused as input
+              for setting or resetting the currently-set variables.  Read-only variables cannot be reset.  In  posix  mode,  only
+              shell  variables  are  listed.   The output is sorted according to the current locale.  When options are specified,
+              they set or unset shell attributes.  Any arguments remaining after option processing are treated as values for  the
+              positional  parameters  and  are assigned, in order, to $1, $2, ...  $n.  Options, if specified, have the following
+              meanings:
+              -a      Each variable or function that is created or modified is given the export attribute and marked  for  export
+                      to the environment of subsequent commands.
+              -b      Report  the  status  of terminated background jobs immediately, rather than before the next primary prompt.
+                      This is effective only when job control is enabled.
+              -e      Exit immediately if a pipeline (which may consist of a single simple command), a list, or a  compound  com‐
+                      mand  (see SHELL GRAMMAR above), exits with a non-zero status.  The shell does not exit if the command that
+                      fails is part of the command list immediately following a while or until keyword, part of the test  follow‐
+                      ing  the if or elif reserved words, part of any command executed in a && or || list except the command fol‐
+                      lowing the final && or ||, any command in a pipeline but the last, or if the command's return value is  be‐
+                      ing  inverted with !.  If a compound command other than a subshell returns a non-zero status because a com‐
+                      mand failed while -e was being ignored, the shell does not exit.  A trap on ERR, if set, is executed before
+                      the  shell  exits.   This  option applies to the shell environment and each subshell environment separately
+                      (see COMMAND EXECUTION ENVIRONMENT above), and may cause subshells to exit before executing  all  the  com‐
+                      mands in the subshell.
+
+                      If  a  compound command or shell function executes in a context where -e is being ignored, none of the com‐
+                      mands executed within the compound command or function body will be affected by the -e setting, even if  -e
+                      is  set and a command returns a failure status.  If a compound command or shell function sets -e while exe‐
+                      cuting in a context where -e is ignored, that setting will not have any effect until the  compound  command
+                      or the command containing the function call completes.
+              -f      Disable pathname expansion.
+              -h      Remember the location of commands as they are looked up for execution.  This is enabled by default.
+              -k      All  arguments  in  the form of assignment statements are placed in the environment for a command, not just
+                      those that precede the command name.
+              -m      Monitor mode.  Job control is enabled.  This option is on by default for interactive shells on systems that
+                      support  it (see JOB CONTROL above).  All processes run in a separate process group.  When a background job
+                      completes, the shell prints a line containing its exit status.
+              -n      Read commands but do not execute them.  This may be used to check a shell script for syntax  errors.   This
+                      is ignored by interactive shells.
+              -o option-name
+                      The option-name can be one of the following:
+                      allexport
+                              Same as -a.
+                      braceexpand
+                              Same as -B.
+                      emacs   Use  an  emacs-style  command line editing interface.  This is enabled by default when the shell is
+                              interactive, unless the shell is started with the --noediting option.  This also affects the  edit‐
+                              ing interface used for read -e.
+                      errexit Same as -e.
+                      errtrace
+                              Same as -E.
+                      functrace
+                              Same as -T.
+                      hashall Same as -h.
+                      histexpand
+                              Same as -H.
+                      history Enable command history, as described above under HISTORY.  This option is on by default in interac‐
+                              tive shells.
+                      ignoreeof
+                              The effect is as if the shell command ``IGNOREEOF=10''  had  been  executed  (see  Shell  Variables
+                              above).
+                      keyword Same as -k.
+                      monitor Same as -m.
+                      noclobber
+                              Same as -C.
+                      noexec  Same as -n.
+                      noglob  Same as -f.
+                      nolog   Currently ignored.
+                      notify  Same as -b.
+                      nounset Same as -u.
+                      onecmd  Same as -t.
+                      physical
+                              Same as -P.
+                      pipefail
+                              If  set, the return value of a pipeline is the value of the last (rightmost) command to exit with a
+                              non-zero status, or zero if all commands in the pipeline exit successfully.  This  option  is  dis‐
+                              abled by default.
+                      posix   Change  the  behavior  of bash where the default operation differs from the POSIX standard to match
+                              the standard (posix mode).  See SEE ALSO below for a reference to a document that details how posix
+                              mode affects bash's behavior.
+                      privileged
+                              Same as -p.
+                      verbose Same as -v.
+                      vi      Use  a  vi-style  command line editing interface.  This also affects the editing interface used for
+                              read -e.
+                      xtrace  Same as -x.
+                      If -o is supplied with no option-name, the values of the current options are printed.  If  +o  is  supplied
+                      with  no  option-name, a series of set commands to recreate the current option settings is displayed on the
+                      standard output.
+              -p      Turn on privileged mode.  In this mode, the $ENV and $BASH_ENV files are not processed, shell functions are
+                      not  inherited from the environment, and the SHELLOPTS, BASHOPTS, CDPATH, and GLOBIGNORE variables, if they
+                      appear in the environment, are ignored.  If the shell is started with the effective  user  (group)  id  not
+                      equal  to  the real user (group) id, and the -p option is not supplied, these actions are taken and the ef‐
+                      fective user id is set to the real user id.  If the -p option is supplied at startup, the effective user id
+                      is  not  reset.  Turning this option off causes the effective user and group ids to be set to the real user
+                      and group ids.
+              -t      Exit after reading and executing one command.
+              -u      Treat unset variables and parameters other than the special parameters "@" and "*" as an  error  when  per‐
+                      forming parameter expansion.  If expansion is attempted on an unset variable or parameter, the shell prints
+                      an error message, and, if not interactive, exits with a non-zero status.
+              -v      Print shell input lines as they are read.
+              -x      After expanding each simple command, for command, case command, select command, or arithmetic for  command,
+                      display  the  expanded  value of PS4, followed by the command and its expanded arguments or associated word
+                      list.
+              -B      The shell performs brace expansion (see Brace Expansion above).  This is on by default.
+              -C      If set, bash does not overwrite an existing file with the >, >&, and <> redirection operators.  This may be
+                      overridden when creating output files by using the redirection operator >| instead of >.
+              -E      If  set, any trap on ERR is inherited by shell functions, command substitutions, and commands executed in a
+                      subshell environment.  The ERR trap is normally not inherited in such cases.
+              -H      Enable !  style history substitution.  This option is on by default when the shell is interactive.
+              -P      If set, the shell does not resolve symbolic links when executing commands such as cd that change  the  cur‐
+                      rent  working  directory.   It uses the physical directory structure instead.  By default, bash follows the
+                      logical chain of directories when performing commands which change the current directory.
+              -T      If set, any traps on DEBUG and RETURN are inherited by shell functions, command substitutions, and commands
+                      executed in a subshell environment.  The DEBUG and RETURN traps are normally not inherited in such cases.
+              --      If  no  arguments  follow this option, then the positional parameters are unset.  Otherwise, the positional
+                      parameters are set to the args, even if some of them begin with a -.
+              -       Signal the end of options, cause all remaining args to be assigned to the positional  parameters.   The  -x
+                      and -v options are turned off.  If there are no args, the positional parameters remain unchanged.
+
+              The  options  are  off  by default unless otherwise noted.  Using + rather than - causes these options to be turned
+              off.  The options can also be specified as arguments to an invocation of the shell.  The current set of options may
+              be found in $-.  The return status is always true unless an invalid option is encountered.
+
+       shift [n]
+              The  positional  parameters  from  n+1 ... are renamed to $1 ....  Parameters represented by the numbers $# down to
+              $#-n+1 are unset.  n must be a non-negative number less than or equal to $#.  If n is 0, no parameters are changed.
+              If n is not given, it is assumed to be 1.  If n is greater than $#, the positional parameters are not changed.  The
+              return status is greater than zero if n is greater than $# or less than zero; otherwise 0.
+
+       shopt [-pqsu] [-o] [optname ...]
+              Toggle the values of settings controlling optional shell behavior.  The settings can be either those listed  below,
+              or,  if  the -o option is used, those available with the -o option to the set builtin command.  With no options, or
+              with the -p option, a list of all settable options is displayed, with an indication of whether or not each is  set;
+              if  optnames  are supplied, the output is restricted to those options.  The -p option causes output to be displayed
+              in a form that may be reused as input.  Other options have the following meanings:
+              -s     Enable (set) each optname.
+              -u     Disable (unset) each optname.
+              -q     Suppresses normal output (quiet mode); the return status indicates whether the optname is set or unset.   If
+                     multiple  optname  arguments  are given with -q, the return status is zero if all optnames are enabled; non-
+                     zero otherwise.
+              -o     Restricts the values of optname to be those defined for the -o option to the set builtin.
+
+              If either -s or -u is used with no optname arguments, shopt shows only those options which are set  or  unset,  re‐
+              spectively.  Unless otherwise noted, the shopt options are disabled (unset) by default.
+
+              The  return  status  when listing options is zero if all optnames are enabled, non-zero otherwise.  When setting or
+              unsetting options, the return status is zero unless an optname is not a valid shell option.
+
+              The list of shopt options is:
+
+              assoc_expand_once
+                      If set, the shell suppresses multiple evaluation of associative array subscripts during arithmetic  expres‐
+                      sion  evaluation,  while  executing  builtins  that  can  perform variable assignments, and while executing
+                      builtins that perform array dereferencing.
+              autocd  If set, a command name that is the name of a directory is executed as if it were the  argument  to  the  cd
+                      command.  This option is only used by interactive shells.
+              cdable_vars
+                      If  set, an argument to the cd builtin command that is not a directory is assumed to be the name of a vari‐
+                      able whose value is the directory to change to.
+              cdspell If set, minor errors in the spelling of a directory component in a cd command will be corrected.   The  er‐
+                      rors  checked for are transposed characters, a missing character, and one character too many.  If a correc‐
+                      tion is found, the corrected filename is printed, and the command proceeds.  This option is  only  used  by
+                      interactive shells.
+              checkhash
+                      If set, bash checks that a command found in the hash table exists before trying to execute it.  If a hashed
+                      command no longer exists, a normal path search is performed.
+              checkjobs
+                      If set, bash lists the status of any stopped and running jobs before exiting an interactive shell.  If  any
+                      jobs are running, this causes the exit to be deferred until a second exit is attempted without an interven‐
+                      ing command (see JOB CONTROL above).  The shell always postpones exiting if any jobs are stopped.
+              checkwinsize
+                      If set, bash checks the window size after each external (non-builtin) command and,  if  necessary,  updates
+                      the values of LINES and COLUMNS.  This option is enabled by default.
+              cmdhist If  set, bash attempts to save all lines of a multiple-line command in the same history entry.  This allows
+                      easy re-editing of multi-line commands.  This option is enabled by default, but only has an effect if  com‐
+                      mand history is enabled, as described above under HISTORY.
+              compat31
+                      If  set, bash changes its behavior to that of version 3.1 with respect to quoted arguments to the [[ condi‐
+                      tional command's =~ operator and locale-specific string comparison when using the [[ conditional  command's
+                      <  and  > operators.  Bash versions prior to bash-4.1 use ASCII collation and strcmp(3); bash-4.1 and later
+                      use the current locale's collation sequence and strcoll(3).
+              compat32
+                      If set, bash changes its behavior to that of version 3.2 with respect to locale-specific string  comparison
+                      when  using the [[ conditional command's < and > operators (see previous item) and the effect of interrupt‐
+                      ing a command list.  Bash versions 3.2 and earlier continue with the next command in  the  list  after  one
+                      terminates due to an interrupt.
+              compat40
+                      If  set, bash changes its behavior to that of version 4.0 with respect to locale-specific string comparison
+                      when using the [[ conditional command's < and > operators (see description of compat31) and the  effect  of
+                      interrupting  a  command list.  Bash versions 4.0 and later interrupt the list as if the shell received the
+                      interrupt; previous versions continue with the next command in the list.
+              compat41
+                      If set, bash, when in posix mode, treats a single quote in a double-quoted parameter expansion as a special
+                      character.   The single quotes must match (an even number) and the characters between the single quotes are
+                      considered quoted.  This is the behavior of posix mode through version 4.1.  The default bash behavior  re‐
+                      mains as in previous versions.
+              compat42
+                      If set, bash does not process the replacement string in the pattern substitution word expansion using quote
+                      removal.
+              compat43
+                      If set, bash does not print a warning message if an attempt is made to use a quoted compound array  assign‐
+                      ment as an argument to declare, makes word expansion errors non-fatal errors that cause the current command
+                      to fail (the default behavior is to make them fatal errors that cause the shell to exit), and does not  re‐
+                      set  the loop state when a shell function is executed (this allows break or continue in a shell function to
+                      affect loops in the caller's context).
+              compat44
+                      If set, bash saves the positional parameters to BASH_ARGV and BASH_ARGC before they are used, regardless of
+                      whether or not extended debugging mode is enabled.
+              complete_fullquote
+                      If  set,  bash quotes all shell metacharacters in filenames and directory names when performing completion.
+                      If not set, bash removes metacharacters such as the dollar sign from the set of  characters  that  will  be
+                      quoted  in completed filenames when these metacharacters appear in shell variable references in words to be
+                      completed.  This means that dollar signs in variable names that expand to directories will not  be  quoted;
+                      however, any dollar signs appearing in filenames will not be quoted, either.  This is active only when bash
+                      is using backslashes to quote completed filenames.  This variable is set by default, which is  the  default
+                      bash behavior in versions through 4.2.
+              direxpand
+                      If  set,  bash replaces directory names with the results of word expansion when performing filename comple‐
+                      tion.  This changes the contents of the readline editing buffer.  If not set,  bash  attempts  to  preserve
+                      what the user typed.
+              dirspell
+                      If  set,  bash attempts spelling correction on directory names during word completion if the directory name
+                      initially supplied does not exist.
+              dotglob If set, bash includes filenames beginning with a `.' in the results of pathname expansion.   The  filenames
+                      ``.''  and ``..''  must always be matched explicitly, even if dotglob is set.
+              execfail
+                      If set, a non-interactive shell will not exit if it cannot execute the file specified as an argument to the
+                      exec builtin command.  An interactive shell does not exit if exec fails.
+              expand_aliases
+                      If set, aliases are expanded as described above under ALIASES.  This option is enabled by default  for  in‐
+                      teractive shells.
+              extdebug
+                      If  set  at shell invocation, arrange to execute the debugger profile before the shell starts, identical to
+                      the --debugger option.  If set after invocation, behavior intended for use by debuggers is enabled:
+                      1.     The -F option to the declare builtin displays the source file name and line number corresponding  to
+                             each function name supplied as an argument.
+                      2.     If  the  command run by the DEBUG trap returns a non-zero value, the next command is skipped and not
+                             executed.
+                      3.     If the command run by the DEBUG trap returns a value of 2, and the shell is executing in  a  subrou‐
+                             tine  (a shell function or a shell script executed by the . or source builtins), the shell simulates
+                             a call to return.
+                      4.     BASH_ARGC and BASH_ARGV are updated as described in their descriptions above.
+                      5.     Function tracing is enabled: command substitution, shell functions, and  subshells  invoked  with  (
+                             command ) inherit the DEBUG and RETURN traps.
+                      6.     Error  tracing  is enabled: command substitution, shell functions, and subshells invoked with ( com‐
+                             mand ) inherit the ERR trap.
+              extglob If set, the extended pattern matching features described above under Pathname Expansion are enabled.
+              extquote
+                      If set, $'string' and $"string" quoting is performed within  ${parameter}  expansions  enclosed  in  double
+                      quotes.  This option is enabled by default.
+              failglob
+                      If set, patterns which fail to match filenames during pathname expansion result in an expansion error.
+              force_fignore
+                      If set, the suffixes specified by the FIGNORE shell variable cause words to be ignored when performing word
+                      completion even if the ignored words are the only possible completions.  See SHELL VARIABLES  above  for  a
+                      description of FIGNORE.  This option is enabled by default.
+              globasciiranges
+                      If  set, range expressions used in pattern matching bracket expressions (see Pattern Matching above) behave
+                      as if in the traditional C locale when performing comparisons.  That is, the current locale's collating se‐
+                      quence  is  not  taken  into  account, so b will not collate between A and B, and upper-case and lower-case
+                      ASCII characters will collate together.
+              globstar
+                      If set, the pattern ** used in a pathname expansion context will match all files and zero or more  directo‐
+                      ries and subdirectories.  If the pattern is followed by a /, only directories and subdirectories match.
+              gnu_errfmt
+                      If set, shell error messages are written in the standard GNU error message format.
+              histappend
+                      If set, the history list is appended to the file named by the value of the HISTFILE variable when the shell
+                      exits, rather than overwriting the file.
+              histreedit
+                      If set, and readline is being used, a user is given the opportunity to re-edit a failed  history  substitu‐
+                      tion.
+              histverify
+                      If  set,  and readline is being used, the results of history substitution are not immediately passed to the
+                      shell parser.  Instead, the resulting line is loaded into the readline  editing  buffer,  allowing  further
+                      modification.
+              hostcomplete
+                      If set, and readline is being used, bash will attempt to perform hostname completion when a word containing
+                      a @ is being completed (see Completing under READLINE above).  This is enabled by default.
+              huponexit
+                      If set, bash will send SIGHUP to all jobs when an interactive login shell exits.
+              inherit_errexit
+                      If set, command substitution inherits the value of the errexit option, instead of unsetting it in the  sub‐
+                      shell environment.  This option is enabled when posix mode is enabled.
+              interactive_comments
+                      If  set,  allow  a word beginning with # to cause that word and all remaining characters on that line to be
+                      ignored in an interactive shell (see COMMENTS above).  This option is enabled by default.
+              lastpipe
+                      If set, and job control is not active, the shell runs the last command of a pipeline not  executed  in  the
+                      background in the current shell environment.
+              lithist If  set, and the cmdhist option is enabled, multi-line commands are saved to the history with embedded new‐
+                      lines rather than using semicolon separators where possible.
+              localvar_inherit
+                      If set, local variables inherit the value and attributes of a variable of the same name that  exists  at  a
+                      previous scope before any new value is assigned.  The nameref attribute is not inherited.
+              localvar_unset
+                      If  set, calling unset on local variables in previous function scopes marks them so subsequent lookups find
+                      them unset until that function returns. This is identical to the behavior of unsetting local  variables  at
+                      the current function scope.
+              login_shell
+                      The  shell sets this option if it is started as a login shell (see INVOCATION above).  The value may not be
+                      changed.
+              mailwarn
+                      If set, and a file that bash is checking for mail has been accessed since the last time it was checked, the
+                      message ``The mail in mailfile has been read'' is displayed.
+              no_empty_cmd_completion
+                      If  set, and readline is being used, bash will not attempt to search the PATH for possible completions when
+                      completion is attempted on an empty line.
+              nocaseglob
+                      If set, bash matches filenames in a case-insensitive fashion when performing pathname expansion (see  Path‐
+                      name Expansion above).
+              nocasematch
+                      If  set,  bash matches patterns in a case-insensitive fashion when performing matching while executing case
+                      or [[ conditional commands, when performing pattern substitution word expansions, or when filtering  possi‐
+                      ble completions as part of programmable completion.
+              nullglob
+                      If  set,  bash  allows  patterns  which  match  no files (see Pathname Expansion above) to expand to a null
+                      string, rather than themselves.
+              progcomp
+                      If set, the programmable completion facilities (see Programmable Completion above) are enabled.   This  op‐
+                      tion is enabled by default.
+              progcomp_alias
+                      If  set,  and  programmable completion is enabled, bash treats a command name that doesn't have any comple‐
+                      tions as a possible alias and attempts alias expansion. If it has an alias, bash attempts programmable com‐
+                      pletion using the command word resulting from the expanded alias.
+              promptvars
+                      If  set,  prompt strings undergo parameter expansion, command substitution, arithmetic expansion, and quote
+                      removal after being expanded as described in PROMPTING above.  This option is enabled by default.
+              restricted_shell
+                      The shell sets this option if it is started in restricted mode (see RESTRICTED SHELL below).  The value may
+                      not  be changed.  This is not reset when the startup files are executed, allowing the startup files to dis‐
+                      cover whether or not a shell is restricted.
+              shift_verbose
+                      If set, the shift builtin prints an error message when the shift count exceeds the number of positional pa‐
+                      rameters.
+              sourcepath
+                      If set, the source (.) builtin uses the value of PATH to find the directory containing the file supplied as
+                      an argument.  This option is enabled by default.
+              xpg_echo
+                      If set, the echo builtin expands backslash-escape sequences by default.
+
+       suspend [-f]
+              Suspend the execution of this shell until it receives a SIGCONT signal.  A login shell cannot be suspended; the  -f
+              option  can  be used to override this and force the suspension.  The return status is 0 unless the shell is a login
+              shell and -f is not supplied, or if job control is not enabled.
+
+       test expr
+       [ expr ]
+              Return a status of 0 (true) or 1 (false) depending on the evaluation of the conditional expression expr.  Each  op‐
+              erator  and  operand  must be a separate argument.  Expressions are composed of the primaries described above under
+              CONDITIONAL EXPRESSIONS.  test does not accept any options, nor does it accept and ignore an argument of -- as sig‐
+              nifying the end of options.
+
+              Expressions  may  be combined using the following operators, listed in decreasing order of precedence.  The evalua‐
+              tion depends on the number of arguments; see below.  Operator precedence is used when there are five or more  argu‐
+              ments.
+              ! expr True if expr is false.
+              ( expr )
+                     Returns the value of expr.  This may be used to override the normal precedence of operators.
+              expr1 -a expr2
+                     True if both expr1 and expr2 are true.
+              expr1 -o expr2
+                     True if either expr1 or expr2 is true.
+
+              test and [ evaluate conditional expressions using a set of rules based on the number of arguments.
+
+              0 arguments
+                     The expression is false.
+              1 argument
+                     The expression is true if and only if the argument is not null.
+              2 arguments
+                     If the first argument is !, the expression is true if and only if the second argument is null.  If the first
+                     argument is one of the unary conditional operators listed above under CONDITIONAL EXPRESSIONS,  the  expres‐
+                     sion  is  true  if the unary test is true.  If the first argument is not a valid unary conditional operator,
+                     the expression is false.
+              3 arguments
+                     The following conditions are applied in the order listed.  If the second argument is one of the binary  con‐
+                     ditional operators listed above under CONDITIONAL EXPRESSIONS, the result of the expression is the result of
+                     the binary test using the first and third arguments as operands.  The -a and -o operators are considered bi‐
+                     nary operators when there are three arguments.  If the first argument is !, the value is the negation of the
+                     two-argument test using the second and third arguments.  If the first argument is exactly (  and  the  third
+                     argument  is  exactly ), the result is the one-argument test of the second argument.  Otherwise, the expres‐
+                     sion is false.
+              4 arguments
+                     If the first argument is !, the result is the negation of the three-argument expression composed of the  re‐
+                     maining  arguments.   Otherwise,  the  expression  is parsed and evaluated according to precedence using the
+                     rules listed above.
+              5 or more arguments
+                     The expression is parsed and evaluated according to precedence using the rules listed above.
+
+              When used with test or [, the < and > operators sort lexicographically using ASCII ordering.
+
+       times  Print the accumulated user and system times for the shell and for processes run from the shell.  The return  status
+              is 0.
+
+       trap [-lp] [[arg] sigspec ...]
+              The  command arg is to be read and executed when the shell receives signal(s) sigspec.  If arg is absent (and there
+              is a single sigspec) or -, each specified signal is reset to its original disposition (the value it  had  upon  en‐
+              trance  to  the shell).  If arg is the null string the signal specified by each sigspec is ignored by the shell and
+              by the commands it invokes.  If arg is not present and -p has been supplied, then the trap commands associated with
+              each  sigspec are displayed.  If no arguments are supplied or if only -p is given, trap prints the list of commands
+              associated with each signal.  The -l option causes the shell to print a list of signal names and their  correspond‐
+              ing  numbers.   Each  sigspec  is either a signal name defined in <signal.h>, or a signal number.  Signal names are
+              case insensitive and the SIG prefix is optional.
+
+              If a sigspec is EXIT (0) the command arg is executed on exit from the shell.  If a sigspec is  DEBUG,  the  command
+              arg  is  executed before every simple command, for command, case command, select command, every arithmetic for com‐
+              mand, and before the first command executes in a shell function (see SHELL GRAMMAR above).  Refer to  the  descrip‐
+              tion  of the extdebug option to the shopt builtin for details of its effect on the DEBUG trap.  If a sigspec is RE‐
+              TURN, the command arg is executed each time a shell function or a script executed with the  .  or  source  builtins
+              finishes executing.
+
+              If  a  sigspec  is  ERR, the command arg is executed whenever a pipeline (which may consist of a single simple com‐
+              mand), a list, or a compound command returns a non-zero exit status, subject to the following conditions.  The  ERR
+              trap  is not executed if the failed command is part of the command list immediately following a while or until key‐
+              word, part of the test in an if statement, part of a command executed in a && or || list except the command follow‐
+              ing  the final && or ||, any command in a pipeline but the last, or if the command's return value is being inverted
+              using !.  These are the same conditions obeyed by the errexit (-e) option.
+
+              Signals ignored upon entry to the shell cannot be trapped or reset.  Trapped signals that are not being ignored are
+              reset  to  their  original  values in a subshell or subshell environment when one is created.  The return status is
+              false if any sigspec is invalid; otherwise trap returns true.
+
+       type [-aftpP] name [name ...]
+              With no options, indicate how each name would be interpreted if used as a command name.  If the -t option is  used,
+              type prints a string which is one of alias, keyword, function, builtin, or file if name is an alias, shell reserved
+              word, function, builtin, or disk file, respectively.  If the name is not found, then nothing  is  printed,  and  an
+              exit  status  of  false  is returned.  If the -p option is used, type either returns the name of the disk file that
+              would be executed if name were specified as a command name, or nothing if ``type -t name'' would not  return  file.
+              The  -P option forces a PATH search for each name, even if ``type -t name'' would not return file.  If a command is
+              hashed, -p and -P print the hashed value, which is not necessarily the file that appears first in PATH.  If the  -a
+              option  is  used,  type  prints all of the places that contain an executable named name.  This includes aliases and
+              functions, if and only if the -p option is not also used.  The table of hashed commands is not consulted when using
+              -a.   The -f option suppresses shell function lookup, as with the command builtin.  type returns true if all of the
+              arguments are found, false if any are not found.
+
+       ulimit [-HSabcdefiklmnpqrstuvxPT [limit]]
+              Provides control over the resources available to the shell and to processes started by it, on  systems  that  allow
+              such  control.   The  -H  and -S options specify that the hard or soft limit is set for the given resource.  A hard
+              limit cannot be increased by a non-root user once it is set; a soft limit may be increased up to the value  of  the
+              hard limit.  If neither -H nor -S is specified, both the soft and hard limits are set.  The value of limit can be a
+              number in the unit specified for the resource or one of the special values hard, soft, or  unlimited,  which  stand
+              for  the  current hard limit, the current soft limit, and no limit, respectively.  If limit is omitted, the current
+              value of the soft limit of the resource is printed, unless the -H option is given.  When more than one resource  is
+              specified, the limit name and unit are printed before the value.  Other options are interpreted as follows:
+              -a     All current limits are reported
+              -b     The maximum socket buffer size
+              -c     The maximum size of core files created
+              -d     The maximum size of a process's data segment
+              -e     The maximum scheduling priority ("nice")
+              -f     The maximum size of files written by the shell and its children
+              -i     The maximum number of pending signals
+              -k     The maximum number of kqueues that may be allocated
+              -l     The maximum size that may be locked into memory
+              -m     The maximum resident set size (many systems do not honor this limit)
+              -n     The maximum number of open file descriptors (most systems do not allow this value to be set)
+              -p     The pipe size in 512-byte blocks (this may not be set)
+              -q     The maximum number of bytes in POSIX message queues
+              -r     The maximum real-time scheduling priority
+              -s     The maximum stack size
+              -t     The maximum amount of cpu time in seconds
+              -u     The maximum number of processes available to a single user
+              -v     The maximum amount of virtual memory available to the shell and, on some systems, to its children
+              -x     The maximum number of file locks
+              -P     The maximum number of pseudoterminals
+              -T     The maximum number of threads
+
+              If  limit  is given, and the -a option is not used, limit is the new value of the specified resource.  If no option
+              is given, then -f is assumed.  Values are in 1024-byte increments, except for -t, which is in seconds; -p, which is
+              in units of 512-byte blocks; -P, -T, -b, -k, -n, and -u, which are unscaled values; and, when in posix mode, -c and
+              -f, which are in 512-byte increments.  The return status is 0 unless an invalid option or argument is supplied,  or
+              an error occurs while setting a new limit.
+
+       umask [-p] [-S] [mode]
+              The  user  file-creation  mask  is set to mode.  If mode begins with a digit, it is interpreted as an octal number;
+              otherwise it is interpreted as a symbolic mode mask similar to that accepted by chmod(1).  If mode is omitted,  the
+              current  value  of  the mask is printed.  The -S option causes the mask to be printed in symbolic form; the default
+              output is an octal number.  If the -p option is supplied, and mode is omitted, the output is in a form that may  be
+              reused  as input.  The return status is 0 if the mode was successfully changed or if no mode argument was supplied,
+              and false otherwise.
+
+       unalias [-a] [name ...]
+              Remove each name from the list of defined aliases.  If -a is supplied, all alias definitions are removed.  The  re‐
+              turn value is true unless a supplied name is not a defined alias.
+
+       unset [-fv] [-n] [name ...]
+              For  each  name,  remove  the corresponding variable or function.  If the -v option is given, each name refers to a
+              shell variable, and that variable is removed.  Read-only variables may not be unset.  If -f is specified, each name
+              refers  to  a  shell function, and the function definition is removed.  If the -n option is supplied, and name is a
+              variable with the nameref attribute, name will be unset rather than the variable it references.  -n has  no  effect
+              if  the -f option is supplied.  If no options are supplied, each name refers to a variable; if there is no variable
+              by that name, any function with that name is unset.  Each unset variable or function is removed from  the  environ‐
+              ment passed to subsequent commands.  If any of COMP_WORDBREAKS, RANDOM, SECONDS, LINENO, HISTCMD, FUNCNAME, GROUPS,
+              or DIRSTACK are unset, they lose their special properties, even if they are subsequently reset.  The exit status is
+              true unless a name is readonly.
+
+       wait [-fn] [id ...]
+              Wait  for  each  specified  child  process and return its termination status.  Each id may be a process ID or a job
+              specification; if a job spec is given, all processes in that job's pipeline are waited for.  If id  is  not  given,
+              all  currently active child processes are waited for, and the return status is zero.  If the -n option is supplied,
+              wait waits for any job to terminate and returns its exit status.  If the -f option is supplied, and job control  is
+              enabled,  wait forces id to terminate before returning its status, instead of returning when it changes status.  If
+              id specifies a non-existent process or job, the return status is 127.  Otherwise, the return  status  is  the  exit
+              status of the last process or job waited for.
+
+RESTRICTED SHELL
+       If  bash  is started with the name rbash, or the -r option is supplied at invocation, the shell becomes restricted.  A re‐
+       stricted shell is used to set up an environment more controlled than the standard shell.  It behaves identically  to  bash
+       with the exception that the following are disallowed or not performed:
+
+       •      changing directories with cd
+
+       •      setting or unsetting the values of SHELL, PATH, ENV, or BASH_ENV
+
+       •      specifying command names containing /
+
+       •      specifying a filename containing a / as an argument to the .  builtin command
+
+       •      specifying a filename containing a slash as an argument to the -p option to the hash builtin command
+
+       •      importing function definitions from the shell environment at startup
+
+       •      parsing the value of SHELLOPTS from the shell environment at startup
+
+       •      redirecting output using the >, >|, <>, >&, &>, and >> redirection operators
+
+       •      using the exec builtin command to replace the shell with another command
+
+       •      adding or deleting builtin commands with the -f and -d options to the enable builtin command
+
+       •      using the enable builtin command to enable disabled shell builtins
+
+       •      specifying the -p option to the command builtin command
+
+       •      turning off restricted mode with set +r or set +o restricted.
+
+       These restrictions are enforced after any startup files are read.
+
+       When  a command that is found to be a shell script is executed (see COMMAND EXECUTION above), rbash turns off any restric‐
+       tions in the shell spawned to execute the script.
+
+SEE ALSO
+       Bash Reference Manual, Brian Fox and Chet Ramey
+       The Gnu Readline Library, Brian Fox and Chet Ramey
+       The Gnu History Library, Brian Fox and Chet Ramey
+       Portable Operating System Interface (POSIX) Part 2: Shell and Utilities, IEEE --
+              http://pubs.opengroup.org/onlinepubs/9699919799/
+       http://tiswww.case.edu/~chet/bash/POSIX -- a description of posix mode
+       sh(1), ksh(1), csh(1)
+       emacs(1), vi(1)
+       readline(3)
+
+FILES
+       /bin/bash
+              The bash executable
+       /etc/profile
+              The systemwide initialization file, executed for login shells
+       /etc/bash.bashrc
+              The systemwide per-interactive-shell startup file
+       /etc/bash.bash.logout
+              The systemwide login shell cleanup file, executed when a login shell exits
+       ~/.bash_profile
+              The personal initialization file, executed for login shells
+       ~/.bashrc
+              The individual per-interactive-shell startup file
+       ~/.bash_logout
+              The individual login shell cleanup file, executed when a login shell exits
+       ~/.inputrc
+              Individual readline initialization file
+
+AUTHORS
+       Brian Fox, Free Software Foundation
+       bfox@gnu.org
+
+       Chet Ramey, Case Western Reserve University
+       chet.ramey@case.edu
+
+BUG REPORTS
+       If you find a bug in bash, you should report it.  But first, you should make sure that it really is a bug, and that it ap‐
+       pears in the latest version of bash.  The latest version is always available from ftp://ftp.gnu.org/pub/gnu/bash/.
+
+       Once  you  have determined that a bug actually exists, use the bashbug command to submit a bug report.  If you have a fix,
+       you are encouraged to mail that as well!  Suggestions and `philosophical' bug reports may be mailed to bug-bash@gnu.org or
+       posted to the Usenet newsgroup gnu.bash.bug.
+
+       ALL bug reports should include:
+
+       The version number of bash
+       The hardware and operating system
+       The compiler used to compile
+       A description of the bug behaviour
+       A short script or `recipe' which exercises the bug
+
+       bashbug inserts the first three items automatically into the template it provides for filing a bug report.
+
+       Comments and bug reports concerning this manual page should be directed to chet.ramey@case.edu.
+
+BUGS
+       It's too big and too slow.
+
+       There are some subtle differences between bash and traditional versions of sh, mostly because of the POSIX specification.
+
+       Aliases are confusing in some uses.
+
+       Shell builtin commands and functions are not stoppable/restartable.
+
+       Compound  commands and command sequences of the form `a ; b ; c' are not handled gracefully when process suspension is at‐
+       tempted.  When a process is stopped, the shell immediately executes the next command in  the  sequence.   It  suffices  to
+       place the sequence of commands between parentheses to force it into a subshell, which may be stopped as a unit.
+
+       Array variables may not (yet) be exported.
+
+       There may be only one active coprocess at a time.
+
+GNU Bash 5.0                                             2018 December 7                                                  BASH(1)
+```
+
+### cat
+
+```
+CAT(1)                                                    User Commands                                                    CAT(1)
+
+NAME
+       cat - concatenate files and print on the standard output
+
+SYNOPSIS
+       cat [OPTION]... [FILE]...
+
+DESCRIPTION
+       Concatenate FILE(s) to standard output.
+
+       With no FILE, or when FILE is -, read standard input.
+
+       -A, --show-all
+              equivalent to -vET
+
+       -b, --number-nonblank
+              number nonempty output lines, overrides -n
+
+       -e     equivalent to -vE
+
+       -E, --show-ends
+              display $ at end of each line
+
+       -n, --number
+              number all output lines
+
+       -s, --squeeze-blank
+              suppress repeated empty output lines
+
+       -t     equivalent to -vT
+
+       -T, --show-tabs
+              display TAB characters as ^I
+
+       -u     (ignored)
+
+       -v, --show-nonprinting
+              use ^ and M- notation, except for LFD and TAB
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+EXAMPLES
+       cat f - g
+              Output f's contents, then standard input, then g's contents.
+
+       cat    Copy standard input to standard output.
+
+AUTHOR
+       Written by Torbjorn Granlund and Richard M. Stallman.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report cat translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright  ©  2018  Free  Software  Foundation,  Inc.   License  GPLv3+:  GNU  GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       tac(1)
+
+       Full documentation at: <https://www.gnu.org/software/coreutils/cat>
+       or available locally via: info '(coreutils) cat invocation'
+
+GNU coreutils 8.30                                        February 2019                                                    CAT(1)
+```
+
+### chgrp
+
+```
+CHGRP(1)                                                  User Commands                                                  CHGRP(1)
+
+NAME
+       chgrp - change group ownership
+
+SYNOPSIS
+       chgrp [OPTION]... GROUP FILE...
+       chgrp [OPTION]... --reference=RFILE FILE...
+
+DESCRIPTION
+       Change the group of each FILE to GROUP.  With --reference, change the group of each FILE to that of RFILE.
+
+       -c, --changes
+              like verbose but report only when a change is made
+
+       -f, --silent, --quiet
+              suppress most error messages
+
+       -v, --verbose
+              output a diagnostic for every file processed
+
+       --dereference
+              affect the referent of each symbolic link (this is the default), rather than the symbolic link itself
+
+       -h, --no-dereference
+              affect  symbolic  links  instead  of any referenced file (useful only on systems that can change the ownership of a
+              symlink)
+
+       --no-preserve-root
+              do not treat '/' specially (the default)
+
+       --preserve-root
+              fail to operate recursively on '/'
+
+       --reference=RFILE
+              use RFILE's group rather than specifying a GROUP value
+
+       -R, --recursive
+              operate on files and directories recursively
+
+       The following options modify how a hierarchy is traversed when the -R option is also specified.  If more than one is spec‐
+       ified, only the final one takes effect.
+
+       -H     if a command line argument is a symbolic link to a directory, traverse it
+
+       -L     traverse every symbolic link to a directory encountered
+
+       -P     do not traverse any symbolic links (default)
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+EXAMPLES
+       chgrp staff /u
+              Change the group of /u to "staff".
+
+       chgrp -hR staff /u
+              Change the group of /u and subfiles to "staff".
+
+AUTHOR
+       Written by David MacKenzie and Jim Meyering.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report chgrp translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright  ©  2018  Free  Software  Foundation,  Inc.   License  GPLv3+:  GNU  GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       chown(1), chown(2)
+
+       Full documentation at: <https://www.gnu.org/software/coreutils/chgrp>
+       or available locally via: info '(coreutils) chgrp invocation'
+
+GNU coreutils 8.30                                        February 2019                                                  CHGRP(1)
+```
+
+### chmod
+
+```
+CHMOD(1)                                                  User Commands                                                  CHMOD(1)
+
+NAME
+       chmod - change file mode bits
+
+SYNOPSIS
+       chmod [OPTION]... MODE[,MODE]... FILE...
+       chmod [OPTION]... OCTAL-MODE FILE...
+       chmod [OPTION]... --reference=RFILE FILE...
+
+DESCRIPTION
+       This  manual  page  documents  the GNU version of chmod.  chmod changes the file mode bits of each given file according to
+       mode, which can be either a symbolic representation of changes to make, or an octal number representing  the  bit  pattern
+       for the new mode bits.
+
+       The  format  of  a symbolic mode is [ugoa...][[-+=][perms...]...], where perms is either zero or more letters from the set
+       rwxXst, or a single letter from the set ugo.  Multiple symbolic modes can be given, separated by commas.
+
+       A combination of the letters ugoa controls which users' access to the file will be changed: the  user  who  owns  it  (u),
+       other  users  in  the  file's  group (g), other users not in the file's group (o), or all users (a).  If none of these are
+       given, the effect is as if (a) were given, but bits that are set in the umask are not affected.
+
+       The operator + causes the selected file mode bits to be added to the existing file mode bits of each file; -  causes  them
+       to  be  removed;  and = causes them to be added and causes unmentioned bits to be removed except that a directory's unmen‐
+       tioned set user and group ID bits are not affected.
+
+       The letters rwxXst select file mode bits for the affected users: read (r), write (w), execute (or search for  directories)
+       (x), execute/search only if the file is a directory or already has execute permission for some user (X), set user or group
+       ID on execution (s), restricted deletion flag or sticky bit (t).  Instead of one or more of these letters, you can specify
+       exactly  one  of  the  letters  ugo: the permissions granted to the user who owns the file (u), the permissions granted to
+       other users who are members of the file's group (g), and the permissions granted to users that are in neither of  the  two
+       preceding categories (o).
+
+       A  numeric  mode  is  from one to four octal digits (0-7), derived by adding up the bits with values 4, 2, and 1.  Omitted
+       digits are assumed to be leading zeros.  The first digit selects the set user ID (4) and set group ID (2)  and  restricted
+       deletion  or  sticky (1) attributes.  The second digit selects permissions for the user who owns the file: read (4), write
+       (2), and execute (1); the third selects permissions for other users in the file's group, with the  same  values;  and  the
+       fourth for other users not in the file's group, with the same values.
+
+       chmod never changes the permissions of symbolic links; the chmod system call cannot change their permissions.  This is not
+       a problem since the permissions of symbolic links are never used.  However, for each symbolic link listed on  the  command
+       line,  chmod changes the permissions of the pointed-to file.  In contrast, chmod ignores symbolic links encountered during
+       recursive directory traversals.
+
+SETUID AND SETGID BITS
+       chmod clears the set-group-ID bit of a regular file if the file's group ID does not match the user's effective group ID or
+       one  of the user's supplementary group IDs, unless the user has appropriate privileges.  Additional restrictions may cause
+       the set-user-ID and set-group-ID bits of MODE or RFILE to be ignored.  This behavior depends on the policy and functional‐
+       ity of the underlying chmod system call.  When in doubt, check the underlying system behavior.
+
+       For directories chmod preserves set-user-ID and set-group-ID bits unless you explicitly specify otherwise.  You can set or
+       clear the bits with symbolic modes like u+s and g-s.  To clear these bits for directories with a numeric mode requires  an
+       additional leading zero, or leading = like 00755 , or =755
+
+RESTRICTED DELETION FLAG OR STICKY BIT
+       The  restricted  deletion flag or sticky bit is a single bit, whose interpretation depends on the file type.  For directo‐
+       ries, it prevents unprivileged users from removing or renaming a file in the directory unless they own the file or the di‐
+       rectory;  this  is called the restricted deletion flag for the directory, and is commonly found on world-writable directo‐
+       ries like /tmp.  For regular files on some older systems, the bit saves the program's text image on the swap device so  it
+       will load more quickly when run; this is called the sticky bit.
+
+OPTIONS
+       Change the mode of each FILE to MODE.  With --reference, change the mode of each FILE to that of RFILE.
+
+       -c, --changes
+              like verbose but report only when a change is made
+
+       -f, --silent, --quiet
+              suppress most error messages
+
+       -v, --verbose
+              output a diagnostic for every file processed
+
+       --no-preserve-root
+              do not treat '/' specially (the default)
+
+       --preserve-root
+              fail to operate recursively on '/'
+
+       --reference=RFILE
+              use RFILE's mode instead of MODE values
+
+       -R, --recursive
+              change files and directories recursively
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+       Each MODE is of the form '[ugoa]*([-+=]([rwxXst]*|[ugo]))+|[-+=][0-7]+'.
+
+AUTHOR
+       Written by David MacKenzie and Jim Meyering.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report chmod translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright  ©  2018  Free  Software  Foundation,  Inc.   License  GPLv3+:  GNU  GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       chmod(2)
+
+       Full documentation at: <https://www.gnu.org/software/coreutils/chmod>
+       or available locally via: info '(coreutils) chmod invocation'
+
+GNU coreutils 8.30                                        February 2019                                                  CHMOD(1)
+```
+
+### chown
+
+```
+CHOWN(1)                                                  User Commands                                                  CHOWN(1)
+
+NAME
+       chown - change file owner and group
+
+SYNOPSIS
+       chown [OPTION]... [OWNER][:[GROUP]] FILE...
+       chown [OPTION]... --reference=RFILE FILE...
+
+DESCRIPTION
+       This  manual  page  documents the GNU version of chown.  chown changes the user and/or group ownership of each given file.
+       If only an owner (a user name or numeric user ID) is given, that user is made the owner of each given file, and the files'
+       group  is not changed.  If the owner is followed by a colon and a group name (or numeric group ID), with no spaces between
+       them, the group ownership of the files is changed as well.  If a colon but no group name follows the user name, that  user
+       is  made  the owner of the files and the group of the files is changed to that user's login group.  If the colon and group
+       are given, but the owner is omitted, only the group of the files is changed; in this case, chown performs the  same  func‐
+       tion as chgrp.  If only a colon is given, or if the entire operand is empty, neither the owner nor the group is changed.
+
+OPTIONS
+       Change  the  owner  and/or group of each FILE to OWNER and/or GROUP.  With --reference, change the owner and group of each
+       FILE to those of RFILE.
+
+       -c, --changes
+              like verbose but report only when a change is made
+
+       -f, --silent, --quiet
+              suppress most error messages
+
+       -v, --verbose
+              output a diagnostic for every file processed
+
+       --dereference
+              affect the referent of each symbolic link (this is the default), rather than the symbolic link itself
+
+       -h, --no-dereference
+              affect symbolic links instead of any referenced file (useful only on systems that can change  the  ownership  of  a
+              symlink)
+
+       --from=CURRENT_OWNER:CURRENT_GROUP
+              change  the owner and/or group of each file only if its current owner and/or group match those specified here.  Ei‐
+              ther may be omitted, in which case a match is not required for the omitted attribute
+
+       --no-preserve-root
+              do not treat '/' specially (the default)
+
+       --preserve-root
+              fail to operate recursively on '/'
+
+       --reference=RFILE
+              use RFILE's owner and group rather than specifying OWNER:GROUP values
+
+       -R, --recursive
+              operate on files and directories recursively
+
+       The following options modify how a hierarchy is traversed when the -R option is also specified.  If more than one is spec‐
+       ified, only the final one takes effect.
+
+       -H     if a command line argument is a symbolic link to a directory, traverse it
+
+       -L     traverse every symbolic link to a directory encountered
+
+       -P     do not traverse any symbolic links (default)
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+       Owner  is unchanged if missing.  Group is unchanged if missing, but changed to login group if implied by a ':' following a
+       symbolic OWNER.  OWNER and GROUP may be numeric as well as symbolic.
+
+EXAMPLES
+       chown root /u
+              Change the owner of /u to "root".
+
+       chown root:staff /u
+              Likewise, but also change its group to "staff".
+
+       chown -hR root /u
+              Change the owner of /u and subfiles to "root".
+
+AUTHOR
+       Written by David MacKenzie and Jim Meyering.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report chown translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright © 2018 Free Software Foundation,  Inc.   License  GPLv3+:  GNU  GPL  version  3  or  later  <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       chown(2)
+
+       Full documentation at: <https://www.gnu.org/software/coreutils/chown>
+       or available locally via: info '(coreutils) chown invocation'
+
+GNU coreutils 8.30                                        February 2019                                                  CHOWN(1)
+```
+
+### cksum
+
+```
+CKSUM(1)                                                  User Commands                                                  CKSUM(1)
+
+NAME
+       cksum - checksum and count the bytes in a file
+
+SYNOPSIS
+       cksum [FILE]...
+       cksum [OPTION]
+
+DESCRIPTION
+       Print CRC checksum and byte counts of each FILE.
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+AUTHOR
+       Written by Q. Frank Xia.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report cksum translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright  ©  2018  Free  Software  Foundation,  Inc.   License  GPLv3+:  GNU  GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       Full documentation at: <https://www.gnu.org/software/coreutils/cksum>
+       or available locally via: info '(coreutils) cksum invocation'
+
+GNU coreutils 8.30                                        February 2019                                                  CKSUM(1)
+```
+
+### cmp
+
+```
+GNU(1)                                                    User Commands                                                    GNU(1)
+
+NAME
+       GNU cmp - compare two files byte by byte
+
+SYNOPSIS
+       cmp [OPTION]... FILE1 [FILE2 [SKIP1 [SKIP2]]]
+
+DESCRIPTION
+       Compare two files byte by byte.
+
+       The optional SKIP1 and SKIP2 specify the number of bytes to skip at the beginning of each file (zero by default).
+
+       Mandatory arguments to long options are mandatory for short options too.
+
+       -b, --print-bytes
+              print differing bytes
+
+       -i, --ignore-initial=SKIP
+              skip first SKIP bytes of both inputs
+
+       -i, --ignore-initial=SKIP1:SKIP2
+              skip first SKIP1 bytes of FILE1 and first SKIP2 bytes of FILE2
+
+       -l, --verbose
+              output byte numbers and differing byte values
+
+       -n, --bytes=LIMIT
+              compare at most LIMIT bytes
+
+       -s, --quiet, --silent
+              suppress all normal output
+
+       --help display this help and exit
+
+       -v, --version
+              output version information and exit
+
+       SKIP  values  may  be  followed  by  the following multiplicative suffixes: kB 1000, K 1024, MB 1,000,000, M 1,048,576, GB
+       1,000,000,000, G 1,073,741,824, and so on for T, P, E, Z, Y.
+
+       If a FILE is '-' or missing, read standard input.  Exit status is 0 if inputs are the same, 1 if different, 2 if trouble.
+
+AUTHOR
+       Written by Torbjorn Granlund and David MacKenzie.
+
+REPORTING BUGS
+       Report bugs to: bug-diffutils@gnu.org
+       GNU diffutils home page: <https://www.gnu.org/software/diffutils/>
+       General help using GNU software: <https://www.gnu.org/gethelp/>
+
+COPYRIGHT
+       Copyright © 2018 Free Software Foundation,  Inc.   License  GPLv3+:  GNU  GPL  version  3  or  later  <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       diff(1), diff3(1), sdiff(1)
+
+       The  full documentation for GNU is maintained as a Texinfo manual.  If the info and GNU programs are properly installed at
+       your site, the command
+
+              info GNU
+
+       should give you access to the complete manual.
+
+diffutils 3.7                                             December 2018                                                    GNU(1)
+```
+
+### cp
+
+```
+CP(1)                                                     User Commands                                                     CP(1)
+
+NAME
+       cp - copy files and directories
+
+SYNOPSIS
+       cp [OPTION]... [-T] SOURCE DEST
+       cp [OPTION]... SOURCE... DIRECTORY
+       cp [OPTION]... -t DIRECTORY SOURCE...
+
+DESCRIPTION
+       Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
+
+       Mandatory arguments to long options are mandatory for short options too.
+
+       -a, --archive
+              same as -dR --preserve=all
+
+       --attributes-only
+              don't copy the file data, just the attributes
+
+       --backup[=CONTROL]
+              make a backup of each existing destination file
+
+       -b     like --backup but does not accept an argument
+
+       --copy-contents
+              copy contents of special files when recursive
+
+       -d     same as --no-dereference --preserve=links
+
+       -f, --force
+              if  an  existing destination file cannot be opened, remove it and try again (this option is ignored when the -n op‐
+              tion is also used)
+
+       -i, --interactive
+              prompt before overwrite (overrides a previous -n option)
+
+       -H     follow command-line symbolic links in SOURCE
+
+       -l, --link
+              hard link files instead of copying
+
+       -L, --dereference
+              always follow symbolic links in SOURCE
+
+       -n, --no-clobber
+              do not overwrite an existing file (overrides a previous -i option)
+
+       -P, --no-dereference
+              never follow symbolic links in SOURCE
+
+       -p     same as --preserve=mode,ownership,timestamps
+
+       --preserve[=ATTR_LIST]
+              preserve the specified attributes (default: mode,ownership,timestamps), if possible additional attributes: context,
+              links, xattr, all
+
+       --no-preserve=ATTR_LIST
+              don't preserve the specified attributes
+
+       --parents
+              use full source file name under DIRECTORY
+
+       -R, -r, --recursive
+              copy directories recursively
+
+       --reflink[=WHEN]
+              control clone/CoW copies. See below
+
+       --remove-destination
+              remove each existing destination file before attempting to open it (contrast with --force)
+
+       --sparse=WHEN
+              control creation of sparse files. See below
+
+       --strip-trailing-slashes
+              remove any trailing slashes from each SOURCE argument
+
+       -s, --symbolic-link
+              make symbolic links instead of copying
+
+       -S, --suffix=SUFFIX
+              override the usual backup suffix
+
+       -t, --target-directory=DIRECTORY
+              copy all SOURCE arguments into DIRECTORY
+
+       -T, --no-target-directory
+              treat DEST as a normal file
+
+       -u, --update
+              copy only when the SOURCE file is newer than the destination file or when the destination file is missing
+
+       -v, --verbose
+              explain what is being done
+
+       -x, --one-file-system
+              stay on this file system
+
+       -Z     set SELinux security context of destination file to default type
+
+       --context[=CTX]
+              like -Z, or if CTX is specified then set the SELinux or SMACK security context to CTX
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+       By  default, sparse SOURCE files are detected by a crude heuristic and the corresponding DEST file is made sparse as well.
+       That is the behavior selected by --sparse=auto.  Specify --sparse=always to create a sparse DEST file whenever the  SOURCE
+       file contains a long enough sequence of zero bytes.  Use --sparse=never to inhibit creation of sparse files.
+
+       When --reflink[=always] is specified, perform a lightweight copy, where the data blocks are copied only when modified.  If
+       this is not possible the copy fails, or if --reflink=auto is specified, fall back to a standard copy.  Use --reflink=never
+       to ensure a standard copy is performed.
+
+       The  backup  suffix  is '~', unless set with --suffix or SIMPLE_BACKUP_SUFFIX.  The version control method may be selected
+       via the --backup option or through the VERSION_CONTROL environment variable.  Here are the values:
+
+       none, off
+              never make backups (even if --backup is given)
+
+       numbered, t
+              make numbered backups
+
+       existing, nil
+              numbered if numbered backups exist, simple otherwise
+
+       simple, never
+              always make simple backups
+
+       As a special case, cp makes a backup of SOURCE when the force and backup options are given and SOURCE  and  DEST  are  the
+       same name for an existing, regular file.
+
+AUTHOR
+       Written by Torbjorn Granlund, David MacKenzie, and Jim Meyering.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report cp translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright  ©  2018  Free  Software  Foundation,  Inc.   License  GPLv3+:  GNU  GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       Full documentation at: <https://www.gnu.org/software/coreutils/cp>
+       or available locally via: info '(coreutils) cp invocation'
+
+GNU coreutils 8.30                                        February 2019                                                     CP(1)
+```
+
+### crontab
+
+```
+CRONTAB(1)                                           General Commands Manual                                           CRONTAB(1)
+
+NAME
+       crontab - maintain crontab files for individual users (Vixie Cron)
+
+SYNOPSIS
+       crontab [ -u user ] file
+       crontab [ -u user ] [ -i ] { -e | -l | -r }
+
+DESCRIPTION
+       crontab is the program used to install, deinstall or list the tables used to drive the cron(8) daemon in Vixie Cron.  Each
+       user can have their own crontab, and though these are files in /var/spool/cron/crontabs,  they  are  not  intended  to  be
+       edited directly.
+
+       If the /etc/cron.allow file exists, then you must be listed (one user per line) therein in order to be allowed to use this
+       command.  If the /etc/cron.allow file does not exist but the /etc/cron.deny file does exist, then you must not  be  listed
+       in the /etc/cron.deny file in order to use this command.
+
+       If  neither  of these files exists, then depending on site-dependent configuration parameters, only the super user will be
+       allowed to use this command, or all users will be able to use this command.
+
+       If both files exist then /etc/cron.allow takes precedence.  Which means that /etc/cron.deny is  not  considered  and  your
+       user must be listed in /etc/cron.allow in order to be able to use the crontab.
+
+       Regardless of the existence of any of these files, the root administrative user is always allowed to setup a crontab.  For
+       standard Debian systems, all users may use this command.
+
+       If the -u option is given, it specifies the name of the user whose crontab is to be used (when listing) or modified  (when
+       editing).   If  this  option  is not given, crontab examines "your" crontab, i.e., the crontab of the person executing the
+       command.  Note that su(8) can confuse crontab and that if you are running inside of su(8) you should always use the -u op‐
+       tion for safety's sake.
+
+       The first form of this command is used to install a new crontab from some named file or standard input if the pseudo-file‐
+       name ``-'' is given.
+
+       The -l option causes the current crontab to be displayed on standard output.  See the note under DEBIAN SPECIFIC below.
+
+       The -r option causes the current crontab to be removed.
+
+       The -e option is used to edit the current crontab using the editor specified by the VISUAL  or  EDITOR  environment  vari‐
+       ables.   After you exit from the editor, the modified crontab will be installed automatically.  If neither of the environ‐
+       ment variables is defined, then the default editor /usr/bin/editor is used.
+
+       The -i option modifies the -r option to prompt the user for a 'y/Y' response before actually removing the crontab.
+
+DEBIAN SPECIFIC
+       The "out-of-the-box" behaviour for crontab -l is to display the three line "DO NOT EDIT THIS FILE" header that  is  placed
+       at the beginning of the crontab when it is installed.  The problem is that it makes the sequence
+
+       crontab -l | crontab -
+
+       non-idempotent  —  you  keep  adding  copies  of  the header.  This causes pain to scripts that use sed to edit a crontab.
+       Therefore, the default behaviour of the -l option has been changed to not output such header.  You may obtain the original
+       behaviour by setting the environment variable CRONTAB_NOHEADER to 'N', which will cause the crontab -l command to emit the
+       extraneous header.
+
+SEE ALSO
+       crontab(5), cron(8)
+
+FILES
+       /etc/cron.allow
+       /etc/cron.deny
+       /var/spool/cron/crontabs
+
+       The files /etc/cron.allow and /etc/cron.deny if,  they  exist,  must  be  either  world-readable,  or  readable  by  group
+       ``crontab''. If they are not, then cron will deny access to all users until the permissions are fixed.
+
+       There is one file for each user's crontab under the /var/spool/cron/crontabs directory.  Users are not allowed to edit the
+       files under that directory directly to ensure that only users allowed by the system to run periodic tasks  can  add  them,
+       and  only syntactically correct crontabs will be written there.  This is enforced by having the directory writable only by
+       the crontab group and configuring crontab command with the setgid bid set for that specific group.
+
+STANDARDS
+       The crontab command conforms to IEEE Std1003.2-1992 (``POSIX'').  This new command syntax differs from  previous  versions
+       of Vixie Cron, as well as from the classic SVR3 syntax.
+
+DIAGNOSTICS
+       A fairly informative usage message appears if you run it with a bad command line.
+
+       cron requires that each entry in a crontab end in a newline character.  If the last entry in a crontab is missing the new‐
+       line, cron will consider the crontab (at least partially) broken and refuse to install it.
+
+       The files under /var/spool/cron/crontabs are named based on the user's account name.  Crontab jobs will  not  be  run  for
+       users  whose  accounts  have  been renamed either due to changes in the local system or because they are managed through a
+       central user database (external to the system, for example an LDAP directory).
+
+AUTHOR
+       Paul Vixie <paul@vix.com> is the author of cron and original creator of this manual page.  This page has also  been  modi‐
+       fied for Debian by Steve Greenland, Javier Fernandez-Sanguino and Christian Kastner.
+
+4th Berkeley Distribution                                 19 April 2010                                                CRONTAB(1)
+```
+
+### curl
+
+```
+curl(1)                                                    Curl Manual                                                    curl(1)
+
+NAME
+       curl - transfer a URL
+
+SYNOPSIS
+       curl [options / URLs]
+
+DESCRIPTION
+       curl  is a tool to transfer data from or to a server, using one of the supported protocols (DICT, FILE, FTP, FTPS, GOPHER,
+       HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET and  TFTP).  The
+       command is designed to work without user interaction.
+
+       curl  offers  a  busload of useful tricks like proxy support, user authentication, FTP upload, HTTP post, SSL connections,
+       cookies, file transfer resume, Metalink, and more. As you will see below, the number of features will make your head spin!
+
+       curl is powered by libcurl for all transfer-related features. See libcurl(3) for details.
+
+URL
+       The URL syntax is protocol-dependent. You'll find a detailed description in RFC 3986.
+
+       You can specify multiple URLs or parts of URLs by writing part sets within braces as in:
+
+         http://site.{one,two,three}.com
+
+       or you can get sequences of alphanumeric series by using [] as in:
+
+         ftp://ftp.example.com/file[1-100].txt
+
+         ftp://ftp.example.com/file[001-100].txt    (with leading zeros)
+
+         ftp://ftp.example.com/file[a-z].txt
+
+       Nested sequences are not supported, but you can use several ones next to each other:
+
+         http://example.com/archive[1996-1999]/vol[1-4]/part{a,b,c}.html
+
+       You can specify any amount of URLs on the command line. They will be fetched in a sequential manner in the  specified  or‐
+       der. You can specify command line options and URLs mixed and in any order on the command line.
+
+       You can specify a step counter for the ranges to get every Nth number or letter:
+
+         http://example.com/file[1-100:10].txt
+
+         http://example.com/file[a-z:2].txt
+
+       When using [] or {} sequences when invoked from a command line prompt, you probably have to put the full URL within double
+       quotes to avoid the shell from interfering with it. This also goes for other characters treated special, like for  example
+       '&', '?' and '*'.
+
+       Provide the IPv6 zone index in the URL with an escaped percentage sign and the interface name. Like in
+
+         http://[fe80::3%25eth0]/
+
+       If  you  specify URL without protocol:// prefix, curl will attempt to guess what protocol you might want. It will then de‐
+       fault to HTTP but try other protocols based on often-used host name prefixes. For example, for host  names  starting  with
+       "ftp." curl will assume you want to speak FTP.
+
+       curl  will do its best to use what you pass to it as a URL. It is not trying to validate it as a syntactically correct URL
+       by any means but is instead very liberal with what it accepts.
+
+       curl will attempt to re-use connections for multiple file transfers, so that getting many files from the same server  will
+       not  do  multiple  connects  / handshakes. This improves speed. Of course this is only done on files specified on a single
+       command line and cannot be used between separate curl invokes.
+
+PROGRESS METER
+       curl normally displays a progress meter during operations, indicating the amount of transferred data, transfer speeds  and
+       estimated time left, etc. The progress meter displays number of bytes and the speeds are in bytes per second. The suffixes
+       (k, M, G, T, P) are 1024 based. For example 1k is 1024 bytes. 1M is 1048576 bytes.
+
+       curl displays this data to the terminal by default, so if you invoke curl to do an operation and it is about to write data
+       to  the  terminal,  it  disables the progress meter as otherwise it would mess up the output mixing progress meter and re‐
+       sponse data.
+
+       If you want a progress meter for HTTP POST or PUT requests, you need to redirect the response  output  to  a  file,  using
+       shell redirect (>), -o, --output or similar.
+
+       It is not the same case for FTP upload as that operation does not spit out any response data to the terminal.
+
+       If  you  prefer a progress "bar" instead of the regular meter, -#, --progress-bar is your friend. You can also disable the
+       progress meter completely with the -s, --silent option.
+
+OPTIONS
+       Options start with one or two dashes. Many of the options require an additional value next to them.
+
+       The short "single-dash" form of the options, -d for example, may be used with or without a space between it and its value,
+       although a space is a recommended separator. The long "double-dash" form, -d, --data for example, requires a space between
+       it and its value.
+
+       Short version options that don't need any additional values can be used immediately next to each other, like  for  example
+       you can specify all the options -O, -L and -v at once as -OLv.
+
+       In  general,  all  boolean options are enabled with --option and yet again disabled with --no-option. That is, you use the
+       exact same option name but prefix it with "no-". However, in this list we mostly only list and show the  --option  version
+       of  them. (This concept with --no options was added in 7.19.0. Previously most options were toggled on/off on repeated use
+       of the same command line option.)
+
+       --abstract-unix-socket <path>
+              (HTTP) Connect through an abstract Unix domain socket, instead of using the network.  Note: netstat shows the  path
+              of an abstract socket prefixed with '@', however the <path> argument should not have this leading character.
+
+              Added in 7.53.0.
+
+       --anyauth
+              (HTTP) Tells curl to figure out authentication method by itself, and use the most secure one the remote site claims
+              to support. This is done by first doing a request and checking the response-headers, thus possibly inducing an  ex‐
+              tra  network  round-trip.  This  is used instead of setting a specific authentication method, which you can do with
+              --basic, --digest, --ntlm, and --negotiate.
+
+              Using --anyauth is not recommended if you do uploads from stdin, since it may require data to  be  sent  twice  and
+              then  the  client  must be able to rewind. If the need should arise when uploading from stdin, the upload operation
+              will fail.
+
+              Used together with -u, --user.
+
+              See also --proxy-anyauth and --basic and --digest.
+
+       -a, --append
+              (FTP SFTP) When used in an upload, this makes curl append to the target file instead of overwriting it. If the  re‐
+              mote  file  doesn't  exist,  it  will  be  created.  Note that this flag is ignored by some SFTP servers (including
+              OpenSSH).
+
+       --basic
+              (HTTP) Tells curl to use HTTP Basic authentication with the remote host. This is the default  and  this  option  is
+              usually  pointless,  unless  you  use  it  to override a previously set option that sets a different authentication
+              method (such as --ntlm, --digest, or --negotiate).
+
+              Used together with -u, --user.
+
+              See also --proxy-basic.
+
+       --cacert <file>
+              (TLS) Tells curl to use the specified certificate file to verify the peer. The file may contain  multiple  CA  cer‐
+              tificates. The certificate(s) must be in PEM format. Normally curl is built to use a default file for this, so this
+              option is typically used to alter that default file.
+
+              curl recognizes the environment variable named 'CURL_CA_BUNDLE' if it is set, and uses the given path as a path  to
+              a CA cert bundle. This option overrides that variable.
+
+              The  windows  version of curl will automatically look for a CA certs file named ´curl-ca-bundle.crt´, either in the
+              same directory as curl.exe, or in the Current Working Directory, or in any folder along your PATH.
+
+              If curl is built against the NSS SSL library, the NSS PEM PKCS#11 module (libnsspem.so) needs to be  available  for
+              this option to work properly.
+
+              (iOS and macOS only) If curl is built against Secure Transport, then this option is supported for backward compati‐
+              bility with other SSL engines, but it should not be set. If the option is not set, then curl will use the  certifi‐
+              cates  in  the  system  and user Keychain to verify the peer, which is the preferred method of verifying the peer's
+              certificate chain.
+
+              (Schannel only) This option is supported for Schannel in Windows 7 or later with libcurl 7.60 or later. This option
+              is  supported for backward compatibility with other SSL engines; instead it is recommended to use Windows' store of
+              root certificates (the default for Schannel).
+
+              If this option is used several times, the last one will be used.
+
+       --capath <dir>
+              (TLS) Tells curl to use the specified certificate directory to verify the peer. Multiple paths can be  provided  by
+              separating  them with ":" (e.g.  "path1:path2:path3"). The certificates must be in PEM format, and if curl is built
+              against OpenSSL, the directory must have been processed using the c_rehash utility  supplied  with  OpenSSL.  Using
+              --capath  can  allow  OpenSSL-powered curl to make SSL-connections much more efficiently than using --cacert if the
+              --cacert file contains many CA certificates.
+
+              If this option is set, the default capath value will be ignored, and if it is used several times, the last one will
+              be used.
+
+       --cert-status
+              (TLS)  Tells curl to verify the status of the server certificate by using the Certificate Status Request (aka. OCSP
+              stapling) TLS extension.
+
+              If this option is enabled and the server sends an invalid (e.g. expired) response, if the  response  suggests  that
+              the server certificate has been revoked, or no response at all is received, the verification fails.
+
+              This is currently only implemented in the OpenSSL, GnuTLS and NSS backends.
+
+              Added in 7.41.0.
+
+       --cert-type <type>
+              (TLS)  Tells  curl  what type the provided client certificate is using. PEM, DER, ENG and P12 are recognized types.
+              If not specified, PEM is assumed.
+
+              If this option is used several times, the last one will be used.
+
+              See also -E, --cert and --key and --key-type.
+
+       -E, --cert <certificate[:password]>
+              (TLS) Tells curl to use the specified client certificate file when getting a file with HTTPS, FTPS or another  SSL-
+              based  protocol.  The  certificate  must be in PKCS#12 format if using Secure Transport, or PEM format if using any
+              other engine.  If the optional password isn't specified, it will be queried for on the terminal. Note that this op‐
+              tion  assumes  a "certificate" file that is the private key and the client certificate concatenated! See -E, --cert
+              and --key to specify them independently.
+
+              If curl is built against the NSS SSL library then this option can tell curl the nickname of the certificate to  use
+              within  the NSS database defined by the environment variable SSL_DIR (or by default /etc/pki/nssdb). If the NSS PEM
+              PKCS#11 module (libnsspem.so) is available then PEM files may be loaded. If you want to use a file from the current
+              directory,  please  precede it with "./" prefix, in order to avoid confusion with a nickname.  If the nickname con‐
+              tains ":", it needs to be preceded by "\" so that it is not recognized as password delimiter.  If the nickname con‐
+              tains "\", it needs to be escaped as "\\" so that it is not recognized as an escape character.
+
+              If  curl is built against OpenSSL library, and the engine pkcs11 is available, then a PKCS#11 URI (RFC 7512) can be
+              used to specify a certificate located in a PKCS#11 device. A string beginning with "pkcs11:" will be interpreted as
+              a  PKCS#11 URI. If a PKCS#11 URI is provided, then the --engine option will be set as "pkcs11" if none was provided
+              and the --cert-type option will be set as "ENG" if none was provided.
+
+              (iOS and macOS only) If curl is built against Secure Transport, then the certificate string can either be the  name
+              of  a certificate/private key in the system or user keychain, or the path to a PKCS#12-encoded certificate and pri‐
+              vate key. If you want to use a file from the current directory, please precede it with "./"  prefix,  in  order  to
+              avoid confusion with a nickname.
+
+              (Schannel  only) Client certificates must be specified by a path expression to a certificate store. (Loading PFX is
+              not supported; you can import it to a store first). You can use "<store location>\<store name>\<thumbprint>" to re‐
+              fer     to     a     certificate     in     the     system    certificates    store,    for    example,    "Curren‐
+              tUser\MY\934a7ac6f8a5d579285a74fa61e19f23ddfe8d7a". Thumbprint is usually a SHA-1 hex string which you can  see  in
+              certificate  details. Following store locations are supported: CurrentUser, LocalMachine, CurrentService, Services,
+              CurrentUserGroupPolicy, LocalMachineGroupPolicy, LocalMachineEnterprise.
+
+              If this option is used several times, the last one will be used.
+
+              See also --cert-type and --key and --key-type.
+
+       --ciphers <list of ciphers>
+              (TLS) Specifies which ciphers to use in the connection. The list of ciphers must specify valid ciphers. Read up  on
+              SSL cipher list details on this URL:
+
+               https://curl.haxx.se/docs/ssl-ciphers.html
+
+              If this option is used several times, the last one will be used.
+
+       --compressed-ssh
+              (SCP SFTP) Enables built-in SSH compression.  This is a request, not an order; the server may or may not do it.
+
+              Added in 7.56.0.
+
+       --compressed
+              (HTTP) Request a compressed response using one of the algorithms curl supports, and save the uncompressed document.
+              If this option is used and the server sends an unsupported encoding, curl will report an error.
+
+       -K, --config <file>
+
+              Specify a text file to read curl arguments from. The command line arguments found in the text file will be used  as
+              if they were provided on the command line.
+
+              Options and their parameters must be specified on the same line in the file, separated by whitespace, colon, or the
+              equals sign. Long option names can optionally be given in the config file without the initial double dashes and  if
+              so,  the  colon  or equals characters can be used as separators. If the option is specified with one or two dashes,
+              there can be no colon or equals character between the option and its parameter.
+
+              If the parameter is to contain whitespace, the parameter must be enclosed within quotes. Within double quotes,  the
+              following  escape sequences are available: \\, \", \t, \n, \r and \v. A backslash preceding any other letter is ig‐
+              nored. If the first column of a config line is a '#' character, the rest of the line will be treated as a  comment.
+              Only write one option per physical line in the config file.
+
+              Specify the filename to -K, --config as '-' to make curl read the file from stdin.
+
+              Note that to be able to specify a URL in the config file, you need to specify it using the --url option, and not by
+              simply writing the URL on its own line. So, it could look similar to this:
+
+              url = "https://curl.haxx.se/docs/"
+
+              When curl is invoked, it (unless -q, --disable is used) checks for a default config file and uses it if found.  The
+              default config file is checked for in the following places in this order:
+
+              1)  curl  tries  to find the "home dir": It first checks for the CURL_HOME and then the HOME environment variables.
+              Failing that, it uses getpwuid() on Unix-like systems (which returns the home dir given the current  user  in  your
+              system).  On  Windows,  it then checks for the APPDATA variable, or as a last resort the '%USERPROFILE%\Application
+              Data'.
+
+              2) On windows, if there is no _curlrc file in the home dir, it checks for one in the same dir the  curl  executable
+              is placed. On Unix-like systems, it will simply try to load .curlrc from the determined home dir.
+
+              # --- Example file ---
+              # this is a comment
+              url = "example.com"
+              output = "curlhere.html"
+              user-agent = "superagent/1.0"
+
+              # and fetch another URL too
+              url = "example.com/docs/manpage.html"
+              -O
+              referer = "http://nowhereatall.example.com/"
+              # --- End of example file ---
+
+              This option can be used multiple times to load multiple config files.
+
+       --connect-timeout <seconds>
+              Maximum  time  in  seconds  that you allow curl's connection to take.  This only limits the connection phase, so if
+              curl connects within the given period it will continue - if not it will exit.  Since version  7.32.0,  this  option
+              accepts decimal values.
+
+              If this option is used several times, the last one will be used.
+
+              See also -m, --max-time.
+
+       --connect-to <HOST1:PORT1:HOST2:PORT2>
+
+              For a request to the given HOST1:PORT1 pair, connect to HOST2:PORT2 instead.  This option is suitable to direct re‐
+              quests at a specific server, e.g. at a specific cluster node in a cluster of servers. This option is only  used  to
+              establish the network connection. It does NOT affect the hostname/port that is used for TLS/SSL (e.g. SNI, certifi‐
+              cate verification) or for the application protocols. "HOST1" and "PORT1" may be  the  empty  string,  meaning  "any
+              host/port". "HOST2" and "PORT2" may also be the empty string, meaning "use the request's original host/port".
+
+              A  "host"  specified  to this option is compared as a string, so it needs to match the name used in request URL. It
+              can be either numerical such as "127.0.0.1" or the full host name such as "example.org".
+
+              This option can be used many times to add many connect rules.
+
+              See also --resolve and -H, --header. Added in 7.49.0.
+
+       -C, --continue-at <offset>
+              Continue/Resume a previous file transfer at the given offset. The given offset is the exact number  of  bytes  that
+              will  be  skipped,  counting from the beginning of the source file before it is transferred to the destination.  If
+              used with uploads, the FTP server command SIZE will not be used by curl.
+
+              Use "-C -" to tell curl to automatically find out where/how to resume the transfer. It then  uses  the  given  out‐
+              put/input files to figure that out.
+
+              If this option is used several times, the last one will be used.
+
+              See also -r, --range.
+
+       -c, --cookie-jar <filename>
+              (HTTP)  Specify to which file you want curl to write all cookies after a completed operation. Curl writes all cook‐
+              ies from its in-memory cookie storage to the given file at the end of operations. If no cookies are known, no  data
+              will be written. The file will be written using the Netscape cookie file format. If you set the file name to a sin‐
+              gle dash, "-", the cookies will be written to stdout.
+
+              This command line option will activate the cookie engine that makes curl record and use cookies. Another way to ac‐
+              tivate it is to use the -b, --cookie option.
+
+              If  the  cookie  jar  can't  be  created or written to, the whole curl operation won't fail or even report an error
+              clearly. Using -v, --verbose will get a warning displayed, but that is the only visible feedback you get about this
+              possibly lethal situation.
+
+              If this option is used several times, the last specified file name will be used.
+
+       -b, --cookie <data>
+              (HTTP)  Pass  the  data to the HTTP server in the Cookie header. It is supposedly the data previously received from
+              the server in a "Set-Cookie:" line.  The data should be in the format "NAME1=VALUE1; NAME2=VALUE2".
+
+              If no '=' symbol is used in the argument, it is instead treated as a filename  to  read  previously  stored  cookie
+              from. This option also activates the cookie engine which will make curl record incoming cookies, which may be handy
+              if you're using this in combination with the -L, --location option or do multiple URL transfers on the same invoke.
+              If the file name is exactly a minus ("-"), curl will instead the contents from stdin.
+
+              The  file  format  of  the  file  to  read cookies from should be plain HTTP headers (Set-Cookie style) or the Net‐
+              scape/Mozilla cookie file format.
+
+              The file specified with -b, --cookie is only used as input. No cookies will be written to the file. To store  cook‐
+              ies, use the -c, --cookie-jar option.
+
+              Exercise  caution if you are using this option and multiple transfers may occur.  If you use the NAME1=VALUE1; for‐
+              mat, or in a file use the Set-Cookie format and don't specify a domain, then the cookie  is  sent  for  any  domain
+              (even  after redirects are followed) and cannot be modified by a server-set cookie. If the cookie engine is enabled
+              and a server sets a cookie of the same name then both will be sent on a future transfer to that server, likely  not
+              what you intended.  To address these issues set a domain in Set-Cookie (doing that will include sub domains) or use
+              the Netscape format.
+
+              If this option is used several times, the last one will be used.
+
+              Users very often want to both read cookies from a file and write updated cookies back to a file, so using both  -b,
+              --cookie and -c, --cookie-jar in the same command line is common.
+
+       --create-dirs
+              When  used in conjunction with the -o, --output option, curl will create the necessary local directory hierarchy as
+              needed. This option creates the dirs mentioned with the -o, --output option, nothing else.  If  the  --output  file
+              name uses no dir or if the dirs it mentions already exist, no dir will be created.
+
+              To create remote directories when using FTP or SFTP, try --ftp-create-dirs.
+
+       --crlf (FTP SMTP) Convert LF to CRLF in upload. Useful for MVS (OS/390).
+
+              (SMTP added in 7.40.0)
+
+       --crlfile <file>
+              (TLS)  Provide  a  file using PEM format with a Certificate Revocation List that may specify peer certificates that
+              are to be considered revoked.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.19.7.
+
+       --data-ascii <data>
+              (HTTP) This is just an alias for -d, --data.
+
+       --data-binary <data>
+              (HTTP) This posts data exactly as specified with no extra processing whatsoever.
+
+              If you start the data with the letter @, the rest should be a filename.  Data is posted in a similar manner as  -d,
+              --data does, except that newlines and carriage returns are preserved and conversions are never done.
+
+              Like  -d,  --data the default content-type sent to the server is application/x-www-form-urlencoded. If you want the
+              data to be treated as arbitrary binary data by the server then set the content-type to octet-stream:  -H  "Content-
+              Type: application/octet-stream".
+
+              If this option is used several times, the ones following the first will append data as described in -d, --data.
+
+       --data-raw <data>
+              (HTTP) This posts data similarly to -d, --data but without the special interpretation of the @ character.
+
+              See also -d, --data. Added in 7.43.0.
+
+       --data-urlencode <data>
+              (HTTP) This posts data, similar to the other -d, --data options with the exception that this performs URL-encoding.
+
+              To  be CGI-compliant, the <data> part should begin with a name followed by a separator and a content specification.
+              The <data> part can be passed to curl using one of the following syntaxes:
+
+              content
+                     This will make curl URL-encode the content and pass that on. Just be careful so  that  the  content  doesn't
+                     contain any = or @ symbols, as that will then make the syntax match one of the other cases below!
+
+              =content
+                     This  will  make curl URL-encode the content and pass that on. The preceding = symbol is not included in the
+                     data.
+
+              name=content
+                     This will make curl URL-encode the content part and pass that on. Note that the name part is expected to  be
+                     URL-encoded already.
+
+              @filename
+                     This will make curl load data from the given file (including any newlines), URL-encode that data and pass it
+                     on in the POST.
+
+              name@filename
+                     This will make curl load data from the given file (including any newlines), URL-encode that data and pass it
+                     on  in  the POST. The name part gets an equal sign appended, resulting in name=urlencoded-file-content. Note
+                     that the name is expected to be URL-encoded already.
+
+       See also -d, --data and --data-raw. Added in 7.18.0.
+
+       -d, --data <data>
+              (HTTP) Sends the specified data in a POST request to the HTTP server, in the same way that a browser  does  when  a
+              user  has filled in an HTML form and presses the submit button. This will cause curl to pass the data to the server
+              using the content-type application/x-www-form-urlencoded.  Compare to -F, --form.
+
+              --data-raw is almost the same but does not have a special interpretation of the @ character. To  post  data  purely
+              binary,  you  should  instead  use  the  --data-binary option.  To URL-encode the value of a form field you may use
+              --data-urlencode.
+
+              If any of these options is used more than once on the same command line, the data pieces specified will  be  merged
+              together  with  a separating &-symbol. Thus, using '-d name=daniel -d skill=lousy' would generate a post chunk that
+              looks like 'name=daniel&skill=lousy'.
+
+              If you start the data with the letter @, the rest should be a file name to read the data from, or  -  if  you  want
+              curl  to read the data from stdin. Multiple files can also be specified. Posting data from a file named from a file
+              like that, carriage returns and newlines will be stripped out. If you don't want the @ character to have a  special
+              interpretation use --data-raw instead.
+
+              See also --data-binary and --data-urlencode and --data-raw. This option overrides -F, --form and -I, --head and -T,
+              --upload-file.
+
+       --delegation <LEVEL>
+              (GSS/kerberos) Set LEVEL to tell the server what it is allowed to delegate when it comes to user credentials.
+
+              none   Don't allow any delegation.
+
+              policy Delegates if and only if the OK-AS-DELEGATE flag is set in the Kerberos service ticket, which is a matter of
+                     realm policy.
+
+              always Unconditionally allow the server to delegate.
+
+       --digest
+              (HTTP)  Enables  HTTP Digest authentication. This is an authentication scheme that prevents the password from being
+              sent over the wire in clear text. Use this in combination with the normal -u, --user option to set  user  name  and
+              password.
+
+              If this option is used several times, only the first one is used.
+
+              See also -u, --user and --proxy-digest and --anyauth. This option overrides --basic and --ntlm and --negotiate.
+
+       --disable-eprt
+              (FTP)  Tell  curl  to disable the use of the EPRT and LPRT commands when doing active FTP transfers. Curl will nor‐
+              mally always first attempt to use EPRT, then LPRT before using PORT, but with this option, it will use  PORT  right
+              away.  EPRT  and LPRT are extensions to the original FTP protocol, and may not work on all servers, but they enable
+              more functionality in a better way than the traditional PORT command.
+
+              --eprt can be used to explicitly enable EPRT again and --no-eprt is an alias for --disable-eprt.
+
+              If the server is accessed using IPv6, this option will have no effect as EPRT is necessary then.
+
+              Disabling EPRT only changes the active behavior. If you want to switch to passive mode you  need  to  not  use  -P,
+              --ftp-port or force it with --ftp-pasv.
+
+       --disable-epsv
+              (FTP)  (FTP)  Tell curl to disable the use of the EPSV command when doing passive FTP transfers. Curl will normally
+              always first attempt to use EPSV before PASV, but with this option, it will not try using EPSV.
+
+              --epsv can be used to explicitly enable EPSV again and --no-epsv is an alias for --disable-epsv.
+
+              If the server is an IPv6 host, this option will have no effect as EPSV is necessary then.
+
+              Disabling EPSV only changes the passive behavior. If you want to switch to active mode you need to use  -P,  --ftp-
+              port.
+
+       -q, --disable
+              If  used  as the first parameter on the command line, the curlrc config file will not be read and used. See the -K,
+              --config for details on the default config file search path.
+
+       --disallow-username-in-url
+              (HTTP) This tells curl to exit if passed a url containing a username.
+
+              See also --proto. Added in 7.61.0.
+
+       --dns-interface <interface>
+              (DNS) Tell curl to send outgoing DNS requests through <interface>. This option  is  a  counterpart  to  --interface
+              (which does not affect DNS). The supplied string must be an interface name (not an address).
+
+              See  also  --dns-ipv4-addr  and  --dns-ipv6-addr. --dns-interface requires that the underlying libcurl was built to
+              support c-ares. Added in 7.33.0.
+
+       --dns-ipv4-addr <address>
+              (DNS) Tell curl to bind to <ip-address> when making IPv4 DNS requests, so that the DNS requests originate from this
+              address. The argument should be a single IPv4 address.
+
+              See  also  --dns-interface  and  --dns-ipv6-addr. --dns-ipv4-addr requires that the underlying libcurl was built to
+              support c-ares. Added in 7.33.0.
+
+       --dns-ipv6-addr <address>
+              (DNS) Tell curl to bind to <ip-address> when making IPv6 DNS requests, so that the DNS requests originate from this
+              address. The argument should be a single IPv6 address.
+
+              See  also  --dns-interface  and  --dns-ipv4-addr. --dns-ipv6-addr requires that the underlying libcurl was built to
+              support c-ares. Added in 7.33.0.
+
+       --dns-servers <addresses>
+              Set the list of DNS servers to be used instead of the system default.  The list of IP addresses should be separated
+              with commas. Port numbers may also optionally be given as :<port-number> after each IP address.
+
+              --dns-servers requires that the underlying libcurl was built to support c-ares. Added in 7.33.0.
+
+       --doh-url <URL>
+              (all)  Specifies  which  DNS-over-HTTPS (DOH) server to use to resolve hostnames, instead of using the default name
+              resolver mechanism. The URL must be HTTPS.
+
+              If this option is used several times, the last one will be used.
+
+       -D, --dump-header <filename>
+              (HTTP FTP) Write the received protocol headers to the specified file.
+
+              This option is handy to use when you want to store the headers that an HTTP site sends to  you.  Cookies  from  the
+              headers  could  then be read in a second curl invocation by using the -b, --cookie option! The -c, --cookie-jar op‐
+              tion is a better way to store cookies.
+
+              When used in FTP, the FTP server response lines are considered being "headers" and thus are saved there.
+
+              If this option is used several times, the last one will be used.
+
+              See also -o, --output.
+
+       --egd-file <file>
+              (TLS) Specify the path name to the Entropy Gathering Daemon socket. The socket is used to seed  the  random  engine
+              for SSL connections.
+
+              See also --random-file.
+
+       --engine <name>
+              (TLS)  Select  the  OpenSSL crypto engine to use for cipher operations. Use --engine list to print a list of build-
+              time supported engines. Note that not all (or none) of the engines may be available at run-time.
+
+       --expect100-timeout <seconds>
+              (HTTP) Maximum time in seconds that you allow curl to wait for a 100-continue response when curl emits an  Expects:
+              100-continue  header in its request. By default curl will wait one second. This option accepts decimal values! When
+              curl stops waiting, it will continue as if the response has been received.
+
+              See also --connect-timeout. Added in 7.47.0.
+
+       --fail-early
+              Fail and exit on the first detected transfer error.
+
+              When curl is used to do multiple transfers on the command line, it will attempt to operate on each given  URL,  one
+              by  one.  By  default, it will ignore errors if there are more URLs given and the last URL's success will determine
+              the error code curl returns. So early failures will be "hidden" by subsequent successful transfers.
+
+              Using this option, curl will instead return an error on the first transfer that fails, independent of the amount of
+              URLs that are given on the command line. This way, no transfer failures go undetected by scripts and similar.
+
+              This option is global and does not need to be specified for each use of -:, --next.
+
+              This option does not imply -f, --fail, which causes transfers to fail due to the server's HTTP status code. You can
+              combine the two options, however note -f, --fail is not global and is therefore contained by -:, --next.
+
+              Added in 7.52.0.
+
+       -f, --fail
+              (HTTP) Fail silently (no output at all) on server errors. This is mostly done to better enable scripts etc to  bet‐
+              ter  deal with failed attempts. In normal cases when an HTTP server fails to deliver a document, it returns an HTML
+              document stating so (which often also describes why and more). This flag will prevent curl from outputting that and
+              return error 22.
+
+              This  method  is not fail-safe and there are occasions where non-successful response codes will slip through, espe‐
+              cially when authentication is involved (response codes 401 and 407).
+
+       --false-start
+              (TLS) Tells curl to use false start during the TLS handshake. False start is a mode where a TLS client  will  start
+              sending application data before verifying the server's Finished message, thus saving a round trip when performing a
+              full handshake.
+
+              This is currently only implemented in the NSS and Secure Transport (on iOS 7.0 or later, or OS  X  10.9  or  later)
+              backends.
+
+              Added in 7.42.0.
+
+       --form-string <name=string>
+              (HTTP  SMTP  IMAP)  Similar  to  -F, --form except that the value string for the named parameter is used literally.
+              Leading '@' and '<' characters, and the ';type=' string in the value have no special meaning. Use this  in  prefer‐
+              ence  to  -F,  --form if there's any possibility that the string value may accidentally trigger the '@' or '<' fea‐
+              tures of -F, --form.
+
+              See also -F, --form.
+
+       -F, --form <name=content>
+              (HTTP SMTP IMAP) For HTTP protocol family, this lets curl emulate a filled-in form in which a user has pressed  the
+              submit button. This causes curl to POST data using the Content-Type multipart/form-data according to RFC 2388.
+
+              For SMTP and IMAP protocols, this is the mean to compose a multipart mail message to transmit.
+
+              This  enables uploading of binary files etc. To force the 'content' part to be a file, prefix the file name with an
+              @ sign. To just get the content part from a file, prefix the file name with the symbol <. The difference between  @
+              and  <  is  then  that @ makes a file get attached in the post as a file upload, while the < makes a text field and
+              just get the contents for that text field from a file.
+
+              Tell curl to read content from stdin instead of a file by using - as filename. This goes for  both  @  and  <  con‐
+              structs.  When  stdin  is  used, the contents is buffered in memory first by curl to determine its size and allow a
+              possible resend.  Defining a part's data from a named non-regular file (such as a named pipe or similar) is  unfor‐
+              tunately not subject to buffering and will be effectively read at transmission time; since the full size is unknown
+              before the transfer starts, such data is sent as chunks by HTTP and rejected by IMAP.
+
+              Example: send an image to an HTTP server, where 'profile' is the name of the form-field  to  which  the  file  por‐
+              trait.jpg will be the input:
+
+               curl -F profile=@portrait.jpg https://example.com/upload.cgi
+
+              Example: send a your name and shoe size in two text fields to the server:
+
+               curl -F name=John -F shoesize=11 https://example.com/
+
+              Example:  send  a your essay in a text field to the server. Send it as a plain text field, but get the contents for
+              it from a local file:
+
+               curl -F "story=<hugefile.txt" https://example.com/
+
+              You can also tell curl what Content-Type to use by using 'type=', in a manner similar to:
+
+               curl -F "web=@index.html;type=text/html" example.com
+
+              or
+
+               curl -F "name=daniel;type=text/foo" example.com
+
+              You can also explicitly change the name field of a file upload part by setting filename=, like this:
+
+               curl -F "file=@localfile;filename=nameinpost" example.com
+
+              If filename/path contains ',' or ';', it must be quoted by double-quotes like:
+
+               curl -F "file=@\"localfile\";filename=\"nameinpost\"" example.com
+
+              or
+
+               curl -F 'file=@"localfile";filename="nameinpost"' example.com
+
+              Note that if a filename/path is quoted by double-quotes, any double-quote or backslash within the filename must  be
+              escaped by backslash.
+
+              Quoting  must also be applied to non-file data if it contains semicolons, leading/trailing spaces or leading double
+              quotes:
+
+               curl -F 'colors="red; green; blue";type=text/x-myapp' example.com
+
+              You can add custom headers to the field by setting headers=, like
+
+                curl -F "submit=OK;headers=\"X-submit-type: OK\"" example.com
+
+              or
+
+                curl -F "submit=OK;headers=@headerfile" example.com
+
+              The headers= keyword may appear more that once and above notes about quoting apply. When headers are  read  from  a
+              file,  Empty lines and lines starting with '#' are comments and ignored; each header can be folded by splitting be‐
+              tween two words and starting the continuation line with a space; embedded carriage-returns and trailing spaces  are
+              stripped.  Here is an example of a header file contents:
+
+                # This file contain two headers.
+                X-header-1: this is a header
+
+                # The following header is folded.
+                X-header-2: this is
+                 another header
+
+              To support sending multipart mail messages, the syntax is extended as follows:
+              - name can be omitted: the equal sign is the first character of the argument,
+              -  if  data starts with '(', this signals to start a new multipart: it can be followed by a content type specifica‐
+              tion.
+              - a multipart can be terminated with a '=)' argument.
+
+              Example: the following command sends an SMTP mime e-mail consisting in an inline part in two  alternative  formats:
+              plain text and HTML. It attaches a text file:
+
+               curl -F '=(;type=multipart/alternative' \
+                       -F '=plain text message' \
+                       -F '= <body>HTML message</body>;type=text/html' \
+                    -F '=)' -F '=@textfile.txt' ...  smtp://example.com
+
+              Data  can be encoded for transfer using encoder=. Available encodings are binary and 8bit that do nothing else than
+              adding the corresponding Content-Transfer-Encoding header, 7bit that only rejects 8-bit characters with a  transfer
+              error,  quoted-printable and base64 that encodes data according to the corresponding schemes, limiting lines length
+              to 76 characters.
+
+              Example: send multipart mail with a quoted-printable text message and a base64 attached file:
+
+               curl -F '=text message;encoder=quoted-printable' \
+                    -F '=@localfile;encoder=base64' ... smtp://example.com
+
+              See further examples and details in the MANUAL.
+
+              This option can be used multiple times.
+
+              This option overrides -d, --data and -I, --head and -T, --upload-file.
+
+       --ftp-account <data>
+              (FTP) When an FTP server asks for "account data" after user name and password has been provided, this data is  sent
+              off using the ACCT command.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.13.0.
+
+       --ftp-alternative-to-user <command>
+              (FTP)  If authenticating with the USER and PASS commands fails, send this command.  When connecting to Tumbleweed's
+              Secure Transport server over FTPS using a client certificate, using "SITE AUTH" will tell the  server  to  retrieve
+              the username from the certificate.
+
+              Added in 7.15.5.
+
+       --ftp-create-dirs
+              (FTP  SFTP)  When an FTP or SFTP URL/operation uses a path that doesn't currently exist on the server, the standard
+              behavior of curl is to fail. Using this option, curl will instead attempt to create missing directories.
+
+              See also --create-dirs.
+
+       --ftp-method <method>
+              (FTP) Control what method curl should use to reach a file on an FTP(S) server. The method argument should be one of
+              the following alternatives:
+
+              multicwd
+                     curl  does  a single CWD operation for each path part in the given URL. For deep hierarchies this means very
+                     many commands. This is how RFC 1738 says it should be done. This is the default but the slowest behavior.
+
+              nocwd  curl does no CWD at all. curl will do SIZE, RETR, STOR etc and give a full path to the server for all  these
+                     commands. This is the fastest behavior.
+
+              singlecwd
+                     curl  does one CWD with the full target directory and then operates on the file "normally" (like in the mul‐
+                     ticwd case). This is somewhat more standards compliant than 'nocwd' but without the full penalty of  'multi‐
+                     cwd'.
+
+       Added in 7.15.1.
+
+       --ftp-pasv
+              (FTP) Use passive mode for the data connection. Passive is the internal default behavior, but using this option can
+              be used to override a previous -P, --ftp-port option.
+
+              If this option is used several times, only the first one is used. Undoing an enforced passive really  isn't  doable
+              but you must then instead enforce the correct -P, --ftp-port again.
+
+              Passive mode means that curl will try the EPSV command first and then PASV, unless --disable-epsv is used.
+
+              See also --disable-epsv. Added in 7.11.0.
+
+       -P, --ftp-port <address>
+              (FTP)  Reverses  the  default  initiator/listener roles when connecting with FTP. This option makes curl use active
+              mode. curl then tells the server to connect back to the client's specified address and  port,  while  passive  mode
+              asks the server to setup an IP address and port for it to connect to. <address> should be one of:
+
+              interface
+                     e.g. "eth0" to specify which interface's IP address you want to use (Unix only)
+
+              IP address
+                     e.g. "192.168.10.1" to specify the exact IP address
+
+              host name
+                     e.g. "my.host.domain" to specify the machine
+
+              -      make curl pick the same IP address that is already used for the control connection
+
+       If  this option is used several times, the last one will be used. Disable the use of PORT with --ftp-pasv. Disable the at‐
+       tempt to use the EPRT command instead of PORT by using --disable-eprt. EPRT is really PORT++.
+
+       Since 7.19.5, you can append ":[start]-[end]" to the right of the address, to tell curl what TCP port range to  use.  That
+       means  you  specify  a port range, from a lower to a higher number. A single number works as well, but do note that it in‐
+       creases the risk of failure since the port may not be available.
+
+       See also --ftp-pasv and --disable-eprt.
+
+       --ftp-pret
+              (FTP) Tell curl to send a PRET command before PASV (and EPSV). Certain FTP servers,  mainly  drftpd,  require  this
+              non-standard command for directory listings as well as up and downloads in PASV mode.
+
+              Added in 7.20.0.
+
+       --ftp-skip-pasv-ip
+              (FTP) Tell curl to not use the IP address the server suggests in its response to curl's PASV command when curl con‐
+              nects the data connection. Instead curl will re-use the same IP address it already uses for the control connection.
+
+              This option has no effect if PORT, EPRT or EPSV is used instead of PASV.
+
+              See also --ftp-pasv. Added in 7.14.2.
+
+       --ftp-ssl-ccc-mode <active/passive>
+              (FTP) Sets the CCC mode. The passive mode will not initiate the shutdown, but instead wait for the server to do it,
+              and  will  not  reply to the shutdown from the server. The active mode initiates the shutdown and waits for a reply
+              from the server.
+
+              See also --ftp-ssl-ccc. Added in 7.16.2.
+
+       --ftp-ssl-ccc
+              (FTP) Use CCC (Clear Command Channel) Shuts down the SSL/TLS layer after authenticating. The rest  of  the  control
+              channel  communication will be unencrypted. This allows NAT routers to follow the FTP transaction. The default mode
+              is passive.
+
+              See also --ssl and --ftp-ssl-ccc-mode. Added in 7.16.1.
+
+       --ftp-ssl-control
+              (FTP) Require SSL/TLS for the FTP login, clear for transfer.  Allows secure authentication, but non-encrypted  data
+              transfers for efficiency.  Fails the transfer if the server doesn't support SSL/TLS.
+
+              Added in 7.16.0.
+
+       -G, --get
+              When  used,  this option will make all data specified with -d, --data, --data-binary or --data-urlencode to be used
+              in an HTTP GET request instead of the POST request that otherwise would be used. The data will be appended  to  the
+              URL with a '?' separator.
+
+              If used in combination with -I, --head, the POST data will instead be appended to the URL with a HEAD request.
+
+              If this option is used several times, only the first one is used. This is because undoing a GET doesn't make sense,
+              but you should then instead enforce the alternative method you prefer.
+
+       -g, --globoff
+              This option switches off the "URL globbing parser". When you set this option, you can specify URLs that contain the
+              letters {}[] without having them being interpreted by curl itself. Note that these letters are not normal legal URL
+              contents but they should be encoded according to the URI standard.
+
+       --happy-eyeballs-timeout-ms <milliseconds>
+              Happy eyeballs is an algorithm that attempts to connect to both IPv4 and IPv6 addresses for dual-stack hosts,  pre‐
+              ferring IPv6 first for the number of milliseconds. If the IPv6 address cannot be connected to within that time then
+              a connection attempt is made to the IPv4 address in parallel. The first connection to be  established  is  the  one
+              that is used.
+
+              The  range  of  suggested useful values is limited. Happy Eyeballs RFC 6555 says "It is RECOMMENDED that connection
+              attempts be paced 150-250 ms apart to balance human factors against network load." libcurl  currently  defaults  to
+              200 ms. Firefox and Chrome currently default to 300 ms.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.59.0.
+
+       --haproxy-protocol
+              (HTTP)  Send  a HAProxy PROXY protocol v1 header at the beginning of the connection. This is used by some load bal‐
+              ancers and reverse proxies to indicate the client's true IP address and port.
+
+              This option is primarily useful when sending test requests to a service that expects this header.
+
+              Added in 7.60.0.
+
+       -I, --head
+              (HTTP FTP FILE) Fetch the headers only! HTTP-servers feature the command HEAD which this uses to  get  nothing  but
+              the  header of a document. When used on an FTP or FILE file, curl displays the file size and last modification time
+              only.
+
+       -H, --header <header/@file>
+              (HTTP) Extra header to include in the request when sending HTTP to a server. You may specify any  number  of  extra
+              headers.  Note that if you should add a custom header that has the same name as one of the internal ones curl would
+              use, your externally set header will be used instead of the internal one. This allows you  to  make  even  trickier
+              stuff  than  curl  would  normally do. You should not replace internally set headers without knowing perfectly well
+              what you're doing. Remove an internal header by giving a replacement without content  on  the  right  side  of  the
+              colon,  as  in:  -H  "Host:". If you send the custom header with no-value then its header must be terminated with a
+              semicolon, such as -H "X-Custom-Header;" to send "X-Custom-Header:".
+
+              curl will make sure that each header you add/replace is sent with the proper end-of-line marker,  you  should  thus
+              not  add  that as a part of the header content: do not add newlines or carriage returns, they will only mess things
+              up for you.
+
+              Starting in 7.55.0, this option can take an argument in @filename style, which then adds a header for each line  in
+              the input file. Using @- will make curl read the header file from stdin.
+
+              See also the -A, --user-agent and -e, --referer options.
+
+              Starting in 7.37.0, you need --proxy-header to send custom headers intended for a proxy.
+
+              Example:
+
+               curl -H "X-First-Name: Joe" http://example.com/
+
+              WARNING:  headers  set  with this option will be set in all requests - even after redirects are followed, like when
+              told with -L, --location. This can lead to the header being sent to other hosts than the original host,  so  sensi‐
+              tive headers should be used with caution combined with following redirects.
+
+              This option can be used multiple times to add/replace/remove multiple headers.
+
+       -h, --help
+              Usage help. This lists all current command line options with a short description.
+
+       --hostpubmd5 <md5>
+              (SFTP SCP) Pass a string containing 32 hexadecimal digits. The string should be the 128 bit MD5 checksum of the re‐
+              mote host's public key, curl will refuse the connection with the host unless the md5sums match.
+
+              Added in 7.17.1.
+
+       --http0.9
+              (HTTP) Tells curl to be fine with HTTP version 0.9 response.
+
+              HTTP/0.9 is a completely headerless response and therefore you can also connect with this to non-HTTP  servers  and
+              still get a response since curl will simply transparently downgrade - if allowed.
+
+              A future curl version will deny continuing if the response isn't at least HTTP/1.0 unless this option is used.
+
+       -0, --http1.0
+              (HTTP) Tells curl to use HTTP version 1.0 instead of using its internally preferred HTTP version.
+
+              This option overrides --http1.1 and --http2.
+
+       --http1.1
+              (HTTP) Tells curl to use HTTP version 1.1.
+
+              This option overrides -0, --http1.0 and --http2. Added in 7.33.0.
+
+       --http2-prior-knowledge
+              (HTTP)  Tells  curl  to  issue  its  non-TLS HTTP requests using HTTP/2 without HTTP/1.1 Upgrade. It requires prior
+              knowledge that the server supports HTTP/2 straight away. HTTPS requests will still do HTTP/2 the standard way  with
+              negotiated protocol version in the TLS handshake.
+
+              --http2-prior-knowledge  requires  that  the  underlying libcurl was built to support HTTP/2. This option overrides
+              --http1.1 and -0, --http1.0 and --http2. Added in 7.49.0.
+
+       --http2
+              (HTTP) Tells curl to use HTTP version 2.
+
+              See also --no-alpn. --http2 requires that the underlying libcurl was built to support HTTP/2. This option overrides
+              --http1.1 and -0, --http1.0 and --http2-prior-knowledge. Added in 7.33.0.
+
+       --ignore-content-length
+              (FTP  HTTP) For HTTP, Ignore the Content-Length header. This is particularly useful for servers running Apache 1.x,
+              which will report incorrect Content-Length for files larger than 2 gigabytes.
+
+              For FTP (since 7.46.0), skip the RETR command to figure out the size before downloading a file.
+
+       -i, --include
+              Include the HTTP response headers in the output. The HTTP response headers can include  things  like  server  name,
+              cookies, date of the document, HTTP version and more...
+
+              To view the request headers, consider the -v, --verbose option.
+
+              See also -v, --verbose.
+
+       -k, --insecure
+              (TLS)  By default, every SSL connection curl makes is verified to be secure. This option allows curl to proceed and
+              operate even for server connections otherwise considered insecure.
+
+              The server connection is verified by making sure the server's certificate contains the right name and verifies suc‐
+              cessfully using the cert store.
+
+              See this online resource for further details:
+               https://curl.haxx.se/docs/sslcerts.html
+
+              See also --proxy-insecure and --cacert.
+
+       --interface <name>
+
+              Perform an operation using a specified interface. You can enter interface name, IP address or host name. An example
+              could look like:
+
+               curl --interface eth0:1 https://www.example.com/
+
+              If this option is used several times, the last one will be used.
+
+              On Linux it can be used to specify a VRF, but the binary needs to either have CAP_NET_RAW or to  be  run  as  root.
+              More information about Linux VRF: https://www.kernel.org/doc/Documentation/networking/vrf.txt
+
+              See also --dns-interface.
+
+       -4, --ipv4
+              This option tells curl to resolve names to IPv4 addresses only, and not for example try IPv6.
+
+              See also --http1.1 and --http2. This option overrides -6, --ipv6.
+
+       -6, --ipv6
+              This option tells curl to resolve names to IPv6 addresses only, and not for example try IPv4.
+
+              See also --http1.1 and --http2. This option overrides -4, --ipv4.
+
+       -j, --junk-session-cookies
+              (HTTP) When curl is told to read cookies from a given file, this option will make it discard all "session cookies".
+              This will basically have the same effect as if a new session is started. Typical browsers  always  discard  session
+              cookies when they're closed down.
+
+              See also -b, --cookie and -c, --cookie-jar.
+
+       --keepalive-time <seconds>
+              This  option  sets  the time a connection needs to remain idle before sending keepalive probes and the time between
+              individual keepalive probes. It is currently effective on operating systems offering the TCP_KEEPIDLE and TCP_KEEP‐
+              INTVL  socket  options  (meaning Linux, recent AIX, HP-UX and more). This option has no effect if --no-keepalive is
+              used.
+
+              If this option is used several times, the last one will be used. If unspecified, the option defaults to 60 seconds.
+
+              Added in 7.18.0.
+
+       --key-type <type>
+              (TLS) Private key file type. Specify which type your --key provided private key is. DER,  PEM,  and  ENG  are  sup‐
+              ported. If not specified, PEM is assumed.
+
+              If this option is used several times, the last one will be used.
+
+       --key <key>
+              (TLS  SSH)  Private  key  file  name. Allows you to provide your private key in this separate file. For SSH, if not
+              specified, curl tries the following candidates in order:
+
+              If curl is built against OpenSSL library, and the engine pkcs11 is available, then a PKCS#11 URI (RFC 7512) can  be
+              used to specify a private key located in a PKCS#11 device. A string beginning with "pkcs11:" will be interpreted as
+              a PKCS#11 URI. If a PKCS#11 URI is provided, then the --engine option will be set as "pkcs11" if none was  provided
+              and the --key-type option will be set as "ENG" if none was provided.
+
+              If this option is used several times, the last one will be used.
+
+       --krb <level>
+              (FTP) Enable Kerberos authentication and use. The level must be entered and should be one of 'clear', 'safe', 'con‐
+              fidential', or 'private'. Should you use a level that is not one of these, 'private' will instead be used.
+
+              If this option is used several times, the last one will be used.
+
+              --krb requires that the underlying libcurl was built to support Kerberos.
+
+       --libcurl <file>
+              Append this option to any ordinary curl command line, and you will get a libcurl-using C source code written to the
+              file that does the equivalent of what your command-line operation does!
+
+              If this option is used several times, the last given file name will be used.
+
+              Added in 7.16.1.
+
+       --limit-rate <speed>
+              Specify  the maximum transfer rate you want curl to use - for both downloads and uploads. This feature is useful if
+              you have a limited pipe and you'd like your transfer not to use your entire bandwidth. To make it  slower  than  it
+              otherwise would be.
+
+              The given speed is measured in bytes/second, unless a suffix is appended.  Appending 'k' or 'K' will count the num‐
+              ber as kilobytes, 'm' or 'M' makes it megabytes, while 'g' or 'G' makes it gigabytes. Examples: 200K, 3m and 1G.
+
+              If you also use the -Y, --speed-limit option, that option will take precedence and might cripple the  rate-limiting
+              slightly, to help keeping the speed-limit logic working.
+
+              If this option is used several times, the last one will be used.
+
+       -l, --list-only
+              (FTP  POP3)  (FTP) When listing an FTP directory, this switch forces a name-only view. This is especially useful if
+              the user wants to machine-parse the contents of an FTP directory since the normal  directory  view  doesn't  use  a
+              standard  look or format. When used like this, the option causes a NLST command to be sent to the server instead of
+              LIST.
+
+              Note: Some FTP servers list only files in their response to NLST; they do not include sub-directories and  symbolic
+              links.
+
+              (POP3)  When  retrieving  a  specific email from POP3, this switch forces a LIST command to be performed instead of
+              RETR. This is particularly useful if the user wants to see if a specific message id exists on the server  and  what
+              size it is.
+
+              Note:  When  combined  with -X, --request, this option can be used to send an UIDL command instead, so the user may
+              use the email's unique identifier rather than it's message id to make the request.
+
+              Added in 7.21.5.
+
+       --local-port <num/range>
+              Set a preferred single number or range (FROM-TO) of local port numbers to use for  the  connection(s).   Note  that
+              port numbers by nature are a scarce resource that will be busy at times so setting this range to something too nar‐
+              row might cause unnecessary connection setup failures.
+
+              Added in 7.15.2.
+
+       --location-trusted
+              (HTTP) Like -L, --location, but will allow sending the name + password to all hosts that the site may redirect  to.
+              This  may  or may not introduce a security breach if the site redirects you to a site to which you'll send your au‐
+              thentication info (which is plaintext in the case of HTTP Basic authentication).
+
+              See also -u, --user.
+
+       -L, --location
+              (HTTP) If the server reports that the requested page has moved to a different location (indicated with a  Location:
+              header  and  a  3XX  response code), this option will make curl redo the request on the new place. If used together
+              with -i, --include or -I, --head, headers from all requested pages will be shown. When authentication is used, curl
+              only  sends  its credentials to the initial host. If a redirect takes curl to a different host, it won't be able to
+              intercept the user+password. See also --location-trusted on how to change this. You can limit the amount  of  redi‐
+              rects to follow by using the --max-redirs option.
+
+              When curl follows a redirect and the request is not a plain GET (for example POST or PUT), it will do the following
+              request with a GET if the HTTP response was 301, 302, or 303. If the response code was any  other  3xx  code,  curl
+              will re-send the following request using the same unmodified method.
+
+              You  can  tell curl to not change the non-GET request method to GET after a 30x response by using the dedicated op‐
+              tions for that: --post301, --post302 and --post303.
+
+       --login-options <options>
+              (IMAP POP3 SMTP) Specify the login options to use during server authentication.
+
+              You can use the login options to specify protocol specific options that  may  be  used  during  authentication.  At
+              present only IMAP, POP3 and SMTP support login options. For more information about the login options please see RFC
+              2384, RFC 5092 and IETF draft draft-earhart-url-smtp-00.txt
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.34.0.
+
+       --mail-auth <address>
+              (SMTP) Specify a single address. This will be used to specify the authentication address (identity) of a  submitted
+              message that is being relayed to another server.
+
+              See also --mail-rcpt and --mail-from. Added in 7.25.0.
+
+       --mail-from <address>
+              (SMTP) Specify a single address that the given mail should get sent from.
+
+              See also --mail-rcpt and --mail-auth. Added in 7.20.0.
+
+       --mail-rcpt <address>
+              (SMTP) Specify a single address, user name or mailing list name. Repeat this option several times to send to multi‐
+              ple recipients.
+
+              When performing a mail transfer, the recipient should specify a valid email address to send the mail to.
+
+              When performing an address verification (VRFY command), the recipient should be specified as the user name or  user
+              name and domain (as per Section 3.5 of RFC5321). (Added in 7.34.0)
+
+              When  performing  a  mailing  list  expand (EXPN command), the recipient should be specified using the mailing list
+              name, such as "Friends" or "London-Office".  (Added in 7.34.0)
+
+              Added in 7.20.0.
+
+       -M, --manual
+              Manual. Display the huge help text.
+
+       --max-filesize <bytes>
+              Specify the maximum size (in bytes) of a file to download. If the file requested is larger  than  this  value,  the
+              transfer will not start and curl will return with exit code 63.
+
+              A size modifier may be used. For example, Appending 'k' or 'K' will count the number as kilobytes, 'm' or 'M' makes
+              it megabytes, while 'g' or 'G' makes it gigabytes. Examples: 200K, 3m and 1G. (Added in 7.58.0)
+
+              NOTE: The file size is not always known prior to download, and for such files this option has no effect even if the
+              file transfer ends up being larger than this given limit. This concerns both FTP and HTTP transfers.
+
+              See also --limit-rate.
+
+       --max-redirs <num>
+              (HTTP)  Set  maximum number of redirection-followings allowed. When -L, --location is used, is used to prevent curl
+              from following redirections "in absurdum". By default, the limit is set to 50 redirections. Set this option  to  -1
+              to make it unlimited.
+
+              If this option is used several times, the last one will be used.
+
+       -m, --max-time <seconds>
+              Maximum  time in seconds that you allow the whole operation to take.  This is useful for preventing your batch jobs
+              from hanging for hours due to slow networks or links going down.  Since 7.32.0, this option accepts decimal values,
+              but the actual timeout will decrease in accuracy as the specified timeout increases in decimal precision.
+
+              If this option is used several times, the last one will be used.
+
+              See also --connect-timeout.
+
+       --metalink
+              This  option  can  tell curl to parse and process a given URI as Metalink file (both version 3 and 4 (RFC 5854) are
+              supported) and make use of the mirrors listed within for failover if there are errors (such as the file  or  server
+              not  being available). It will also verify the hash of the file after the download completes. The Metalink file it‐
+              self is downloaded and processed in memory and not stored in the local file system.
+
+              Example to use a remote Metalink file:
+
+               curl --metalink http://www.example.com/example.metalink
+
+              To use a Metalink file in the local file system, use FILE protocol (file://):
+
+               curl --metalink file://example.metalink
+
+              Please note that if FILE protocol is disabled, there is no way to use a local Metalink file at  the  time  of  this
+              writing.  Also  note that if --metalink and -i, --include are used together, --include will be ignored. This is be‐
+              cause including headers in the response will break Metalink parser and if the headers are included in the file  de‐
+              scribed in Metalink file, hash check will fail.
+
+              --metalink requires that the underlying libcurl was built to support metalink. Added in 7.27.0.
+
+       --negotiate
+              (HTTP) Enables Negotiate (SPNEGO) authentication.
+
+              This  option  requires a library built with GSS-API or SSPI support. Use -V, --version to see if your curl supports
+              GSS-API/SSPI or SPNEGO.
+
+              When using this option, you must also provide a fake -u, --user option to activate the  authentication  code  prop‐
+              erly. Sending a '-u :' is enough as the user name and password from the -u, --user option aren't actually used.
+
+              If this option is used several times, only the first one is used.
+
+              See also --basic and --ntlm and --anyauth and --proxy-negotiate.
+
+       --netrc-file <filename>
+              This  option  is  similar to -n, --netrc, except that you provide the path (absolute or relative) to the netrc file
+              that curl should use.  You can only specify one netrc file per invocation. If several --netrc-file options are pro‐
+              vided, the last one will be used.
+
+              It will abide by --netrc-optional if specified.
+
+              This option overrides -n, --netrc. Added in 7.21.5.
+
+       --netrc-optional
+              Very  similar  to -n, --netrc, but this option makes the .netrc usage optional and not mandatory as the -n, --netrc
+              option does.
+
+              See also --netrc-file. This option overrides -n, --netrc.
+
+       -n, --netrc
+              Makes curl scan the .netrc (_netrc on Windows) file in the user's home directory for login name and password.  This
+              is typically used for FTP on Unix. If used with HTTP, curl will enable user authentication. See netrc(5) ftp(1) for
+              details on the file format. Curl will not complain if that file doesn't have the right permissions (it  should  not
+              be either world- or group-readable). The environment variable "HOME" is used to find the home directory.
+
+              A  quick  and very simple example of how to setup a .netrc to allow curl to FTP to the machine host.domain.com with
+              user name 'myself' and password 'secret' should look similar to:
+
+              machine host.domain.com login myself password secret
+
+       -:, --next
+              Tells curl to use a separate operation for the following URL and associated options. This allows you to  send  sev‐
+              eral  URL  requests,  each with their own specific options, for example, such as different user names or custom re‐
+              quests for each.
+
+              -:, --next will reset all local options and only global ones will have their values survive over to  the  operation
+              following  the  -:,  --next  instruction.  Global options include -v, --verbose, --trace, --trace-ascii and --fail-
+              early.
+
+              For example, you can do both a GET and a POST in a single command line:
+
+               curl www1.example.com --next -d postthis www2.example.com
+
+              Added in 7.36.0.
+
+       --no-alpn
+              (HTTPS) Disable the ALPN TLS extension. ALPN is enabled by default if libcurl was built with an  SSL  library  that
+              supports  ALPN.  ALPN  is used by a libcurl that supports HTTP/2 to negotiate HTTP/2 support with the server during
+              https sessions.
+
+              See also --no-npn and --http2. --no-alpn requires that the underlying libcurl was built to support  TLS.  Added  in
+              7.36.0.
+
+       -N, --no-buffer
+              Disables  the  buffering  of the output stream. In normal work situations, curl will use a standard buffered output
+              stream that will have the effect that it will output the data in chunks, not necessarily exactly when the data  ar‐
+              rives.  Using this option will disable that buffering.
+
+              Note that this is the negated option name documented. You can thus use --buffer to enforce the buffering.
+
+       --no-keepalive
+              Disables the use of keepalive messages on the TCP connection. curl otherwise enables them by default.
+
+              Note that this is the negated option name documented. You can thus use --keepalive to enforce keepalive.
+
+       --no-npn
+              (HTTPS) Disable the NPN TLS extension. NPN is enabled by default if libcurl was built with an SSL library that sup‐
+              ports NPN. NPN is used by a libcurl that supports HTTP/2 to negotiate HTTP/2 support with the server  during  https
+              sessions.
+
+              See  also  --no-alpn  and --http2. --no-npn requires that the underlying libcurl was built to support TLS. Added in
+              7.36.0.
+
+       --no-sessionid
+              (TLS) Disable curl's use of SSL session-ID caching.  By default all transfers are done using the cache.  Note  that
+              while  nothing should ever get hurt by attempting to reuse SSL session-IDs, there seem to be broken SSL implementa‐
+              tions in the wild that may require you to disable this in order for you to succeed.
+
+              Note that this is the negated option name documented. You can thus use --sessionid to enforce session-ID caching.
+
+              Added in 7.16.0.
+
+       --noproxy <no-proxy-list>
+              Comma-separated list of hosts which do not use a proxy, if one is specified.  The only wildcard is a single * char‐
+              acter,  which  matches all hosts, and effectively disables the proxy. Each name in this list is matched as either a
+              domain which contains the hostname, or the hostname itself. For  example,  local.com  would  match  local.com,  lo‐
+              cal.com:80, and www.local.com, but not www.notlocal.com.
+
+              Since  7.53.0,  This  option  overrides the environment variables that disable the proxy. If there's an environment
+              variable disabling a proxy, you can set noproxy list to "" to override it.
+
+              Added in 7.19.4.
+
+       --ntlm-wb
+              (HTTP) Enables NTLM much in the style --ntlm does, but hand over the authentication to the separate binary ntlmauth
+              application that is executed when needed.
+
+              See also --ntlm and --proxy-ntlm.
+
+       --ntlm (HTTP) Enables NTLM authentication. The NTLM authentication method was designed by Microsoft and is used by IIS web
+              servers. It is a proprietary protocol, reverse-engineered by clever people and implemented in curl based  on  their
+              efforts.  This  kind of behavior should not be endorsed, you should encourage everyone who uses NTLM to switch to a
+              public and documented authentication method instead, such as Digest.
+
+              If you want to enable NTLM for your proxy authentication, then use --proxy-ntlm.
+
+              If this option is used several times, only the first one is used.
+
+              See also --proxy-ntlm. --ntlm requires that the underlying libcurl was built to support TLS. This option  overrides
+              --basic and --negotiate and --digest and --anyauth.
+
+       --oauth2-bearer <token>
+              (IMAP POP3 SMTP) Specify the Bearer Token for OAUTH 2.0 server authentication. The Bearer Token is used in conjunc‐
+              tion with the user name which can be specified as part of the --url or -u, --user options.
+
+              The Bearer Token and user name are formatted according to RFC 6750.
+
+              If this option is used several times, the last one will be used.
+
+       -o, --output <file>
+              Write output to <file> instead of stdout. If you are using {} or [] to fetch multiple documents, you  can  use  '#'
+              followed  by  a  number in the <file> specifier. That variable will be replaced with the current string for the URL
+              being fetched. Like in:
+
+               curl http://{one,two}.example.com -o "file_#1.txt"
+
+              or use several variables like:
+
+               curl http://{site,host}.host[1-5].com -o "#1_#2"
+
+              You may use this option as many times as the number of URLs you have. For example, if you specify two URLs  on  the
+              same command line, you can use it like this:
+
+                curl -o aa example.com -o bb example.net
+
+              and the order of the -o options and the URLs doesn't matter, just that the first -o is for the first URL and so on,
+              so the above command line can also be written as
+
+                curl example.com example.net -o aa -o bb
+
+              See also the --create-dirs option to create the local directories dynamically. Specifying the output as '-' (a sin‐
+              gle dash) will force the output to be done to stdout.
+
+              See also -O, --remote-name and --remote-name-all and -J, --remote-header-name.
+
+       --pass <phrase>
+              (SSH TLS) Passphrase for the private key
+
+              If this option is used several times, the last one will be used.
+
+       --path-as-is
+              Tell curl to not handle sequences of /../ or /./ in the given URL path. Normally curl will squash or merge them ac‐
+              cording to standards but with this option set you tell it not to do that.
+
+              Added in 7.42.0.
+
+       --pinnedpubkey <hashes>
+              (TLS) Tells curl to use the specified public key file (or hashes) to verify the peer. This can be a path to a  file
+              which  contains a single public key in PEM or DER format, or any number of base64 encoded sha256 hashes preceded by
+              ´sha256//´ and separated by ´;´
+
+              When negotiating a TLS or SSL connection, the server sends a certificate indicating its identity. A public  key  is
+              extracted  from this certificate and if it does not exactly match the public key provided to this option, curl will
+              abort the connection before sending or receiving any data.
+
+              PEM/DER support:
+                7.39.0: OpenSSL, GnuTLS and GSKit
+                7.43.0: NSS and wolfSSL/CyaSSL
+                7.47.0: mbedtls
+                7.49.0: PolarSSL sha256 support:
+                7.44.0: OpenSSL, GnuTLS, NSS and wolfSSL/CyaSSL.
+                7.47.0: mbedtls
+                7.49.0: PolarSSL Other SSL backends not supported.
+
+              If this option is used several times, the last one will be used.
+
+       --post301
+              (HTTP) Tells curl to respect RFC 7231/6.4.2 and not convert POST requests into GET requests when  following  a  301
+              redirection.  The  non-RFC behaviour is ubiquitous in web browsers, so curl does the conversion by default to main‐
+              tain consistency. However, a server may require a POST to remain a POST after such a redirection.  This  option  is
+              meaningful only when using -L, --location.
+
+              See also --post302 and --post303 and -L, --location. Added in 7.17.1.
+
+       --post302
+              (HTTP)  Tells  curl  to respect RFC 7231/6.4.3 and not convert POST requests into GET requests when following a 302
+              redirection. The non-RFC behaviour is ubiquitous in web browsers, so curl does the conversion by default  to  main‐
+              tain  consistency.  However,  a server may require a POST to remain a POST after such a redirection. This option is
+              meaningful only when using -L, --location.
+
+              See also --post301 and --post303 and -L, --location. Added in 7.19.1.
+
+       --post303
+              (HTTP) Tells curl to violate RFC 7231/6.4.4 and not convert POST requests into  GET  requests  when  following  303
+              redirections.  A server may require a POST to remain a POST after a 303 redirection. This option is meaningful only
+              when using -L, --location.
+
+              See also --post302 and --post301 and -L, --location. Added in 7.26.0.
+
+       --preproxy [protocol://]host[:port]
+              Use the specified SOCKS proxy before connecting to an HTTP or HTTPS -x, --proxy. In such a case curl first connects
+              to the SOCKS proxy and then connects (through SOCKS) to the HTTP or HTTPS proxy. Hence pre proxy.
+
+              The  pre  proxy  string  should  be specified with a protocol:// prefix to specify alternative proxy protocols. Use
+              socks4://, socks4a://, socks5:// or socks5h:// to request the specific SOCKS version to be used. No protocol speci‐
+              fied will make curl default to SOCKS4.
+
+              If the port number is not specified in the proxy string, it is assumed to be 1080.
+
+              User  and  password  that might be provided in the proxy string are URL decoded by curl. This allows you to pass in
+              special characters such as @ by using %40 or pass in a colon with %3a.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.52.0.
+
+       -#, --progress-bar
+              Make curl display transfer progress as a simple progress bar instead of the standard, more informational, meter.
+
+              This progress bar draws a single line of '#' characters across the screen and shows a percentage  if  the  transfer
+              size  is  known. For transfers without a known size, there will be space ship (-=o=-) that moves back and forth but
+              only while data is being transferred, with a set of flying hash sign symbols on top.
+
+       --proto-default <protocol>
+              Tells curl to use protocol for any URL missing a scheme name.
+
+              Example:
+
+               curl --proto-default https ftp.mozilla.org
+
+              An unknown or unsupported protocol causes error CURLE_UNSUPPORTED_PROTOCOL (1).
+
+              This option does not change the default proxy protocol (http).
+
+              Without this option curl would make a guess based on the host, see --url for details.
+
+              Added in 7.45.0.
+
+       --proto-redir <protocols>
+              Tells curl to limit what protocols it may use on redirect. Protocols denied by --proto are not overridden  by  this
+              option. See --proto for how protocols are represented.
+
+              Example, allow only HTTP and HTTPS on redirect:
+
+               curl --proto-redir -all,http,https http://example.com
+
+              By  default  curl  will  allow all protocols on redirect except several disabled for security reasons: Since 7.19.4
+              FILE and SCP are disabled, and since 7.40.0 SMB and SMBS are also disabled. Specifying all or +all enables all pro‐
+              tocols on redirect, including those disabled for security.
+
+              Added in 7.20.2.
+
+       --proto <protocols>
+              Tells  curl  to  limit  what protocols it may use in the transfer. Protocols are evaluated left to right, are comma
+              separated, and are each a protocol name or
+
+              +  Permit this protocol in addition to protocols already permitted (this is the default if no modifier is used).
+
+              -  Deny this protocol, removing it from the list of protocols already permitted.
+
+              =  Permit only this protocol (ignoring the list already permitted), though subject to later modification by  subse‐
+                 quent entries in the comma separated list.
+
+              For example:
+
+              --proto -ftps  uses the default protocols, but disables ftps
+
+              --proto -all,https,+http
+                             only enables http and https
+
+              --proto =http,https
+                             also only enables http and https
+
+       Unknown  protocols  produce  a  warning. This allows scripts to safely rely on being able to disable potentially dangerous
+       protocols, without relying upon support for that protocol being built into curl to avoid an error.
+
+       This option can be used multiple times, in which case the effect is the same as concatenating the protocols into  one  in‐
+       stance of the option.
+
+       See also --proto-redir and --proto-default. Added in 7.20.2.
+
+       --proxy-anyauth
+              Tells  curl to pick a suitable authentication method when communicating with the given HTTP proxy. This might cause
+              an extra request/response round-trip.
+
+              See also -x, --proxy and --proxy-basic and --proxy-digest. Added in 7.13.2.
+
+       --proxy-basic
+              Tells curl to use HTTP Basic authentication when communicating with the given proxy. Use --basic for enabling  HTTP
+              Basic with a remote host. Basic is the default authentication method curl uses with proxies.
+
+              See also -x, --proxy and --proxy-anyauth and --proxy-digest.
+
+       --proxy-cacert <file>
+              Same as --cacert but used in HTTPS proxy context.
+
+              See also --proxy-capath and --cacert and --capath and -x, --proxy. Added in 7.52.0.
+
+       --proxy-capath <dir>
+              Same as --capath but used in HTTPS proxy context.
+
+              See also --proxy-cacert and -x, --proxy and --capath. Added in 7.52.0.
+
+       --proxy-cert-type <type>
+              Same as --cert-type but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-cert <cert[:passwd]>
+              Same as -E, --cert but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-ciphers <list>
+              Same as --ciphers but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-crlfile <file>
+              Same as --crlfile but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-digest
+              Tells  curl  to  use  HTTP Digest authentication when communicating with the given proxy. Use --digest for enabling
+              HTTP Digest with a remote host.
+
+              See also -x, --proxy and --proxy-anyauth and --proxy-basic.
+
+       --proxy-header <header/@file>
+              (HTTP) Extra header to include in the request when sending HTTP to a proxy. You may specify  any  number  of  extra
+              headers. This is the equivalent option to -H, --header but is for proxy communication only like in CONNECT requests
+              when you want a separate header sent to the proxy to what is sent to the actual remote host.
+
+              curl will make sure that each header you add/replace is sent with the proper end-of-line marker,  you  should  thus
+              not  add  that as a part of the header content: do not add newlines or carriage returns, they will only mess things
+              up for you.
+
+              Headers specified with this option will not be included in requests that curl knows will not be sent to a proxy.
+
+              Starting in 7.55.0, this option can take an argument in @filename style, which then adds a header for each line  in
+              the input file. Using @- will make curl read the header file from stdin.
+
+              This option can be used multiple times to add/replace/remove multiple headers.
+
+              Added in 7.37.0.
+
+       --proxy-insecure
+              Same as -k, --insecure but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-key-type <type>
+              Same as --key-type but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-key <key>
+              Same as --key but used in HTTPS proxy context.
+
+       --proxy-negotiate
+              Tells  curl  to use HTTP Negotiate (SPNEGO) authentication when communicating with the given proxy. Use --negotiate
+              for enabling HTTP Negotiate (SPNEGO) with a remote host.
+
+              See also --proxy-anyauth and --proxy-basic. Added in 7.17.1.
+
+       --proxy-ntlm
+              Tells curl to use HTTP NTLM authentication when communicating with the given proxy. Use --ntlm  for  enabling  NTLM
+              with a remote host.
+
+              See also --proxy-negotiate and --proxy-anyauth.
+
+       --proxy-pass <phrase>
+              Same as --pass but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-pinnedpubkey <hashes>
+              (TLS) Tells curl to use the specified public key file (or hashes) to verify the proxy. This can be a path to a file
+              which contains a single public key in PEM or DER format, or any number of base64 encoded sha256 hashes preceded  by
+              ´sha256//´ and separated by ´;´
+
+              When  negotiating  a TLS or SSL connection, the server sends a certificate indicating its identity. A public key is
+              extracted from this certificate and if it does not exactly match the public key provided to this option, curl  will
+              abort the connection before sending or receiving any data.
+
+              If this option is used several times, the last one will be used.
+
+       --proxy-service-name <name>
+              This option allows you to change the service name for proxy negotiation.
+
+              Added in 7.43.0.
+
+       --proxy-ssl-allow-beast
+              Same as --ssl-allow-beast but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-tls13-ciphers <ciphersuite list>
+              (TLS)  Specifies  which  cipher suites to use in the connection to your HTTPS proxy when it negotiates TLS 1.3. The
+              list of ciphers suites must specify valid ciphers. Read up on TLS 1.3 cipher suite details on this URL:
+
+               https://curl.haxx.se/docs/ssl-ciphers.html
+
+              If this option is used several times, the last one will be used.
+
+       --proxy-tlsauthtype <type>
+              Same as --tlsauthtype but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-tlspassword <string>
+              Same as --tlspassword but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-tlsuser <name>
+              Same as --tlsuser but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       --proxy-tlsv1
+              Same as -1, --tlsv1 but used in HTTPS proxy context.
+
+              Added in 7.52.0.
+
+       -U, --proxy-user <user:password>
+              Specify the user name and password to use for proxy authentication.
+
+              If you use a Windows SSPI-enabled curl binary and do either Negotiate or NTLM authentication then you can tell curl
+              to select the user name and password from your environment by specifying a single colon with this option: "-U :".
+
+              If this option is used several times, the last one will be used.
+
+       -x, --proxy [protocol://]host[:port]
+              Use the specified proxy.
+
+              The  proxy  string  can be specified with a protocol:// prefix. No protocol specified or http:// will be treated as
+              HTTP proxy. Use socks4://, socks4a://, socks5:// or socks5h:// to request a specific  SOCKS  version  to  be  used.
+              (The protocol support was added in curl 7.21.7)
+
+              HTTPS proxy support via https:// protocol prefix was added in 7.52.0 for OpenSSL, GnuTLS and NSS.
+
+              Unrecognized  and  unsupported proxy protocols cause an error since 7.52.0.  Prior versions may ignore the protocol
+              and use http:// instead.
+
+              If the port number is not specified in the proxy string, it is assumed to be 1080.
+
+              This option overrides existing environment variables that set the proxy to use. If there's an environment  variable
+              setting a proxy, you can set proxy to "" to override it.
+
+              All operations that are performed over an HTTP proxy will transparently be converted to HTTP. It means that certain
+              protocol specific operations might not be available. This is not the case if you can tunnel through the  proxy,  as
+              one with the -p, --proxytunnel option.
+
+              User  and  password  that might be provided in the proxy string are URL decoded by curl. This allows you to pass in
+              special characters such as @ by using %40 or pass in a colon with %3a.
+
+              The proxy host can be specified the exact same way as the proxy environment variables, including the protocol  pre‐
+              fix (http://) and the embedded user + password.
+
+              If this option is used several times, the last one will be used.
+
+       --proxy1.0 <host[:port]>
+              Use the specified HTTP 1.0 proxy. If the port number is not specified, it is assumed at port 1080.
+
+              The only difference between this and the HTTP proxy option -x, --proxy, is that attempts to use CONNECT through the
+              proxy will specify an HTTP 1.0 protocol instead of the default HTTP 1.1.
+
+       -p, --proxytunnel
+              When an HTTP proxy is used -x, --proxy, this option will cause non-HTTP protocols to attempt to tunnel through  the
+              proxy  instead  of merely using it to do HTTP-like operations. The tunnel approach is made with the HTTP proxy CON‐
+              NECT request and requires that the proxy allows direct connect to the remote  port  number  curl  wants  to  tunnel
+              through to.
+
+              To suppress proxy CONNECT response headers when curl is set to output headers use --suppress-connect-headers.
+
+              See also -x, --proxy.
+
+       --pubkey <key>
+              (SFTP SCP) Public key file name. Allows you to provide your public key in this separate file.
+
+              If this option is used several times, the last one will be used.
+
+              (As of 7.39.0, curl attempts to automatically extract the public key from the private key file, so passing this op‐
+              tion is generally not required. Note that this public key extraction requires libcurl to be linked against  a  copy
+              of libssh2 1.2.8 or higher that is itself linked against OpenSSL.)
+
+       -Q, --quote
+              (FTP  SFTP) Send an arbitrary command to the remote FTP or SFTP server. Quote commands are sent BEFORE the transfer
+              takes place (just after the initial PWD command in an FTP transfer, to be exact). To make commands take place after
+              a  successful  transfer,  prefix them with a dash '-'.  To make commands be sent after curl has changed the working
+              directory, just before the transfer command(s), prefix the command with a '+' (this is only supported for FTP). You
+              may specify any number of commands.
+
+              If  the server returns failure for one of the commands, the entire operation will be aborted. You must send syntac‐
+              tically correct FTP commands as RFC 959 defines to FTP servers, or  one  of  the  commands  listed  below  to  SFTP
+              servers.
+
+              This  option can be used multiple times. When speaking to an FTP server, prefix the command with an asterisk (*) to
+              make curl continue even if the command fails as by default curl will stop at first failure.
+
+              SFTP is a binary protocol. Unlike for FTP, curl interprets SFTP quote commands itself before sending  them  to  the
+              server.   File names may be quoted shell-style to embed spaces or special characters.  Following is the list of all
+              supported SFTP quote commands:
+
+              chgrp group file
+                     The chgrp command sets the group ID of the file named by the file operand to the group ID specified  by  the
+                     group operand. The group operand is a decimal integer group ID.
+
+              chmod mode file
+                     The  chmod  command  modifies the file mode bits of the specified file. The mode operand is an octal integer
+                     mode number.
+
+              chown user file
+                     The chown command sets the owner of the file named by the file operand to the user ID specified by the  user
+                     operand. The user operand is a decimal integer user ID.
+
+              ln source_file target_file
+                     The  ln  and symlink commands create a symbolic link at the target_file location pointing to the source_file
+                     location.
+
+              mkdir directory_name
+                     The mkdir command creates the directory named by the directory_name operand.
+
+              pwd    The pwd command returns the absolute pathname of the current working directory.
+
+              rename source target
+                     The rename command renames the file or directory named by the source operand to the destination  path  named
+                     by the target operand.
+
+              rm file
+                     The rm command removes the file specified by the file operand.
+
+              rmdir directory
+                     The rmdir command removes the directory entry specified by the directory operand, provided it is empty.
+
+              symlink source_file target_file
+                     See ln.
+
+       --random-file <file>
+              Specify  the  path name to file containing what will be considered as random data. The data may be used to seed the
+              random engine for SSL connections.  See also the --egd-file option.
+
+       -r, --range <range>
+              (HTTP FTP SFTP FILE) Retrieve a byte range (i.e. a partial document) from an HTTP/1.1, FTP or SFTP server or a  lo‐
+              cal FILE. Ranges can be specified in a number of ways.
+
+              0-499     specifies the first 500 bytes
+
+              500-999   specifies the second 500 bytes
+
+              -500      specifies the last 500 bytes
+
+              9500-     specifies the bytes from offset 9500 and forward
+
+              0-0,-1    specifies the first and last byte only(*)(HTTP)
+
+              100-199,500-599
+                        specifies two separate 100-byte ranges(*) (HTTP)
+
+              (*) = NOTE that this will cause the server to reply with a multipart response!
+
+              Only  digit characters (0-9) are valid in the 'start' and 'stop' fields of the 'start-stop' range syntax. If a non-
+              digit character is given in the range, the server's response will be unspecified, depending on the server's config‐
+              uration.
+
+              You  should  also be aware that many HTTP/1.1 servers do not have this feature enabled, so that when you attempt to
+              get a range, you'll instead get the whole document.
+
+              FTP and SFTP range downloads only support the simple 'start-stop' syntax (optionally with one of the numbers  omit‐
+              ted). FTP use depends on the extended FTP command SIZE.
+
+              If this option is used several times, the last one will be used.
+
+       --raw  (HTTP)  When  used,  it disables all internal HTTP decoding of content or transfer encodings and instead makes them
+              passed on unaltered, raw.
+
+              Added in 7.16.2.
+
+       -e, --referer <URL>
+              (HTTP) Sends the "Referrer Page" information to the HTTP server. This can also be set with the -H, --header flag of
+              course.   When  used with -L, --location you can append ";auto" to the -e, --referer URL to make curl automatically
+              set the previous URL when it follows a Location: header. The ";auto" string can be used alone, even  if  you  don't
+              set an initial -e, --referer.
+
+              If this option is used several times, the last one will be used.
+
+              See also -A, --user-agent and -H, --header.
+
+       -J, --remote-header-name
+              (HTTP)  This option tells the -O, --remote-name option to use the server-specified Content-Disposition filename in‐
+              stead of extracting a filename from the URL.
+
+              If the server specifies a file name and a file with that name already exists in the current  working  directory  it
+              will  not be overwritten and an error will occur. If the server doesn't specify a file name then this option has no
+              effect.
+
+              There's no attempt to decode %-sequences (yet) in the provided file name, so  this  option  may  provide  you  with
+              rather unexpected file names.
+
+              WARNING:  Exercise judicious use of this option, especially on Windows. A rogue server could send you the name of a
+              DLL or other file that could possibly be loaded automatically by Windows or some third party software.
+
+       --remote-name-all
+              This option changes the default action for all given URLs to be dealt with as if -O, --remote-name  were  used  for
+              each one. So if you want to disable that for a specific URL after --remote-name-all has been used, you must use "-o
+              -" or --no-remote-name.
+
+              Added in 7.19.0.
+
+       -O, --remote-name
+              Write output to a local file named like the remote file we get. (Only the file part of the remote file is used, the
+              path is cut off.)
+
+              The  file will be saved in the current working directory. If you want the file saved in a different directory, make
+              sure you change the current working directory before invoking curl with this option.
+
+              The remote file name to use for saving is extracted from the given URL, nothing else, and if it already  exists  it
+              will  be  overwritten.  If you want the server to be able to choose the file name refer to -J, --remote-header-name
+              which can be used in addition to this option. If the server chooses a file name and that  name  already  exists  it
+              will not be overwritten.
+
+              There is no URL decoding done on the file name. If it has %20 or other URL encoded parts of the name, they will end
+              up as-is as file name.
+
+              You may use this option as many times as the number of URLs you have.
+
+       -R, --remote-time
+              When used, this will make curl attempt to figure out the timestamp of the remote file, and  if  that  is  available
+              make the local file get that same timestamp.
+
+       --request-target
+              (HTTP)  Tells curl to use an alternative "target" (path) instead of using the path as provided in the URL. Particu‐
+              larly useful when wanting to issue HTTP requests without leading slash or other data that doesn't follow the  regu‐
+              lar URL pattern, like "OPTIONS *".
+
+              Added in 7.55.0.
+
+       -X, --request <command>
+              (HTTP)  Specifies  a  custom  request method to use when communicating with the HTTP server.  The specified request
+              method will be used instead of the method otherwise used (which defaults to GET). Read the HTTP  1.1  specification
+              for details and explanations. Common additional HTTP requests include PUT and DELETE, but related technologies like
+              WebDAV offers PROPFIND, COPY, MOVE and more.
+
+              Normally you don't need this option. All sorts of GET, HEAD, POST and PUT requests are rather invoked by using ded‐
+              icated command line options.
+
+              This  option  only changes the actual word used in the HTTP request, it does not alter the way curl behaves. So for
+              example if you want to make a proper HEAD request, using -X HEAD will not suffice. You need to use the  -I,  --head
+              option.
+
+              The  method string you set with -X, --request will be used for all requests, which if you for example use -L, --lo‐
+              cation may cause unintended side-effects when curl doesn't change request method according to the HTTP 30x response
+              codes - and similar.
+
+              (FTP) Specifies a custom FTP command to use instead of LIST when doing file lists with FTP.
+
+              (POP3) Specifies a custom POP3 command to use instead of LIST or RETR. (Added in 7.26.0)
+
+              (IMAP) Specifies a custom IMAP command to use instead of LIST. (Added in 7.30.0)
+
+              (SMTP) Specifies a custom SMTP command to use instead of HELP or VRFY. (Added in 7.34.0)
+
+              If this option is used several times, the last one will be used.
+
+       --resolve <host:port:address[,address]...>
+              Provide  a  custom  address  for a specific host and port pair. Using this, you can make the curl requests(s) use a
+              specified address and prevent the otherwise normally resolved address to be used. Consider it a sort of  /etc/hosts
+              alternative  provided  on the command line. The port number should be the number used for the specific protocol the
+              host will be used for. It means you need several entries if you want to provide address for the same host but  dif‐
+              ferent ports.
+
+              By  specifying  '*'  as host you can tell curl to resolve any host and specific port pair to the specified address.
+              Wildcard is resolved last so any --resolve with a specific host and port will be used first.
+
+              The provided address set by this option will be used even if -4, --ipv4 or -6, --ipv6 is set to make curl  use  an‐
+              other IP version.
+
+              Support for providing the IP address within [brackets] was added in 7.57.0.
+
+              Support for providing multiple IP addresses per entry was added in 7.59.0.
+
+              Support for resolving with wildcard was added in 7.64.0.
+
+              This option can be used many times to add many host names to resolve.
+
+              Added in 7.21.3.
+
+       --retry-connrefused
+              In  addition  to  the  other conditions, consider ECONNREFUSED as a transient error too for --retry. This option is
+              used together with --retry.
+
+              Added in 7.52.0.
+
+       --retry-delay <seconds>
+              Make curl sleep this amount of time before each retry when a transfer has failed with a transient error (it changes
+              the  default backoff time algorithm between retries). This option is only interesting if --retry is also used. Set‐
+              ting this delay to zero will make curl use the default backoff time.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.12.3.
+
+       --retry-max-time <seconds>
+              The retry timer is reset before the first transfer attempt. Retries will be done as usual (see --retry) as long  as
+              the  timer  hasn't reached this given limit. Notice that if the timer hasn't reached the limit, the request will be
+              made and while performing, it may take longer than this given time period. To  limit  a  single  request´s  maximum
+              time, use -m, --max-time.  Set this option to zero to not timeout retries.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.12.3.
+
+       --retry <num>
+              If  a  transient error is returned when curl tries to perform a transfer, it will retry this number of times before
+              giving up. Setting the number to 0 makes curl do no retries (which is the default). Transient error means either: a
+              timeout, an FTP 4xx response code or an HTTP 408 or 5xx response code.
+
+              When  curl is about to retry a transfer, it will first wait one second and then for all forthcoming retries it will
+              double the waiting time until it reaches 10 minutes which then will be the delay between the rest of  the  retries.
+              By using --retry-delay you disable this exponential backoff algorithm. See also --retry-max-time to limit the total
+              time allowed for retries.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.12.3.
+
+       --sasl-ir
+              Enable initial response in SASL authentication.
+
+              Added in 7.31.0.
+
+       --service-name <name>
+              This option allows you to change the service name for SPNEGO.
+
+              Examples: --negotiate --service-name sockd would use sockd/server-name.
+
+              Added in 7.43.0.
+
+       -S, --show-error
+              When used with -s, --silent, it makes curl show an error message if it fails.
+
+       -s, --silent
+              Silent or quiet mode. Don't show progress meter or error messages.  Makes Curl mute. It will still output the  data
+              you ask for, potentially even to the terminal/stdout unless you redirect it.
+
+              Use -S, --show-error in addition to this option to disable progress meter but still show error messages.
+
+              See also -v, --verbose and --stderr.
+
+       --socks4 <host[:port]>
+              Use the specified SOCKS4 proxy. If the port number is not specified, it is assumed at port 1080.
+
+              This option overrides any previous use of -x, --proxy, as they are mutually exclusive.
+
+              Since  7.21.7,  this  option is superfluous since you can specify a socks4 proxy with -x, --proxy using a socks4://
+              protocol prefix.
+
+              Since 7.52.0, --preproxy can be used to specify a SOCKS proxy at  the  same  time  -x,  --proxy  is  used  with  an
+              HTTP/HTTPS  proxy.  In  such a case curl first connects to the SOCKS proxy and then connects (through SOCKS) to the
+              HTTP or HTTPS proxy.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.15.2.
+
+       --socks4a <host[:port]>
+              Use the specified SOCKS4a proxy. If the port number is not specified, it is assumed at port 1080.
+
+              This option overrides any previous use of -x, --proxy, as they are mutually exclusive.
+
+              Since 7.21.7, this option is superfluous since you can specify a socks4a proxy with -x, --proxy using a  socks4a://
+              protocol prefix.
+
+              Since  7.52.0,  --preproxy  can  be  used  to  specify  a  SOCKS proxy at the same time -x, --proxy is used with an
+              HTTP/HTTPS proxy. In such a case curl first connects to the SOCKS proxy and then connects (through  SOCKS)  to  the
+              HTTP or HTTPS proxy.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.18.0.
+
+       --socks5-basic
+              Tells  curl  to  use username/password authentication when connecting to a SOCKS5 proxy.  The username/password au‐
+              thentication is enabled by default.  Use --socks5-gssapi to force GSS-API authentication to SOCKS5 proxies.
+
+              Added in 7.55.0.
+
+       --socks5-gssapi-nec
+              As part of the GSS-API negotiation a protection mode is negotiated. RFC 1961 says in section 4.3/4.4 it  should  be
+              protected,  but  the  NEC reference implementation does not.  The option --socks5-gssapi-nec allows the unprotected
+              exchange of the protection mode negotiation.
+
+              Added in 7.19.4.
+
+       --socks5-gssapi-service <name>
+              The default service name for a socks server is rcmd/server-fqdn. This option allows you to change it.
+
+              Examples:  --socks5  proxy-name  --socks5-gssapi-service  sockd  would  use  sockd/proxy-name  --socks5  proxy-name
+              --socks5-gssapi-service sockd/real-name would use sockd/real-name for cases where the proxy-name does not match the
+              principal name.
+
+              Added in 7.19.4.
+
+       --socks5-gssapi
+              Tells curl to use GSS-API authentication when connecting to a SOCKS5 proxy.  The GSS-API authentication is  enabled
+              by  default  (if curl is compiled with GSS-API support).  Use --socks5-basic to force username/password authentica‐
+              tion to SOCKS5 proxies.
+
+              Added in 7.55.0.
+
+       --socks5-hostname <host[:port]>
+              Use the specified SOCKS5 proxy (and let the proxy resolve the host name). If the port number is not  specified,  it
+              is assumed at port 1080.
+
+              This option overrides any previous use of -x, --proxy, as they are mutually exclusive.
+
+              Since  7.21.7,  this  option  is superfluous since you can specify a socks5 hostname proxy with -x, --proxy using a
+              socks5h:// protocol prefix.
+
+              Since 7.52.0, --preproxy can be used to specify a SOCKS proxy at  the  same  time  -x,  --proxy  is  used  with  an
+              HTTP/HTTPS  proxy.  In  such a case curl first connects to the SOCKS proxy and then connects (through SOCKS) to the
+              HTTP or HTTPS proxy.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.18.0.
+
+       --socks5 <host[:port]>
+              Use the specified SOCKS5 proxy - but resolve the host name locally. If the port number is not specified, it is  as‐
+              sumed at port 1080.
+
+              This option overrides any previous use of -x, --proxy, as they are mutually exclusive.
+
+              Since  7.21.7,  this  option is superfluous since you can specify a socks5 proxy with -x, --proxy using a socks5://
+              protocol prefix.
+
+              Since 7.52.0, --preproxy can be used to specify a SOCKS proxy at  the  same  time  -x,  --proxy  is  used  with  an
+              HTTP/HTTPS  proxy.  In  such a case curl first connects to the SOCKS proxy and then connects (through SOCKS) to the
+              HTTP or HTTPS proxy.
+
+              If this option is used several times, the last one will be used.
+
+              This option (as well as --socks4) does not work with IPV6, FTPS or LDAP.
+
+              Added in 7.18.0.
+
+       -Y, --speed-limit <speed>
+              If a download is slower than this given speed (in bytes per second) for speed-time seconds it gets aborted.  speed-
+              time is set with -y, --speed-time and is 30 if not set.
+
+              If this option is used several times, the last one will be used.
+
+       -y, --speed-time <seconds>
+              If a download is slower than speed-limit bytes per second during a speed-time period, the download gets aborted. If
+              speed-time is used, the default speed-limit will be 1 unless set with -Y, --speed-limit.
+
+              This option controls transfers and thus will not affect slow connects etc. If this is a concern for  you,  try  the
+              --connect-timeout option.
+
+              If this option is used several times, the last one will be used.
+
+       --ssl-allow-beast
+              This option tells curl to not work around a security flaw in the SSL3 and TLS1.0 protocols known as BEAST.  If this
+              option isn't used, the SSL layer may use workarounds known to cause interoperability problems with some  older  SSL
+              implementations. WARNING: this option loosens the SSL security, and by using this flag you ask for exactly that.
+
+              Added in 7.25.0.
+
+       --ssl-no-revoke
+              (Schannel)  This  option tells curl to disable certificate revocation checks.  WARNING: this option loosens the SSL
+              security, and by using this flag you ask for exactly that.
+
+              Added in 7.44.0.
+
+       --ssl-reqd
+              (FTP IMAP POP3 SMTP) Require SSL/TLS for the connection.  Terminates the connection if the server  doesn't  support
+              SSL/TLS.
+
+              This option was formerly known as --ftp-ssl-reqd.
+
+              Added in 7.20.0.
+
+       --ssl  (FTP  IMAP  POP3  SMTP)  Try  to  use SSL/TLS for the connection.  Reverts to a non-secure connection if the server
+              doesn't support SSL/TLS.  See also --ftp-ssl-control and --ssl-reqd for different levels of encryption required.
+
+              This option was formerly known as --ftp-ssl (Added in 7.11.0). That option name can still be used but will  be  re‐
+              moved in a future version.
+
+              Added in 7.20.0.
+
+       -2, --sslv2
+              (SSL)  Forces  curl to use SSL version 2 when negotiating with a remote SSL server. Sometimes curl is built without
+              SSLv2 support. SSLv2 is widely considered insecure (see RFC 6176).
+
+              See also --http1.1 and --http2. -2, --sslv2 requires that the underlying libcurl was built to support TLS. This op‐
+              tion overrides -3, --sslv3 and -1, --tlsv1 and --tlsv1.1 and --tlsv1.2.
+
+       -3, --sslv3
+              (SSL)  Forces  curl to use SSL version 3 when negotiating with a remote SSL server. Sometimes curl is built without
+              SSLv3 support. SSLv3 is widely considered insecure (see RFC 7568).
+
+              See also --http1.1 and --http2. -3, --sslv3 requires that the underlying libcurl was built to support TLS. This op‐
+              tion overrides -2, --sslv2 and -1, --tlsv1 and --tlsv1.1 and --tlsv1.2.
+
+       --stderr
+              Redirect all writes to stderr to the specified file instead. If the file name is a plain '-', it is instead written
+              to stdout.
+
+              If this option is used several times, the last one will be used.
+
+              See also -v, --verbose and -s, --silent.
+
+       --styled-output
+              Enables the automatic use of bold font styles when writing HTTP headers to the terminal. Use --no-styled-output  to
+              switch them off.
+
+              Added in 7.61.0.
+
+       --suppress-connect-headers
+              When  -p, --proxytunnel is used and a CONNECT request is made don't output proxy CONNECT response headers. This op‐
+              tion is meant to be used with -D, --dump-header or -i, --include which are used to show  protocol  headers  in  the
+              output. It has no effect on debug options such as -v, --verbose or --trace, or any statistics.
+
+              See also -D, --dump-header and -i, --include and -p, --proxytunnel.
+
+       --tcp-fastopen
+              Enable use of TCP Fast Open (RFC7413).
+
+              Added in 7.49.0.
+
+       --tcp-nodelay
+              Turn on the TCP_NODELAY option. See the curl_easy_setopt(3) man page for details about this option.
+
+              Since 7.50.2, curl sets this option by default and you need to explicitly switch it off if you don't want it on.
+
+              Added in 7.11.2.
+
+       -t, --telnet-option <opt=val>
+              Pass options to the telnet protocol. Supported options are:
+
+              TTYPE=<term> Sets the terminal type.
+
+              XDISPLOC=<X display> Sets the X display location.
+
+              NEW_ENV=<var,val> Sets an environment variable.
+
+       --tftp-blksize <value>
+              (TFTP)  Set  TFTP BLKSIZE option (must be >512). This is the block size that curl will try to use when transferring
+              data to or from a TFTP server. By default 512 bytes will be used.
+
+              If this option is used several times, the last one will be used.
+
+              Added in 7.20.0.
+
+       --tftp-no-options
+              (TFTP) Tells curl not to send TFTP options requests.
+
+              This option improves interop with some legacy servers that do not acknowledge or properly implement  TFTP  options.
+              When this option is used --tftp-blksize is ignored.
+
+              Added in 7.48.0.
+
+       -z, --time-cond <time>
+              (HTTP  FTP) Request a file that has been modified later than the given time and date, or one that has been modified
+              before that time. The <date expression> can be all sorts of date strings or if it doesn't match any internal  ones,
+              it  is  taken  as  a filename and tries to get the modification date (mtime) from <file> instead. See the curl_get‐
+              date(3) man pages for date expression details.
+
+              Start the date expression with a dash (-) to make it request for a document that is older than the given date/time,
+              default is a document that is newer than the specified date/time.
+
+              If this option is used several times, the last one will be used.
+
+       --tls-max <VERSION>
+              (SSL)  VERSION  defines  maximum  supported TLS version. The minimum acceptable version is set by tlsv1.0, tlsv1.1,
+              tlsv1.2, tlsv1.3 or gmtlsv1.1.
+
+              default
+                     Use up to recommended TLS version.
+
+              1.0    Use up to TLSv1.0.
+
+              1.1    Use up to TLSv1.1.
+
+              1.2    Use up to TLSv1.2.
+
+              1.3    Use up to TLSv1.3.
+
+              1.1    Use up to GMTLSv1.1.
+
+       See also --tlsv1.0 and --tlsv1.1 and --tlsv1.2 and --tlsv1.3 and  --gmtlsv1.1.  --tls-max  requires  that  the  underlying
+       libcurl was built to support TLS. Added in 7.54.0.
+
+       --tls13-ciphers <list of TLS 1.3 ciphersuites>
+              (TLS)  Specifies  which cipher suites to use in the connection if it negotiates TLS 1.3. The list of ciphers suites
+              must specify valid ciphers. Read up on TLS 1.3 cipher suite details on this URL:
+
+               https://curl.haxx.se/docs/ssl-ciphers.html
+
+              If this option is used several times, the last one will be used.
+
+       --tlsauthtype <type>
+              Set TLS authentication type. Currently, the only supported option is "SRP", for TLS-SRP (RFC  5054).  If  --tlsuser
+              and  --tlspassword  are  specified but --tlsauthtype is not, then this option defaults to "SRP".  This option works
+              only if the underlying libcurl is built with TLS-SRP support, which requires OpenSSL or GnuTLS  with  TLS-SRP  sup‐
+              port.
+
+              Added in 7.21.4.
+
+       --tlspassword
+              Set  password for use with the TLS authentication method specified with --tlsauthtype. Requires that --tlsuser also
+              be set.
+
+              Added in 7.21.4.
+
+       --tlsuser <name>
+              Set username for use with the TLS authentication method specified with --tlsauthtype. Requires  that  --tlspassword
+              also is set.
+
+              Added in 7.21.4.
+
+       --tlsv1.0
+              (TLS) Forces curl to use TLS version 1.0 or later when connecting to a remote TLS server.
+
+              Added in 7.34.0.
+
+       --tlsv1.1
+              (TLS) Forces curl to use TLS version 1.1 or later when connecting to a remote TLS server.
+
+              Added in 7.34.0.
+
+       --tlsv1.2
+              (TLS) Forces curl to use TLS version 1.2 or later when connecting to a remote TLS server.
+
+              Added in 7.34.0.
+
+       --tlsv1.3
+              (TLS) Forces curl to use TLS version 1.3 or later when connecting to a remote TLS server.
+
+              Added in 7.64.0.
+
+       --gmtlsv1.1
+              (TLS) Forces curl to use GMTLS version 1.1 or later when connecting to a remote GMTLS server.
+
+              Note  that  TLS 1.3 is only supported by a subset of TLS backends. At the time of this writing, they are BoringSSL,
+              NSS, and Secure Transport (on iOS 11 or later, and macOS 10.13 or later).
+
+              Added in 7.52.0.
+
+       -1, --tlsv1
+              (SSL) Tells curl to use at least TLS version 1.x when negotiating with a remote TLS server. That means TLS  version
+              1.0 or higher
+
+              See also --http1.1 and --http2. -1, --tlsv1 requires that the underlying libcurl was built to support TLS. This op‐
+              tion overrides --tlsv1.1 and --tlsv1.2 and --tlsv1.3 and --gmtlsv1.1.
+
+       --tr-encoding
+              (HTTP) Request a compressed Transfer-Encoding response using one of the algorithms curl  supports,  and  uncompress
+              the data while receiving it.
+
+              Added in 7.21.6.
+
+       --trace-ascii <file>
+              Enables a full trace dump of all incoming and outgoing data, including descriptive information, to the given output
+              file. Use "-" as filename to have the output sent to stdout.
+
+              This is very similar to --trace, but leaves out the hex part and only shows the ASCII part of the  dump.  It  makes
+              smaller output that might be easier to read for untrained humans.
+
+              If this option is used several times, the last one will be used.
+
+              This option overrides --trace and -v, --verbose.
+
+       --trace-time
+              Prepends a time stamp to each trace or verbose line that curl displays.
+
+              Added in 7.14.0.
+
+       --trace <file>
+              Enables a full trace dump of all incoming and outgoing data, including descriptive information, to the given output
+              file. Use "-" as filename to have the output sent to stdout. Use "%" as filename to have the output sent to stderr.
+
+              If this option is used several times, the last one will be used.
+
+              This option overrides -v, --verbose and --trace-ascii.
+
+       --unix-socket <path>
+              (HTTP) Connect through this Unix domain socket, instead of using the network.
+
+              Added in 7.40.0.
+
+       -T, --upload-file <file>
+              This transfers the specified local file to the remote URL. If there is no file part in the specified URL, curl will
+              append  the local file name. NOTE that you must use a trailing / on the last directory to really prove to Curl that
+              there is no file name or curl will think that your last directory name is the remote file name to  use.  That  will
+              most likely cause the upload operation to fail. If this is used on an HTTP(S) server, the PUT command will be used.
+
+              Use the file name "-" (a single dash) to use stdin instead of a given file.  Alternately, the file name "." (a sin‐
+              gle period) may be specified instead of "-" to use stdin in non-blocking mode to allow reading server output  while
+              stdin is being uploaded.
+
+              You can specify one -T, --upload-file for each URL on the command line. Each -T, --upload-file + URL pair specifies
+              what to upload and to where. curl also supports "globbing" of the -T, --upload-file argument, meaning that you  can
+              upload multiple files to a single URL by using the same URL globbing style supported in the URL, like this:
+
+               curl --upload-file "{file1,file2}" http://www.example.com
+
+              or even
+
+               curl -T "img[1-1000].png" ftp://ftp.example.com/upload/
+
+              When uploading to an SMTP server: the uploaded data is assumed to be RFC 5322 formatted. It has to feature the nec‐
+              essary set of headers and mail body formatted correctly by the user as curl will not transcode nor encode  it  fur‐
+              ther in any way.
+
+       --url <url>
+              Specify a URL to fetch. This option is mostly handy when you want to specify URL(s) in a config file.
+
+              If  the given URL is missing a scheme name (such as "http://" or "ftp://" etc) then curl will make a guess based on
+              the host. If the outermost sub-domain name matches DICT, FTP, IMAP, LDAP, POP3 or SMTP then that protocol  will  be
+              used,  otherwise  HTTP  will  be  used.  Since  7.45.0  guessing can be disabled by setting a default protocol, see
+              --proto-default for details.
+
+              This option may be used any number of times. To control where this URL is written, use the -o, --output or the  -O,
+              --remote-name options.
+
+       -B, --use-ascii
+              (FTP  LDAP) Enable ASCII transfer. For FTP, this can also be enforced by using a URL that ends with ";type=A". This
+              option causes data sent to stdout to be in text mode for win32 systems.
+
+       -A, --user-agent <name>
+              (HTTP) Specify the User-Agent string to send to the HTTP server. To encode  blanks  in  the  string,  surround  the
+              string with single quote marks. This header can also be set with the -H, --header or the --proxy-header options.
+
+              If this option is used several times, the last one will be used.
+
+       -u, --user <user:password>
+              Specify the user name and password to use for server authentication. Overrides -n, --netrc and --netrc-optional.
+
+              If you simply specify the user name, curl will prompt for a password.
+
+              The  user  name and passwords are split up on the first colon, which makes it impossible to use a colon in the user
+              name with this option. The password can, still.
+
+              When using Kerberos V5 with a Windows based server you should include the Windows domain name in the user name,  in
+              order  for  the server to successfully obtain a Kerberos Ticket. If you don't then the initial authentication hand‐
+              shake may fail.
+
+              When using NTLM, the user name can be specified simply as the user name, without the domain, if there is  a  single
+              domain and forest in your setup for example.
+
+              To  specify the domain name use either Down-Level Logon Name or UPN (User Principal Name) formats. For example, EX‐
+              AMPLE\user and user@example.com respectively.
+
+              If you use a Windows SSPI-enabled curl binary and perform Kerberos V5, Negotiate,  NTLM  or  Digest  authentication
+              then you can tell curl to select the user name and password from your environment by specifying a single colon with
+              this option: "-u :".
+
+              If this option is used several times, the last one will be used.
+
+       -v, --verbose
+              Makes curl verbose during the operation. Useful for debugging and seeing what's going on "under the hood".  A  line
+              starting with '>' means "header data" sent by curl, '<' means "header data" received by curl that is hidden in nor‐
+              mal cases, and a line starting with '*' means additional info provided by curl.
+
+              If you only want HTTP headers in the output, -i, --include might be the option you're looking for.
+
+              If you think this option still doesn't give you enough details, consider using --trace or --trace-ascii instead.
+
+              Use -s, --silent to make curl really quiet.
+
+              See also -i, --include. This option overrides --trace and --trace-ascii.
+
+       -V, --version
+              Displays information about curl and the libcurl version it uses.
+
+              The first line includes the full version of curl, libcurl and other 3rd party libraries linked with the executable.
+
+              The second line (starts with "Protocols:") shows all protocols that libcurl reports to support.
+
+              The third line (starts with "Features:") shows specific features libcurl reports to offer. Available  features  in‐
+              clude:
+
+              IPv6   You can use IPv6 with this.
+
+              krb4   Krb4 for FTP is supported.
+
+              SSL    SSL versions of various protocols are supported, such as HTTPS, FTPS, POP3S and so on.
+
+              libz   Automatic decompression of compressed files over HTTP is supported.
+
+              NTLM   NTLM authentication is supported.
+
+              Debug  This  curl  uses  a libcurl built with Debug. This enables more error-tracking and memory debugging etc. For
+                     curl-developers only!
+
+              AsynchDNS
+                     This curl uses asynchronous name resolves. Asynchronous name resolves can be done using either the c-ares or
+                     the threaded resolver backends.
+
+              SPNEGO SPNEGO authentication is supported.
+
+              Largefile
+                     This curl supports transfers of large files, files larger than 2GB.
+
+              IDN    This curl supports IDN - international domain names.
+
+              GSS-API
+                     GSS-API is supported.
+
+              SSPI   SSPI is supported.
+
+              TLS-SRP
+                     SRP (Secure Remote Password) authentication is supported for TLS.
+
+              HTTP2  HTTP/2 support has been built-in.
+
+              UnixSockets
+                     Unix sockets support is provided.
+
+              HTTPS-proxy
+                     This curl is built to support HTTPS proxy.
+
+              Metalink
+                     This  curl  supports  Metalink  (both version 3 and 4 (RFC 5854)), which describes mirrors and hashes.  curl
+                     will use mirrors for failover if there are errors (such as the file or server not being available).
+
+              PSL    PSL is short for Public Suffix List and means that this curl has been built  with  knowledge  about  "public
+                     suffixes".
+
+              MultiSSL
+                     This curl supports multiple TLS backends.
+
+       -w, --write-out <format>
+              Make  curl  display information on stdout after a completed transfer. The format is a string that may contain plain
+              text mixed with any number of variables. The format can be specified as a literal "string", or you  can  have  curl
+              read the format from a file with "@filename" and to tell curl to read the format from stdin you write "@-".
+
+              The  variables  present  in the output format will be substituted by the value or text that curl thinks fit, as de‐
+              scribed below. All variables are specified as %{variable_name} and to output a normal % you just write them as  %%.
+              You can output a newline by using \n, a carriage return with \r and a tab space with \t.
+
+              The output will be written to standard output, but this can be switched to standard error by using %{stderr}.
+
+              NOTE:  The  %-symbol  is a special symbol in the win32-environment, where all occurrences of % must be doubled when
+              using this option.
+
+              The variables available are:
+
+              content_type   The Content-Type of the requested document, if there was any.
+
+              filename_effective
+                             The ultimate filename that curl writes out to. This is only meaningful if curl is told to write to a
+                             file with the -O, --remote-name or -o, --output option. It's most useful in combination with the -J,
+                             --remote-header-name option. (Added in 7.26.0)
+
+              ftp_entry_path The initial path curl ended up in when logging on to the remote FTP server. (Added in 7.15.4)
+
+              http_code      The numerical response code that was found in the last retrieved  HTTP(S)  or  FTP(s)  transfer.  In
+                             7.18.2 the alias response_code was added to show the same info.
+
+              http_connect   The  numerical  code  that  was found in the last response (from a proxy) to a curl CONNECT request.
+                             (Added in 7.12.4)
+
+              http_version   The http version that was effectively used. (Added in 7.50.0)
+
+              local_ip       The IP address of the local end of the most recently done connection - can be either  IPv4  or  IPv6
+                             (Added in 7.29.0)
+
+              local_port     The local port number of the most recently done connection (Added in 7.29.0)
+
+              num_connects   Number of new connects made in the recent transfer. (Added in 7.12.3)
+
+              num_redirects  Number of redirects that were followed in the request. (Added in 7.12.3)
+
+              proxy_ssl_verify_result
+                             The  result  of  the HTTPS proxy's SSL peer certificate verification that was requested. 0 means the
+                             verification was successful. (Added in 7.52.0)
+
+              redirect_url   When an HTTP request was made without -L, --location to follow redirects  (or  when  --max-redir  is
+                             met), this variable will show the actual URL a redirect would have gone to. (Added in 7.18.2)
+
+              remote_ip      The  remote  IP  address of the most recently done connection - can be either IPv4 or IPv6 (Added in
+                             7.29.0)
+
+              remote_port    The remote port number of the most recently done connection (Added in 7.29.0)
+
+              scheme         The URL scheme (sometimes called protocol) that was effectively used (Added in 7.52.0)
+
+              size_download  The total amount of bytes that were downloaded.
+
+              size_header    The total amount of bytes of the downloaded headers.
+
+              size_request   The total amount of bytes that were sent in the HTTP request.
+
+              size_upload    The total amount of bytes that were uploaded.
+
+              speed_download The average download speed that curl measured for the complete download. Bytes per second.
+
+              speed_upload   The average upload speed that curl measured for the complete upload. Bytes per second.
+
+              ssl_verify_result
+                             The result of the SSL peer certificate verification that was requested. 0 means the verification was
+                             successful. (Added in 7.19.0)
+
+              stderr         From this point on, the -w, --write-out output will be written to standard error. (Added in 7.63.0)
+
+              stdout         From  this point on, the -w, --write-out output will be written to standard output.  This is the de‐
+                             fault, but can be used to switch back after switching to stderr.  (Added in 7.63.0)
+
+              time_appconnect
+                             The time, in seconds, it took from the start until the SSL/SSH/etc connect/handshake to  the  remote
+                             host was completed. (Added in 7.19.0)
+
+              time_connect   The time, in seconds, it took from the start until the TCP connect to the remote host (or proxy) was
+                             completed.
+
+              time_namelookup
+                             The time, in seconds, it took from the start until the name resolving was completed.
+
+              time_pretransfer
+                             The time, in seconds, it took from the start until the file transfer was just about to  begin.  This
+                             includes  all pre-transfer commands and negotiations that are specific to the particular protocol(s)
+                             involved.
+
+              time_redirect  The time, in seconds, it took for all redirection steps including name lookup, connect,  pretransfer
+                             and  transfer  before  the final transaction was started. time_redirect shows the complete execution
+                             time for multiple redirections. (Added in 7.12.3)
+
+              time_starttransfer
+                             The time, in seconds, it took from the start until the first byte was just about to be  transferred.
+                             This includes time_pretransfer and also the time the server needed to calculate the result.
+
+              time_total     The total time, in seconds, that the full operation lasted.
+
+              url_effective  The URL that was fetched last. This is most meaningful if you've told curl to follow location: head‐
+                             ers.
+
+              If this option is used several times, the last one will be used.
+
+       --xattr
+              When saving output to a file, this option tells curl to store certain file metadata in  extended  file  attributes.
+              Currently,  the  URL  is  stored  in  the xdg.origin.url attribute and, for HTTP, the content type is stored in the
+              mime_type attribute. If the file system does not support extended attributes, a warning is issued.
+
+FILES
+       ~/.curlrc
+              Default config file, see -K, --config for details.
+
+ENVIRONMENT
+       The environment variables can be specified in lower case or upper case. The lower case version has precedence.  http_proxy
+       is an exception as it is only available in lower case.
+
+       Using an environment variable to set the proxy has the same effect as using the -x, --proxy option.
+
+       http_proxy [protocol://]<host>[:port]
+              Sets the proxy server to use for HTTP.
+
+       HTTPS_PROXY [protocol://]<host>[:port]
+              Sets the proxy server to use for HTTPS.
+
+       [url-protocol]_PROXY [protocol://]<host>[:port]
+              Sets  the proxy server to use for [url-protocol], where the protocol is a protocol that curl supports and as speci‐
+              fied in a URL. FTP, FTPS, POP3, IMAP, SMTP, LDAP etc.
+
+       ALL_PROXY [protocol://]<host>[:port]
+              Sets the proxy server to use if no protocol-specific proxy is set.
+
+       NO_PROXY <comma-separated list of hosts/domains>
+              list of host names that shouldn't go through any proxy. If set to an asterisk '*' only, it matches all hosts.  Each
+              name in this list is matched as either a domain name which contains the hostname, or the hostname itself.
+
+              This  environment  variable  disables  use  of  the  proxy even when specified with the -x, --proxy option. That is
+              NO_PROXY=direct.example.com curl -x http://proxy.example.com http://direct.example.com accesses the target URL  di‐
+              rectly,  and NO_PROXY=direct.example.com curl -x http://proxy.example.com http://somewhere.example.com accesses the
+              target URL through the proxy.
+
+              The list of host names can also be include numerical IP addresses, and IPv6 versions should then be  given  without
+              enclosing brackets.
+
+PROXY PROTOCOL PREFIXES
+       Since curl version 7.21.7, the proxy string may be specified with a protocol:// prefix to specify alternative proxy proto‐
+       cols.
+
+       If no protocol is specified in the proxy string or if the string doesn't match a supported one, the proxy will be  treated
+       as an HTTP proxy.
+
+       The supported proxy protocol prefixes are as follows:
+
+       http://
+              Makes it use it as an HTTP proxy. The default if no scheme prefix is used.
+
+       https://
+              Makes it treated as an HTTPS proxy.
+
+       socks4://
+              Makes it the equivalent of --socks4
+
+       socks4a://
+              Makes it the equivalent of --socks4a
+
+       socks5://
+              Makes it the equivalent of --socks5
+
+       socks5h://
+              Makes it the equivalent of --socks5-hostname
+
+EXIT CODES
+       There  are  a bunch of different error codes and their corresponding error messages that may appear during bad conditions.
+       At the time of this writing, the exit codes are:
+
+       1      Unsupported protocol. This build of curl has no support for this protocol.
+
+       2      Failed to initialize.
+
+       3      URL malformed. The syntax was not correct.
+
+       4      A feature or option that was needed to perform the desired request was not enabled or was  explicitly  disabled  at
+              build-time. To make curl able to do this, you probably need another build of libcurl!
+
+       5      Couldn't resolve proxy. The given proxy host could not be resolved.
+
+       6      Couldn't resolve host. The given remote host was not resolved.
+
+       7      Failed to connect to host.
+
+       8      Weird server reply. The server sent data curl couldn't parse.
+
+       9      FTP  access  denied. The server denied login or denied access to the particular resource or directory you wanted to
+              reach. Most often you tried to change to a directory that doesn't exist on the server.
+
+       10     FTP accept failed. While waiting for the server to connect back when an active FTP session is used, an  error  code
+              was sent over the control connection or similar.
+
+       11     FTP weird PASS reply. Curl couldn't parse the reply sent to the PASS request.
+
+       12     During an active FTP session while waiting for the server to connect back to curl, the timeout expired.
+
+       13     FTP weird PASV reply, Curl couldn't parse the reply sent to the PASV request.
+
+       14     FTP weird 227 format. Curl couldn't parse the 227-line the server sent.
+
+       15     FTP can't get host. Couldn't resolve the host IP we got in the 227-line.
+
+       16     HTTP/2  error.  A  problem  was detected in the HTTP2 framing layer. This is somewhat generic and can be one out of
+              several problems, see the error message for details.
+
+       17     FTP couldn't set binary. Couldn't change transfer method to binary.
+
+       18     Partial file. Only a part of the file was transferred.
+
+       19     FTP couldn't download/access the given file, the RETR (or similar) command failed.
+
+       21     FTP quote error. A quote command returned error from the server.
+
+       22     HTTP page not retrieved. The requested url was not found or returned another error with the HTTP error  code  being
+              400 or above. This return code only appears if -f, --fail is used.
+
+       23     Write error. Curl couldn't write data to a local filesystem or similar.
+
+       25     FTP couldn't STOR file. The server denied the STOR operation, used for FTP uploading.
+
+       26     Read error. Various reading problems.
+
+       27     Out of memory. A memory allocation request failed.
+
+       28     Operation timeout. The specified time-out period was reached according to the conditions.
+
+       30     FTP  PORT failed. The PORT command failed. Not all FTP servers support the PORT command, try doing a transfer using
+              PASV instead!
+
+       31     FTP couldn't use REST. The REST command failed. This command is used for resumed FTP transfers.
+
+       33     HTTP range error. The range "command" didn't work.
+
+       34     HTTP post error. Internal post-request generation error.
+
+       35     SSL connect error. The SSL handshaking failed.
+
+       36     Bad download resume. Couldn't continue an earlier aborted download.
+
+       37     FILE couldn't read file. Failed to open the file. Permissions?
+
+       38     LDAP cannot bind. LDAP bind operation failed.
+
+       39     LDAP search failed.
+
+       41     Function not found. A required LDAP function was not found.
+
+       42     Aborted by callback. An application told curl to abort the operation.
+
+       43     Internal error. A function was called with a bad parameter.
+
+       45     Interface error. A specified outgoing interface could not be used.
+
+       47     Too many redirects. When following redirects, curl hit the maximum amount.
+
+       48     Unknown option specified to libcurl. This indicates that you passed a weird option to curl that was  passed  on  to
+              libcurl and rejected. Read up in the manual!
+
+       49     Malformed telnet option.
+
+       51     The peer's SSL certificate or SSH MD5 fingerprint was not OK.
+
+       52     The server didn't reply anything, which here is considered an error.
+
+       53     SSL crypto engine not found.
+
+       54     Cannot set SSL crypto engine as default.
+
+       55     Failed sending network data.
+
+       56     Failure in receiving network data.
+
+       58     Problem with the local certificate.
+
+       59     Couldn't use specified SSL cipher.
+
+       60     Peer certificate cannot be authenticated with known CA certificates.
+
+       61     Unrecognized transfer encoding.
+
+       62     Invalid LDAP URL.
+
+       63     Maximum file size exceeded.
+
+       64     Requested FTP SSL level failed.
+
+       65     Sending the data requires a rewind that failed.
+
+       66     Failed to initialise SSL Engine.
+
+       67     The user name, password, or similar was not accepted and curl failed to log in.
+
+       68     File not found on TFTP server.
+
+       69     Permission problem on TFTP server.
+
+       70     Out of disk space on TFTP server.
+
+       71     Illegal TFTP operation.
+
+       72     Unknown TFTP transfer ID.
+
+       73     File already exists (TFTP).
+
+       74     No such user (TFTP).
+
+       75     Character conversion failed.
+
+       76     Character conversion functions required.
+
+       77     Problem with reading the SSL CA cert (path? access rights?).
+
+       78     The resource referenced in the URL does not exist.
+
+       79     An unspecified error occurred during the SSH session.
+
+       80     Failed to shut down the SSL connection.
+
+       82     Could not load CRL file, missing or wrong format (added in 7.19.0).
+
+       83     Issuer check failed (added in 7.19.0).
+
+       84     The FTP PRET command failed
+
+       85     RTSP: mismatch of CSeq numbers
+
+       86     RTSP: mismatch of Session Identifiers
+
+       87     unable to parse FTP file list
+
+       88     FTP chunk callback reported error
+
+       89     No connection available, the session will be queued
+
+       90     SSL public key does not matched pinned public key
+
+       91     Invalid SSL certificate status.
+
+       92     Stream error in HTTP/2 framing layer.
+
+       XX     More error codes will appear here in future releases. The existing ones are meant to never change.
+
+AUTHORS / CONTRIBUTORS
+       Daniel Stenberg is the main author, but the whole list of contributors is found in the separate THANKS file.
+
+WWW
+       https://curl.haxx.se
+
+SEE ALSO
+       ftp(1), wget(1)
+
+Curl 7.64.0                                             November 16, 2016                                                 curl(1)
+```
+
+### df
+
+```
+DF(1)                                                     User Commands                                                     DF(1)
+
+NAME
+       df - report file system disk space usage
+
+SYNOPSIS
+       df [OPTION]... [FILE]...
+
+DESCRIPTION
+       This  manual page documents the GNU version of df.  df displays the amount of disk space available on the file system con‐
+       taining each file name argument.  If no file name is given, the space available on all currently mounted file  systems  is
+       shown.  Disk space is shown in 1K blocks by default, unless the environment variable POSIXLY_CORRECT is set, in which case
+       512-byte blocks are used.
+
+       If an argument is the absolute file name of a disk device node containing a mounted file system, df shows the space avail‐
+       able  on  that  file system rather than on the file system containing the device node.  This version of df cannot show the
+       space available on unmounted file systems, because on most kinds of systems doing so requires  very  nonportable  intimate
+       knowledge of file system structures.
+
+OPTIONS
+       Show information about the file system on which each FILE resides, or all file systems by default.
+
+       Mandatory arguments to long options are mandatory for short options too.
+
+       -a, --all
+              include pseudo, duplicate, inaccessible file systems
+
+       -B, --block-size=SIZE
+              scale sizes by SIZE before printing them; e.g., '-BM' prints sizes in units of 1,048,576 bytes; see SIZE format be‐
+              low
+
+       -h, --human-readable
+              print sizes in powers of 1024 (e.g., 1023M)
+
+       -H, --si
+              print sizes in powers of 1000 (e.g., 1.1G)
+
+       -i, --inodes
+              list inode information instead of block usage
+
+       -k     like --block-size=1K
+
+       -l, --local
+              limit listing to local file systems
+
+       --no-sync
+              do not invoke sync before getting usage info (default)
+
+       --output[=FIELD_LIST]
+              use the output format defined by FIELD_LIST, or print all fields if FIELD_LIST is omitted.
+
+       -P, --portability
+              use the POSIX output format
+
+       --sync invoke sync before getting usage info
+
+       --total
+              elide all entries insignificant to available space, and produce a grand total
+
+       -t, --type=TYPE
+              limit listing to file systems of type TYPE
+
+       -T, --print-type
+              print file system type
+
+       -x, --exclude-type=TYPE
+              limit listing to file systems not of type TYPE
+
+       -v     (ignored)
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+       Display values are in units of the first available SIZE from --block-size, and the DF_BLOCK_SIZE, BLOCK_SIZE and BLOCKSIZE
+       environment variables.  Otherwise, units default to 1024 bytes (or 512 if POSIXLY_CORRECT is set).
+
+       The  SIZE  argument is an integer and optional unit (example: 10K is 10*1024).  Units are K,M,G,T,P,E,Z,Y (powers of 1024)
+       or KB,MB,... (powers of 1000).
+
+       FIELD_LIST is a comma-separated list of columns to be included.  Valid field  names  are:  'source',  'fstype',  'itotal',
+       'iused', 'iavail', 'ipcent', 'size', 'used', 'avail', 'pcent', 'file' and 'target' (see info page).
+
+AUTHOR
+       Written by Torbjorn Granlund, David MacKenzie, and Paul Eggert.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report df translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright  ©  2018  Free  Software  Foundation,  Inc.   License  GPLv3+:  GNU  GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       Full documentation at: <https://www.gnu.org/software/coreutils/df>
+       or available locally via: info '(coreutils) df invocation'
+
+GNU coreutils 8.30                                        February 2019                                                     DF(1)
+```
+
+### diff
+
+```
+GNU(1)                                                    User Commands                                                    GNU(1)
+
+NAME
+       GNU diff - compare files line by line
+
+SYNOPSIS
+       diff [OPTION]... FILES
+
+DESCRIPTION
+       Compare FILES line by line.
+
+       Mandatory arguments to long options are mandatory for short options too.
+
+       --normal
+              output a normal diff (the default)
+
+       -q, --brief
+              report only when files differ
+
+       -s, --report-identical-files
+              report when two files are the same
+
+       -c, -C NUM, --context[=NUM]
+              output NUM (default 3) lines of copied context
+
+       -u, -U NUM, --unified[=NUM]
+              output NUM (default 3) lines of unified context
+
+       -e, --ed
+              output an ed script
+
+       -n, --rcs
+              output an RCS format diff
+
+       -y, --side-by-side
+              output in two columns
+
+       -W, --width=NUM
+              output at most NUM (default 130) print columns
+
+       --left-column
+              output only the left column of common lines
+
+       --suppress-common-lines
+              do not output common lines
+
+       -p, --show-c-function
+              show which C function each change is in
+
+       -F, --show-function-line=RE
+              show the most recent line matching RE
+
+       --label LABEL
+              use LABEL instead of file name and timestamp (can be repeated)
+
+       -t, --expand-tabs
+              expand tabs to spaces in output
+
+       -T, --initial-tab
+              make tabs line up by prepending a tab
+
+       --tabsize=NUM
+              tab stops every NUM (default 8) print columns
+
+       --suppress-blank-empty
+              suppress space or tab before empty output lines
+
+       -l, --paginate
+              pass output through 'pr' to paginate it
+
+       -r, --recursive
+              recursively compare any subdirectories found
+
+       --no-dereference
+              don't follow symbolic links
+
+       -N, --new-file
+              treat absent files as empty
+
+       --unidirectional-new-file
+              treat absent first files as empty
+
+       --ignore-file-name-case
+              ignore case when comparing file names
+
+       --no-ignore-file-name-case
+              consider case when comparing file names
+
+       -x, --exclude=PAT
+              exclude files that match PAT
+
+       -X, --exclude-from=FILE
+              exclude files that match any pattern in FILE
+
+       -S, --starting-file=FILE
+              start with FILE when comparing directories
+
+       --from-file=FILE1
+              compare FILE1 to all operands; FILE1 can be a directory
+
+       --to-file=FILE2
+              compare all operands to FILE2; FILE2 can be a directory
+
+       -i, --ignore-case
+              ignore case differences in file contents
+
+       -E, --ignore-tab-expansion
+              ignore changes due to tab expansion
+
+       -Z, --ignore-trailing-space
+              ignore white space at line end
+
+       -b, --ignore-space-change
+              ignore changes in the amount of white space
+
+       -w, --ignore-all-space
+              ignore all white space
+
+       -B, --ignore-blank-lines
+              ignore changes where lines are all blank
+
+       -I, --ignore-matching-lines=RE
+              ignore changes where all lines match RE
+
+       -a, --text
+              treat all files as text
+
+       --strip-trailing-cr
+              strip trailing carriage return on input
+
+       -D, --ifdef=NAME
+              output merged file with '#ifdef NAME' diffs
+
+       --GTYPE-group-format=GFMT
+              format GTYPE input groups with GFMT
+
+       --line-format=LFMT
+              format all input lines with LFMT
+
+       --LTYPE-line-format=LFMT
+              format LTYPE input lines with LFMT
+
+              These format options provide fine-grained control over the output
+
+              of diff, generalizing -D/--ifdef.
+
+       LTYPE is 'old', 'new', or 'unchanged'.
+              GTYPE is LTYPE or 'changed'.
+
+              GFMT (only) may contain:
+
+       %<     lines from FILE1
+
+       %>     lines from FILE2
+
+       %=     lines common to FILE1 and FILE2
+
+       %[-][WIDTH][.[PREC]]{doxX}LETTER
+              printf-style spec for LETTER
+
+              LETTERs are as follows for new group, lower case for old group:
+
+       F      first line number
+
+       L      last line number
+
+       N      number of lines = L-F+1
+
+       E      F-1
+
+       M      L+1
+
+       %(A=B?T:E)
+              if A equals B then T else E
+
+              LFMT (only) may contain:
+
+       %L     contents of line
+
+       %l     contents of line, excluding any trailing newline
+
+       %[-][WIDTH][.[PREC]]{doxX}n
+              printf-style spec for input line number
+
+              Both GFMT and LFMT may contain:
+
+       %%     %
+
+       %c'C'  the single character C
+
+       %c'\OOO'
+              the character with octal code OOO
+
+       C      the character C (other characters represent themselves)
+
+       -d, --minimal
+              try hard to find a smaller set of changes
+
+       --horizon-lines=NUM
+              keep NUM lines of the common prefix and suffix
+
+       --speed-large-files
+              assume large files and many scattered small changes
+
+       --color[=WHEN]
+              colorize the output; WHEN can be 'never', 'always', or 'auto' (the default)
+
+       --palette=PALETTE
+              the colors to use when --color is active; PALETTE is a colon-separated list of terminfo capabilities
+
+       --help display this help and exit
+
+       -v, --version
+              output version information and exit
+
+       FILES  are  'FILE1  FILE2' or 'DIR1 DIR2' or 'DIR FILE' or 'FILE DIR'.  If --from-file or --to-file is given, there are no
+       restrictions on FILE(s).  If a FILE is '-', read standard input.  Exit status is 0 if inputs are the same, 1 if different,
+       2 if trouble.
+
+AUTHOR
+       Written by Paul Eggert, Mike Haertel, David Hayes, Richard Stallman, and Len Tower.
+
+REPORTING BUGS
+       Report bugs to: bug-diffutils@gnu.org
+       GNU diffutils home page: <https://www.gnu.org/software/diffutils/>
+       General help using GNU software: <https://www.gnu.org/gethelp/>
+
+COPYRIGHT
+       Copyright  ©  2018  Free  Software  Foundation,  Inc.   License  GPLv3+:  GNU  GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       wdiff(1), cmp(1), diff3(1), sdiff(1), patch(1)
+
+       The full documentation for GNU is maintained as a Texinfo manual.  If the info and GNU programs are properly installed  at
+       your site, the command
+
+              info GNU
+
+       should give you access to the complete manual.
+
+diffutils 3.7                                             December 2018                                                    GNU(1)
+```
+
+### dirname
+
+```
+DIRNAME(1)                                                User Commands                                                DIRNAME(1)
+
+NAME
+       dirname - strip last component from file name
+
+SYNOPSIS
+       dirname [OPTION] NAME...
+
+DESCRIPTION
+       Output  each  NAME  with  its  last  non-slash component and trailing slashes removed; if NAME contains no /'s, output '.'
+       (meaning the current directory).
+
+       -z, --zero
+              end each output line with NUL, not newline
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+EXAMPLES
+       dirname /usr/bin/
+              -> "/usr"
+
+       dirname dir1/str dir2/str
+              -> "dir1" followed by "dir2"
+
+       dirname stdio.h
+              -> "."
+
+AUTHOR
+       Written by David MacKenzie and Jim Meyering.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report dirname translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright © 2018 Free Software Foundation,  Inc.   License  GPLv3+:  GNU  GPL  version  3  or  later  <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       basename(1), readlink(1)
+
+       Full documentation at: <https://www.gnu.org/software/coreutils/dirname>
+       or available locally via: info '(coreutils) dirname invocation'
+
+GNU coreutils 8.30                                        February 2019                                                DIRNAME(1)
+```
+
+### dmesg
+
+```
+DMESG(1)                                                  User Commands                                                  DMESG(1)
+
+NAME
+       dmesg - print or control the kernel ring buffer
+
+SYNOPSIS
+       dmesg [options]
+
+       dmesg --clear
+       dmesg --read-clear [options]
+       dmesg --console-level level
+       dmesg --console-on
+       dmesg --console-off
+
+DESCRIPTION
+       dmesg is used to examine or control the kernel ring buffer.
+
+       The default action is to display all messages from the kernel ring buffer.
+
+OPTIONS
+       The --clear, --read-clear, --console-on, --console-off, and --console-level options are mutually exclusive.
+
+       -C, --clear
+              Clear the ring buffer.
+
+       -c, --read-clear
+              Clear the ring buffer after first printing its contents.
+
+       -D, --console-off
+              Disable the printing of messages to the console.
+
+       -d, --show-delta
+              Display the timestamp and the time delta spent between messages.  If used together with --notime then only the time
+              delta without the timestamp is printed.
+
+       -E, --console-on
+              Enable printing messages to the console.
+
+       -e, --reltime
+              Display the local time and the delta in human-readable format.  Be aware that conversion to the local time could be
+              inaccurate (see -T for more details).
+
+       -F, --file file
+              Read  the syslog messages from the given file.  Note that -F does not support messages in kmsg format. The old sys‐
+              log format is supported only.
+
+       -f, --facility list
+              Restrict output to the given (comma-separated) list of facilities.  For example:
+
+                     dmesg --facility=daemon
+
+              will print messages from system daemons only.  For all supported facilities see the --help output.
+
+       -H, --human
+              Enable human-readable output.  See also --color, --reltime and --nopager.
+
+       -k, --kernel
+              Print kernel messages.
+
+       -L, --color[=when]
+              Colorize the output.  The optional argument when can be auto, never or always.  If the when argument is omitted, it
+              defaults  to  auto.   The colors can be disabled; for the current built-in default see the --help output.  See also
+              the COLORS section below.
+
+       -l, --level list
+              Restrict output to the given (comma-separated) list of levels.  For example:
+
+                     dmesg --level=err,warn
+
+              will print error and warning messages only.  For all supported levels see the --help output.
+
+       -n, --console-level level
+              Set the level at which printing of messages is done to the console.  The level is a level number or abbreviation of
+              the level name.  For all supported levels see the --help output.
+
+              For  example, -n 1 or -n emerg prevents all messages, except emergency (panic) messages, from appearing on the con‐
+              sole.  All levels of messages are still written to /proc/kmsg, so syslogd(8) can still be used to  control  exactly
+              where kernel messages appear.  When the -n option is used, dmesg will not print or clear the kernel ring buffer.
+
+       -P, --nopager
+              Do not pipe output into a pager.  A pager is enabled by default for --human output.
+
+       -p, --force-prefix
+              Add facility, level or timestamp information to each line of a multi-line message.
+
+       -r, --raw
+              Print the raw message buffer, i.e. do not strip the log-level prefixes.
+
+              Note  that the real raw format depends on the method how dmesg(1) reads kernel messages.  The /dev/kmsg device uses
+              a different format than syslog(2).  For backward compatibility, dmesg(1) returns data always in the syslog(2)  for‐
+              mat.   It  is  possible  to  read  the  real  raw data from /dev/kmsg by, for example, the command 'dd if=/dev/kmsg
+              iflag=nonblock'.
+
+       -S, --syslog
+              Force dmesg to use the syslog(2) kernel interface to read kernel messages.  The default is to use /dev/kmsg  rather
+              than syslog(2) since kernel 3.5.0.
+
+       -s, --buffer-size size
+              Use a buffer of size to query the kernel ring buffer.  This is 16392 by default.  (The default kernel syslog buffer
+              size was 4096 at first, 8192 since 1.3.54, 16384 since 2.1.113.)  If you have set the kernel buffer  to  be  larger
+              than the default, then this option can be used to view the entire buffer.
+
+       -T, --ctime
+              Print human-readable timestamps.
+
+              Be  aware  that  the  timestamp could be inaccurate!  The time source used for the logs is not updated after system
+              SUSPEND/RESUME.
+
+       -t, --notime
+              Do not print kernel's timestamps.
+
+       --time-format format
+              Print timestamps using the given format, which can be ctime, reltime, delta or iso.  The first  three  formats  are
+              aliases  of  the  time-format-specific options.  The iso format is a dmesg implementation of the ISO-8601 timestamp
+              format.  The purpose of this format is to make the comparing of timestamps between two systems, and any other pars‐
+              ing,  easy.   The definition of the iso timestamp is: YYYY-MM-DD<T>HH:MM:SS,<microseconds><-+><timezone offset from
+              UTC>.
+
+              The iso format has the same issue as ctime: the time may be inaccurate when a system is suspended and resumed.
+
+       -u, --userspace
+              Print userspace messages.
+
+       -w, --follow
+              Wait for new messages.  This feature is supported only on systems with a readable /dev/kmsg (since kernel 3.5.0).
+
+       -x, --decode
+              Decode facility and level (priority) numbers to human-readable prefixes.
+
+       -V, --version
+              Display version information and exit.
+
+       -h, --help
+              Display help text and exit.
+
+COLORS
+       Implicit coloring can be disabled by an empty file  /etc/terminal-colors.d/dmesg.disable.   See  terminal-colors.d(5)  for
+       more details about colorization configuration.
+
+       The logical color names supported by dmesg are:
+
+       subsys The message sub-system prefix (e.g. "ACPI:").
+
+       time   The message timestamp.
+
+       timebreak
+              The message timestamp in short ctime format in --reltime or --human output.
+
+       alert  The text of the message with the alert log priority.
+
+       crit   The text of the message with the critical log priority.
+
+       err    The text of the message with the error log priority.
+
+       warn   The text of the message with the warning log priority.
+
+       segfault
+              The text of the message that inform about segmentation fault.
+
+EXIT STATUS
+       dmesg  can  fail  reporting  permission denied error.  This is usually caused by dmesg_restrict kernel setting, please see
+       syslog(2) for more details.
+
+SEE ALSO
+       terminal-colors.d(5), syslogd(8)
+
+AUTHORS
+       Karel Zak ⟨kzak@redhat.com⟩
+
+       dmesg was originally written by Theodore Ts'o ⟨tytso@athena.mit.edu⟩
+
+AVAILABILITY
+       The dmesg command is part of the util-linux package and is available from Linux Kernel Archive ⟨https://www.kernel.org/pub
+       /linux/utils/util-linux/⟩.
+
+util-linux                                                  July 2012                                                    DMESG(1)
+```
+
+### dpkg
+
+```
+dpkg(1)                                                     dpkg suite                                                    dpkg(1)
+
+NAME
+       dpkg - package manager for Debian
+
+SYNOPSIS
+       dpkg [option...] action
+
+WARNING
+       This manual is intended for users wishing to understand dpkg's command line options and package states in more detail than
+       that provided by dpkg --help.
+
+       It should not be used by package maintainers wishing to understand how dpkg will install their packages. The  descriptions
+       of what dpkg does when installing and removing packages are particularly inadequate.
+
+DESCRIPTION
+       dpkg is a tool to install, build, remove and manage Debian packages. The primary and more user-friendly front-end for dpkg
+       is aptitude(1). dpkg itself is controlled entirely via command line parameters, which consist of exactly  one  action  and
+       zero  or  more  options. The action-parameter tells dpkg what to do and options control the behavior of the action in some
+       way.
+
+       dpkg can also be used as a front-end to dpkg-deb(1) and dpkg-query(1). The list of supported actions can be found later on
+       in  the ACTIONS section. If any such action is encountered dpkg just runs dpkg-deb or dpkg-query with the parameters given
+       to it, but no specific options are currently passed to them, to use any such  option  the  back-ends  need  to  be  called
+       directly.
+
+INFORMATION ABOUT PACKAGES
+       dpkg  maintains  some  usable  information  about available packages. The information is divided in three classes: states,
+       selection states and flags. These values are intended to be changed mainly with dselect.
+
+   Package states
+       not-installed
+              The package is not installed on your system.
+
+       config-files
+              Only the configuration files of the package exist on the system.
+
+       half-installed
+              The installation of the package has been started, but not completed for some reason.
+
+       unpacked
+              The package is unpacked, but not configured.
+
+       half-configured
+              The package is unpacked and configuration has been started, but not yet completed for some reason.
+
+       triggers-awaited
+              The package awaits trigger processing by another package.
+
+       triggers-pending
+              The package has been triggered.
+
+       installed
+              The package is correctly unpacked and configured.
+
+   Package selection states
+       install
+              The package is selected for installation.
+
+       hold   A package marked to be on hold is not handled by dpkg, unless forced to do that with option --force-hold.
+
+       deinstall
+              The package is selected for deinstallation (i.e. we want to remove all files, except configuration files).
+
+       purge  The package is selected to be purged (i.e. we want to remove everything from system directories, even configuration
+              files).
+
+       unknown
+              The  package  selection  is  unknown.  A package that is also in a not-installed state, and with an ok flag will be
+              forgotten in the next database store.
+
+   Package flags
+       ok     A package marked ok is in a known state, but might need further processing.
+
+       reinstreq
+              A package marked reinstreq is broken and requires reinstallation. These packages cannot be removed,  unless  forced
+              with option --force-remove-reinstreq.
+
+ACTIONS
+       -i, --install package-file...
+              Install the package. If --recursive or -R option is specified, package-file must refer to a directory instead.
+
+              Installation consists of the following steps:
+
+              1. Extract the control files of the new package.
+
+              2.  If  another  version of the same package was installed before the new installation, execute prerm script of the
+              old package.
+
+              3. Run preinst script, if provided by the package.
+
+              4. Unpack the new files, and at the same time back up the old files, so that if something goes wrong, they  can  be
+              restored.
+
+              5.  If  another version of the same package was installed before the new installation, execute the postrm script of
+              the old package. Note that this script is executed after the preinst script of the new package, because  new  files
+              are written at the same time old files are removed.
+
+              6. Configure the package. See --configure for detailed information about how this is done.
+
+       --unpack package-file...
+              Unpack  the package, but don't configure it. If --recursive or -R option is specified, package-file must refer to a
+              directory instead.
+
+       --configure package...|-a|--pending
+              Configure a package which has been unpacked but not yet configured.   If  -a  or  --pending  is  given  instead  of
+              package, all unpacked but unconfigured packages are configured.
+
+              To reconfigure a package which has already been configured, try the dpkg-reconfigure(8) command instead.
+
+              Configuring consists of the following steps:
+
+              1.  Unpack the conffiles, and at the same time back up the old conffiles, so that they can be restored if something
+              goes wrong.
+
+              2. Run postinst script, if provided by the package.
+
+       --triggers-only package...|-a|--pending
+              Processes only triggers (since dpkg 1.14.17).  All pending triggers  will  be  processed.   If  package  names  are
+              supplied only those packages' triggers will be processed, exactly once each where necessary. Use of this option may
+              leave packages in the improper triggers-awaited and triggers-pending states. This can be fixed  later  by  running:
+              dpkg --configure --pending.
+
+       -r, --remove package...|-a|--pending
+              Remove  an  installed  package.   This  removes everything except conffiles and other data cleaned up by the postrm
+              script, which may avoid having to reconfigure the package if it is reinstalled later (conffiles  are  configuration
+              files  that  are  listed  in  the DEBIAN/conffiles control file).  If there is no DEBIAN/conffiles control file nor
+              DEBIAN/postrm script, this command is equivalent to calling --purge.  If -a or --pending  is  given  instead  of  a
+              package name, then all packages unpacked, but marked to be removed in file /var/lib/dpkg/status, are removed.
+
+              Removing of a package consists of the following steps:
+
+              1. Run prerm script
+
+              2. Remove the installed files
+
+              3. Run postrm script
+
+       -P, --purge package...|-a|--pending
+              Purge  an  installed  or  already  removed package. This removes everything, including conffiles, and anything else
+              cleaned up from postrm.  If -a or --pending is given instead of a package  name,  then  all  packages  unpacked  or
+              removed, but marked to be purged in file /var/lib/dpkg/status, are purged.
+
+              Note: some configuration files might be unknown to dpkg because they are created and handled separately through the
+              configuration scripts. In that case, dpkg won't remove them by itself, but the package's postrm  script  (which  is
+              called  by  dpkg),  has to take care of their removal during purge. Of course, this only applies to files in system
+              directories, not configuration files written to individual users' home directories.
+
+              Purging of a package consists of the following steps:
+
+              1. Remove the package, if not already removed. See --remove for detailed information about how this is done.
+
+              2. Run postrm script.
+
+       -V, --verify [package-name...]
+              Verifies the integrity of package-name or all  packages  if  omitted,  by  comparing  information  from  the  files
+              installed  by  a  package with the files metadata information stored in the dpkg database (since dpkg 1.17.2).  The
+              origin of the files metadata information in the database is the binary  packages  themselves.  That  metadata  gets
+              collected at package unpack time during the installation process.
+
+              Currently  the  only  functional  check performed is an md5sum verification of the file contents against the stored
+              value in the files database.  It will only get checked if the database contains the file md5sum. To check  for  any
+              missing metadata in the database, the --audit command can be used.
+
+              The  output  format  is  selectable with the --verify-format option, which by default uses the rpm format, but that
+              might change in the future, and as such, programs parsing this command output should be explicit about  the  format
+              they expect.
+
+       -C, --audit [package-name...]
+              Performs  database  sanity  and  consistency checks for package-name or all packages if omitted (per package checks
+              since dpkg 1.17.10).  For example, searches for packages that have been installed only partially on your system  or
+              that  have  missing,  wrong  or  obsolete control data or files. dpkg will suggest what to do with them to get them
+              fixed.
+
+       --update-avail [Packages-file]
+       --merge-avail [Packages-file]
+              Update dpkg's and dselect's idea of which packages are available. With action  --merge-avail,  old  information  is
+              combined  with  information  from  Packages-file.  With action --update-avail, old information is replaced with the
+              information in the Packages-file. The Packages-file distributed with Debian is  simply  named  «Packages».  If  the
+              Packages-file  argument  is missing or named «-» then it will be read from standard input (since dpkg 1.17.7). dpkg
+              keeps its record of available packages in /var/lib/dpkg/available.
+
+              A simpler one-shot command to retrieve and update the available file is dselect update.  Note  that  this  file  is
+              mostly  useless  if  you  don't  use  dselect  but  an  APT-based frontend: APT has its own system to keep track of
+              available packages.
+
+       -A, --record-avail package-file...
+              Update dpkg and dselect's idea of which packages are available with information from the package  package-file.  If
+              --recursive or -R option is specified, package-file must refer to a directory instead.
+
+       --forget-old-unavail
+              Now  obsolete  and  a no-op as dpkg will automatically forget uninstalled unavailable packages (since dpkg 1.15.4),
+              but only those that do not contain user information such as package selections.
+
+       --clear-avail
+              Erase the existing information about what packages are available.
+
+       --get-selections [package-name-pattern...]
+              Get list of package selections, and write it to stdout. Without a pattern, non-installed packages (i.e. those which
+              have been previously purged) will not be shown.
+
+       --set-selections
+              Set  package  selections using file read from stdin. This file should be in the format “package state”, where state
+              is one of install, hold, deinstall or purge. Blank lines and comment lines beginning with ‘#’ are also permitted.
+
+              The available file needs to be up-to-date for this command to be useful, otherwise unknown packages will be ignored
+              with a warning. See the --update-avail and --merge-avail commands for more information.
+
+       --clear-selections
+              Set  the  requested state of every non-essential package to deinstall (since dpkg 1.13.18).  This is intended to be
+              used immediately before --set-selections, to deinstall any packages not in list given to --set-selections.
+
+       --yet-to-unpack
+              Searches for packages selected for installation, but which for some reason still haven't been installed.
+
+              Note: This command makes use of both the available file and the package selections.
+
+       --predep-package
+              Print a single package which is the target of one or more relevant pre-dependencies and has itself  no  unsatisfied
+              pre-dependencies.
+
+              If such a package is present, output it as a Packages file entry, which can be massaged as appropriate.
+
+              Note: This command makes use of both the available file and the package selections.
+
+              Returns 0 when a package is printed, 1 when no suitable package is available and 2 on error.
+
+       --add-architecture architecture
+              Add   architecture   to   the   list   of   architectures  for  which  packages  can  be  installed  without  using
+              --force-architecture  (since  dpkg  1.16.2).   The  architecture  dpkg  is  built   for   (i.e.   the   output   of
+              --print-architecture) is always part of that list.
+
+       --remove-architecture architecture
+              Remove   architecture  from  the  list  of  architectures  for  which  packages  can  be  installed  without  using
+              --force-architecture (since dpkg 1.16.2). If the architecture  is  currently  in  use  in  the  database  then  the
+              operation  will  be  refused, except if --force-architecture is specified. The architecture dpkg is built for (i.e.
+              the output of --print-architecture) can never be removed from that list.
+
+       --print-architecture
+              Print architecture of packages dpkg installs (for example, “i386”).
+
+       --print-foreign-architectures
+              Print a newline-separated list of the extra architectures dpkg is configured to allow packages to be installed  for
+              (since dpkg 1.16.2).
+
+       --assert-feature
+              Asserts that dpkg supports the requested feature.  Returns 0 if the feature is fully supported, 1 if the feature is
+              known but dpkg cannot provide support for it yet, and 2 if the feature is unknown.  The current list of  assertable
+              features is:
+
+              support-predepends
+                     Supports the Pre-Depends field (since dpkg 1.1.0).
+
+              working-epoch
+                     Supports epochs in version strings (since dpkg 1.4.0.7).
+
+              long-filenames
+                     Supports long filenames in deb(5) archives (since dpkg 1.4.1.17).
+
+              multi-conrep
+                     Supports multiple Conflicts and Replaces (since dpkg 1.4.1.19).
+
+              multi-arch
+                     Supports multi-arch fields and semantics (since dpkg 1.16.2).
+
+              versioned-provides
+                     Supports versioned Provides (since dpkg 1.17.11).
+
+       --validate-thing string
+              Validate  that  the thing string has a correct syntax (since dpkg 1.18.16).  Returns 0 if the string is valid, 1 if
+              the string is invalid but might be accepted in lax contexts, and 2 if the string is invalid.  The current  list  of
+              validatable things is:
+
+              pkgname
+                     Validates the given package name (since dpkg 1.18.16).
+
+              trigname
+                     Validates the given trigger name (since dpkg 1.18.16).
+
+              archname
+                     Validates the given architecture name (since dpkg 1.18.16).
+
+              version
+                     Validates the given version (since dpkg 1.18.16).
+
+       --compare-versions ver1 op ver2
+              Compare  version  numbers,  where  op  is  a  binary  operator. dpkg returns true (0) if the specified condition is
+              satisfied, and false (1) otherwise. There are two groups of operators, which differ in how they treat an empty ver1
+              or  ver2. These treat an empty version as earlier than any version: lt le eq ne ge gt. These treat an empty version
+              as later than any version: lt-nl le-nl ge-nl gt-nl. These are provided only for  compatibility  with  control  file
+              syntax:  <  << <= = >= >> >. The < and > operators are obsolete and should not be used, due to confusing semantics.
+              To illustrate: 0.1 < 0.1 evaluates to true.
+
+       -?, --help
+              Display a brief help message.
+
+       --force-help
+              Give help about the --force-thing options.
+
+       -Dh, --debug=help
+              Give help about debugging options.
+
+       --version
+              Display dpkg version information.
+
+       dpkg-deb actions
+              See dpkg-deb(1) for more information about the following actions.
+
+              -b, --build directory [archive|directory]
+                  Build a deb package.
+              -c, --contents archive
+                  List contents of a deb package.
+              -e, --control archive [directory]
+                  Extract control-information from a package.
+              -x, --extract archive directory
+                  Extract the files contained by package.
+              -X, --vextract archive directory
+                  Extract and display the filenames contained by a
+                  package.
+              -f, --field  archive [control-field...]
+                  Display control field(s) of a package.
+              --ctrl-tarfile archive
+                  Output the control tar-file contained in a Debian package.
+              --fsys-tarfile archive
+                  Output the filesystem tar-file contained by a Debian package.
+              -I, --info archive [control-file...]
+                  Show information about a package.
+
+       dpkg-query actions
+              See dpkg-query(1) for more information about the following actions.
+
+              -l, --list package-name-pattern...
+                  List packages matching given pattern.
+              -s, --status package-name...
+                  Report status of specified package.
+              -L, --listfiles package-name...
+                  List files installed to your system from package-name.
+              -S, --search filename-search-pattern...
+                  Search for a filename from installed packages.
+              -p, --print-avail package-name...
+                  Display details about package-name, as found in
+                  /var/lib/dpkg/available. Users of APT-based frontends
+                  should use apt-cache show package-name instead.
+
+OPTIONS
+       All options can be specified both on the command line and in the dpkg configuration file  /etc/dpkg/dpkg.cfg  or  fragment
+       files (with names matching this shell pattern '[0-9a-zA-Z_-]*') on the configuration directory /etc/dpkg/dpkg.cfg.d/. Each
+       line in the configuration file is either an option (exactly the same as  the  command  line  option  but  without  leading
+       hyphens) or a comment (if it starts with a ‘#’).
+
+       --abort-after=number
+              Change after how many errors dpkg will abort. The default is 50.
+
+       -B, --auto-deconfigure
+              When  a  package is removed, there is a possibility that another installed package depended on the removed package.
+              Specifying this option will cause automatic deconfiguration of the package which depended on the removed package.
+
+       -Doctal, --debug=octal
+              Switch debugging on. octal is formed by bitwise-oring desired values together from the list below (note that  these
+              values may change in future releases). -Dh or --debug=help display these debugging values.
+
+                  Number   Description
+                       1   Generally helpful progress information
+                       2   Invocation and status of maintainer scripts
+                      10   Output for each file processed
+                     100   Lots of output for each file processed
+                      20   Output for each configuration file
+                     200   Lots of output for each configuration file
+                      40   Dependencies and conflicts
+                     400   Lots of dependencies/conflicts output
+                   10000   Trigger activation and processing
+                   20000   Lots of output regarding triggers
+                   40000   Silly amounts of output regarding triggers
+                    1000   Lots of drivel about e.g. the dpkg/info dir
+                    2000   Insane amounts of drivel
+
+       --force-things
+       --no-force-things, --refuse-things
+              Force  or  refuse  (no-force and refuse mean the same thing) to do some things. things is a comma separated list of
+              things specified below. --force-help displays a message describing them.  Things marked  with  (*)  are  forced  by
+              default.
+
+              Warning: These options are mostly intended to be used by experts only. Using them without fully understanding their
+              effects may break your whole system.
+
+              all: Turns on (or off) all force options.
+
+              downgrade(*): Install a package, even if newer version of it is already installed.
+
+              Warning: At present dpkg does not do any dependency checking on downgrades and therefore will not warn you  if  the
+              downgrade  breaks  the  dependency of some other package. This can have serious side effects, downgrading essential
+              system components can even make your whole system unusable. Use with care.
+
+              configure-any: Configure also any unpacked but unconfigured packages on which the current package depends.
+
+              hold: Process packages even when marked “hold”.
+
+              remove-reinstreq: Remove a package, even if it's broken  and  marked  to  require  reinstallation.  This  may,  for
+              example, cause parts of the package to remain on the system, which will then be forgotten by dpkg.
+
+              remove-essential: Remove, even if the package is considered essential. Essential packages contain mostly very basic
+              Unix commands. Removing them might cause the whole system to stop working, so use with caution.
+
+              depends: Turn all dependency problems into warnings.  This affects the Pre-Depends and Depends fields.
+
+              depends-version: Don't care about versions when checking dependencies.  This affects the  Pre-Depends  and  Depends
+              fields.
+
+              breaks: Install, even if this would break another package (since dpkg 1.14.6).  This affects the Breaks field.
+
+              conflicts:  Install,  even  if  it  conflicts  with  another  package. This is dangerous, for it will usually cause
+              overwriting of some files.  This affects the Conflicts field.
+
+              confmiss: Always install the missing conffile without prompting. This is dangerous, since it means not preserving a
+              change (removing) made to the file.
+
+              confnew:  If a conffile has been modified and the version in the package did change, always install the new version
+              without prompting, unless the --force-confdef is also specified, in which case the default action is preferred.
+
+              confold: If a conffile has been modified and the version in the package did change, always  keep  the  old  version
+              without prompting, unless the --force-confdef is also specified, in which case the default action is preferred.
+
+              confdef:  If  a  conffile  has  been  modified and the version in the package did change, always choose the default
+              action without prompting. If there is no default action it will stop to ask  the  user  unless  --force-confnew  or
+              --force-confold is also been given, in which case it will use that to decide the final action.
+
+              confask:  If  a  conffile has been modified always offer to replace it with the version in the package, even if the
+              version in the package did not change  (since  dpkg  1.15.8).   If  any  of  --force-confnew,  --force-confold,  or
+              --force-confdef is also given, it will be used to decide the final action.
+
+              overwrite: Overwrite one package's file with another's file.
+
+              overwrite-dir: Overwrite one package's directory with another's file.
+
+              overwrite-diverted: Overwrite a diverted file with an undiverted version.
+
+              statoverride-add: Overwrite an existing stat override when adding it (since dpkg 1.19.5).
+
+              statoverride-remove: Ignore a missing stat override when removing it (since dpkg 1.19.5).
+
+              security-mac(*):  Use  platform-specific  Mandatory Access Controls (MAC) based security when installing files into
+              the filesystem (since dpkg 1.19.5).  On Linux systems the implementation uses SELinux.
+
+              unsafe-io: Do not perform safe I/O operations when unpacking (since dpkg 1.15.8.6).   Currently  this  implies  not
+              performing  file  system  syncs before file renames, which is known to cause substantial performance degradation on
+              some file systems, unfortunately the ones that require the safe I/O on the first  place  due  to  their  unreliable
+              behaviour causing zero-length files on abrupt system crashes.
+
+              Note:  For  ext4,  the  main  offender, consider using instead the mount option nodelalloc, which will fix both the
+              performance degradation and the data safety issues, the latter by making the file system  not  produce  zero-length
+              files on abrupt system crashes with any software not doing syncs before atomic renames.
+
+              Warning: Using this option might improve performance at the cost of losing data, use with care.
+
+              script-chrootless:  Run  maintainer  scripts without chroot(2)ing into instdir even if the package does not support
+              this mode of operation (since dpkg 1.18.5).
+
+              Warning: This can destroy your host system, use with extreme care.
+
+              architecture: Process even packages with wrong or no architecture.
+
+              bad-version: Process even packages with wrong versions (since dpkg 1.16.1).
+
+              bad-path: PATH is missing important programs, so problems are likely.
+
+              not-root: Try to (de)install things even when not root.
+
+              bad-verify: Install a package even if it fails authenticity check.
+
+       --ignore-depends=package,...
+              Ignore dependency-checking for specified packages  (actually,  checking  is  performed,  but  only  warnings  about
+              conflicts are given, nothing else).  This affects the Pre-Depends, Depends and Breaks fields.
+
+       --no-act, --dry-run, --simulate
+              Do everything which is supposed to be done, but don't write any changes. This is used to see what would happen with
+              the specified action, without actually modifying anything.
+
+              Be sure to give --no-act before the action-parameter, or you might end up  with  undesirable  results.  (e.g.  dpkg
+              --purge  foo --no-act will first purge package foo and then try to purge package --no-act, even though you probably
+              expected it to actually do nothing)
+
+       -R, --recursive
+              Recursively handle all regular files matching  pattern  *.deb  found  at  specified  directories  and  all  of  its
+              subdirectories. This can be used with -i, -A, --install, --unpack and --record-avail actions.
+
+       -G     Don't  install  a  package  if  a  newer  version  of  the  same  package is already installed. This is an alias of
+              --refuse-downgrade.
+
+       --admindir=dir
+              Set the administrative directory to directory.  This directory contains many  files  that  give  information  about
+              status of installed or uninstalled packages, etc.  Defaults to «/var/lib/dpkg».
+
+       --instdir=dir
+              Set  the  installation directory, which refers to the directory where packages are to be installed. instdir is also
+              the directory passed to chroot(2) before running package's installation scripts, which means that the  scripts  see
+              instdir as a root directory.  Defaults to «/».
+
+       --root=dir
+              Set  the  root  directory  to  directory,  which  sets  the  installation directory to «dir» and the administrative
+              directory to «dir/var/lib/dpkg».
+
+       -O, --selected-only
+              Only process the packages that are selected for installation. The actual marking is done with dselect or  by  dpkg,
+              when it handles packages. For example, when a package is removed, it will be marked selected for deinstallation.
+
+       -E, --skip-same-version
+              Don't install the package if the same version of the package is already installed.
+
+       --pre-invoke=command
+       --post-invoke=command
+              Set  an  invoke hook command to be run via “sh -c” before or after the dpkg run for the unpack, configure, install,
+              triggers-only,  remove,  purge,  add-architecture  and  remove-architecture  dpkg  actions  (since   dpkg   1.15.4;
+              add-architecture  and remove-architecture actions since dpkg 1.17.19). This option can be specified multiple times.
+              The order the options are specified is preserved, with the ones from the  configuration  files  taking  precedence.
+              The  environment  variable DPKG_HOOK_ACTION is set for the hooks to the current dpkg action. Note: front-ends might
+              call dpkg several times per invocation, which might run the hooks more times than expected.
+
+       --path-exclude=glob-pattern
+       --path-include=glob-pattern
+              Set glob-pattern as a path filter, either by excluding or  re-including  previously  excluded  paths  matching  the
+              specified patterns during install (since dpkg 1.15.8).
+
+              Warning:  take  into  account that depending on the excluded paths you might completely break your system, use with
+              caution.
+
+              The glob patterns use the same wildcards used in the shell, were ‘*’ matches any sequence of characters,  including
+              the empty string and also ‘/’.  For example, «/usr/*/READ*» matches «/usr/share/doc/package/README».  As usual, ‘?’
+              matches any single character (again, including ‘/’).  And ‘[’ starts a character class, which can contain a list of
+              characters,  ranges  and  complementations.  See glob(7) for detailed information about globbing. Note: the current
+              implementation might re-include more directories and symlinks than needed,  to  be  on  the  safe  side  and  avoid
+              possible unpack failures; future work might fix this.
+
+              This can be used to remove all paths except some particular ones; a typical case is:
+
+              --path-exclude=/usr/share/doc/*
+              --path-include=/usr/share/doc/*/copyright
+
+              to remove all documentation files except the copyright files.
+
+              These two options can be specified multiple times, and interleaved with each other. Both are processed in the given
+              order, with the last rule that matches a file name making the decision.
+
+              The filters are applied when unpacking the binary packages, and as such only have knowledge of the type  of  object
+              currently  being  filtered  (e.g.  a  normal file or a directory) and have not visibility of what objects will come
+              next.  Because these filters have side effects (in contrast to find(1) filters), excluding an exact  pathname  that
+              happens  to be a directory object like /usr/share/doc will not have the desired result, and only that pathname will
+              be excluded (which could be automatically reincluded if the code sees the need).  Any  subsequent  files  contained
+              within that directory will fail to unpack.
+
+              Hint: make sure the globs are not expanded by your shell.
+
+       --verify-format format-name
+              Sets the output format for the --verify command (since dpkg 1.17.2).
+
+              The  only  currently supported output format is rpm, which consists of a line for every path that failed any check.
+              The lines start with 9 characters to report each specific check result, a ‘?’ implies the check could not  be  done
+              (lack  of  support,  file  permissions, etc), ‘.’ implies the check passed, and an alphanumeric character implies a
+              specific check failed; the md5sum verification failure (the file contents have changed) is denoted with  a  ‘5’  on
+              the  third  character.   The  line is followed by a space and an attribute character (currently ‘c’ for conffiles),
+              another space and the pathname.
+
+       --status-fd n
+              Send machine-readable package status and progress information to file descriptor n. This option  can  be  specified
+              multiple times. The information is generally one record per line, in one of the following forms:
+
+              status: package: status
+                     Package status changed; status is as in the status file.
+
+              status: package : error : extended-error-message
+                     An  error  occurred.  Any  possible  newlines  in  extended-error-message will be converted to spaces before
+                     output.
+
+              status: file : conffile-prompt : 'real-old' 'real-new' useredited distedited
+                     User is being asked a conffile question.
+
+              processing: stage: package
+                     Sent just before a processing stage starts. stage is one of upgrade, install (both sent  before  unpacking),
+                     configure, trigproc, disappear, remove, purge.
+
+       --status-logger=command
+              Send  machine-readable package status and progress information to the shell command's standard input, to be run via
+              “sh -c” (since dpkg 1.16.0).  This option can be specified multiple times.  The output format used is the  same  as
+              in --status-fd.
+
+       --log=filename
+              Log  status  change  updates  and  actions to filename, instead of the default /var/log/dpkg.log. If this option is
+              given multiple times, the last filename is used. Log messages are of the form:
+
+              YYYY-MM-DD HH:MM:SS startup type command
+                     For each dpkg invocation where type is archives (with a command of unpack or install) or  packages  (with  a
+                     command of configure, triggers-only, remove or purge).
+
+              YYYY-MM-DD HH:MM:SS status state pkg installed-version
+                     For status change updates.
+
+              YYYY-MM-DD HH:MM:SS action pkg installed-version available-version
+                     For actions where action is one of install, upgrade, configure, trigproc, disappear, remove or purge.
+
+              YYYY-MM-DD HH:MM:SS conffile filename decision
+                     For conffile changes where decision is either install or keep.
+
+       --no-pager
+              Disables the use of any pager when showing information (since dpkg 1.19.2).
+
+       --no-debsig
+              Do not try to verify package signatures.
+
+       --no-triggers
+              Do  not  run  any  triggers in this run (since dpkg 1.14.17), but activations will still be recorded.  If used with
+              --configure package or --triggers-only package then the named package postinst will still be run  even  if  only  a
+              triggers run is needed. Use of this option may leave packages in the improper triggers-awaited and triggers-pending
+              states. This can be fixed later by running: dpkg --configure --pending.
+
+       --triggers
+              Cancels a previous --no-triggers (since dpkg 1.14.17).
+
+EXIT STATUS
+       0      The requested action was successfully performed.  Or a check or assertion command returned true.
+
+       1      A check or assertion command returned false.
+
+       2      Fatal or unrecoverable error due to invalid command-line usage, or interactions with the system, such  as  accesses
+              to the database, memory allocations, etc.
+
+ENVIRONMENT
+   External environment
+       PATH   This  variable  is  expected  to be defined in the environment and point to the system paths where several required
+              programs are to be found. If it's not set or the programs are not found, dpkg will abort.
+
+       HOME   If set, dpkg will use it as the directory from which to read the user specific configuration file.
+
+       TMPDIR If set, dpkg will use it as the directory in which to create temporary files and directories.
+
+       SHELL  The program dpkg will execute when starting a new interactive shell, or when spawning a command via a shell.
+
+       PAGER
+       DPKG_PAGER
+              The program dpkg will execute when running a pager, for example when displaying the conffile differences.  If SHELL
+              is  not  set,  «sh»  will  be  used  instead.   The DPKG_PAGER overrides the PAGER environment variable (since dpkg
+              1.19.2).
+
+       DPKG_COLORS
+              Sets the color mode (since dpkg 1.18.5).  The currently accepted values are: auto (default), always and never.
+
+       DPKG_FORCE
+              Sets the force flags (since dpkg 1.19.5).  When this variable is  present,  no  built-in  force  defaults  will  be
+              applied.  If the variable is present but empty, all force flags will be disabled.
+
+       DPKG_FRONTEND_LOCKED
+              Set by a package manager frontend to notify dpkg that it should not acquire the frontend lock (since dpkg 1.19.1).
+
+   Internal environment
+       LESS   Defined by dpkg to “-FRSXMQ”, if not already set, when spawning a pager (since dpkg 1.19.2).  To change the default
+              behavior, this variable can be preset to some other value including an empty string, or  the  PAGER  or  DPKG_PAGER
+              variables can be set to disable specific options with «-+», for example DPKG_PAGER="less -+F".
+
+       DPKG_ROOT
+              Defined  by dpkg on the maintainer script environment to indicate which installation to act on (since dpkg 1.18.5).
+              The value is intended to be prepended to any path maintainer scripts operate on.   During  normal  operation,  this
+              variable  is  empty.   When  installing packages into a different instdir, dpkg normally invokes maintainer scripts
+              using chroot(2) and leaves this variable empty, but if --force-script-chrootless is specified  then  the  chroot(2)
+              call is skipped and instdir is non-empty.
+
+       DPKG_ADMINDIR
+              Defined  by  dpkg  on the maintainer script environment to indicate the dpkg administrative directory to use (since
+              dpkg 1.16.0).  This variable is always set to the current --admindir value.
+
+       DPKG_FORCE
+              Defined by dpkg on the subprocesses environment to all the currently enabled force option names separated by commas
+              (since dpkg 1.19.5).
+
+       DPKG_SHELL_REASON
+              Defined  by dpkg on the shell spawned on the conffile prompt to examine the situation (since dpkg 1.15.6).  Current
+              valid value: conffile-prompt.
+
+       DPKG_CONFFILE_OLD
+              Defined by dpkg on the shell spawned on the conffile prompt to examine the situation (since dpkg 1.15.6).  Contains
+              the path to the old conffile.
+
+       DPKG_CONFFILE_NEW
+              Defined by dpkg on the shell spawned on the conffile prompt to examine the situation (since dpkg 1.15.6).  Contains
+              the path to the new conffile.
+
+       DPKG_HOOK_ACTION
+              Defined by dpkg on the shell spawned when executing a hook action (since dpkg 1.15.4).  Contains the  current  dpkg
+              action.
+
+       DPKG_RUNNING_VERSION
+              Defined  by  dpkg on the maintainer script environment to the version of the currently running dpkg instance (since
+              dpkg 1.14.17).
+
+       DPKG_MAINTSCRIPT_PACKAGE
+              Defined by dpkg on the maintainer script environment to the (non-arch-qualified) package name being handled  (since
+              dpkg 1.14.17).
+
+       DPKG_MAINTSCRIPT_PACKAGE_REFCOUNT
+              Defined  by  dpkg  on  the maintainer script environment to the package reference count, i.e. the number of package
+              instances with a state greater than not-installed (since dpkg 1.17.2).
+
+       DPKG_MAINTSCRIPT_ARCH
+              Defined by dpkg on the maintainer script environment to the architecture the package  got  built  for  (since  dpkg
+              1.15.4).
+
+       DPKG_MAINTSCRIPT_NAME
+              Defined  by  dpkg on the maintainer script environment to the name of the script running, one of preinst, postinst,
+              prerm or postrm (since dpkg 1.15.7).
+
+       DPKG_MAINTSCRIPT_DEBUG
+              Defined by dpkg on the maintainer script environment to a value (‘0’ or ‘1’)  noting  whether  debugging  has  been
+              requested (with the --debug option) for the maintainer scripts (since dpkg 1.18.4).
+
+FILES
+       /etc/dpkg/dpkg.cfg.d/[0-9a-zA-Z_-]*
+              Configuration fragment files (since dpkg 1.15.4).
+
+       /etc/dpkg/dpkg.cfg
+              Configuration file with default options.
+
+       /var/log/dpkg.log
+              Default log file (see /etc/dpkg/dpkg.cfg and option --log).
+
+       The  other  files  listed  below are in their default directories, see option --admindir to see how to change locations of
+       these files.
+
+       /var/lib/dpkg/available
+              List of available packages.
+
+       /var/lib/dpkg/status
+              Statuses of available packages. This file contains information about whether a package is marked  for  removing  or
+              not, whether it is installed or not, etc. See section INFORMATION ABOUT PACKAGES for more info.
+
+              The  status  file is backed up daily in /var/backups. It can be useful if it's lost or corrupted due to filesystems
+              troubles.
+
+       The format and contents of a binary package are described in deb(5).
+
+BUGS
+       --no-act usually gives less information than might be helpful.
+
+EXAMPLES
+       To list installed packages related to the editor vi(1) (note that dpkg-query does not load the available file  anymore  by
+       default, and the dpkg-query --load-avail option should be used instead for that):
+            dpkg -l '*vi*'
+
+       To see the entries in /var/lib/dpkg/available of two packages:
+            dpkg --print-avail elvis vim | less
+
+       To search the listing of packages yourself:
+            less /var/lib/dpkg/available
+
+       To remove an installed elvis package:
+            dpkg -r elvis
+
+       To  install  a package, you first need to find it in an archive or CDROM. The available file shows that the vim package is
+       in section editors:
+            cd /media/cdrom/pool/main/v/vim
+            dpkg -i vim_4.5-3.deb
+
+       To make a local copy of the package selection states:
+            dpkg --get-selections >myselections
+
+       You might transfer this file to another computer, and after having updated the available  file  there  with  your  package
+       manager frontend of choice (see https://wiki.debian.org/Teams/Dpkg/FAQ for more details), for example:
+            apt-cache dumpavail | dpkg --merge-avail
+       or with dpkg 1.17.6 and earlier:
+            avail=`mktemp`
+            apt-cache dumpavail >"$avail"
+            dpkg --merge-avail "$avail"
+            rm "$avail"
+       you can install it with:
+            dpkg --clear-selections
+            dpkg --set-selections <myselections
+
+       Note  that  this will not actually install or remove anything, but just set the selection state on the requested packages.
+       You will need some other application to actually download and install the requested packages.  For  example,  run  apt-get
+       dselect-upgrade.
+
+       Ordinarily, you will find that dselect(1) provides a more convenient way to modify the package selection states.
+
+ADDITIONAL FUNCTIONALITY
+       Additional functionality can be gained by installing any of the following packages: apt, aptitude and debsums.
+
+SEE ALSO
+       aptitude(1), apt(1), dselect(1), dpkg-deb(1), dpkg-query(1), deb(5), deb-control(5), dpkg.cfg(5), and dpkg-reconfigure(8).
+
+AUTHORS
+       See /usr/share/doc/dpkg/THANKS for the list of people who have contributed to dpkg.
+
+1.19.7                                                      2022-05-30                                                    dpkg(1)
+```
+
+### echo
+
+```
+ECHO(1)                                                   User Commands                                                   ECHO(1)
+
+NAME
+       echo - display a line of text
+
+SYNOPSIS
+       echo [SHORT-OPTION]... [STRING]...
+       echo LONG-OPTION
+
+DESCRIPTION
+       Echo the STRING(s) to standard output.
+
+       -n     do not output the trailing newline
+
+       -e     enable interpretation of backslash escapes
+
+       -E     disable interpretation of backslash escapes (default)
+
+       --help display this help and exit
+
+       --version
+              output version information and exit
+
+       If -e is in effect, the following sequences are recognized:
+
+       \\     backslash
+
+       \a     alert (BEL)
+
+       \b     backspace
+
+       \c     produce no further output
+
+       \e     escape
+
+       \f     form feed
+
+       \n     new line
+
+       \r     carriage return
+
+       \t     horizontal tab
+
+       \v     vertical tab
+
+       \0NNN  byte with octal value NNN (1 to 3 digits)
+
+       \xHH   byte with hexadecimal value HH (1 to 2 digits)
+
+       NOTE:  your  shell may have its own version of echo, which usually supersedes the version described here.  Please refer to
+       your shell's documentation for details about the options it supports.
+
+AUTHOR
+       Written by Brian Fox and Chet Ramey.
+
+REPORTING BUGS
+       GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+       Report echo translation bugs to <https://translationproject.org/team/>
+
+COPYRIGHT
+       Copyright © 2018 Free Software Foundation,  Inc.   License  GPLv3+:  GNU  GPL  version  3  or  later  <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+SEE ALSO
+       Full documentation at: <https://www.gnu.org/software/coreutils/echo>
+       or available locally via: info '(coreutils) echo invocation'
+
+GNU coreutils 8.30                                        February 2019                                                   ECHO(1)
+```
+
+### eject
+
+```
+EJECT(1)                                                  User Commands                                                  EJECT(1)
+
+NAME
+       eject - eject removable media
+
+SYNOPSIS
+       eject -h
+       eject [-vnrsfmqp] [<name>]
+       eject [-vn] -d
+       eject [-vn] -a on|off|1|0 [<name>]
+       eject [-vn] -c slot [<name>]
+       eject [-vn] -i on|off|1|0 [<name>]
+       eject [-vn] -t [<name>]
+       eject [-vn] -T [<name>]
+       eject [-vn] -x <speed> [<name>]
+       eject [-vn] -X [<name>]
+       eject -V
+
+DESCRIPTION
+       Eject allows removable media (typically a CD-ROM, floppy disk, tape, or JAZ or ZIP disk) to be ejected under software con‐
+       trol. The command can also control some multi-disc CD-ROM changers, the auto-eject feature supported by some devices,  and
+       close the disc tray of some CD-ROM drives.
+
+       The  device  corresponding  to <name> is ejected. The name can be a device file or mount point, either a full path or with
+       the leading "/dev", "/media" or "/mnt" omitted. If no name is specified, the default name "cdrom" is used.
+
+       There are four different methods of ejecting, depending on whether the device is a CD-ROM, SCSI device, removable  floppy,
+       or tape. By default eject tries all four methods in order until it succeeds.
+
+       If the device is currently mounted, it is unmounted before ejecting.
+
+COMMAND-LINE OPTIONS
+       -h   This option causes eject to display a brief description of the command options.
+
+       -v   This makes eject run in verbose mode; more information is displayed about what the command is doing.
+
+       -d   If invoked with this option, eject lists the default device name.
+
+       -a on|1|off|0
+            This  option  controls  the auto-eject mode, supported by some devices.  When enabled, the drive automatically ejects
+            when the device is closed.
+
+       -c <slot>
+            With this option a CD slot can be selected from an ATAPI/IDE CD-ROM changer. Linux 2.0 or higher is required  to  use
+            this  feature.  The  CD-ROM  drive  can not be in use (mounted data CD or playing a music CD) for a change request to
+            work. Please also note that the first slot of the changer is referred to as 0, not 1.
+
+       -i on|1|off|0
+            This option controls locking of the hardware eject button. When enabled, the drive will not be ejected when the  but‐
+            ton  is  pressed.   This  is useful when you are carrying a laptop in a bag or case and don't want it to eject if the
+            button is inadvertently pressed.
+
+       -t   With this option the drive is given a CD-ROM tray close command. Not all devices support this command.
+
+       -T   With this option the drive is given a CD-ROM tray close command if it's opened, and a CD-ROM tray  eject  command  if
+            it's closed. Not all devices support this command, because it uses the above CD-ROM tray close command.
+
+       -x <speed>
+            With this option the drive is given a CD-ROM select speed command.  The speed argument is a number indicating the de‐
+            sired speed (e.g. 8 for 8X speed), or 0 for maximum data rate. Not all devices support this command and you can  only
+            specify  speeds that the drive is capable of. Every time the media is changed this option is cleared. This option can
+            be used alone, or with the -t and -c options.
+
+       -X   With this option the CD-ROM drive will be probed to detect the available speeds. The output is a list of speeds which
+            can be used as an argument of the -x option. This only works with Linux 2.6.13 or higher, on previous versions solely
+            the maximum speed will be reported. Also note that some drive may not correctly report the speed and  therefore  this
+            option does not work with them.
+
+       -n   With this option the selected device is displayed but no action is performed.
+
+       -r   This option specifies that the drive should be ejected using a CDROM eject command.
+
+       -s   This option specifies that the drive should be ejected using SCSI commands.
+
+       -f   This option specifies that the drive should be ejected using a removable floppy disk eject command.
+
+       -q   This option specifies that the drive should be ejected using a tape drive offline command.
+
+       -p   This option allow you to use /proc/mounts instead /etc/mtab. It also passes the -n option to umount(1).
+
+       -m   This  option allows eject to work with device drivers which automatically mount removable media and therefore must be
+            always mount(1)ed.  The option tells eject to not try to unmount the given device, even if it is mounted according to
+            /etc/mtab or /proc/mounts.
+
+       -V   This option causes eject to display the program version and exit.
+
+LONG OPTIONS
+       All options have corresponding long names, as listed below. The long names can be abbreviated as long as they are unique.
+
+       -h --help
+       -v --verbose
+       -d --default
+       -a --auto
+       -c --changerslot
+       -t --trayclose
+       -T --traytoggle
+       -x --cdspeed
+       -X --listspeed
+       -n --noop
+       -r --cdrom
+       -s --scsi
+       -f --floppy
+       -q --tape
+       -V --version
+       -p --proc
+       -m --no-unmount
+
+EXAMPLES
+       Eject the default device:
+
+              eject
+
+       Eject a device or mount point named cdrom:
+
+              eject cdrom
+
+       Eject using device name:
+
+              eject /dev/cdrom
+
+       Eject using mount point:
+
+              eject /mnt/cdrom/
+
+       Eject 4th IDE device:
+
+              eject hdd
+
+       Eject first SCSI device:
+
+              eject sda
+
+       Eject using SCSI partition name (e.g. a ZIP drive):
+
+              eject sda4
+
+       Select 5th disc on multi-disc changer:
+
+              eject -v -c4 /dev/cdrom
+
+       Turn on auto-eject on a SoundBlaster CD-ROM drive:
+
+              eject -a on /dev/sbpcd
+
+EXIT STATUS
+       Returns 0 if operation was successful, 1 if operation failed or command syntax was not valid.
+
+NOTES
+       Eject  only  works with devices that support one or more of the four methods of ejecting. This includes most CD-ROM drives
+       (IDE, SCSI, and proprietary), some SCSI tape drives, JAZ drives, ZIP drives (parallel port, SCSI, and IDE  versions),  and
+       LS120 removable floppies. Users have also reported success with floppy drives on Sun SPARC and Apple Macintosh systems. If
+       eject does not work, it is most likely a limitation of the kernel driver for the device and not the eject program itself.
+
+       The -r, -s, -f, and -q options allow controlling which methods are used to eject. More than one method can  be  specified.
+       If none of these options are specified, it tries all four (this works fine in most cases).
+
+       Eject may not always be able to determine if the device is mounted (e.g. if it has several names). If the device name is a
+       symbolic link, eject will follow the link and use the device that it points to.
+
+       If eject determines that the device can have multiple partitions, it will attempt to unmount all mounted partitions of the
+       device before ejecting. If an unmount fails, the program will not attempt to eject the media.
+
+       You can eject an audio CD. Some CD-ROM drives will refuse to open the tray if the drive is empty. Some devices do not sup‐
+       port the tray close command.
+
+       If the auto-eject feature is enabled, then the drive will always be ejected after running this command. Not all Linux ker‐
+       nel CD-ROM drivers support the auto-eject mode. There is no way to find out the state of the auto-eject mode.
+
+       You  need  appropriate privileges to access the device files. Running as root or setuid root is required to eject some de‐
+       vices (e.g. SCSI devices).
+
+       The heuristic used to find a device, given a name, is as follows. If the name ends in a  trailing  slash,  it  is  removed
+       (this is to support filenames generated using shell file name completion). If the name starts with '.' or '/', it tries to
+       open it as a device file or mount point. If that fails, it tries prepending '/dev/',  '/media/'  ,'/mnt/',  '/dev/cdroms',
+       '/dev/rdsk/',  '/dev/dsk/',  and finally './' to the name, until a device file or mount point is found that can be opened.
+       The program checks /etc/mtab for mounted devices. If that fails, it also checks /etc/fstab for mount points  of  currently
+       unmounted devices.
+
+       Creating  symbolic links such as /dev/cdrom or /dev/zip is recommended so that eject can determine the appropriate devices
+       using easily remembered names.
+
+       To save typing you can create a shell alias for the eject options that work for your particular setup.
+
+AUTHOR
+       Eject was written by Jeff Tranter (tranter@pobox.com) and is released under the conditions of the GNU General  Public  Li‐
+       cense. See the file COPYING and notes in the source code for details.
+
+       The  -x  option  was  added  by  Nobuyuki  Tsuchimura  (tutimura@nn.iij4u.or.jp),  with  thanks  to  Roland Krivanek (kri‐
+       vanek@fmph.uniba.sk) and his cdrom_speed command.
+
+       The -T option was added by Sybren Stuvel (sybren@thirdtower.com), with big thanks to Benjamin Schwenk (benjaminschwenk@ya‐
+       hoo.de).
+
+       The -X option was added by Eric Piel (Eric.Piel@tremplin-utc.net).
+
+SEE ALSO
+       mount(2), umount(2), mount(8), umount(8)
+       /usr/src/linux/Documentation/cdrom/
+
+Linux                                                      12 May 2005                                                   EJECT(1)
+```
+
+### find
+
+```
+FIND(1)                                              General Commands Manual                                              FIND(1)
+
+NAME
+       find - search for files in a directory hierarchy
+
+SYNOPSIS
+       find [-H] [-L] [-P] [-D debugopts] [-Olevel] [starting-point...] [expression]
+
+DESCRIPTION
+       This  manual  page documents the GNU version of find.  GNU find searches the directory tree rooted at each given starting-
+       point by evaluating the given expression from left to right, according to the rules of precedence (see section OPERATORS),
+       until  the outcome is known (the left hand side is false for and operations, true for or), at which point find moves on to
+       the next file name.  If no starting-point is specified, `.' is assumed.
+
+       If you are using find in an environment where security is important (for example if you are using it to search directories
+       that  are  writable by other users), you should read the `Security Considerations' chapter of the findutils documentation,
+       which is called Finding Files and comes with findutils.  That document also includes a lot more detail and discussion than
+       this manual page, so you may find it a more useful source of information.
+
+OPTIONS
+       The -H, -L and -P options control the treatment of symbolic links.  Command-line arguments following these are taken to be
+       names of files or directories to be examined, up to the first argument that begins with `-', or the argument `('  or  `!'.
+       That  argument  and  any  following arguments are taken to be the expression describing what is to be searched for.  If no
+       paths are given, the current directory is used.  If no expression is given, the expression -print is used (but you  should
+       probably consider using -print0 instead, anyway).
+
+       This  manual  page  talks about `options' within the expression list.  These options control the behaviour of find but are
+       specified immediately after the last path name.  The five `real' options -H, -L, -P, -D and  -O  must  appear  before  the
+       first  path  name,  if  at  all.  A double dash -- can also be used to signal that any remaining arguments are not options
+       (though ensuring that all start points begin with either `./' or `/' is generally safer if you use wildcards in  the  list
+       of start points).
+
+       -P     Never  follow symbolic links.  This is the default behaviour.  When find examines or prints information a file, and
+              the file is a symbolic link, the information used shall be taken from the properties of the symbolic link itself.
+
+       -L     Follow symbolic links.  When find examines or prints information about files, the information used shall  be  taken
+              from  the properties of the file to which the link points, not from the link itself (unless it is a broken symbolic
+              link or find is unable to examine the file to which the link points).  Use of this option implies -noleaf.  If  you
+              later use the -P option, -noleaf will still be in effect.  If -L is in effect and find discovers a symbolic link to
+              a subdirectory during its search, the subdirectory pointed to by the symbolic link will be searched.
+
+              When the -L option is in effect, the -type predicate will always match against the type of the file that a symbolic
+              link  points  to rather than the link itself (unless the symbolic link is broken).  Actions that can cause symbolic
+              links to become broken while find is executing (for example -delete) can give rise to confusing  behaviour.   Using
+              -L causes the -lname and -ilname predicates always to return false.
+
+       -H     Do not follow symbolic links, except while processing the command line arguments.  When find examines or prints in‐
+              formation about files, the information used shall be taken from the properties of the symbolic  link  itself.   The
+              only  exception to this behaviour is when a file specified on the command line is a symbolic link, and the link can
+              be resolved.  For that situation, the information used is taken from whatever the link points to (that is, the link
+              is  followed).   The information about the link itself is used as a fallback if the file pointed to by the symbolic
+              link cannot be examined.  If -H is in effect and one of the paths specified on the command line is a symbolic  link
+              to a directory, the contents of that directory will be examined (though of course -maxdepth 0 would prevent this).
+
+       If  more  than  one  of  -H, -L and -P is specified, each overrides the others; the last one appearing on the command line
+       takes effect.  Since it is the default, the -P option should be considered to be in effect unless either -H or -L is spec‐
+       ified.
+
+       GNU  find  frequently stats files during the processing of the command line itself, before any searching has begun.  These
+       options also affect how those arguments are processed.  Specifically, there are a  number  of  tests  that  compare  files
+       listed  on  the command line against a file we are currently considering.  In each case, the file specified on the command
+       line will have been examined and some of its properties will have been saved.  If the named file is  in  fact  a  symbolic
+       link,  and  the  -P  option is in effect (or if neither -H nor -L were specified), the information used for the comparison
+       will be taken from the properties of the symbolic link.  Otherwise, it will be taken from the properties of the  file  the
+       link  points to.  If find cannot follow the link (for example because it has insufficient privileges or the link points to
+       a nonexistent file) the properties of the link itself will be used.
+
+       When the -H or -L options are in effect, any symbolic links listed as the argument of -newer will be dereferenced, and the
+       timestamp  will  be  taken  from  the file to which the symbolic link points.  The same consideration applies to -newerXY,
+       -anewer and -cnewer.
+
+       The -follow option has a similar effect to -L, though it takes effect at the point where it appears (that is, if -L is not
+       used but -follow is, any symbolic links appearing after -follow on the command line will be dereferenced, and those before
+       it will not).
+
+       -D debugopts
+              Print diagnostic information; this can be helpful to diagnose problems with why find is not doing  what  you  want.
+              The  list of debug options should be comma separated.  Compatibility of the debug options is not guaranteed between
+              releases of findutils.  For a complete list of valid debug options, see the output of find -D  help.   Valid  debug
+              options include
+
+              exec   Show diagnostic information relating to -exec, -execdir, -ok and -okdir
+
+              opt    Prints diagnostic information relating to the optimisation of the expression tree; see the -O option.
+
+              rates  Prints a summary indicating how often each predicate succeeded or failed.
+
+              search Navigate the directory tree verbosely.
+
+              stat   Print  messages  as files are examined with the stat and lstat system calls.  The find program tries to min‐
+                     imise such calls.
+
+              tree   Show the expression tree in its original and optimised form.
+
+              all    Enable all of the other debug options (but help).
+
+              help   Explain the debugging options.
+
+       -Olevel
+              Enables query optimisation.  The find program reorders tests to speed up execution while preserving the overall ef‐
+              fect;  that is, predicates with side effects are not reordered relative to each other.  The optimisations performed
+              at each optimisation level are as follows.
+
+              0      Equivalent to optimisation level 1.
+
+              1      This is the default optimisation level and corresponds to the traditional behaviour.   Expressions  are  re‐
+                     ordered so that tests based only on the names of files (for example -name and -regex) are performed first.
+
+              2      Any  -type  or  -xtype  tests are performed after any tests based only on the names of files, but before any
+                     tests that require information from the inode.  On many modern versions of Unix, file types are returned  by
+                     readdir()  and so these predicates are faster to evaluate than predicates which need to stat the file first.
+                     If you use the -fstype FOO predicate and specify a filesystem type FOO which is not known (that is,  present
+                     in `/etc/mtab') at the time find starts, that predicate is equivalent to -false.
+
+              3      At  this optimisation level, the full cost-based query optimiser is enabled.  The order of tests is modified
+                     so that cheap (i.e. fast) tests are performed first and more expensive ones are performed later,  if  neces‐
+                     sary.  Within each cost band, predicates are evaluated earlier or later according to whether they are likely
+                     to succeed or not.  For -o, predicates which are likely to succeed are evaluated earlier, and for -a, predi‐
+                     cates which are likely to fail are evaluated earlier.
+
+              The  cost-based optimiser has a fixed idea of how likely any given test is to succeed.  In some cases the probabil‐
+              ity takes account of the specific nature of the test (for example, -type f is assumed to be more likely to  succeed
+              than -type c).  The cost-based optimiser is currently being evaluated.  If it does not actually improve the perfor‐
+              mance of find, it will be removed again.  Conversely, optimisations that prove to be reliable, robust and effective
+              may  be enabled at lower optimisation levels over time.  However, the default behaviour (i.e. optimisation level 1)
+              will not be changed in the 4.3.x release series.  The findutils test suite runs all the tests on find at each opti‐
+              misation level and ensures that the result is the same.
+
+EXPRESSION
+       The  part  of the command line after the list of starting points is the expression.  This is a kind of query specification
+       describing how we match files and what we do with the files that were matched.  An expression is composed of a sequence of
+       things:
+
+       Tests  Tests return a true or false value, usually on the basis of some property of a file we are considering.  The -empty
+              test for example is true only when the current file is empty.
+
+       Actions
+              Actions have side effects (such as printing something on the standard output) and return either true or false, usu‐
+              ally  based  on  whether  or not they are successful.  The -print action for example prints the name of the current
+              file on the standard output.
+
+       Global options
+              Global options affect the operation of tests and actions specified on any part of the command line.  Global options
+              always return true.  The -depth option for example makes find traverse the file system in a depth-first order.
+
+       Positional options
+              Positional  options  affect  only  tests or actions which follow them.  Positional options always return true.  The
+              -regextype option for example is positional, specifying the regular expression dialect for regular expressions  oc‐
+              curring later on the command line.
+
+       Operators
+              Operators  join  together  the other items within the expression.  They include for example -o (meaning logical OR)
+              and -a (meaning logical AND).  Where an operator is missing, -a is assumed.
+
+       If the whole expression contains no actions other than -prune or -print, -print is performed on all files  for  which  the
+       whole expression is true.
+
+       The -delete action also acts like an option (since it implies -depth).
+
+   POSITIONAL OPTIONS
+       Positional options always return true.  They affect only tests occurring later on the command line.
+
+       -daystart
+              Measure times (for -amin, -atime, -cmin, -ctime, -mmin, and -mtime) from the beginning of today rather than from 24
+              hours ago.  This option only affects tests which appear later on the command line.
+
+       -follow
+              Deprecated; use the -L option instead.  Dereference symbolic links.  Implies -noleaf.  The -follow  option  affects
+              only those tests which appear after it on the command line.  Unless the -H or -L option has been specified, the po‐
+              sition of the -follow option changes the behaviour of the -newer predicate; any files listed  as  the  argument  of
+              -newer  will  be  dereferenced if they are symbolic links.  The same consideration applies to -newerXY, -anewer and
+              -cnewer.  Similarly, the -type predicate will always match against the type of the file that a symbolic link points
+              to rather than the link itself.  Using -follow causes the -lname and -ilname predicates always to return false.
+
+       -regextype type
+              Changes the regular expression syntax understood by -regex and -iregex tests which occur later on the command line.
+              To see which regular expression types are known, use -regextype help.  The Texinfo documentation (see SEE ALSO) ex‐
+              plains the meaning of and differences between the various types of regular expression.
+
+       -warn, -nowarn
+              Turn  warning  messages on or off.  These warnings apply only to the command line usage, not to any conditions that
+              find might encounter when it searches directories.  The default behaviour corresponds to -warn if standard input is
+              a  tty, and to -nowarn otherwise.  If a warning message relating to command-line usage is produced, the exit status
+              of find is not affected.  If the POSIXLY_CORRECT environment variable is set, and -warn is also  used,  it  is  not
+              specified which, if any, warnings will be active.
+
+   GLOBAL OPTIONS
+       Global options always return true.  Global options take effect even for tests which occur earlier on the command line.  To
+       prevent confusion, global options should specified on the command-line after the list of start  points,  just  before  the
+       first  test,  positional  option or action.  If you specify a global option in some other place, find will issue a warning
+       message explaining that this can be confusing.
+
+       The global options occur after the list of start points, and so are not the same kind of option as -L, for example.
+
+       -d     A synonym for -depth, for compatibility with FreeBSD, NetBSD, MacOS X and OpenBSD.
+
+       -depth Process each directory's contents before the directory itself.  The -delete action also implies -depth.
+
+       -help, --help
+              Print a summary of the command-line usage of find and exit.
+
+       -ignore_readdir_race
+              Normally, find will emit an error message when it fails to stat a file.  If you give this  option  and  a  file  is
+              deleted between the time find reads the name of the file from the directory and the time it tries to stat the file,
+              no error message will be issued.  This also applies to files or directories whose names are given  on  the  command
+              line.   This  option takes effect at the time the command line is read, which means that you cannot search one part
+              of the filesystem with this option on and part of it with this option off (if you need to do that, you will need to
+              issue two find commands instead, one with the option and one without it).
+
+              Furthermore,  find  with  the  -ignore_readdir_race option will ignore errors of the -delete action in the case the
+              file has disappeared since the parent directory was read: it will not output an error diagnostic,  and  the  return
+              code of the -delete action will be true.
+
+       -maxdepth levels
+              Descend at most levels (a non-negative integer) levels of directories below the starting-points.  -maxdepth 0 means
+              only apply the tests and actions to the starting-points themselves.
+
+       -mindepth levels
+              Do not apply any tests or actions at levels less than levels (a non-negative integer).  -mindepth 1  means  process
+              all files except the starting-points.
+
+       -mount Don't  descend  directories  on  other filesystems.  An alternate name for -xdev, for compatibility with some other
+              versions of find.
+
+       -noignore_readdir_race
+              Turns off the effect of -ignore_readdir_race.
+
+       -noleaf
+              Do not optimize by assuming that directories contain 2 fewer subdirectories than their hard link count.   This  op‐
+              tion  is needed when searching filesystems that do not follow the Unix directory-link convention, such as CD-ROM or
+              MS-DOS filesystems or AFS volume mount points.  Each directory on a normal Unix filesystem  has  at  least  2  hard
+              links: its name and its `.' entry.  Additionally, its subdirectories (if any) each have a `..' entry linked to that
+              directory.  When find is examining a directory, after it has statted 2 fewer subdirectories  than  the  directory's
+              link  count, it knows that the rest of the entries in the directory are non-directories (`leaf' files in the direc‐
+              tory tree).  If only the files' names need to be examined, there is no need to stat them; this gives a  significant
+              increase in search speed.
+
+       -version, --version
+              Print the find version number and exit.
+
+       -xdev  Don't descend directories on other filesystems.
+
+   TESTS
+       Some tests, for example -newerXY and -samefile, allow comparison between the file currently being examined and some refer‐
+       ence file specified on the command line.  When these tests are used, the interpretation of the reference  file  is  deter‐
+       mined by the options -H, -L and -P and any previous -follow, but the reference file is only examined once, at the time the
+       command line is parsed.  If the reference file cannot be examined (for example, the stat(2) system call fails for it),  an
+       error message is issued, and find exits with a nonzero status.
+
+       Numeric arguments can be specified as
+
+       +n     for greater than n,
+
+       -n     for less than n,
+
+       n      for exactly n.
+
+       -amin n
+              File was last accessed n minutes ago.
+
+       -anewer file
+              File  was  last accessed more recently than file was modified.  If file is a symbolic link and the -H option or the
+              -L option is in effect, the access time of the file it points to is always used.
+
+       -atime n
+              File was last accessed n*24 hours ago.  When find figures out how many 24-hour periods ago the file  was  last  ac‐
+              cessed,  any  fractional part is ignored, so to match -atime +1, a file has to have been accessed at least two days
+              ago.
+
+       -cmin n
+              File's status was last changed n minutes ago.
+
+       -cnewer file
+              File's status was last changed more recently than file was modified.  If file is a symbolic link and the -H  option
+              or the -L option is in effect, the status-change time of the file it points to is always used.
+
+       -ctime n
+              File's  status was last changed n*24 hours ago.  See the comments for -atime to understand how rounding affects the
+              interpretation of file status change times.
+
+       -empty File is empty and is either a regular file or a directory.
+
+       -executable
+              Matches files which are executable and directories which are searchable (in a file name resolution  sense)  by  the
+              current  user.   This  takes into account access control lists and other permissions artefacts which the -perm test
+              ignores.  This test makes use of the access(2) system call, and so can be fooled by NFS servers which do  UID  map‐
+              ping  (or  root-squashing), since many systems implement access(2) in the client's kernel and so cannot make use of
+              the UID mapping information held on the server.  Because this test is based only on the  result  of  the  access(2)
+              system call, there is no guarantee that a file for which this test succeeds can actually be executed.
+
+       -false Always false.
+
+       -fstype type
+              File  is on a filesystem of type type.  The valid filesystem types vary among different versions of Unix; an incom‐
+              plete list of filesystem types that are accepted on some version of Unix or another is: ufs, 4.2,  4.3,  nfs,  tmp,
+              mfs, S51K, S52K.  You can use -printf with the %F directive to see the types of your filesystems.
+
+       -gid n File's numeric group ID is n.
+
+       -group gname
+              File belongs to group gname (numeric group ID allowed).
+
+       -ilname pattern
+              Like -lname, but the match is case insensitive.  If the -L option or the -follow option is in effect, this test re‐
+              turns false unless the symbolic link is broken.
+
+       -iname pattern
+              Like -name, but the match is case insensitive.  For example, the patterns `fo*' and  `F??'  match  the  file  names
+              `Foo', `FOO', `foo', `fOo', etc.  The pattern `*foo*` will also match a file called '.foobar'.
+
+       -inum n
+              File has inode number n.  It is normally easier to use the -samefile test instead.
+
+       -ipath pattern
+              Like -path.  but the match is case insensitive.
+
+       -iregex pattern
+              Like -regex, but the match is case insensitive.
+
+       -iwholename pattern
+              See -ipath.  This alternative is less portable than -ipath.
+
+       -links n
+              File has n hard links.
+
+       -lname pattern
+              File  is  a  symbolic  link whose contents match shell pattern pattern.  The metacharacters do not treat `/' or `.'
+              specially.  If the -L option or the -follow option is in effect, this test returns false unless the  symbolic  link
+              is broken.
+
+       -mmin n
+              File's data was last modified n minutes ago.
+
+       -mtime n
+              File's  data  was last modified n*24 hours ago.  See the comments for -atime to understand how rounding affects the
+              interpretation of file modification times.
+
+       -name pattern
+              Base of file name (the path with the leading directories removed) matches shell pattern pattern.  Because the lead‐
+              ing directories are removed, the file names considered for a match with -name will never include a slash, so `-name
+              a/b' will never match anything (you probably need to use -path instead).  A warning is issued  if  you  try  to  do
+              this,  unless the environment variable POSIXLY_CORRECT is set.  The metacharacters (`*', `?', and `[]') match a `.'
+              at the start of the base name (this is a change in findutils-4.2.2; see section STANDARDS CONFORMANCE  below).   To
+              ignore  a directory and the files under it, use -prune; see an example in the description of -path.  Braces are not
+              recognised as being special, despite the fact that some shells including Bash imbue braces with a  special  meaning
+              in shell patterns.  The filename matching is performed with the use of the fnmatch(3) library function.  Don't for‐
+              get to enclose the pattern in quotes in order to protect it from expansion by the shell.
+
+       -newer file
+              File was modified more recently than file.  If file is a symbolic link and the -H option or the -L option is in ef‐
+              fect, the modification time of the file it points to is always used.
+
+       -newerXY reference
+              Succeeds  if timestamp X of the file being considered is newer than timestamp Y of the file reference.  The letters
+              X and Y can be any of the following letters:
+
+              a   The access time of the file reference
+              B   The birth time of the file reference
+              c   The inode status change time of reference
+              m   The modification time of the file reference
+              t   reference is interpreted directly as a time
+
+              Some combinations are invalid; for example, it is invalid for X to be t.  Some combinations are not implemented  on
+              all  systems;  for  example  B  is not supported on all systems.  If an invalid or unsupported combination of XY is
+              specified, a fatal error results.  Time specifications are interpreted as for the argument to the -d option of  GNU
+              date.  If you try to use the birth time of a reference file, and the birth time cannot be determined, a fatal error
+              message results.  If you specify a test which refers to the birth time of files being examined, this test will fail
+              for any files where the birth time is unknown.
+
+       -nogroup
+              No group corresponds to file's numeric group ID.
+
+       -nouser
+              No user corresponds to file's numeric user ID.
+
+       -path pattern
+              File name matches shell pattern pattern.  The metacharacters do not treat `/' or `.' specially; so, for example,
+                        find . -path "./sr*sc"
+              will  print  an  entry  for a directory called `./src/misc' (if one exists).  To ignore a whole directory tree, use
+              -prune rather than checking every file in the tree.  For example, to skip the directory `src/emacs' and  all  files
+              and directories under it, and print the names of the other files found, do something like this:
+                        find . -path ./src/emacs -prune -o -print
+              Note that the pattern match test applies to the whole file name, starting from one of the start points named on the
+              command line.  It would only make sense to use an absolute path name here if the relevant start point  is  also  an
+              absolute path.  This means that this command will never match anything:
+                        find bar -path /foo/bar/myfile -print
+              Find  compares the -path argument with the concatenation of a directory name and the base name of the file it's ex‐
+              amining.  Since the concatenation will never end with a slash, -path arguments ending in a slash will match nothing
+              (except  perhaps a start point specified on the command line).  The predicate -path is also supported by HP-UX find
+              and is part of the POSIX 2008 standard.
+
+       -perm mode
+              File's permission bits are exactly mode (octal or symbolic).  Since an exact match is required, if you want to  use
+              this  form  for symbolic modes, you may have to specify a rather complex mode string.  For example `-perm g=w' will
+              only match files which have mode 0020 (that is, ones for which group write permission is the only permission  set).
+              It  is more likely that you will want to use the `/' or `-' forms, for example `-perm -g=w', which matches any file
+              with group write permission.  See the EXAMPLES section for some illustrative examples.
+
+       -perm -mode
+              All of the permission bits mode are set for the file.  Symbolic modes are accepted in this form, and this  is  usu‐
+              ally  the  way  in  which you would want to use them.  You must specify `u', `g' or `o' if you use a symbolic mode.
+              See the EXAMPLES section for some illustrative examples.
+
+       -perm /mode
+              Any of the permission bits mode are set for the file.  Symbolic modes are accepted in this form.  You must  specify
+              `u',  `g'  or `o' if you use a symbolic mode.  See the EXAMPLES section for some illustrative examples.  If no per‐
+              mission bits in mode are set, this test matches any file (the idea here is to be consistent with the  behaviour  of
+              -perm -000).
+
+       -perm +mode
+              This is no longer supported (and has been deprecated since 2005).  Use -perm /mode instead.
+
+       -readable
+              Matches  files which are readable by the current user.  This takes into account access control lists and other per‐
+              missions artefacts which the -perm test ignores.  This test makes use of the access(2) system call, and so  can  be
+              fooled  by  NFS  servers  which  do  UID mapping (or root-squashing), since many systems implement access(2) in the
+              client's kernel and so cannot make use of the UID mapping information held on the server.
+
+       -regex pattern
+              File name matches regular expression pattern.  This is a match on the whole path, not a search.   For  example,  to
+              match a file named `./fubar3', you can use the regular expression `.*bar.' or `.*b.*3', but not `f.*r3'.  The regu‐
+              lar expressions understood by find are by default Emacs Regular Expressions (except that `.' matches newline),  but
+              this can be changed with the -regextype option.
+
+       -samefile name
+              File refers to the same inode as name.  When -L is in effect, this can include symbolic links.
+
+       -size n[cwbkMG]
+              File uses n units of space, rounding up.  The following suffixes can be used:
+
+              `b'    for 512-byte blocks (this is the default if no suffix is used)
+
+              `c'    for bytes
+
+              `w'    for two-byte words
+
+              `k'    for kibibytes (KiB, units of 1024 bytes)
+
+              `M'    for mebibytes (MiB, units of 1024 * 1024 = 1048576 bytes)
+
+              `G'    for gibibytes (GiB, units of 1024 * 1024 * 1024 = 1073741824 bytes)
+
+              The  size  is simply the st_size member of the struct stat populated by the lstat (or stat) system call, rounded up
+              as shown above.  In other words, it's consistent with the result you get for ls -l.  Bear in mind that the `%k' and
+              `%b'  format  specifiers of -printf handle sparse files differently.  The `b' suffix always denotes 512-byte blocks
+              and never 1024-byte blocks, which is different to the behaviour of -ls.
+
+              The + and - prefixes signify greater than and less than, as usual; i.e., an exact size of n units does  not  match.
+              Bear  in  mind  that  the  size  is  rounded  up  to the next unit.  Therefore -size -1M is not equivalent to -size
+              -1048576c.  The former only matches empty files, the latter matches files from 0 to 1,048,575 bytes.
+
+       -true  Always true.
+
+       -type c
+              File is of type c:
+
+              b      block (buffered) special
+
+              c      character (unbuffered) special
+
+              d      directory
+
+              p      named pipe (FIFO)
+
+              f      regular file
+
+              l      symbolic link; this is never true if the -L option or the -follow option is in effect, unless  the  symbolic
+                     link is broken.  If you want to search for symbolic links when -L is in effect, use -xtype.
+
+              s      socket
+
+              D      door (Solaris)
+
+              To search for more than one type at once, you can supply the combined list of type letters separated by a comma `,'
+              (GNU extension).
+
+       -uid n File's numeric user ID is n.
+
+       -used n
+              File was last accessed n days after its status was last changed.
+
+       -user uname
+              File is owned by user uname (numeric user ID allowed).
+
+       -wholename pattern
+              See -path.  This alternative is less portable than -path.
+
+       -writable
+              Matches files which are writable by the current user.  This takes into account access control lists and other  per‐
+              missions  artefacts  which the -perm test ignores.  This test makes use of the access(2) system call, and so can be
+              fooled by NFS servers which do UID mapping (or root-squashing), since  many  systems  implement  access(2)  in  the
+              client's kernel and so cannot make use of the UID mapping information held on the server.
+
+       -xtype c
+              The  same  as  -type unless the file is a symbolic link.  For symbolic links: if the -H or -P option was specified,
+              true if the file is a link to a file of type c; if the -L option has been given, true if c is `l'.  In other words,
+              for symbolic links, -xtype checks the type of the file that -type does not check.
+
+       -context pattern
+              (SELinux only) Security context of the file matches glob pattern.
+
+   ACTIONS
+       -delete
+              Delete  files;  true  if  removal succeeded.  If the removal failed, an error message is issued.  If -delete fails,
+              find's exit status will be nonzero (when it eventually exits).  Use of -delete automatically turns on the  `-depth'
+              option.
+
+              Warnings: Don't forget that the find command line is evaluated as an expression, so putting -delete first will make
+              find try to delete everything below the starting points you specified.  When testing a find command line  that  you
+              later  intend to use with -delete, you should explicitly specify -depth in order to avoid later surprises.  Because
+              -delete implies -depth, you cannot usefully use -prune and -delete together.
+
+              Together with the -ignore_readdir_race option, find will ignore errors of the -delete action in the case  the  file
+              has disappeared since the parent directory was read: it will not output an error diagnostic, and the return code of
+              the -delete action will be true.
+
+       -exec command ;
+              Execute command; true if 0 status is returned.  All following arguments to find are taken to be  arguments  to  the
+              command  until  an argument consisting of `;' is encountered.  The string `{}' is replaced by the current file name
+              being processed everywhere it occurs in the arguments to the command, not just in arguments where it is  alone,  as
+              in  some  versions of find.  Both of these constructions might need to be escaped (with a `\') or quoted to protect
+              them from expansion by the shell.  See the EXAMPLES section for examples of the use of the -exec option.  The spec‐
+              ified command is run once for each matched file.  The command is executed in the starting directory.  There are un‐
+              avoidable security problems surrounding use of the -exec action; you should use the -execdir option instead.
+
+       -exec command {} +
+              This variant of the -exec action runs the specified command on the selected files, but the command line is built by
+              appending each selected file name at the end; the total number of invocations of the command will be much less than
+              the number of matched files.  The command line is built in much the same way that xargs builds its  command  lines.
+              Only one instance of `{}' is allowed within the command, and (when find is being invoked from a shell) it should be
+              quoted (for example, '{}') to protect it from interpretation by shells.  The command is executed  in  the  starting
+              directory.   If  any invocation with the `+' form returns a non-zero value as exit status, then find returns a non-
+              zero exit status.  If find encounters an error, this can sometimes cause an immediate exit, so  some  pending  com‐
+              mands may not be run at all.  This variant of -exec always returns true.
+
+       -execdir command ;
+
+       -execdir command {} +
+              Like  -exec,  but the specified command is run from the subdirectory containing the matched file, which is not nor‐
+              mally the directory in which you started find.  As with -exec, the {} should be quoted if  find  is  being  invoked
+              from a shell.  This a much more secure method for invoking commands, as it avoids race conditions during resolution
+              of the paths to the matched files.  As with the -exec action, the `+' form of -execdir will build a command line to
+              process more than one matched file, but any given invocation of command will only list files that exist in the same
+              subdirectory.  If you use this option, you must ensure that your $PATH environment variable does not reference `.';
+              otherwise,  an  attacker  can  run  any commands they like by leaving an appropriately-named file in a directory in
+              which you will run -execdir.  The same applies to having entries in $PATH which are empty or which are not absolute
+              directory  names.  If any invocation with the `+' form returns a non-zero value as exit status, then find returns a
+              non-zero exit status.  If find encounters an error, this can sometimes cause an immediate  exit,  so  some  pending
+              commands  may not be run at all.  The result of the action depends on whether the + or the ; variant is being used;
+              -execdir command {} + always returns true, while -execdir command {} ; returns true only if command returns 0.
+
+       -fls file
+              True; like -ls but write to file like -fprint.  The output file is always created, even if the predicate  is  never
+              matched.  See the UNUSUAL FILENAMES section for information about how unusual characters in filenames are handled.
+
+       -fprint file
+              True;  print the full file name into file file.  If file does not exist when find is run, it is created; if it does
+              exist, it is truncated.  The file names `/dev/stdout' and `/dev/stderr' are handled specially; they  refer  to  the
+              standard  output and standard error output, respectively.  The output file is always created, even if the predicate
+              is never matched.  See the UNUSUAL FILENAMES section for information about how unusual characters in filenames  are
+              handled.
+
+       -fprint0 file
+              True;  like  -print0  but  write to file like -fprint.  The output file is always created, even if the predicate is
+              never matched.  See the UNUSUAL FILENAMES section for information about how unusual  characters  in  filenames  are
+              handled.
+
+       -fprintf file format
+              True;  like  -printf  but  write to file like -fprint.  The output file is always created, even if the predicate is
+              never matched.  See the UNUSUAL FILENAMES section for information about how unusual  characters  in  filenames  are
+              handled.
+
+       -ls    True; list current file in ls -dils format on standard output.  The block counts are of 1 KB blocks, unless the en‐
+              vironment variable POSIXLY_CORRECT is set, in which case 512-byte blocks are used.  See the UNUSUAL FILENAMES  sec‐
+              tion for information about how unusual characters in filenames are handled.
+
+       -ok command ;
+              Like -exec but ask the user first.  If the user agrees, run the command.  Otherwise just return false.  If the com‐
+              mand is run, its standard input is redirected from /dev/null.
+
+              The response to the prompt is matched against a pair of regular expressions to determine if it is an affirmative or
+              negative  response.  This regular expression is obtained from the system if the `POSIXLY_CORRECT' environment vari‐
+              able is set, or otherwise from find's message translations.  If the system has no suitable definition,  find's  own
+              definition  will  be used.  In either case, the interpretation of the regular expression itself will be affected by
+              the environment variables 'LC_CTYPE'  (character  classes)  and  'LC_COLLATE'  (character  ranges  and  equivalence
+              classes).
+
+       -okdir command ;
+              Like  -execdir  but  ask the user first in the same way as for -ok.  If the user does not agree, just return false.
+              If the command is run, its standard input is redirected from /dev/null.
+
+       -print True; print the full file name on the standard output, followed by a newline.  If you are piping the output of find
+              into another program and there is the faintest possibility that the files which you are searching for might contain
+              a newline, then you should seriously consider using the -print0 option instead of -print.  See  the  UNUSUAL  FILE‐
+              NAMES section for information about how unusual characters in filenames are handled.
+
+       -print0
+              True; print the full file name on the standard output, followed by a null character (instead of the newline charac‐
+              ter that -print uses).  This allows file names that contain newlines or other types of white space to be  correctly
+              interpreted by programs that process the find output.  This option corresponds to the -0 option of xargs.
+
+       -printf format
+              True;  print  format  on the standard output, interpreting `\' escapes and `%' directives.  Field widths and preci‐
+              sions can be specified as with the `printf' C function.  Please note that many of the  fields  are  printed  as  %s
+              rather  than  %d,  and  this may mean that flags don't work as you might expect.  This also means that the `-' flag
+              does work (it forces fields to be left-aligned).  Unlike -print, -printf does not add a newline at the end  of  the
+              string.  The escapes and directives are:
+
+              \a     Alarm bell.
+
+              \b     Backspace.
+
+              \c     Stop printing from this format immediately and flush the output.
+
+              \f     Form feed.
+
+              \n     Newline.
+
+              \r     Carriage return.
+
+              \t     Horizontal tab.
+
+              \v     Vertical tab.
+
+              \0     ASCII NUL.
+
+              \\     A literal backslash (`\').
+
+              \NNN   The character whose ASCII code is NNN (octal).
+
+              A `\' character followed by any other character is treated as an ordinary character, so they both are printed.
+
+              %%     A literal percent sign.
+
+              %a     File's last access time in the format returned by the C `ctime' function.
+
+              %Ak    File's  last  access  time in the format specified by k, which is either `@' or a directive for the C `strf‐
+                     time' function.  The possible values for k are listed below; some of them might not be available on all sys‐
+                     tems, due to differences in `strftime' between systems.
+
+                     @      seconds since Jan. 1, 1970, 00:00 GMT, with fractional part.
+
+                     Time fields:
+
+                     H      hour (00..23)
+
+                     I      hour (01..12)
+
+                     k      hour ( 0..23)
+
+                     l      hour ( 1..12)
+
+                     M      minute (00..59)
+
+                     p      locale's AM or PM
+
+                     r      time, 12-hour (hh:mm:ss [AP]M)
+
+                     S      Second (00.00 .. 61.00).  There is a fractional part.
+
+                     T      time, 24-hour (hh:mm:ss.xxxxxxxxxx)
+
+                     +      Date  and time, separated by `+', for example `2004-04-28+22:22:05.0'.  This is a GNU extension.  The
+                            time is given in the current timezone (which may be affected by setting the TZ environment variable).
+                            The seconds field includes a fractional part.
+
+                     X      locale's time representation (H:M:S).  The seconds field includes a fractional part.
+
+                     Z      time zone (e.g., EDT), or nothing if no time zone is determinable
+
+                     Date fields:
+
+                     a      locale's abbreviated weekday name (Sun..Sat)
+
+                     A      locale's full weekday name, variable length (Sunday..Saturday)
+
+                     b      locale's abbreviated month name (Jan..Dec)
+
+                     B      locale's full month name, variable length (January..December)
+
+                     c      locale's date and time (Sat Nov 04 12:02:33 EST 1989).  The format is the same as for ctime(3) and so
+                            to preserve compatibility with that format, there is no fractional part in the seconds field.
+
+                     d      day of month (01..31)
+
+                     D      date (mm/dd/yy)
+
+                     h      same as b
+
+                     j      day of year (001..366)
+
+                     m      month (01..12)
+
+                     U      week number of year with Sunday as first day of week (00..53)
+
+                     w      day of week (0..6)
+
+                     W      week number of year with Monday as first day of week (00..53)
+
+                     x      locale's date representation (mm/dd/yy)
+
+                     y      last two digits of year (00..99)
+
+                     Y      year (1970...)
+
+              %b     The amount of disk space used for this file in 512-byte blocks.  Since disk space is allocated in  multiples
+                     of  the filesystem block size this is usually greater than %s/512, but it can also be smaller if the file is
+                     a sparse file.
+
+              %c     File's last status change time in the format returned by the C `ctime' function.
+
+              %Ck    File's last status change time in the format specified by k, which is the same as for %A.
+
+              %d     File's depth in the directory tree; 0 means the file is a starting-point.
+
+              %D     The device number on which the file exists (the st_dev field of struct stat), in decimal.
+
+              %f     File's name with any leading directories removed (only the last element).
+
+              %F     Type of the filesystem the file is on; this value can be used for -fstype.
+
+              %g     File's group name, or numeric group ID if the group has no name.
+
+              %G     File's numeric group ID.
+
+              %h     Leading directories of file's name (all but the last element).  If the file name contains no slashes  (since
+                     it is in the current directory) the %h specifier expands to `.'.
+
+              %H     Starting-point under which file was found.
+
+              %i     File's inode number (in decimal).
+
+              %k     The  amount  of disk space used for this file in 1 KB blocks.  Since disk space is allocated in multiples of
+                     the filesystem block size this is usually greater than %s/1024, but it can also be smaller if the file is  a
+                     sparse file.
+
+              %l     Object of symbolic link (empty string if file is not a symbolic link).
+
+              %m     File's  permission  bits (in octal).  This option uses the `traditional' numbers which most Unix implementa‐
+                     tions use, but if your particular implementation uses an unusual ordering of  octal  permissions  bits,  you
+                     will  see  a difference between the actual value of the file's mode and the output of %m.  Normally you will
+                     want to have a leading zero on this number, and to do this, you should use the # flag (as in,  for  example,
+                     `%#m').
+
+              %M     File's permissions (in symbolic form, as for ls).  This directive is supported in findutils 4.2.5 and later.
+
+              %n     Number of hard links to file.
+
+              %p     File's name.
+
+              %P     File's name with the name of the starting-point under which it was found removed.
+
+              %s     File's size in bytes.
+
+              %S     File's sparseness.  This is calculated as (BLOCKSIZE*st_blocks / st_size).  The exact value you will get for
+                     an ordinary file of a certain length is system-dependent.  However, normally sparse files will  have  values
+                     less  than  1.0, and files which use indirect blocks may have a value which is greater than 1.0.  In general
+                     the number of blocks used by a file is file system dependent.  The value used for BLOCKSIZE is system-depen‐
+                     dent, but is usually 512 bytes.  If the file size is zero, the value printed is undefined.  On systems which
+                     lack support for st_blocks, a file's sparseness is assumed to be 1.0.
+
+              %t     File's last modification time in the format returned by the C `ctime' function.
+
+              %Tk    File's last modification time in the format specified by k, which is the same as for %A.
+
+              %u     File's user name, or numeric user ID if the user has no name.
+
+              %U     File's numeric user ID.
+
+              %y     File's type (like in ls -l), U=unknown type (shouldn't happen)
+
+              %Y     File's type (like %y), plus follow symlinks: `L'=loop, `N'=nonexistent, `?' for any other error when  deter‐
+                     mining the type of the symlink target.
+
+              %Z     (SELinux only) file's security context.
+
+              %{ %[ %(
+                     Reserved for future use.
+
+              A  `%'  character  followed  by any other character is discarded, but the other character is printed (don't rely on
+              this, as further format characters may be introduced).  A `%' at the end of the format  argument  causes  undefined
+              behaviour  since  there is no following character.  In some locales, it may hide your door keys, while in others it
+              may remove the final page from the novel you are reading.
+
+              The %m and %d directives support the # , 0 and + flags, but the other directives do not, even if  they  print  num‐
+              bers.  Numeric directives that do not support these flags include G, U, b, D, k and n.  The `-' format flag is sup‐
+              ported and changes the alignment of a field from right-justified (which is the default) to left-justified.
+
+              See the UNUSUAL FILENAMES section for information about how unusual characters in filenames are handled.
+
+       -prune True; if the file is a directory, do not descend into it.  If -depth is given, false; no effect.   Because  -delete
+              implies -depth, you cannot usefully use -prune and -delete together.
+
+       -quit  Exit immediately.  No child processes will be left running, but no more paths specified on the command line will be
+              processed.  For example, find /tmp/foo /tmp/bar -print -quit will print only /tmp/foo.   Any  command  lines  which
+              have  been  built  up  with -execdir ... {} + will be invoked before find exits.  The exit status may or may not be
+              zero, depending on whether an error has already occurred.
+
+   OPERATORS
+       Listed in order of decreasing precedence:
+
+       ( expr )
+              Force precedence.  Since parentheses are special to the shell, you will normally need to quote them.  Many  of  the
+              examples in this manual page use backslashes for this purpose: `\(...\)' instead of `(...)'.
+
+       ! expr True if expr is false.  This character will also usually need protection from interpretation by the shell.
+
+       -not expr
+              Same as ! expr, but not POSIX compliant.
+
+       expr1 expr2
+              Two expressions in a row are taken to be joined with an implied -a; expr2 is not evaluated if expr1 is false.
+
+       expr1 -a expr2
+              Same as expr1 expr2.
+
+       expr1 -and expr2
+              Same as expr1 expr2, but not POSIX compliant.
+
+       expr1 -o expr2
+              Or; expr2 is not evaluated if expr1 is true.
+
+       expr1 -or expr2
+              Same as expr1 -o expr2, but not POSIX compliant.
+
+       expr1 , expr2
+              List;  both  expr1  and  expr2 are always evaluated.  The value of expr1 is discarded; the value of the list is the
+              value of expr2.  The comma operator can be useful for searching for several different types of thing, but  travers‐
+              ing  the  filesystem  hierarchy  only once.  The -fprintf action can be used to list the various matched items into
+              several different output files.
+
+       Please note that -a when specified implicitly (for example by two tests appearing without  an  explicit  operator  between
+       them)  or  explicitly  has higher precedence than -o.  This means that find . -name afile -o -name bfile -print will never
+       print afile.
+
+UNUSUAL FILENAMES
+       Many of the actions of find result in the printing of data which is under the control of other users.  This includes  file
+       names,  sizes,  modification  times and so forth.  File names are a potential problem since they can contain any character
+       except `\0' and `/'.  Unusual characters in file names can do unexpected and often undesirable  things  to  your  terminal
+       (for  example, changing the settings of your function keys on some terminals).  Unusual characters are handled differently
+       by various actions, as described below.
+
+       -print0, -fprint0
+              Always print the exact filename, unchanged, even if the output is going to a terminal.
+
+       -ls, -fls
+              Unusual characters are always escaped.  White space, backslash, and double quote characters are  printed  using  C-
+              style escaping (for example `\f', `\"').  Other unusual characters are printed using an octal escape.  Other print‐
+              able characters (for -ls and -fls these are the characters between octal 041 and 0176) are printed as-is.
+
+       -printf, -fprintf
+              If the output is not going to a terminal, it is printed as-is.  Otherwise, the result depends on which directive is
+              in  use.  The directives %D, %F, %g, %G, %H, %Y, and %y expand to values which are not under control of files' own‐
+              ers, and so are printed as-is.  The directives %a, %b, %c, %d, %i, %k, %m, %M, %n, %s, %t, %u and  %U  have  values
+              which  are  under the control of files' owners but which cannot be used to send arbitrary data to the terminal, and
+              so these are printed as-is.  The directives %f, %h, %l, %p and %P are quoted.  This quoting  is  performed  in  the
+              same  way as for GNU ls.  This is not the same quoting mechanism as the one used for -ls and -fls.  If you are able
+              to decide what format to use for the output of find then it is normally better to use `\0' as a terminator than  to
+              use  newline, as file names can contain white space and newline characters.  The setting of the `LC_CTYPE' environ‐
+              ment variable is used to determine which characters need to be quoted.
+
+       -print, -fprint
+              Quoting is handled in the same way as for -printf and -fprintf.  If you are using find in a script or in  a  situa‐
+              tion where the matched files might have arbitrary names, you should consider using -print0 instead of -print.
+
+       The -ok and -okdir actions print the current filename as-is.  This may change in a future release.
+
+STANDARDS CONFORMANCE
+       For  closest compliance to the POSIX standard, you should set the POSIXLY_CORRECT environment variable.  The following op‐
+       tions are specified in the POSIX standard (IEEE Std 1003.1-2008, 2016 Edition):
+
+       -H     This option is supported.
+
+       -L     This option is supported.
+
+       -name  This option is supported, but POSIX conformance depends on the POSIX conformance of the system's fnmatch(3) library
+              function.  As of findutils-4.2.2, shell metacharacters (`*', `?' or `[]' for example) will match a leading `.', be‐
+              cause IEEE PASC interpretation 126 requires this.  This is a change from previous versions of findutils.
+
+       -type  Supported.  POSIX specifies `b', `c', `d', `l', `p', `f' and `s'.  GNU find also supports `D', representing a Door,
+              where  the OS provides these.  Furthermore, GNU find allows multiple types to be specified at once in a comma-sepa‐
+              rated list.
+
+       -ok    Supported.  Interpretation of the response is according to the `yes' and `no'  patterns  selected  by  setting  the
+              `LC_MESSAGES'  environment  variable.   When  the `POSIXLY_CORRECT' environment variable is set, these patterns are
+              taken system's definition of a positive (yes) or negative  (no)  response.   See  the  system's  documentation  for
+              nl_langinfo(3),  in  particular  YESEXPR  and  NOEXPR.  When `POSIXLY_CORRECT' is not set, the patterns are instead
+              taken from find's own message catalogue.
+
+       -newer Supported.  If the file specified is a symbolic link, it is always dereferenced.  This is a  change  from  previous
+              behaviour, which used to take the relevant time from the symbolic link; see the HISTORY section below.
+
+       -perm  Supported.   If  the  POSIXLY_CORRECT environment variable is not set, some mode arguments (for example +a+x) which
+              are not valid in POSIX are supported for backward-compatibility.
+
+       Other primaries
+              The primaries -atime, -ctime, -depth, -exec, -group, -links, -mtime, -nogroup, -nouser, -ok, -path, -print, -prune,
+              -size, -user and -xdev are all supported.
+
+       The POSIX standard specifies parentheses `(', `)', negation `!' and the `and' and `or' operators ( -a, -o).
+
+       All  other  options,  predicates, expressions and so forth are extensions beyond the POSIX standard.  Many of these exten‐
+       sions are not unique to GNU find, however.
+
+       The POSIX standard requires that find detects loops:
+
+              The find utility shall detect infinite loops; that is, entering a previously visited directory that is an  ancestor
+              of  the last file encountered.  When it detects an infinite loop, find shall write a diagnostic message to standard
+              error and shall either recover its position in the hierarchy or terminate.
+
+       GNU find complies with these requirements.  The link count of directories which contain entries which are hard links to an
+       ancestor  will often be lower than they otherwise should be.  This can mean that GNU find will sometimes optimise away the
+       visiting of a subdirectory which is actually a link to an ancestor.  Since find does not actually enter such  a  subdirec‐
+       tory,  it is allowed to avoid emitting a diagnostic message.  Although this behaviour may be somewhat confusing, it is un‐
+       likely that anybody actually depends on this behaviour.  If the leaf optimisation has been turned off  with  -noleaf,  the
+       directory entry will always be examined and the diagnostic message will be issued where it is appropriate.  Symbolic links
+       cannot be used to create filesystem cycles as such, but if the -L option or the -follow option is  in  use,  a  diagnostic
+       message  is issued when find encounters a loop of symbolic links.  As with loops containing hard links, the leaf optimisa‐
+       tion will often mean that find knows that it doesn't need to call stat() or chdir() on the symbolic link, so this diagnos‐
+       tic is frequently not necessary.
+
+       The  -d  option  is  supported  for  compatibility with various BSD systems, but you should use the POSIX-compliant option
+       -depth instead.
+
+       The POSIXLY_CORRECT environment variable does not affect the behaviour of the -regex or -iregex tests because those  tests
+       aren't specified in the POSIX standard.
+
+ENVIRONMENT VARIABLES
+       LANG   Provides a default value for the internationalization variables that are unset or null.
+
+       LC_ALL If set to a non-empty string value, override the values of all the other internationalization variables.
+
+       LC_COLLATE
+              The  POSIX standard specifies that this variable affects the pattern matching to be used for the -name option.  GNU
+              find uses the fnmatch(3) library function, and so support for `LC_COLLATE' depends on  the  system  library.   This
+              variable  also  affects the interpretation of the response to -ok; while the `LC_MESSAGES' variable selects the ac‐
+              tual pattern used to interpret the response to -ok, the interpretation of any bracket expressions  in  the  pattern
+              will be affected by `LC_COLLATE'.
+
+       LC_CTYPE
+              This  variable affects the treatment of character classes used in regular expressions and also with the -name test,
+              if the system's fnmatch(3) library function supports this.  This variable also affects the  interpretation  of  any
+              character  classes  in  the  regular  expressions  used to interpret the response to the prompt issued by -ok.  The
+              `LC_CTYPE' environment variable will also affect which characters are considered to be unprintable  when  filenames
+              are printed; see the section UNUSUAL FILENAMES.
+
+       LC_MESSAGES
+              Determines  the locale to be used for internationalised messages.  If the `POSIXLY_CORRECT' environment variable is
+              set, this also determines the interpretation of the response to the prompt made by the -ok action.
+
+       NLSPATH
+              Determines the location of the internationalisation message catalogues.
+
+       PATH   Affects the directories which are searched to find the executables invoked by -exec, -execdir, -ok and -okdir.
+
+       POSIXLY_CORRECT
+              Determines the block size used by -ls and -fls.  If POSIXLY_CORRECT is set, blocks are units of 512 bytes.   Other‐
+              wise they are units of 1024 bytes.
+
+              Setting this variable also turns off warning messages (that is, implies -nowarn) by default, because POSIX requires
+              that apart from the output for -ok, all messages printed on stderr are diagnostics and must result  in  a  non-zero
+              exit status.
+
+              When  POSIXLY_CORRECT  is not set, -perm +zzz is treated just like -perm /zzz if +zzz is not a valid symbolic mode.
+              When POSIXLY_CORRECT is set, such constructs are treated as an error.
+
+              When POSIXLY_CORRECT is set, the response to the prompt made by the -ok action is interpreted according to the sys‐
+              tem's message catalogue, as opposed to according to find's own message translations.
+
+       TZ     Affects the time zone used for some of the time-related format directives of -printf and -fprintf.
+
+EXAMPLES
+       find /tmp -name core -type f -print | xargs /bin/rm -f
+
+       Find  files  named core in or below the directory /tmp and delete them.  Note that this will work incorrectly if there are
+       any filenames containing newlines, single or double quotes, or spaces.
+
+       find /tmp -name core -type f -print0 | xargs -0 /bin/rm -f
+
+       Find files named core in or below the directory /tmp and delete them, processing filenames in such a way that file or  di‐
+       rectory  names  containing single or double quotes, spaces or newlines are correctly handled.  The -name test comes before
+       the -type test in order to avoid having to call stat(2) on every file.
+
+       find . -type f -exec file '{}' \;
+
+       Runs `file' on every file in or below the current directory.  Notice that the braces are enclosed in single quote marks to
+       protect  them from interpretation as shell script punctuation.  The semicolon is similarly protected by the use of a back‐
+       slash, though single quotes could have been used in that case also.
+
+       find / \( -perm -4000 -fprintf /root/suid.txt '%#m %u %p\n' \) , \
+       \( -size +100M -fprintf /root/big.txt '%-10s %p\n' \)
+
+       Traverse the filesystem just once, listing  setuid  files  and  directories  into  /root/suid.txt  and  large  files  into
+       /root/big.txt.
+
+       find $HOME -mtime 0
+
+       Search  for  files in your home directory which have been modified in the last twenty-four hours.  This command works this
+       way because the time since each file was last modified is divided by 24 hours and any remainder is discarded.  That  means
+       that to match -mtime 0, a file will have to have a modification in the past which is less than 24 hours ago.
+
+       find /sbin /usr/sbin -executable \! -readable -print
+
+       Search for files which are executable but not readable.
+
+       find . -perm 664
+
+       Search  for  files which have read and write permission for their owner, and group, but which other users can read but not
+       write to.  Files which meet these criteria but have other permissions bits set (for example if  someone  can  execute  the
+       file) will not be matched.
+
+       find . -perm -664
+
+       Search  for  files which have read and write permission for their owner and group, and which other users can read, without
+       regard to the presence of any extra permission bits (for example the executable bit).  This will match a  file  which  has
+       mode 0777, for example.
+
+       find . -perm /222
+
+       Search for files which are writable by somebody (their owner, or their group, or anybody else).
+
+       find . -perm /220
+       find . -perm /u+w,g+w
+       find . -perm /u=w,g=w
+
+       All  three  of these commands do the same thing, but the first one uses the octal representation of the file mode, and the
+       other two use the symbolic form.  These commands all search for files which are writable by either their  owner  or  their
+       group.  The files don't have to be writable by both the owner and group to be matched; either will do.
+
+       find . -perm -220
+       find . -perm -g+w,u+w
+
+       Both these commands do the same thing; search for files which are writable by both their owner and their group.
+
+       find . -perm -444 -perm /222 \! -perm /111
+       find . -perm -a+r -perm /a+w \! -perm /a+x
+
+       These  two  commands  both search for files that are readable for everybody ( -perm -444 or -perm -a+r), have at least one
+       write bit set ( -perm /222 or -perm /a+w) but are not executable for anybody ( ! -perm  /111  and  !  -perm  /a+x  respec‐
+       tively).
+
+       cd /source-dir
+       find . -name .snapshot -prune -o \( \! -name '*~' -print0 \)|
+       cpio -pmd0 /dest-dir
+
+       This  command  copies  the contents of /source-dir to /dest-dir, but omits files and directories named .snapshot (and any‐
+       thing in them).  It also omits files or directories whose name ends in ~, but not their contents.  The construct -prune -o
+       \(  ...  -print0  \)  is  quite common.  The idea here is that the expression before -prune matches things which are to be
+       pruned.  However, the -prune action itself returns true, so the following -o ensures that the right hand side is evaluated
+       only  for those directories which didn't get pruned (the contents of the pruned directories are not even visited, so their
+       contents are irrelevant).  The expression on the right hand side of the -o is in parentheses only for clarity.  It  empha‐
+       sises  that  the  -print0 action takes place only for things that didn't have -prune applied to them.  Because the default
+       `and' condition between tests binds more tightly than -o, this is the default anyway, but the  parentheses  help  to  show
+       what is going on.
+
+       find repo/ \( -exec test -d '{}'/.svn \; -or \
+       -exec test -d {}/.git \; -or -exec test -d {}/CVS \; \) \
+       -print -prune
+
+       Given the following directory of projects and their associated SCM administrative directories, perform an efficient search
+       for the projects' roots:
+
+       repo/project1/CVS
+       repo/gnu/project2/.svn
+       repo/gnu/project3/.svn
+       repo/gnu/project3/src/.svn
+       repo/project4/.git
+
+       In this example, -prune prevents unnecessary descent into directories that have already been discovered (for example we do
+       not  search  project3/src because we already found project3/.svn), but ensures sibling directories (project2 and project3)
+       are found.
+
+       find /tmp -type f,d,l
+
+       Search for files, directories, and symbolic links in the directory /tmp passing these types as a comma-separated list (GNU
+       extension), which is otherwise equivalent to the longer, yet more portable:
+
+       find /tmp \( -type f -o -type d -o -type l \)
+
+EXIT STATUS
+       find  exits with status 0 if all files are processed successfully, greater than 0 if errors occur.  This is deliberately a
+       very broad description, but if the return value is non-zero, you should not rely on the  correctness  of  the  results  of
+       find.
+
+       When some error occurs, find may stop immediately, without completing all the actions specified.  For example, some start‐
+       ing points may not have been examined or some pending program invocations for -exec ... {} + or -execdir ... {} + may  not
+       have been performed.
+
+SEE ALSO
+       locate(1),  locatedb(5), updatedb(1), xargs(1), chmod(1), fnmatch(3), regex(7), stat(2), lstat(2), ls(1), printf(3), strf‐
+       time(3), ctime(3)
+
+       The full documentation for find is maintained as a Texinfo manual.  If the info and find programs are  properly  installed
+       at your site, the command info find should give you access to the complete manual.
+
+HISTORY
+       As  of findutils-4.2.2, shell metacharacters (`*', `?' or `[]' for example) used in filename patterns will match a leading
+       `.', because IEEE POSIX interpretation 126 requires this.
+
+       As of findutils-4.3.3, -perm /000 now matches all files instead of none.
+
+       Nanosecond-resolution timestamps were implemented in findutils-4.3.3.
+
+       As of findutils-4.3.11, the -delete action sets find's exit status to a nonzero value when it fails.  However,  find  will
+       not exit immediately.  Previously, find's exit status was unaffected by the failure of -delete.
+
+       Feature                Added in   Also occurs in
+       -newerXY               4.3.3      BSD
+       -D                     4.3.1
+       -O                     4.3.1
+       -readable              4.3.0
+       -writable              4.3.0
+       -executable            4.3.0
+       -regextype             4.2.24
+       -exec ... +            4.2.12     POSIX
+       -execdir               4.2.12     BSD
+       -okdir                 4.2.12
+       -samefile              4.2.11
+       -H                     4.2.5      POSIX
+       -L                     4.2.5      POSIX
+       -P                     4.2.5      BSD
+
+       -delete                4.2.3
+       -quit                  4.2.3
+       -d                     4.2.3      BSD
+       -wholename             4.2.0
+       -iwholename            4.2.0
+       -ignore_readdir_race   4.2.0
+       -fls                   4.0
+       -ilname                3.8
+       -iname                 3.8
+       -ipath                 3.8
+       -iregex                3.8
+
+       The  syntax  -perm  +MODE was removed in findutils-4.5.12, in favour of -perm /MODE.  The +MODE syntax had been deprecated
+       since findutils-4.2.21 which was released in 2005.
+
+NON-BUGS
+   Operator precedence surprises
+       The command find . -name afile -o -name bfile -print will never print afile because this is actually equivalent to find  .
+       -name  afile  -o \( -name bfile -a -print \).  Remember that the precedence of -a is higher than that of -o and when there
+       is no operator specified between tests, -a is assumed.
+
+   “paths must precede expression” error message
+       $ find . -name *.c -print
+       find: paths must precede expression
+       find: possible unquoted pattern after predicate `-name'?
+
+       This happens when the shell could expand the pattern *.c to more than one file name existing in the current directory, and
+       passing the resulting file names in the command line to find like this:
+       find . -name frcode.c locate.c word_io.c -print
+       That command is of course not going to work, because the -name predicate allows exactly only one pattern as argument.  In‐
+       stead of doing things this way, you should enclose the pattern in quotes or escape the wildcard, thus allowing find to use
+       the pattern with the wildcard during the search for file name matching instead of file names expanded by the parent shell:
+       $ find . -name '*.c' -print
+       $ find . -name \*.c -print
+
+COPYRIGHT
+       Copyright  ©  1990-2019  Free  Software  Foundation, Inc.  License GPLv3+: GNU GPL version 3 or later <https://gnu.org/li‐
+       censes/gpl.html>.
+       This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
+
+BUGS
+       There are security problems inherent in the behaviour that the POSIX standard specifies for find, which  therefore  cannot
+       be  fixed.  For example, the -exec action is inherently insecure, and -execdir should be used instead.  Please see Finding
+       Files for more information.
+
+       The environment variable LC_COLLATE has no effect on the -ok action.
+
+       The best way to report a bug is to use the form at https://savannah.gnu.org/bugs/?group=findutils.  The reason for this is
+       that  you will then be able to track progress in fixing the problem.  Other comments about find(1) and about the findutils
+       package in general can be sent to the bug-findutils mailing list.  To join  the  list,  send  email  to  bug-findutils-re‐
+       quest@gnu.org.
+
+                                                                                                                          FIND(1)
+```
+
+### getfacl
+
+```
+GETFACL(1)                                             Access Control Lists                                            GETFACL(1)
+
+NAME
+       getfacl - get file access control lists
+
+SYNOPSIS
+       getfacl [-aceEsRLPtpndvh] file ...
+
+       getfacl [-aceEsRLPtpndvh] -
+
+DESCRIPTION
+       For  each  file, getfacl displays the file name, owner, the group, and the Access Control List (ACL). If a directory has a
+       default ACL, getfacl also displays the default ACL. Non-directories cannot have default ACLs.
+
+       If getfacl is used on a file system that does not support ACLs, getfacl displays the access  permissions  defined  by  the
+       traditional file mode permission bits.
+
+       The output format of getfacl is as follows:
+               1:  # file: somedir/
+               2:  # owner: lisa
+               3:  # group: staff
+               4:  # flags: -s-
+               5:  user::rwx
+               6:  user:joe:rwx               #effective:r-x
+               7:  group::rwx                 #effective:r-x
+               8:  group:cool:r-x
+               9:  mask::r-x
+              10:  other::r-x
+              11:  default:user::rwx
+              12:  default:user:joe:rwx       #effective:r-x
+              13:  default:group::r-x
+              14:  default:mask::r-x
+              15:  default:other::---
+
+       Lines 1--3 indicate the file name, owner, and owning group.
+
+       Line  4  indicates the setuid (s), setgid (s), and sticky (t) bits: either the letter representing the bit, or else a dash
+       (-). This line is included if any of those bits is set and left out otherwise, so it will not be  shown  for  most  files.
+       (See CONFORMANCE TO POSIX 1003.1e DRAFT STANDARD 17 below.)
+
+       Lines  5, 7 and 10 correspond to the user, group and other fields of the file mode permission bits. These three are called
+       the base ACL entries. Lines 6 and 8 are named user and named group entries. Line 9 is the effective rights mask. This  en‐
+       try  limits  the effective rights granted to all groups and to named users. (The file owner and others permissions are not
+       affected by the effective rights mask; all other entries are.)  Lines 11--15 display the default ACL associated with  this
+       directory. Directories may have a default ACL. Regular files never have a default ACL.
+
+       The  default  behavior for getfacl is to display both the ACL and the default ACL, and to include an effective rights com‐
+       ment for lines where the rights of the entry differ from the effective rights.
+
+       If output is to a terminal, the effective rights comment is aligned to column 40. Otherwise, a single tab character  sepa‐
+       rates the ACL entry and the effective rights comment.
+
+       The  ACL listings of multiple files are separated by blank lines.  The output of getfacl can also be used as input to set‐
+       facl.
+
+   PERMISSIONS
+       Process with search access to a file (i.e., processes with read access to the containing directory of  a  file)  are  also
+       granted read access to the file's ACLs.  This is analogous to the permissions required for accessing the file mode.
+
+OPTIONS
+       -a, --access
+           Display the file access control list.
+
+       -d, --default
+           Display the default access control list.
+
+       -c, --omit-header
+           Do not display the comment header (the first three lines of each file's output).
+
+       -e, --all-effective
+           Print all effective rights comments, even if identical to the rights defined by the ACL entry.
+
+       -E, --no-effective
+           Do not print effective rights comments.
+
+       -s, --skip-base
+           Skip files that only have the base ACL entries (owner, group, others).
+
+       -R, --recursive
+           List the ACLs of all files and directories recursively.
+
+       -L, --logical
+           Logical  walk,  follow  symbolic  links to directories. The default behavior is to follow symbolic link arguments, and
+           skip symbolic links encountered in subdirectories.  Only effective in combination with -R.
+
+       -P, --physical
+           Physical walk, do not follow symbolic links to directories. This also skips symbolic link arguments.   Only  effective
+           in combination with -R.
+
+       -t, --tabular
+           Use an alternative tabular output format. The ACL and the default ACL are displayed side by side. Permissions that are
+           ineffective due to the ACL mask entry are displayed  capitalized.  The  entry  tag  names  for  the  ACL_USER_OBJ  and
+           ACL_GROUP_OBJ entries are also displayed in capital letters, which helps in spotting those entries.
+
+       -p, --absolute-names
+           Do not strip leading slash characters (`/'). The default behavior is to strip leading slash characters.
+
+       -n, --numeric
+           List numeric user and group IDs
+
+       -v, --version
+           Print the version of getfacl and exit.
+
+       -h, --help
+           Print help explaining the command line options.
+
+       --  End  of  command  line options. All remaining parameters are interpreted as file names, even if they start with a dash
+           character.
+
+       -   If the file name parameter is a single dash character, getfacl reads a list of files from standard input.
+
+CONFORMANCE TO POSIX 1003.1e DRAFT STANDARD 17
+       If the environment variable POSIXLY_CORRECT is defined, the default behavior of getfacl changes in the following ways: Un‐
+       less  otherwise  specified, only the ACL is printed. The default ACL is only printed if the -d option is given. If no com‐
+       mand line parameter is given, getfacl behaves as if it was invoked as ``getfacl -''.  No flags comments indicating the se‐
+       tuid, setgid, and sticky bits are generated.
+
+AUTHOR
+       Andreas Gruenbacher, <a.gruenbacher@bestbits.at>.
+
+       Please send your bug reports and comments to the above address.
+
+SEE ALSO
+       setfacl(1), acl(5)
+
+May 2000                                                ACL File Utilities                                             GETFACL(1)
+```
+
+### git-add
+
+```
+GIT-ADD(1)                                                  Git Manual                                                 GIT-ADD(1)
+
+NAME
+       git-add - Add file contents to the index
+
+SYNOPSIS
+       git add [--verbose | -v] [--dry-run | -n] [--force | -f] [--interactive | -i] [--patch | -p]
+                 [--edit | -e] [--[no-]all | --[no-]ignore-removal | [--update | -u]]
+                 [--intent-to-add | -N] [--refresh] [--ignore-errors] [--ignore-missing] [--renormalize]
+                 [--chmod=(+|-)x] [--] [<pathspec>...]
+
+DESCRIPTION
+       This command updates the index using the current content found in the working tree, to prepare the content staged for the
+       next commit. It typically adds the current content of existing paths as a whole, but with some options it can also be used
+       to add content with only part of the changes made to the working tree files applied, or remove paths that do not exist in
+       the working tree anymore.
+
+       The "index" holds a snapshot of the content of the working tree, and it is this snapshot that is taken as the contents of
+       the next commit. Thus after making any changes to the working tree, and before running the commit command, you must use
+       the add command to add any new or modified files to the index.
+
+       This command can be performed multiple times before a commit. It only adds the content of the specified file(s) at the
+       time the add command is run; if you want subsequent changes included in the next commit, then you must run git add again
+       to add the new content to the index.
+
+       The git status command can be used to obtain a summary of which files have changes that are staged for the next commit.
+
+       The git add command will not add ignored files by default. If any ignored files were explicitly specified on the command
+       line, git add will fail with a list of ignored files. Ignored files reached by directory recursion or filename globbing
+       performed by Git (quote your globs before the shell) will be silently ignored. The git add command can be used to add
+       ignored files with the -f (force) option.
+
+       Please see git-commit(1) for alternative ways to add content to a commit.
+
+OPTIONS
+       <pathspec>...
+           Files to add content from. Fileglobs (e.g.  *.c) can be given to add all matching files. Also a leading directory name
+           (e.g.  dir to add dir/file1 and dir/file2) can be given to update the index to match the current state of the
+           directory as a whole (e.g. specifying dir will record not just a file dir/file1 modified in the working tree, a file
+           dir/file2 added to the working tree, but also a file dir/file3 removed from the working tree. Note that older versions
+           of Git used to ignore removed files; use --no-all option if you want to add modified or new files but ignore removed
+           ones.
+
+           For more details about the <pathspec> syntax, see the pathspec entry in gitglossary(7).
+
+       -n, --dry-run
+           Don’t actually add the file(s), just show if they exist and/or will be ignored.
+
+       -v, --verbose
+           Be verbose.
+
+       -f, --force
+           Allow adding otherwise ignored files.
+
+       -i, --interactive
+           Add modified contents in the working tree interactively to the index. Optional path arguments may be supplied to limit
+           operation to a subset of the working tree. See “Interactive mode” for details.
+
+       -p, --patch
+           Interactively choose hunks of patch between the index and the work tree and add them to the index. This gives the user
+           a chance to review the difference before adding modified contents to the index.
+
+           This effectively runs add --interactive, but bypasses the initial command menu and directly jumps to the patch
+           subcommand. See “Interactive mode” for details.
+
+       -e, --edit
+           Open the diff vs. the index in an editor and let the user edit it. After the editor was closed, adjust the hunk
+           headers and apply the patch to the index.
+
+           The intent of this option is to pick and choose lines of the patch to apply, or even to modify the contents of lines
+           to be staged. This can be quicker and more flexible than using the interactive hunk selector. However, it is easy to
+           confuse oneself and create a patch that does not apply to the index. See EDITING PATCHES below.
+
+       -u, --update
+           Update the index just where it already has an entry matching <pathspec>. This removes as well as modifies index
+           entries to match the working tree, but adds no new files.
+
+           If no <pathspec> is given when -u option is used, all tracked files in the entire working tree are updated (old
+           versions of Git used to limit the update to the current directory and its subdirectories).
+
+       -A, --all, --no-ignore-removal
+           Update the index not only where the working tree has a file matching <pathspec> but also where the index already has
+           an entry. This adds, modifies, and removes index entries to match the working tree.
+
+           If no <pathspec> is given when -A option is used, all files in the entire working tree are updated (old versions of
+           Git used to limit the update to the current directory and its subdirectories).
+
+       --no-all, --ignore-removal
+           Update the index by adding new files that are unknown to the index and files modified in the working tree, but ignore
+           files that have been removed from the working tree. This option is a no-op when no <pathspec> is used.
+
+           This option is primarily to help users who are used to older versions of Git, whose "git add <pathspec>..." was a
+           synonym for "git add --no-all <pathspec>...", i.e. ignored removed files.
+
+       -N, --intent-to-add
+           Record only the fact that the path will be added later. An entry for the path is placed in the index with no content.
+           This is useful for, among other things, showing the unstaged content of such files with git diff and committing them
+           with git commit -a.
+
+       --refresh
+           Don’t add the file(s), but only refresh their stat() information in the index.
+
+       --ignore-errors
+           If some files could not be added because of errors indexing them, do not abort the operation, but continue adding the
+           others. The command shall still exit with non-zero status. The configuration variable add.ignoreErrors can be set to
+           true to make this the default behaviour.
+
+       --ignore-missing
+           This option can only be used together with --dry-run. By using this option the user can check if any of the given
+           files would be ignored, no matter if they are already present in the work tree or not.
+
+       --no-warn-embedded-repo
+           By default, git add will warn when adding an embedded repository to the index without using git submodule add to
+           create an entry in .gitmodules. This option will suppress the warning (e.g., if you are manually performing operations
+           on submodules).
+
+       --renormalize
+           Apply the "clean" process freshly to all tracked files to forcibly add them again to the index. This is useful after
+           changing core.autocrlf configuration or the text attribute in order to correct files added with wrong CRLF/LF line
+           endings. This option implies -u.
+
+       --chmod=(+|-)x
+           Override the executable bit of the added files. The executable bit is only changed in the index, the files on disk are
+           left unchanged.
+
+       --
+           This option can be used to separate command-line options from the list of files, (useful when filenames might be
+           mistaken for command-line options).
+
+CONFIGURATION
+       The optional configuration variable core.excludesFile indicates a path to a file containing patterns of file names to
+       exclude from git-add, similar to $GIT_DIR/info/exclude. Patterns in the exclude file are used in addition to those in
+       info/exclude. See gitignore(5).
+
+EXAMPLES
+       •   Adds content from all *.txt files under Documentation directory and its subdirectories:
+
+               $ git add Documentation/\*.txt
+
+           Note that the asterisk * is quoted from the shell in this example; this lets the command include the files from
+           subdirectories of Documentation/ directory.
+
+       •   Considers adding content from all git-*.sh scripts:
+
+               $ git add git-*.sh
+
+           Because this example lets the shell expand the asterisk (i.e. you are listing the files explicitly), it does not
+           consider subdir/git-foo.sh.
+
+INTERACTIVE MODE
+       When the command enters the interactive mode, it shows the output of the status subcommand, and then goes into its
+       interactive command loop.
+
+       The command loop shows the list of subcommands available, and gives a prompt "What now> ". In general, when the prompt
+       ends with a single >, you can pick only one of the choices given and type return, like this:
+
+               *** Commands ***
+                 1: status       2: update       3: revert       4: add untracked
+                 5: patch        6: diff         7: quit         8: help
+               What now> 1
+
+       You also could say s or sta or status above as long as the choice is unique.
+
+       The main command loop has 6 subcommands (plus help and quit).
+
+       status
+           This shows the change between HEAD and index (i.e. what will be committed if you say git commit), and between index
+           and working tree files (i.e. what you could stage further before git commit using git add) for each path. A sample
+           output looks like this:
+
+                             staged     unstaged path
+                    1:       binary      nothing foo.png
+                    2:     +403/-35        +1/-1 git-add--interactive.perl
+
+           It shows that foo.png has differences from HEAD (but that is binary so line count cannot be shown) and there is no
+           difference between indexed copy and the working tree version (if the working tree version were also different, binary
+           would have been shown in place of nothing). The other file, git-add--interactive.perl, has 403 lines added and 35
+           lines deleted if you commit what is in the index, but working tree file has further modifications (one addition and
+           one deletion).
+
+       update
+           This shows the status information and issues an "Update>>" prompt. When the prompt ends with double >>, you can make
+           more than one selection, concatenated with whitespace or comma. Also you can say ranges. E.g. "2-5 7,9" to choose
+           2,3,4,5,7,9 from the list. If the second number in a range is omitted, all remaining patches are taken. E.g. "7-" to
+           choose 7,8,9 from the list. You can say * to choose everything.
+
+           What you chose are then highlighted with *, like this:
+
+                          staged     unstaged path
+                 1:       binary      nothing foo.png
+               * 2:     +403/-35        +1/-1 git-add--interactive.perl
+
+           To remove selection, prefix the input with - like this:
+
+               Update>> -2
+
+           After making the selection, answer with an empty line to stage the contents of working tree files for selected paths
+           in the index.
+
+       revert
+           This has a very similar UI to update, and the staged information for selected paths are reverted to that of the HEAD
+           version. Reverting new paths makes them untracked.
+
+       add untracked
+           This has a very similar UI to update and revert, and lets you add untracked paths to the index.
+
+       patch
+           This lets you choose one path out of a status like selection. After choosing the path, it presents the diff between
+           the index and the working tree file and asks you if you want to stage the change of each hunk. You can select one of
+           the following options and type return:
+
+               y - stage this hunk
+               n - do not stage this hunk
+               q - quit; do not stage this hunk or any of the remaining ones
+               a - stage this hunk and all later hunks in the file
+               d - do not stage this hunk or any of the later hunks in the file
+               g - select a hunk to go to
+               / - search for a hunk matching the given regex
+               j - leave this hunk undecided, see next undecided hunk
+               J - leave this hunk undecided, see next hunk
+               k - leave this hunk undecided, see previous undecided hunk
+               K - leave this hunk undecided, see previous hunk
+               s - split the current hunk into smaller hunks
+               e - manually edit the current hunk
+               ? - print help
+
+           After deciding the fate for all hunks, if there is any hunk that was chosen, the index is updated with the selected
+           hunks.
+
+           You can omit having to type return here, by setting the configuration variable interactive.singleKey to true.
+
+       diff
+           This lets you review what will be committed (i.e. between HEAD and index).
+
+EDITING PATCHES
+       Invoking git add -e or selecting e from the interactive hunk selector will open a patch in your editor; after the editor
+       exits, the result is applied to the index. You are free to make arbitrary changes to the patch, but note that some changes
+       may have confusing results, or even result in a patch that cannot be applied. If you want to abort the operation entirely
+       (i.e., stage nothing new in the index), simply delete all lines of the patch. The list below describes some common things
+       you may see in a patch, and which editing operations make sense on them.
+
+       added content
+           Added content is represented by lines beginning with "+". You can prevent staging any addition lines by deleting them.
+
+       removed content
+           Removed content is represented by lines beginning with "-". You can prevent staging their removal by converting the
+           "-" to a " " (space).
+
+       modified content
+           Modified content is represented by "-" lines (removing the old content) followed by "+" lines (adding the replacement
+           content). You can prevent staging the modification by converting "-" lines to " ", and removing "+" lines. Beware that
+           modifying only half of the pair is likely to introduce confusing changes to the index.
+
+       There are also more complex operations that can be performed. But beware that because the patch is applied only to the
+       index and not the working tree, the working tree will appear to "undo" the change in the index. For example, introducing a
+       new line into the index that is in neither the HEAD nor the working tree will stage the new line for commit, but the line
+       will appear to be reverted in the working tree.
+
+       Avoid using these constructs, or do so with extreme caution.
+
+       removing untouched content
+           Content which does not differ between the index and working tree may be shown on context lines, beginning with a " "
+           (space). You can stage context lines for removal by converting the space to a "-". The resulting working tree file
+           will appear to re-add the content.
+
+       modifying existing content
+           One can also modify context lines by staging them for removal (by converting " " to "-") and adding a "+" line with
+           the new content. Similarly, one can modify "+" lines for existing additions or modifications. In all cases, the new
+           modification will appear reverted in the working tree.
+
+       new content
+           You may also add new content that does not exist in the patch; simply add new lines, each starting with "+". The
+           addition will appear reverted in the working tree.
+
+       There are also several operations which should be avoided entirely, as they will make the patch impossible to apply:
+
+       •   adding context (" ") or removal ("-") lines
+
+       •   deleting context or removal lines
+
+       •   modifying the contents of context or removal lines
+
+SEE ALSO
+       git-status(1) git-rm(1) git-reset(1) git-mv(1) git-commit(1) git-update-index(1)
+
+GIT
+       Part of the git(1) suite
+
+Git 2.20.1                                                  04/07/2022                                                 GIT-ADD(1)
+```
+
+### git-commit
+
+```
+GIT-COMMIT(1)                                               Git Manual                                              GIT-COMMIT(1)
+
+NAME
+       git-commit - Record changes to the repository
+
+SYNOPSIS
+       git commit [-a | --interactive | --patch] [-s] [-v] [-u<mode>] [--amend]
+                  [--dry-run] [(-c | -C | --fixup | --squash) <commit>]
+                  [-F <file> | -m <msg>] [--reset-author] [--allow-empty]
+                  [--allow-empty-message] [--no-verify] [-e] [--author=<author>]
+                  [--date=<date>] [--cleanup=<mode>] [--[no-]status]
+                  [-i | -o] [-S[<keyid>]] [--] [<file>...]
+
+DESCRIPTION
+       Stores the current contents of the index in a new commit along with a log message from the user describing the changes.
+
+       The content to be added can be specified in several ways:
+
+        1. by using git add to incrementally "add" changes to the index before using the commit command (Note: even modified
+           files must be "added");
+
+        2. by using git rm to remove files from the working tree and the index, again before using the commit command;
+
+        3. by listing files as arguments to the commit command (without --interactive or --patch switch), in which case the
+           commit will ignore changes staged in the index, and instead record the current content of the listed files (which must
+           already be known to Git);
+
+        4. by using the -a switch with the commit command to automatically "add" changes from all known files (i.e. all files
+           that are already listed in the index) and to automatically "rm" files in the index that have been removed from the
+           working tree, and then perform the actual commit;
+
+        5. by using the --interactive or --patch switches with the commit command to decide one by one which files or hunks
+           should be part of the commit in addition to contents in the index, before finalizing the operation. See the
+           “Interactive Mode” section of git-add(1) to learn how to operate these modes.
+
+       The --dry-run option can be used to obtain a summary of what is included by any of the above for the next commit by giving
+       the same set of parameters (options and paths).
+
+       If you make a commit and then find a mistake immediately after that, you can recover from it with git reset.
+
+OPTIONS
+       -a, --all
+           Tell the command to automatically stage files that have been modified and deleted, but new files you have not told Git
+           about are not affected.
+
+       -p, --patch
+           Use the interactive patch selection interface to chose which changes to commit. See git-add(1) for details.
+
+       -C <commit>, --reuse-message=<commit>
+           Take an existing commit object, and reuse the log message and the authorship information (including the timestamp)
+           when creating the commit.
+
+       -c <commit>, --reedit-message=<commit>
+           Like -C, but with -c the editor is invoked, so that the user can further edit the commit message.
+
+       --fixup=<commit>
+           Construct a commit message for use with rebase --autosquash. The commit message will be the subject line from the
+           specified commit with a prefix of "fixup! ". See git-rebase(1) for details.
+
+       --squash=<commit>
+           Construct a commit message for use with rebase --autosquash. The commit message subject line is taken from the
+           specified commit with a prefix of "squash! ". Can be used with additional commit message options (-m/-c/-C/-F). See
+           git-rebase(1) for details.
+
+       --reset-author
+           When used with -C/-c/--amend options, or when committing after a conflicting cherry-pick, declare that the authorship
+           of the resulting commit now belongs to the committer. This also renews the author timestamp.
+
+       --short
+           When doing a dry-run, give the output in the short-format. See git-status(1) for details. Implies --dry-run.
+
+       --branch
+           Show the branch and tracking info even in short-format.
+
+       --porcelain
+           When doing a dry-run, give the output in a porcelain-ready format. See git-status(1) for details. Implies --dry-run.
+
+       --long
+           When doing a dry-run, give the output in the long-format. Implies --dry-run.
+
+       -z, --null
+           When showing short or porcelain status output, print the filename verbatim and terminate the entries with NUL, instead
+           of LF. If no format is given, implies the --porcelain output format. Without the -z option, filenames with "unusual"
+           characters are quoted as explained for the configuration variable core.quotePath (see git-config(1)).
+
+       -F <file>, --file=<file>
+           Take the commit message from the given file. Use - to read the message from the standard input.
+
+       --author=<author>
+           Override the commit author. Specify an explicit author using the standard A U Thor <author@example.com> format.
+           Otherwise <author> is assumed to be a pattern and is used to search for an existing commit by that author (i.e.
+           rev-list --all -i --author=<author>); the commit author is then copied from the first such commit found.
+
+       --date=<date>
+           Override the author date used in the commit.
+
+       -m <msg>, --message=<msg>
+           Use the given <msg> as the commit message. If multiple -m options are given, their values are concatenated as separate
+           paragraphs.
+
+           The -m option is mutually exclusive with -c, -C, and -F.
+
+       -t <file>, --template=<file>
+           When editing the commit message, start the editor with the contents in the given file. The commit.template
+           configuration variable is often used to give this option implicitly to the command. This mechanism can be used by
+           projects that want to guide participants with some hints on what to write in the message in what order. If the user
+           exits the editor without editing the message, the commit is aborted. This has no effect when a message is given by
+           other means, e.g. with the -m or -F options.
+
+       -s, --signoff
+           Add Signed-off-by line by the committer at the end of the commit log message. The meaning of a signoff depends on the
+           project, but it typically certifies that committer has the rights to submit this work under the same license and
+           agrees to a Developer Certificate of Origin (see http://developercertificate.org/ for more information).
+
+       -n, --no-verify
+           This option bypasses the pre-commit and commit-msg hooks. See also githooks(5).
+
+       --allow-empty
+           Usually recording a commit that has the exact same tree as its sole parent commit is a mistake, and the command
+           prevents you from making such a commit. This option bypasses the safety, and is primarily for use by foreign SCM
+           interface scripts.
+
+       --allow-empty-message
+           Like --allow-empty this command is primarily for use by foreign SCM interface scripts. It allows you to create a
+           commit with an empty commit message without using plumbing commands like git-commit-tree(1).
+
+       --cleanup=<mode>
+           This option determines how the supplied commit message should be cleaned up before committing. The <mode> can be
+           strip, whitespace, verbatim, scissors or default.
+
+           strip
+               Strip leading and trailing empty lines, trailing whitespace, commentary and collapse consecutive empty lines.
+
+           whitespace
+               Same as strip except #commentary is not removed.
+
+           verbatim
+               Do not change the message at all.
+
+           scissors
+               Same as whitespace except that everything from (and including) the line found below is truncated, if the message
+               is to be edited. "#" can be customized with core.commentChar.
+
+                   # ------------------------ >8 ------------------------
+
+           default
+               Same as strip if the message is to be edited. Otherwise whitespace.
+
+           The default can be changed by the commit.cleanup configuration variable (see git-config(1)).
+
+       -e, --edit
+           The message taken from file with -F, command line with -m, and from commit object with -C are usually used as the
+           commit log message unmodified. This option lets you further edit the message taken from these sources.
+
+       --no-edit
+           Use the selected commit message without launching an editor. For example, git commit --amend --no-edit amends a commit
+           without changing its commit message.
+
+       --amend
+           Replace the tip of the current branch by creating a new commit. The recorded tree is prepared as usual (including the
+           effect of the -i and -o options and explicit pathspec), and the message from the original commit is used as the
+           starting point, instead of an empty message, when no other message is specified from the command line via options such
+           as -m, -F, -c, etc. The new commit has the same parents and author as the current one (the --reset-author option can
+           countermand this).
+
+           It is a rough equivalent for:
+
+                       $ git reset --soft HEAD^
+                       $ ... do something else to come up with the right tree ...
+                       $ git commit -c ORIG_HEAD
+
+           but can be used to amend a merge commit.
+
+           You should understand the implications of rewriting history if you amend a commit that has already been published.
+           (See the "RECOVERING FROM UPSTREAM REBASE" section in git-rebase(1).)
+
+       --no-post-rewrite
+           Bypass the post-rewrite hook.
+
+       -i, --include
+           Before making a commit out of staged contents so far, stage the contents of paths given on the command line as well.
+           This is usually not what you want unless you are concluding a conflicted merge.
+
+       -o, --only
+           Make a commit by taking the updated working tree contents of the paths specified on the command line, disregarding any
+           contents that have been staged for other paths. This is the default mode of operation of git commit if any paths are
+           given on the command line, in which case this option can be omitted. If this option is specified together with
+           --amend, then no paths need to be specified, which can be used to amend the last commit without committing changes
+           that have already been staged. If used together with --allow-empty paths are also not required, and an empty commit
+           will be created.
+
+       -u[<mode>], --untracked-files[=<mode>]
+           Show untracked files.
+
+           The mode parameter is optional (defaults to all), and is used to specify the handling of untracked files; when -u is
+           not used, the default is normal, i.e. show untracked files and directories.
+
+           The possible options are:
+
+           •   no - Show no untracked files
+
+           •   normal - Shows untracked files and directories
+
+           •   all - Also shows individual files in untracked directories.
+
+               The default can be changed using the status.showUntrackedFiles configuration variable documented in git-config(1).
+
+       -v, --verbose
+           Show unified diff between the HEAD commit and what would be committed at the bottom of the commit message template to
+           help the user describe the commit by reminding what changes the commit has. Note that this diff output doesn’t have
+           its lines prefixed with #. This diff will not be a part of the commit message. See the commit.verbose configuration
+           variable in git-config(1).
+
+           If specified twice, show in addition the unified diff between what would be committed and the worktree files, i.e. the
+           unstaged changes to tracked files.
+
+       -q, --quiet
+           Suppress commit summary message.
+
+       --dry-run
+           Do not create a commit, but show a list of paths that are to be committed, paths with local changes that will be left
+           uncommitted and paths that are untracked.
+
+       --status
+           Include the output of git-status(1) in the commit message template when using an editor to prepare the commit message.
+           Defaults to on, but can be used to override configuration variable commit.status.
+
+       --no-status
+           Do not include the output of git-status(1) in the commit message template when using an editor to prepare the default
+           commit message.
+
+       -S[<keyid>], --gpg-sign[=<keyid>]
+           GPG-sign commits. The keyid argument is optional and defaults to the committer identity; if specified, it must be
+           stuck to the option without a space.
+
+       --no-gpg-sign
+           Countermand commit.gpgSign configuration variable that is set to force each and every commit to be signed.
+
+       --
+           Do not interpret any more arguments as options.
+
+       <file>...
+           When files are given on the command line, the command commits the contents of the named files, without recording the
+           changes already staged. The contents of these files are also staged for the next commit on top of what have been
+           staged before.
+
+DATE FORMATS
+       The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables and the --date option support the following date formats:
+
+       Git internal format
+           It is <unix timestamp> <time zone offset>, where <unix timestamp> is the number of seconds since the UNIX epoch.
+           <time zone offset> is a positive or negative offset from UTC. For example CET (which is 1 hour ahead of UTC) is +0100.
+
+       RFC 2822
+           The standard email format as described by RFC 2822, for example Thu, 07 Apr 2005 22:13:13 +0200.
+
+       ISO 8601
+           Time and date specified by the ISO 8601 standard, for example 2005-04-07T22:13:13. The parser accepts a space instead
+           of the T character as well.
+
+               Note
+               In addition, the date part is accepted in the following formats: YYYY.MM.DD, MM/DD/YYYY and DD.MM.YYYY.
+
+EXAMPLES
+       When recording your own work, the contents of modified files in your working tree are temporarily stored to a staging area
+       called the "index" with git add. A file can be reverted back, only in the index but not in the working tree, to that of
+       the last commit with git reset HEAD -- <file>, which effectively reverts git add and prevents the changes to this file
+       from participating in the next commit. After building the state to be committed incrementally with these commands, git
+       commit (without any pathname parameter) is used to record what has been staged so far. This is the most basic form of the
+       command. An example:
+
+           $ edit hello.c
+           $ git rm goodbye.c
+           $ git add hello.c
+           $ git commit
+
+       Instead of staging files after each individual change, you can tell git commit to notice the changes to the files whose
+       contents are tracked in your working tree and do corresponding git add and git rm for you. That is, this example does the
+       same as the earlier example if there is no other change in your working tree:
+
+           $ edit hello.c
+           $ rm goodbye.c
+           $ git commit -a
+
+       The command git commit -a first looks at your working tree, notices that you have modified hello.c and removed goodbye.c,
+       and performs necessary git add and git rm for you.
+
+       After staging changes to many files, you can alter the order the changes are recorded in, by giving pathnames to git
+       commit. When pathnames are given, the command makes a commit that only records the changes made to the named paths:
+
+           $ edit hello.c hello.h
+           $ git add hello.c hello.h
+           $ edit Makefile
+           $ git commit Makefile
+
+       This makes a commit that records the modification to Makefile. The changes staged for hello.c and hello.h are not included
+       in the resulting commit. However, their changes are not lost — they are still staged and merely held back. After the above
+       sequence, if you do:
+
+           $ git commit
+
+       this second commit would record the changes to hello.c and hello.h as expected.
+
+       After a merge (initiated by git merge or git pull) stops because of conflicts, cleanly merged paths are already staged to
+       be committed for you, and paths that conflicted are left in unmerged state. You would have to first check which paths are
+       conflicting with git status and after fixing them manually in your working tree, you would stage the result as usual with
+       git add:
+
+           $ git status | grep unmerged
+           unmerged: hello.c
+           $ edit hello.c
+           $ git add hello.c
+
+       After resolving conflicts and staging the result, git ls-files -u would stop mentioning the conflicted path. When you are
+       done, run git commit to finally record the merge:
+
+           $ git commit
+
+       As with the case to record your own changes, you can use -a option to save typing. One difference is that during a merge
+       resolution, you cannot use git commit with pathnames to alter the order the changes are committed, because the merge
+       should be recorded as a single commit. In fact, the command refuses to run when given pathnames (but see -i option).
+
+DISCUSSION
+       Though not required, it’s a good idea to begin the commit message with a single short (less than 50 character) line
+       summarizing the change, followed by a blank line and then a more thorough description. The text up to the first blank line
+       in a commit message is treated as the commit title, and that title is used throughout Git. For example, git-format-
+       patch(1) turns a commit into email, and it uses the title on the Subject line and the rest of the commit in the body.
+
+       Git is to some extent character encoding agnostic.
+
+       •   The contents of the blob objects are uninterpreted sequences of bytes. There is no encoding translation at the core
+           level.
+
+       •   Path names are encoded in UTF-8 normalization form C. This applies to tree objects, the index file, ref names, as well
+           as path names in command line arguments, environment variables and config files (.git/config (see git-config(1)),
+           gitignore(5), gitattributes(5) and gitmodules(5)).
+
+           Note that Git at the core level treats path names simply as sequences of non-NUL bytes, there are no path name
+           encoding conversions (except on Mac and Windows). Therefore, using non-ASCII path names will mostly work even on
+           platforms and file systems that use legacy extended ASCII encodings. However, repositories created on such systems
+           will not work properly on UTF-8-based systems (e.g. Linux, Mac, Windows) and vice versa. Additionally, many Git-based
+           tools simply assume path names to be UTF-8 and will fail to display other encodings correctly.
+
+       •   Commit log messages are typically encoded in UTF-8, but other extended ASCII encodings are also supported. This
+           includes ISO-8859-x, CP125x and many others, but not UTF-16/32, EBCDIC and CJK multi-byte encodings (GBK, Shift-JIS,
+           Big5, EUC-x, CP9xx etc.).
+
+       Although we encourage that the commit log messages are encoded in UTF-8, both the core and Git Porcelain are designed not
+       to force UTF-8 on projects. If all participants of a particular project find it more convenient to use legacy encodings,
+       Git does not forbid it. However, there are a few things to keep in mind.
+
+        1. git commit and git commit-tree issues a warning if the commit log message given to it does not look like a valid UTF-8
+           string, unless you explicitly say your project uses a legacy encoding. The way to say this is to have
+           i18n.commitencoding in .git/config file, like this:
+
+               [i18n]
+                       commitEncoding = ISO-8859-1
+
+           Commit objects created with the above setting record the value of i18n.commitEncoding in its encoding header. This is
+           to help other people who look at them later. Lack of this header implies that the commit log message is encoded in
+           UTF-8.
+
+        2. git log, git show, git blame and friends look at the encoding header of a commit object, and try to re-code the log
+           message into UTF-8 unless otherwise specified. You can specify the desired output encoding with i18n.logOutputEncoding
+           in .git/config file, like this:
+
+               [i18n]
+                       logOutputEncoding = ISO-8859-1
+
+           If you do not have this configuration variable, the value of i18n.commitEncoding is used instead.
+
+       Note that we deliberately chose not to re-code the commit log message when a commit is made to force UTF-8 at the commit
+       object level, because re-coding to UTF-8 is not necessarily a reversible operation.
+
+ENVIRONMENT AND CONFIGURATION VARIABLES
+       The editor used to edit the commit log message will be chosen from the GIT_EDITOR environment variable, the core.editor
+       configuration variable, the VISUAL environment variable, or the EDITOR environment variable (in that order). See git-
+       var(1) for details.
+
+HOOKS
+       This command can run commit-msg, prepare-commit-msg, pre-commit, post-commit and post-rewrite hooks. See githooks(5) for
+       more information.
+
+FILES
+       $GIT_DIR/COMMIT_EDITMSG
+           This file contains the commit message of a commit in progress. If git commit exits due to an error before creating a
+           commit, any commit message that has been provided by the user (e.g., in an editor session) will be available in this
+           file, but will be overwritten by the next invocation of git commit.
+
+SEE ALSO
+       git-add(1), git-rm(1), git-mv(1), git-merge(1), git-commit-tree(1)
+
+GIT
+       Part of the git(1) suite
+
+Git 2.20.1                                                  04/07/2022                                              GIT-COMMIT(1)
+```
+
+### git-push
+
+```
+GIT-PUSH(1)                                                 Git Manual                                                GIT-PUSH(1)
+
+NAME
+       git-push - Update remote refs along with associated objects
+
+SYNOPSIS
+       git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run] [--receive-pack=<git-receive-pack>]
+                  [--repo=<repository>] [-f | --force] [-d | --delete] [--prune] [-v | --verbose]
+                  [-u | --set-upstream] [-o <string> | --push-option=<string>]
+                  [--[no-]signed|--signed=(true|false|if-asked)]
+                  [--force-with-lease[=<refname>[:<expect>]]]
+                  [--no-verify] [<repository> [<refspec>...]]
+
+DESCRIPTION
+       Updates remote refs using local refs, while sending objects necessary to complete the given refs.
+
+       You can make interesting things happen to a repository every time you push into it, by setting up hooks there. See
+       documentation for git-receive-pack(1).
+
+       When the command line does not specify where to push with the <repository> argument, branch.*.remote configuration for the
+       current branch is consulted to determine where to push. If the configuration is missing, it defaults to origin.
+
+       When the command line does not specify what to push with <refspec>... arguments or --all, --mirror, --tags options, the
+       command finds the default <refspec> by consulting remote.*.push configuration, and if it is not found, honors push.default
+       configuration to decide what to push (See git-config(1) for the meaning of push.default).
+
+       When neither the command-line nor the configuration specify what to push, the default behavior is used, which corresponds
+       to the simple value for push.default: the current branch is pushed to the corresponding upstream branch, but as a safety
+       measure, the push is aborted if the upstream branch does not have the same name as the local one.
+
+OPTIONS
+       <repository>
+           The "remote" repository that is destination of a push operation. This parameter can be either a URL (see the section
+           GIT URLS below) or the name of a remote (see the section REMOTES below).
+
+       <refspec>...
+           Specify what destination ref to update with what source object. The format of a <refspec> parameter is an optional
+           plus +, followed by the source object <src>, followed by a colon :, followed by the destination ref <dst>.
+
+           The <src> is often the name of the branch you would want to push, but it can be any arbitrary "SHA-1 expression", such
+           as master~4 or HEAD (see gitrevisions(7)).
+
+           The <dst> tells which ref on the remote side is updated with this push. Arbitrary expressions cannot be used here, an
+           actual ref must be named. If git push [<repository>] without any <refspec> argument is set to update some ref at the
+           destination with <src> with remote.<repository>.push configuration variable, :<dst> part can be omitted—such a push
+           will update a ref that <src> normally updates without any <refspec> on the command line. Otherwise, missing :<dst>
+           means to update the same ref as the <src>.
+
+           The object referenced by <src> is used to update the <dst> reference on the remote side. Whether this is allowed
+           depends on where in refs/* the <dst> reference lives as described in detail below, in those sections "update" means
+           any modifications except deletes, which as noted after the next few sections are treated differently.
+
+           The refs/heads/* namespace will only accept commit objects, and updates only if they can be fast-forwarded.
+
+           The refs/tags/* namespace will accept any kind of object (as commits, trees and blobs can be tagged), and any updates
+           to them will be rejected.
+
+           It’s possible to push any type of object to any namespace outside of refs/{tags,heads}/*. In the case of tags and
+           commits, these will be treated as if they were the commits inside refs/heads/* for the purposes of whether the update
+           is allowed.
+
+           I.e. a fast-forward of commits and tags outside refs/{tags,heads}/* is allowed, even in cases where what’s being
+           fast-forwarded is not a commit, but a tag object which happens to point to a new commit which is a fast-forward of the
+           commit the last tag (or commit) it’s replacing. Replacing a tag with an entirely different tag is also allowed, if it
+           points to the same commit, as well as pushing a peeled tag, i.e. pushing the commit that existing tag object points
+           to, or a new tag object which an existing commit points to.
+
+           Tree and blob objects outside of refs/{tags,heads}/* will be treated the same way as if they were inside refs/tags/*,
+           any update of them will be rejected.
+
+           All of the rules described above about what’s not allowed as an update can be overridden by adding an the optional
+           leading + to a refspec (or using --force command line option). The only exception to this is that no amount of forcing
+           will make the refs/heads/* namespace accept a non-commit object. Hooks and configuration can also override or amend
+           these rules, see e.g.  receive.denyNonFastForwards in git-config(1) and pre-receive and update in githooks(5).
+
+           Pushing an empty <src> allows you to delete the <dst> ref from the remote repository. Deletions are always accepted
+           without a leading + in the refspec (or --force), except when forbidden by configuration or hooks. See
+           receive.denyDeletes in git-config(1) and pre-receive and update in githooks(5).
+
+           The special refspec : (or +: to allow non-fast-forward updates) directs Git to push "matching" branches: for every
+           branch that exists on the local side, the remote side is updated if a branch of the same name already exists on the
+           remote side.
+
+           tag <tag> means the same as refs/tags/<tag>:refs/tags/<tag>.
+
+       --all
+           Push all branches (i.e. refs under refs/heads/); cannot be used with other <refspec>.
+
+       --prune
+           Remove remote branches that don’t have a local counterpart. For example a remote branch tmp will be removed if a local
+           branch with the same name doesn’t exist any more. This also respects refspecs, e.g.  git push --prune remote
+           refs/heads/*:refs/tmp/* would make sure that remote refs/tmp/foo will be removed if refs/heads/foo doesn’t exist.
+
+       --mirror
+           Instead of naming each ref to push, specifies that all refs under refs/ (which includes but is not limited to
+           refs/heads/, refs/remotes/, and refs/tags/) be mirrored to the remote repository. Newly created local refs will be
+           pushed to the remote end, locally updated refs will be force updated on the remote end, and deleted refs will be
+           removed from the remote end. This is the default if the configuration option remote.<remote>.mirror is set.
+
+       -n, --dry-run
+           Do everything except actually send the updates.
+
+       --porcelain
+           Produce machine-readable output. The output status line for each ref will be tab-separated and sent to stdout instead
+           of stderr. The full symbolic names of the refs will be given.
+
+       -d, --delete
+           All listed refs are deleted from the remote repository. This is the same as prefixing all refs with a colon.
+
+       --tags
+           All refs under refs/tags are pushed, in addition to refspecs explicitly listed on the command line.
+
+       --follow-tags
+           Push all the refs that would be pushed without this option, and also push annotated tags in refs/tags that are missing
+           from the remote but are pointing at commit-ish that are reachable from the refs being pushed. This can also be
+           specified with configuration variable push.followTags. For more information, see push.followTags in git-config(1).
+
+       --[no-]signed, --signed=(true|false|if-asked)
+           GPG-sign the push request to update refs on the receiving side, to allow it to be checked by the hooks and/or be
+           logged. If false or --no-signed, no signing will be attempted. If true or --signed, the push will fail if the server
+           does not support signed pushes. If set to if-asked, sign if and only if the server supports signed pushes. The push
+           will also fail if the actual call to gpg --sign fails. See git-receive-pack(1) for the details on the receiving end.
+
+       --[no-]atomic
+           Use an atomic transaction on the remote side if available. Either all refs are updated, or on error, no refs are
+           updated. If the server does not support atomic pushes the push will fail.
+
+       -o <option>, --push-option=<option>
+           Transmit the given string to the server, which passes them to the pre-receive as well as the post-receive hook. The
+           given string must not contain a NUL or LF character. When multiple --push-option=<option> are given, they are all sent
+           to the other side in the order listed on the command line. When no --push-option=<option> is given from the command
+           line, the values of configuration variable push.pushOption are used instead.
+
+       --receive-pack=<git-receive-pack>, --exec=<git-receive-pack>
+           Path to the git-receive-pack program on the remote end. Sometimes useful when pushing to a remote repository over ssh,
+           and you do not have the program in a directory on the default $PATH.
+
+       --[no-]force-with-lease, --force-with-lease=<refname>, --force-with-lease=<refname>:<expect>
+           Usually, "git push" refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it.
+
+           This option overrides this restriction if the current value of the remote ref is the expected value. "git push" fails
+           otherwise.
+
+           Imagine that you have to rebase what you have already published. You will have to bypass the "must fast-forward" rule
+           in order to replace the history you originally published with the rebased history. If somebody else built on top of
+           your original history while you are rebasing, the tip of the branch at the remote may advance with her commit, and
+           blindly pushing with --force will lose her work.
+
+           This option allows you to say that you expect the history you are updating is what you rebased and want to replace. If
+           the remote ref still points at the commit you specified, you can be sure that no other people did anything to the ref.
+           It is like taking a "lease" on the ref without explicitly locking it, and the remote ref is updated only if the
+           "lease" is still valid.
+
+           --force-with-lease alone, without specifying the details, will protect all remote refs that are going to be updated by
+           requiring their current value to be the same as the remote-tracking branch we have for them.
+
+           --force-with-lease=<refname>, without specifying the expected value, will protect the named ref (alone), if it is
+           going to be updated, by requiring its current value to be the same as the remote-tracking branch we have for it.
+
+           --force-with-lease=<refname>:<expect> will protect the named ref (alone), if it is going to be updated, by requiring
+           its current value to be the same as the specified value <expect> (which is allowed to be different from the
+           remote-tracking branch we have for the refname, or we do not even have to have such a remote-tracking branch when this
+           form is used). If <expect> is the empty string, then the named ref must not already exist.
+
+           Note that all forms other than --force-with-lease=<refname>:<expect> that specifies the expected current value of the
+           ref explicitly are still experimental and their semantics may change as we gain experience with this feature.
+
+           "--no-force-with-lease" will cancel all the previous --force-with-lease on the command line.
+
+           A general note on safety: supplying this option without an expected value, i.e. as --force-with-lease or
+           --force-with-lease=<refname> interacts very badly with anything that implicitly runs git fetch on the remote to be
+           pushed to in the background, e.g.  git fetch origin on your repository in a cronjob.
+
+           The protection it offers over --force is ensuring that subsequent changes your work wasn’t based on aren’t clobbered,
+           but this is trivially defeated if some background process is updating refs in the background. We don’t have anything
+           except the remote tracking info to go by as a heuristic for refs you’re expected to have seen & are willing to
+           clobber.
+
+           If your editor or some other system is running git fetch in the background for you a way to mitigate this is to simply
+           set up another remote:
+
+               git remote add origin-push $(git config remote.origin.url)
+               git fetch origin-push
+
+           Now when the background process runs git fetch origin the references on origin-push won’t be updated, and thus
+           commands like:
+
+               git push --force-with-lease origin-push
+
+           Will fail unless you manually run git fetch origin-push. This method is of course entirely defeated by something that
+           runs git fetch --all, in that case you’d need to either disable it or do something more tedious like:
+
+               git fetch              # update 'master' from remote
+               git tag base master    # mark our base point
+               git rebase -i master   # rewrite some commits
+               git push --force-with-lease=master:base master:master
+
+           I.e. create a base tag for versions of the upstream code that you’ve seen and are willing to overwrite, then rewrite
+           history, and finally force push changes to master if the remote version is still at base, regardless of what your
+           local remotes/origin/master has been updated to in the background.
+
+       -f, --force
+           Usually, the command refuses to update a remote ref that is not an ancestor of the local ref used to overwrite it.
+           Also, when --force-with-lease option is used, the command refuses to update a remote ref whose current value does not
+           match what is expected.
+
+           This flag disables these checks, and can cause the remote repository to lose commits; use it with care.
+
+           Note that --force applies to all the refs that are pushed, hence using it with push.default set to matching or with
+           multiple push destinations configured with remote.*.push may overwrite refs other than the current branch (including
+           local refs that are strictly behind their remote counterpart). To force a push to only one branch, use a + in front of
+           the refspec to push (e.g git push origin +master to force a push to the master branch). See the <refspec>...  section
+           above for details.
+
+       --repo=<repository>
+           This option is equivalent to the <repository> argument. If both are specified, the command-line argument takes
+           precedence.
+
+       -u, --set-upstream
+           For every branch that is up to date or successfully pushed, add upstream (tracking) reference, used by argument-less
+           git-pull(1) and other commands. For more information, see branch.<name>.merge in git-config(1).
+
+       --[no-]thin
+           These options are passed to git-send-pack(1). A thin transfer significantly reduces the amount of sent data when the
+           sender and receiver share many of the same objects in common. The default is --thin.
+
+       -q, --quiet
+           Suppress all output, including the listing of updated refs, unless an error occurs. Progress is not reported to the
+           standard error stream.
+
+       -v, --verbose
+           Run verbosely.
+
+       --progress
+           Progress status is reported on the standard error stream by default when it is attached to a terminal, unless -q is
+           specified. This flag forces progress status even if the standard error stream is not directed to a terminal.
+
+       --no-recurse-submodules, --recurse-submodules=check|on-demand|only|no
+           May be used to make sure all submodule commits used by the revisions to be pushed are available on a remote-tracking
+           branch. If check is used Git will verify that all submodule commits that changed in the revisions to be pushed are
+           available on at least one remote of the submodule. If any commits are missing the push will be aborted and exit with
+           non-zero status. If on-demand is used all submodules that changed in the revisions to be pushed will be pushed. If
+           on-demand was not able to push all necessary revisions it will also be aborted and exit with non-zero status. If only
+           is used all submodules will be recursively pushed while the superproject is left unpushed. A value of no or using
+           --no-recurse-submodules can be used to override the push.recurseSubmodules configuration variable when no submodule
+           recursion is required.
+
+       --[no-]verify
+           Toggle the pre-push hook (see githooks(5)). The default is --verify, giving the hook a chance to prevent the push.
+           With --no-verify, the hook is bypassed completely.
+
+       -4, --ipv4
+           Use IPv4 addresses only, ignoring IPv6 addresses.
+
+       -6, --ipv6
+           Use IPv6 addresses only, ignoring IPv4 addresses.
+
+GIT URLS
+       In general, URLs contain information about the transport protocol, the address of the remote server, and the path to the
+       repository. Depending on the transport protocol, some of this information may be absent.
+
+       Git supports ssh, git, http, and https protocols (in addition, ftp, and ftps can be used for fetching, but this is
+       inefficient and deprecated; do not use it).
+
+       The native transport (i.e. git:// URL) does no authentication and should be used with caution on unsecured networks.
+
+       The following syntaxes may be used with them:
+
+       •   ssh://[user@]host.xz[:port]/path/to/repo.git/
+
+       •   git://host.xz[:port]/path/to/repo.git/
+
+       •   http[s]://host.xz[:port]/path/to/repo.git/
+
+       •   ftp[s]://host.xz[:port]/path/to/repo.git/
+
+       An alternative scp-like syntax may also be used with the ssh protocol:
+
+       •   [user@]host.xz:path/to/repo.git/
+
+       This syntax is only recognized if there are no slashes before the first colon. This helps differentiate a local path that
+       contains a colon. For example the local path foo:bar could be specified as an absolute path or ./foo:bar to avoid being
+       misinterpreted as an ssh url.
+
+       The ssh and git protocols additionally support ~username expansion:
+
+       •   ssh://[user@]host.xz[:port]/~[user]/path/to/repo.git/
+
+       •   git://host.xz[:port]/~[user]/path/to/repo.git/
+
+       •   [user@]host.xz:/~[user]/path/to/repo.git/
+
+       For local repositories, also supported by Git natively, the following syntaxes may be used:
+
+       •   /path/to/repo.git/
+
+       •   file:///path/to/repo.git/
+
+       These two syntaxes are mostly equivalent, except when cloning, when the former implies --local option. See git-clone(1)
+       for details.
+
+       When Git doesn’t know how to handle a certain transport protocol, it attempts to use the remote-<transport> remote helper,
+       if one exists. To explicitly request a remote helper, the following syntax may be used:
+
+       •   <transport>::<address>
+
+       where <address> may be a path, a server and path, or an arbitrary URL-like string recognized by the specific remote helper
+       being invoked. See gitremote-helpers(1) for details.
+
+       If there are a large number of similarly-named remote repositories and you want to use a different format for them (such
+       that the URLs you use will be rewritten into URLs that work), you can create a configuration section of the form:
+
+                   [url "<actual url base>"]
+                           insteadOf = <other url base>
+
+       For example, with this:
+
+                   [url "git://git.host.xz/"]
+                           insteadOf = host.xz:/path/to/
+                           insteadOf = work:
+
+       a URL like "work:repo.git" or like "host.xz:/path/to/repo.git" will be rewritten in any context that takes a URL to be
+       "git://git.host.xz/repo.git".
+
+       If you want to rewrite URLs for push only, you can create a configuration section of the form:
+
+                   [url "<actual url base>"]
+                           pushInsteadOf = <other url base>
+
+       For example, with this:
+
+                   [url "ssh://example.org/"]
+                           pushInsteadOf = git://example.org/
+
+       a URL like "git://example.org/path/to/repo.git" will be rewritten to "ssh://example.org/path/to/repo.git" for pushes, but
+       pulls will still use the original URL.
+
+REMOTES
+       The name of one of the following can be used instead of a URL as <repository> argument:
+
+       •   a remote in the Git configuration file: $GIT_DIR/config,
+
+       •   a file in the $GIT_DIR/remotes directory, or
+
+       •   a file in the $GIT_DIR/branches directory.
+
+       All of these also allow you to omit the refspec from the command line because they each contain a refspec which git will
+       use by default.
+
+   Named remote in configuration file
+       You can choose to provide the name of a remote which you had previously configured using git-remote(1), git-config(1) or
+       even by a manual edit to the $GIT_DIR/config file. The URL of this remote will be used to access the repository. The
+       refspec of this remote will be used by default when you do not provide a refspec on the command line. The entry in the
+       config file would appear like this:
+
+                   [remote "<name>"]
+                           url = <url>
+                           pushurl = <pushurl>
+                           push = <refspec>
+                           fetch = <refspec>
+
+       The <pushurl> is used for pushes only. It is optional and defaults to <url>.
+
+   Named file in $GIT_DIR/remotes
+       You can choose to provide the name of a file in $GIT_DIR/remotes. The URL in this file will be used to access the
+       repository. The refspec in this file will be used as default when you do not provide a refspec on the command line. This
+       file should have the following format:
+
+                   URL: one of the above URL format
+                   Push: <refspec>
+                   Pull: <refspec>
+
+       Push: lines are used by git push and Pull: lines are used by git pull and git fetch. Multiple Push: and Pull: lines may be
+       specified for additional branch mappings.
+
+   Named file in $GIT_DIR/branches
+       You can choose to provide the name of a file in $GIT_DIR/branches. The URL in this file will be used to access the
+       repository. This file should have the following format:
+
+                   <url>#<head>
+
+       <url> is required; #<head> is optional.
+
+       Depending on the operation, git will use one of the following refspecs, if you don’t provide one on the command line.
+       <branch> is the name of this file in $GIT_DIR/branches and <head> defaults to master.
+
+       git fetch uses:
+
+                   refs/heads/<head>:refs/heads/<branch>
+
+       git push uses:
+
+                   HEAD:refs/heads/<head>
+
+OUTPUT
+       The output of "git push" depends on the transport method used; this section describes the output when pushing over the Git
+       protocol (either locally or via ssh).
+
+       The status of the push is output in tabular form, with each line representing the status of a single ref. Each line is of
+       the form:
+
+            <flag> <summary> <from> -> <to> (<reason>)
+
+       If --porcelain is used, then each line of the output is of the form:
+
+            <flag> \t <from>:<to> \t <summary> (<reason>)
+
+       The status of up-to-date refs is shown only if --porcelain or --verbose option is used.
+
+       flag
+           A single character indicating the status of the ref:
+
+           (space)
+               for a successfully pushed fast-forward;
+
+           +
+               for a successful forced update;
+
+           -
+               for a successfully deleted ref;
+
+           *
+               for a successfully pushed new ref;
+
+           !
+               for a ref that was rejected or failed to push; and
+
+           =
+               for a ref that was up to date and did not need pushing.
+
+       summary
+           For a successfully pushed ref, the summary shows the old and new values of the ref in a form suitable for using as an
+           argument to git log (this is <old>..<new> in most cases, and <old>...<new> for forced non-fast-forward updates).
+
+           For a failed update, more details are given:
+
+           rejected
+               Git did not try to send the ref at all, typically because it is not a fast-forward and you did not force the
+               update.
+
+           remote rejected
+               The remote end refused the update. Usually caused by a hook on the remote side, or because the remote repository
+               has one of the following safety options in effect: receive.denyCurrentBranch (for pushes to the checked out
+               branch), receive.denyNonFastForwards (for forced non-fast-forward updates), receive.denyDeletes or
+               receive.denyDeleteCurrent. See git-config(1).
+
+           remote failure
+               The remote end did not report the successful update of the ref, perhaps because of a temporary error on the remote
+               side, a break in the network connection, or other transient error.
+
+       from
+           The name of the local ref being pushed, minus its refs/<type>/ prefix. In the case of deletion, the name of the local
+           ref is omitted.
+
+       to
+           The name of the remote ref being updated, minus its refs/<type>/ prefix.
+
+       reason
+           A human-readable explanation. In the case of successfully pushed refs, no explanation is needed. For a failed ref, the
+           reason for failure is described.
+
+NOTE ABOUT FAST-FORWARDS
+       When an update changes a branch (or more in general, a ref) that used to point at commit A to point at another commit B,
+       it is called a fast-forward update if and only if B is a descendant of A.
+
+       In a fast-forward update from A to B, the set of commits that the original commit A built on top of is a subset of the
+       commits the new commit B builds on top of. Hence, it does not lose any history.
+
+       In contrast, a non-fast-forward update will lose history. For example, suppose you and somebody else started at the same
+       commit X, and you built a history leading to commit B while the other person built a history leading to commit A. The
+       history looks like this:
+
+                 B
+                /
+            ---X---A
+
+       Further suppose that the other person already pushed changes leading to A back to the original repository from which you
+       two obtained the original commit X.
+
+       The push done by the other person updated the branch that used to point at commit X to point at commit A. It is a
+       fast-forward.
+
+       But if you try to push, you will attempt to update the branch (that now points at A) with commit B. This does not
+       fast-forward. If you did so, the changes introduced by commit A will be lost, because everybody will now start building on
+       top of B.
+
+       The command by default does not allow an update that is not a fast-forward to prevent such loss of history.
+
+       If you do not want to lose your work (history from X to B) or the work by the other person (history from X to A), you
+       would need to first fetch the history from the repository, create a history that contains changes done by both parties,
+       and push the result back.
+
+       You can perform "git pull", resolve potential conflicts, and "git push" the result. A "git pull" will create a merge
+       commit C between commits A and B.
+
+                 B---C
+                /   /
+            ---X---A
+
+       Updating A with the resulting merge commit will fast-forward and your push will be accepted.
+
+       Alternatively, you can rebase your change between X and B on top of A, with "git pull --rebase", and push the result back.
+       The rebase will create a new commit D that builds the change between X and B on top of A.
+
+                 B   D
+                /   /
+            ---X---A
+
+       Again, updating A with this commit will fast-forward and your push will be accepted.
+
+       There is another common situation where you may encounter non-fast-forward rejection when you try to push, and it is
+       possible even when you are pushing into a repository nobody else pushes into. After you push commit A yourself (in the
+       first picture in this section), replace it with "git commit --amend" to produce commit B, and you try to push it out,
+       because forgot that you have pushed A out already. In such a case, and only if you are certain that nobody in the meantime
+       fetched your earlier commit A (and started building on top of it), you can run "git push --force" to overwrite it. In
+       other words, "git push --force" is a method reserved for a case where you do mean to lose history.
+
+EXAMPLES
+       git push
+           Works like git push <remote>, where <remote> is the current branch’s remote (or origin, if no remote is configured for
+           the current branch).
+
+       git push origin
+           Without additional configuration, pushes the current branch to the configured upstream (remote.origin.merge
+           configuration variable) if it has the same name as the current branch, and errors out without pushing otherwise.
+
+           The default behavior of this command when no <refspec> is given can be configured by setting the push option of the
+           remote, or the push.default configuration variable.
+
+           For example, to default to pushing only the current branch to origin use git config remote.origin.push HEAD. Any valid
+           <refspec> (like the ones in the examples below) can be configured as the default for git push origin.
+
+       git push origin :
+           Push "matching" branches to origin. See <refspec> in the OPTIONS section above for a description of "matching"
+           branches.
+
+       git push origin master
+           Find a ref that matches master in the source repository (most likely, it would find refs/heads/master), and update the
+           same ref (e.g.  refs/heads/master) in origin repository with it. If master did not exist remotely, it would be
+           created.
+
+       git push origin HEAD
+           A handy way to push the current branch to the same name on the remote.
+
+       git push mothership master:satellite/master dev:satellite/dev
+           Use the source ref that matches master (e.g.  refs/heads/master) to update the ref that matches satellite/master (most
+           probably refs/remotes/satellite/master) in the mothership repository; do the same for dev and satellite/dev.
+
+           This is to emulate git fetch run on the mothership using git push that is run in the opposite direction in order to
+           integrate the work done on satellite, and is often necessary when you can only make connection in one way (i.e.
+           satellite can ssh into mothership but mothership cannot initiate connection to satellite because the latter is behind
+           a firewall or does not run sshd).
+
+           After running this git push on the satellite machine, you would ssh into the mothership and run git merge there to
+           complete the emulation of git pull that were run on mothership to pull changes made on satellite.
+
+       git push origin HEAD:master
+           Push the current branch to the remote ref matching master in the origin repository. This form is convenient to push
+           the current branch without thinking about its local name.
+
+       git push origin master:refs/heads/experimental
+           Create the branch experimental in the origin repository by copying the current master branch. This form is only needed
+           to create a new branch or tag in the remote repository when the local name and the remote name are different;
+           otherwise, the ref name on its own will work.
+
+       git push origin :experimental
+           Find a ref that matches experimental in the origin repository (e.g.  refs/heads/experimental), and delete it.
+
+       git push origin +dev:master
+           Update the origin repository’s master branch with the dev branch, allowing non-fast-forward updates.  This can leave
+           unreferenced commits dangling in the origin repository.  Consider the following situation, where a fast-forward is not
+           possible:
+
+                           o---o---o---A---B  origin/master
+                                    \
+                                     X---Y---Z  dev
+
+           The above command would change the origin repository to
+
+                                     A---B  (unnamed branch)
+                                    /
+                           o---o---o---X---Y---Z  master
+
+           Commits A and B would no longer belong to a branch with a symbolic name, and so would be unreachable. As such, these
+           commits would be removed by a git gc command on the origin repository.
+
+SECURITY
+       The fetch and push protocols are not designed to prevent one side from stealing data from the other repository that was
+       not intended to be shared. If you have private data that you need to protect from a malicious peer, your best option is to
+       store it in another repository. This applies to both clients and servers. In particular, namespaces on a server are not
+       effective for read access control; you should only grant read access to a namespace to clients that you would trust with
+       read access to the entire repository.
+
+       The known attack vectors are as follows:
+
+        1. The victim sends "have" lines advertising the IDs of objects it has that are not explicitly intended to be shared but
+           can be used to optimize the transfer if the peer also has them. The attacker chooses an object ID X to steal and sends
+           a ref to X, but isn’t required to send the content of X because the victim already has it. Now the victim believes
+           that the attacker has X, and it sends the content of X back to the attacker later. (This attack is most
+           straightforward for a client to perform on a server, by creating a ref to X in the namespace the client has access to
+           and then fetching it. The most likely way for a server to perform it on a client is to "merge" X into a public branch
+           and hope that the user does additional work on this branch and pushes it back to the server without noticing the
+           merge.)
+
+        2. As in #1, the attacker chooses an object ID X to steal. The victim sends an object Y that the attacker already has,
+           and the attacker falsely claims to have X and not Y, so the victim sends Y as a delta against X. The delta reveals
+           regions of X that are similar to Y to the attacker.
+
+GIT
+       Part of the git(1) suite
+
+Git 2.20.1                                                  04/07/2022                                                GIT-PUSH(1)
+```
+
+### git
+
+```
+GIT(1)                                                      Git Manual                                                     GIT(1)
+
+NAME
+       git - the stupid content tracker
+
+SYNOPSIS
+       git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p|--paginate|-P|--no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--super-prefix=<path>]
+           <command> [<args>]
+
+DESCRIPTION
+       Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both
+       high-level operations and full access to internals.
+
+       See gittutorial(7) to get started, then see giteveryday(7) for a useful minimum set of commands. The Git User’s Manual[1]
+       has a more in-depth introduction.
+
+       After you mastered the basic concepts, you can come back to this page to learn what commands Git offers. You can learn
+       more about individual Git commands with "git help command". gitcli(7) manual page gives you an overview of the
+       command-line command syntax.
+
+       A formatted and hyperlinked copy of the latest Git documentation can be viewed at https://git.github.io/htmldocs/git.html.
+
+OPTIONS
+       --version
+           Prints the Git suite version that the git program came from.
+
+       --help
+           Prints the synopsis and a list of the most commonly used commands. If the option --all or -a is given then all
+           available commands are printed. If a Git command is named this option will bring up the manual page for that command.
+
+           Other options are available to control how the manual page is displayed. See git-help(1) for more information, because
+           git --help ...  is converted internally into git help ....
+
+       -C <path>
+           Run as if git was started in <path> instead of the current working directory. When multiple -C options are given, each
+           subsequent non-absolute -C <path> is interpreted relative to the preceding -C <path>.
+
+           This option affects options that expect path name like --git-dir and --work-tree in that their interpretations of the
+           path names would be made relative to the working directory caused by the -C option. For example the following
+           invocations are equivalent:
+
+               git --git-dir=a.git --work-tree=b -C c status
+               git --git-dir=c/a.git --work-tree=c/b status
+
+       -c <name>=<value>
+           Pass a configuration parameter to the command. The value given will override values from configuration files. The
+           <name> is expected in the same format as listed by git config (subkeys separated by dots).
+
+           Note that omitting the = in git -c foo.bar ...  is allowed and sets foo.bar to the boolean true value (just like
+           [foo]bar would in a config file). Including the equals but with an empty value (like git -c foo.bar= ...) sets foo.bar
+           to the empty string which git config --type=bool will convert to false.
+
+       --exec-path[=<path>]
+           Path to wherever your core Git programs are installed. This can also be controlled by setting the GIT_EXEC_PATH
+           environment variable. If no path is given, git will print the current setting and then exit.
+
+       --html-path
+           Print the path, without trailing slash, where Git’s HTML documentation is installed and exit.
+
+       --man-path
+           Print the manpath (see man(1)) for the man pages for this version of Git and exit.
+
+       --info-path
+           Print the path where the Info files documenting this version of Git are installed and exit.
+
+       -p, --paginate
+           Pipe all output into less (or if set, $PAGER) if standard output is a terminal. This overrides the pager.<cmd>
+           configuration options (see the "Configuration Mechanism" section below).
+
+       -P, --no-pager
+           Do not pipe Git output into a pager.
+
+       --git-dir=<path>
+           Set the path to the repository. This can also be controlled by setting the GIT_DIR environment variable. It can be an
+           absolute path or relative path to current working directory.
+
+       --work-tree=<path>
+           Set the path to the working tree. It can be an absolute path or a path relative to the current working directory. This
+           can also be controlled by setting the GIT_WORK_TREE environment variable and the core.worktree configuration variable
+           (see core.worktree in git-config(1) for a more detailed discussion).
+
+       --namespace=<path>
+           Set the Git namespace. See gitnamespaces(7) for more details. Equivalent to setting the GIT_NAMESPACE environment
+           variable.
+
+       --super-prefix=<path>
+           Currently for internal use only. Set a prefix which gives a path from above a repository down to its root. One use is
+           to give submodules context about the superproject that invoked it.
+
+       --bare
+           Treat the repository as a bare repository. If GIT_DIR environment is not set, it is set to the current working
+           directory.
+
+       --no-replace-objects
+           Do not use replacement refs to replace Git objects. See git-replace(1) for more information.
+
+       --literal-pathspecs
+           Treat pathspecs literally (i.e. no globbing, no pathspec magic). This is equivalent to setting the
+           GIT_LITERAL_PATHSPECS environment variable to 1.
+
+       --glob-pathspecs
+           Add "glob" magic to all pathspec. This is equivalent to setting the GIT_GLOB_PATHSPECS environment variable to 1.
+           Disabling globbing on individual pathspecs can be done using pathspec magic ":(literal)"
+
+       --noglob-pathspecs
+           Add "literal" magic to all pathspec. This is equivalent to setting the GIT_NOGLOB_PATHSPECS environment variable to 1.
+           Enabling globbing on individual pathspecs can be done using pathspec magic ":(glob)"
+
+       --icase-pathspecs
+           Add "icase" magic to all pathspec. This is equivalent to setting the GIT_ICASE_PATHSPECS environment variable to 1.
+
+       --no-optional-locks
+           Do not perform optional operations that require locks. This is equivalent to setting the GIT_OPTIONAL_LOCKS to 0.
+
+       --list-cmds=group[,group...]
+           List commands by group. This is an internal/experimental option and may change or be removed in the future. Supported
+           groups are: builtins, parseopt (builtin commands that use parse-options), main (all commands in libexec directory),
+           others (all other commands in $PATH that have git- prefix), list-<category> (see categories in command-list.txt),
+           nohelpers (exclude helper commands), alias and config (retrieve command list from config variable completion.commands)
+
+GIT COMMANDS
+       We divide Git into high level ("porcelain") commands and low level ("plumbing") commands.
+
+HIGH-LEVEL COMMANDS (PORCELAIN)
+       We separate the porcelain commands into the main commands and some ancillary user utilities.
+
+   Main porcelain commands
+       git-add(1)
+           Add file contents to the index.
+
+       git-am(1)
+           Apply a series of patches from a mailbox.
+
+       git-archive(1)
+           Create an archive of files from a named tree.
+
+       git-bisect(1)
+           Use binary search to find the commit that introduced a bug.
+
+       git-branch(1)
+           List, create, or delete branches.
+
+       git-bundle(1)
+           Move objects and refs by archive.
+
+       git-checkout(1)
+           Switch branches or restore working tree files.
+
+       git-cherry-pick(1)
+           Apply the changes introduced by some existing commits.
+
+       git-citool(1)
+           Graphical alternative to git-commit.
+
+       git-clean(1)
+           Remove untracked files from the working tree.
+
+       git-clone(1)
+           Clone a repository into a new directory.
+
+       git-commit(1)
+           Record changes to the repository.
+
+       git-describe(1)
+           Give an object a human readable name based on an available ref.
+
+       git-diff(1)
+           Show changes between commits, commit and working tree, etc.
+
+       git-fetch(1)
+           Download objects and refs from another repository.
+
+       git-format-patch(1)
+           Prepare patches for e-mail submission.
+
+       git-gc(1)
+           Cleanup unnecessary files and optimize the local repository.
+
+       git-grep(1)
+           Print lines matching a pattern.
+
+       git-gui(1)
+           A portable graphical interface to Git.
+
+       git-init(1)
+           Create an empty Git repository or reinitialize an existing one.
+
+       git-log(1)
+           Show commit logs.
+
+       git-merge(1)
+           Join two or more development histories together.
+
+       git-mv(1)
+           Move or rename a file, a directory, or a symlink.
+
+       git-notes(1)
+           Add or inspect object notes.
+
+       git-pull(1)
+           Fetch from and integrate with another repository or a local branch.
+
+       git-push(1)
+           Update remote refs along with associated objects.
+
+       git-range-diff(1)
+           Compare two commit ranges (e.g. two versions of a branch).
+
+       git-rebase(1)
+           Reapply commits on top of another base tip.
+
+       git-reset(1)
+           Reset current HEAD to the specified state.
+
+       git-revert(1)
+           Revert some existing commits.
+
+       git-rm(1)
+           Remove files from the working tree and from the index.
+
+       git-shortlog(1)
+           Summarize git log output.
+
+       git-show(1)
+           Show various types of objects.
+
+       git-stash(1)
+           Stash the changes in a dirty working directory away.
+
+       git-status(1)
+           Show the working tree status.
+
+       git-submodule(1)
+           Initialize, update or inspect submodules.
+
+       git-tag(1)
+           Create, list, delete or verify a tag object signed with GPG.
+
+       git-worktree(1)
+           Manage multiple working trees.
+
+       gitk(1)
+           The Git repository browser.
+
+   Ancillary Commands
+       Manipulators:
+
+       git-config(1)
+           Get and set repository or global options.
+
+       git-fast-export(1)
+           Git data exporter.
+
+       git-fast-import(1)
+           Backend for fast Git data importers.
+
+       git-filter-branch(1)
+           Rewrite branches.
+
+       git-mergetool(1)
+           Run merge conflict resolution tools to resolve merge conflicts.
+
+       git-pack-refs(1)
+           Pack heads and tags for efficient repository access.
+
+       git-prune(1)
+           Prune all unreachable objects from the object database.
+
+       git-reflog(1)
+           Manage reflog information.
+
+       git-remote(1)
+           Manage set of tracked repositories.
+
+       git-repack(1)
+           Pack unpacked objects in a repository.
+
+       git-replace(1)
+           Create, list, delete refs to replace objects.
+
+       Interrogators:
+
+       git-annotate(1)
+           Annotate file lines with commit information.
+
+       git-blame(1)
+           Show what revision and author last modified each line of a file.
+
+       git-count-objects(1)
+           Count unpacked number of objects and their disk consumption.
+
+       git-difftool(1)
+           Show changes using common diff tools.
+
+       git-fsck(1)
+           Verifies the connectivity and validity of the objects in the database.
+
+       git-help(1)
+           Display help information about Git.
+
+       git-instaweb(1)
+           Instantly browse your working repository in gitweb.
+
+       git-merge-tree(1)
+           Show three-way merge without touching index.
+
+       git-rerere(1)
+           Reuse recorded resolution of conflicted merges.
+
+       git-show-branch(1)
+           Show branches and their commits.
+
+       git-verify-commit(1)
+           Check the GPG signature of commits.
+
+       git-verify-tag(1)
+           Check the GPG signature of tags.
+
+       git-whatchanged(1)
+           Show logs with difference each commit introduces.
+
+       gitweb(1)
+           Git web interface (web frontend to Git repositories).
+
+   Interacting with Others
+       These commands are to interact with foreign SCM and with other people via patch over e-mail.
+
+       git-archimport(1)
+           Import a GNU Arch repository into Git.
+
+       git-cvsexportcommit(1)
+           Export a single commit to a CVS checkout.
+
+       git-cvsimport(1)
+           Salvage your data out of another SCM people love to hate.
+
+       git-cvsserver(1)
+           A CVS server emulator for Git.
+
+       git-imap-send(1)
+           Send a collection of patches from stdin to an IMAP folder.
+
+       git-p4(1)
+           Import from and submit to Perforce repositories.
+
+       git-quiltimport(1)
+           Applies a quilt patchset onto the current branch.
+
+       git-request-pull(1)
+           Generates a summary of pending changes.
+
+       git-send-email(1)
+           Send a collection of patches as emails.
+
+       git-svn(1)
+           Bidirectional operation between a Subversion repository and Git.
+
+LOW-LEVEL COMMANDS (PLUMBING)
+       Although Git includes its own porcelain layer, its low-level commands are sufficient to support development of alternative
+       porcelains. Developers of such porcelains might start by reading about git-update-index(1) and git-read-tree(1).
+
+       The interface (input, output, set of options and the semantics) to these low-level commands are meant to be a lot more
+       stable than Porcelain level commands, because these commands are primarily for scripted use. The interface to Porcelain
+       commands on the other hand are subject to change in order to improve the end user experience.
+
+       The following description divides the low-level commands into commands that manipulate objects (in the repository, index,
+       and working tree), commands that interrogate and compare objects, and commands that move objects and references between
+       repositories.
+
+   Manipulation commands
+       git-apply(1)
+           Apply a patch to files and/or to the index.
+
+       git-checkout-index(1)
+           Copy files from the index to the working tree.
+
+       git-commit-graph(1)
+           Write and verify Git commit-graph files.
+
+       git-commit-tree(1)
+           Create a new commit object.
+
+       git-hash-object(1)
+           Compute object ID and optionally creates a blob from a file.
+
+       git-index-pack(1)
+           Build pack index file for an existing packed archive.
+
+       git-merge-file(1)
+           Run a three-way file merge.
+
+       git-merge-index(1)
+           Run a merge for files needing merging.
+
+       git-mktag(1)
+           Creates a tag object.
+
+       git-mktree(1)
+           Build a tree-object from ls-tree formatted text.
+
+       git-multi-pack-index(1)
+           Write and verify multi-pack-indexes.
+
+       git-pack-objects(1)
+           Create a packed archive of objects.
+
+       git-prune-packed(1)
+           Remove extra objects that are already in pack files.
+
+       git-read-tree(1)
+           Reads tree information into the index.
+
+       git-symbolic-ref(1)
+           Read, modify and delete symbolic refs.
+
+       git-unpack-objects(1)
+           Unpack objects from a packed archive.
+
+       git-update-index(1)
+           Register file contents in the working tree to the index.
+
+       git-update-ref(1)
+           Update the object name stored in a ref safely.
+
+       git-write-tree(1)
+           Create a tree object from the current index.
+
+   Interrogation commands
+       git-cat-file(1)
+           Provide content or type and size information for repository objects.
+
+       git-cherry(1)
+           Find commits yet to be applied to upstream.
+
+       git-diff-files(1)
+           Compares files in the working tree and the index.
+
+       git-diff-index(1)
+           Compare a tree to the working tree or index.
+
+       git-diff-tree(1)
+           Compares the content and mode of blobs found via two tree objects.
+
+       git-for-each-ref(1)
+           Output information on each ref.
+
+       git-get-tar-commit-id(1)
+           Extract commit ID from an archive created using git-archive.
+
+       git-ls-files(1)
+           Show information about files in the index and the working tree.
+
+       git-ls-remote(1)
+           List references in a remote repository.
+
+       git-ls-tree(1)
+           List the contents of a tree object.
+
+       git-merge-base(1)
+           Find as good common ancestors as possible for a merge.
+
+       git-name-rev(1)
+           Find symbolic names for given revs.
+
+       git-pack-redundant(1)
+           Find redundant pack files.
+
+       git-rev-list(1)
+           Lists commit objects in reverse chronological order.
+
+       git-rev-parse(1)
+           Pick out and massage parameters.
+
+       git-show-index(1)
+           Show packed archive index.
+
+       git-show-ref(1)
+           List references in a local repository.
+
+       git-unpack-file(1)
+           Creates a temporary file with a blob’s contents.
+
+       git-var(1)
+           Show a Git logical variable.
+
+       git-verify-pack(1)
+           Validate packed Git archive files.
+
+       In general, the interrogate commands do not touch the files in the working tree.
+
+   Synching repositories
+       git-daemon(1)
+           A really simple server for Git repositories.
+
+       git-fetch-pack(1)
+           Receive missing objects from another repository.
+
+       git-http-backend(1)
+           Server side implementation of Git over HTTP.
+
+       git-send-pack(1)
+           Push objects over Git protocol to another repository.
+
+       git-update-server-info(1)
+           Update auxiliary info file to help dumb servers.
+
+       The following are helper commands used by the above; end users typically do not use them directly.
+
+       git-http-fetch(1)
+           Download from a remote Git repository via HTTP.
+
+       git-http-push(1)
+           Push objects over HTTP/DAV to another repository.
+
+       git-parse-remote(1)
+           Routines to help parsing remote repository access parameters.
+
+       git-receive-pack(1)
+           Receive what is pushed into the repository.
+
+       git-shell(1)
+           Restricted login shell for Git-only SSH access.
+
+       git-upload-archive(1)
+           Send archive back to git-archive.
+
+       git-upload-pack(1)
+           Send objects packed back to git-fetch-pack.
+
+   Internal helper commands
+       These are internal helper commands used by other commands; end users typically do not use them directly.
+
+       git-check-attr(1)
+           Display gitattributes information.
+
+       git-check-ignore(1)
+           Debug gitignore / exclude files.
+
+       git-check-mailmap(1)
+           Show canonical names and email addresses of contacts.
+
+       git-check-ref-format(1)
+           Ensures that a reference name is well formed.
+
+       git-column(1)
+           Display data in columns.
+
+       git-credential(1)
+           Retrieve and store user credentials.
+
+       git-credential-cache(1)
+           Helper to temporarily store passwords in memory.
+
+       git-credential-store(1)
+           Helper to store credentials on disk.
+
+       git-fmt-merge-msg(1)
+           Produce a merge commit message.
+
+       git-interpret-trailers(1)
+           add or parse structured information in commit messages.
+
+       git-mailinfo(1)
+           Extracts patch and authorship from a single e-mail message.
+
+       git-mailsplit(1)
+           Simple UNIX mbox splitter program.
+
+       git-merge-one-file(1)
+           The standard helper program to use with git-merge-index.
+
+       git-patch-id(1)
+           Compute unique ID for a patch.
+
+       git-sh-i18n(1)
+           Git’s i18n setup code for shell scripts.
+
+       git-sh-setup(1)
+           Common Git shell script setup code.
+
+       git-stripspace(1)
+           Remove unnecessary whitespace.
+
+CONFIGURATION MECHANISM
+       Git uses a simple text format to store customizations that are per repository and are per user. Such a configuration file
+       may look like this:
+
+           #
+           # A '#' or ';' character indicates a comment.
+           #
+
+           ; core variables
+           [core]
+                   ; Don't trust file modes
+                   filemode = false
+
+           ; user identity
+           [user]
+                   name = "Junio C Hamano"
+                   email = "gitster@pobox.com"
+
+       Various commands read from the configuration file and adjust their operation accordingly. See git-config(1) for a list and
+       more details about the configuration mechanism.
+
+IDENTIFIER TERMINOLOGY
+       <object>
+           Indicates the object name for any type of object.
+
+       <blob>
+           Indicates a blob object name.
+
+       <tree>
+           Indicates a tree object name.
+
+       <commit>
+           Indicates a commit object name.
+
+       <tree-ish>
+           Indicates a tree, commit or tag object name. A command that takes a <tree-ish> argument ultimately wants to operate on
+           a <tree> object but automatically dereferences <commit> and <tag> objects that point at a <tree>.
+
+       <commit-ish>
+           Indicates a commit or tag object name. A command that takes a <commit-ish> argument ultimately wants to operate on a
+           <commit> object but automatically dereferences <tag> objects that point at a <commit>.
+
+       <type>
+           Indicates that an object type is required. Currently one of: blob, tree, commit, or tag.
+
+       <file>
+           Indicates a filename - almost always relative to the root of the tree structure GIT_INDEX_FILE describes.
+
+SYMBOLIC IDENTIFIERS
+       Any Git command accepting any <object> can also use the following symbolic notation:
+
+       HEAD
+           indicates the head of the current branch.
+
+       <tag>
+           a valid tag name (i.e. a refs/tags/<tag> reference).
+
+       <head>
+           a valid head name (i.e. a refs/heads/<head> reference).
+
+       For a more complete list of ways to spell object names, see "SPECIFYING REVISIONS" section in gitrevisions(7).
+
+FILE/DIRECTORY STRUCTURE
+       Please see the gitrepository-layout(5) document.
+
+       Read githooks(5) for more details about each hook.
+
+       Higher level SCMs may provide and manage additional information in the $GIT_DIR.
+
+TERMINOLOGY
+       Please see gitglossary(7).
+
+ENVIRONMENT VARIABLES
+       Various Git commands use the following environment variables:
+
+   The Git Repository
+       These environment variables apply to all core Git commands. Nb: it is worth noting that they may be used/overridden by
+       SCMS sitting above Git so take care if using a foreign front-end.
+
+       GIT_INDEX_FILE
+           This environment allows the specification of an alternate index file. If not specified, the default of $GIT_DIR/index
+           is used.
+
+       GIT_INDEX_VERSION
+           This environment variable allows the specification of an index version for new repositories. It won’t affect existing
+           index files. By default index file version 2 or 3 is used. See git-update-index(1) for more information.
+
+       GIT_OBJECT_DIRECTORY
+           If the object storage directory is specified via this environment variable then the sha1 directories are created
+           underneath - otherwise the default $GIT_DIR/objects directory is used.
+
+       GIT_ALTERNATE_OBJECT_DIRECTORIES
+           Due to the immutable nature of Git objects, old objects can be archived into shared, read-only directories. This
+           variable specifies a ":" separated (on Windows ";" separated) list of Git object directories which can be used to
+           search for Git objects. New objects will not be written to these directories.
+
+           Entries that begin with " (double-quote) will be interpreted as C-style quoted paths, removing leading and trailing
+           double-quotes and respecting backslash escapes. E.g., the value "path-with-\"-and-:-in-it":vanilla-path has two paths:
+           path-with-"-and-:-in-it and vanilla-path.
+
+       GIT_DIR
+           If the GIT_DIR environment variable is set then it specifies a path to use instead of the default .git for the base of
+           the repository. The --git-dir command-line option also sets this value.
+
+       GIT_WORK_TREE
+           Set the path to the root of the working tree. This can also be controlled by the --work-tree command-line option and
+           the core.worktree configuration variable.
+
+       GIT_NAMESPACE
+           Set the Git namespace; see gitnamespaces(7) for details. The --namespace command-line option also sets this value.
+
+       GIT_CEILING_DIRECTORIES
+           This should be a colon-separated list of absolute paths. If set, it is a list of directories that Git should not chdir
+           up into while looking for a repository directory (useful for excluding slow-loading network directories). It will not
+           exclude the current working directory or a GIT_DIR set on the command line or in the environment. Normally, Git has to
+           read the entries in this list and resolve any symlink that might be present in order to compare them with the current
+           directory. However, if even this access is slow, you can add an empty entry to the list to tell Git that the
+           subsequent entries are not symlinks and needn’t be resolved; e.g.,
+           GIT_CEILING_DIRECTORIES=/maybe/symlink::/very/slow/non/symlink.
+
+       GIT_DISCOVERY_ACROSS_FILESYSTEM
+           When run in a directory that does not have ".git" repository directory, Git tries to find such a directory in the
+           parent directories to find the top of the working tree, but by default it does not cross filesystem boundaries. This
+           environment variable can be set to true to tell Git not to stop at filesystem boundaries. Like
+           GIT_CEILING_DIRECTORIES, this will not affect an explicit repository directory set via GIT_DIR or on the command line.
+
+       GIT_COMMON_DIR
+           If this variable is set to a path, non-worktree files that are normally in $GIT_DIR will be taken from this path
+           instead. Worktree-specific files such as HEAD or index are taken from $GIT_DIR. See gitrepository-layout(5) and git-
+           worktree(1) for details. This variable has lower precedence than other path variables such as GIT_INDEX_FILE,
+           GIT_OBJECT_DIRECTORY...
+
+   Git Commits
+       GIT_AUTHOR_NAME, GIT_AUTHOR_EMAIL, GIT_AUTHOR_DATE, GIT_COMMITTER_NAME, GIT_COMMITTER_EMAIL, GIT_COMMITTER_DATE, EMAIL
+           see git-commit-tree(1)
+
+   Git Diffs
+       GIT_DIFF_OPTS
+           Only valid setting is "--unified=??" or "-u??" to set the number of context lines shown when a unified diff is
+           created. This takes precedence over any "-U" or "--unified" option value passed on the Git diff command line.
+
+       GIT_EXTERNAL_DIFF
+           When the environment variable GIT_EXTERNAL_DIFF is set, the program named by it is called, instead of the diff
+           invocation described above. For a path that is added, removed, or modified, GIT_EXTERNAL_DIFF is called with 7
+           parameters:
+
+               path old-file old-hex old-mode new-file new-hex new-mode
+
+           where:
+
+       <old|new>-file
+           are files GIT_EXTERNAL_DIFF can use to read the contents of <old|new>,
+
+       <old|new>-hex
+           are the 40-hexdigit SHA-1 hashes,
+
+       <old|new>-mode
+           are the octal representation of the file modes.
+
+           The file parameters can point at the user’s working file (e.g.  new-file in "git-diff-files"), /dev/null (e.g.
+           old-file when a new file is added), or a temporary file (e.g.  old-file in the index).  GIT_EXTERNAL_DIFF should not
+           worry about unlinking the temporary file --- it is removed when GIT_EXTERNAL_DIFF exits.
+
+           For a path that is unmerged, GIT_EXTERNAL_DIFF is called with 1 parameter, <path>.
+
+           For each path GIT_EXTERNAL_DIFF is called, two environment variables, GIT_DIFF_PATH_COUNTER and GIT_DIFF_PATH_TOTAL
+           are set.
+
+       GIT_DIFF_PATH_COUNTER
+           A 1-based counter incremented by one for every path.
+
+       GIT_DIFF_PATH_TOTAL
+           The total number of paths.
+
+   other
+       GIT_MERGE_VERBOSITY
+           A number controlling the amount of output shown by the recursive merge strategy. Overrides merge.verbosity. See git-
+           merge(1)
+
+       GIT_PAGER
+           This environment variable overrides $PAGER. If it is set to an empty string or to the value "cat", Git will not launch
+           a pager. See also the core.pager option in git-config(1).
+
+       GIT_EDITOR
+           This environment variable overrides $EDITOR and $VISUAL. It is used by several Git commands when, on interactive mode,
+           an editor is to be launched. See also git-var(1) and the core.editor option in git-config(1).
+
+       GIT_SSH, GIT_SSH_COMMAND
+           If either of these environment variables is set then git fetch and git push will use the specified command instead of
+           ssh when they need to connect to a remote system. The command-line parameters passed to the configured command are
+           determined by the ssh variant. See ssh.variant option in git-config(1) for details.
+
+       + $GIT_SSH_COMMAND takes precedence over $GIT_SSH, and is interpreted by the shell, which allows additional arguments to
+       be included. $GIT_SSH on the other hand must be just the path to a program (which can be a wrapper shell script, if
+       additional arguments are needed).
+
+       + Usually it is easier to configure any desired options through your personal .ssh/config file. Please consult your ssh
+       documentation for further details.
+
+       GIT_SSH_VARIANT
+           If this environment variable is set, it overrides Git’s autodetection whether GIT_SSH/GIT_SSH_COMMAND/core.sshCommand
+           refer to OpenSSH, plink or tortoiseplink. This variable overrides the config setting ssh.variant that serves the same
+           purpose.
+
+       GIT_ASKPASS
+           If this environment variable is set, then Git commands which need to acquire passwords or passphrases (e.g. for HTTP
+           or IMAP authentication) will call this program with a suitable prompt as command-line argument and read the password
+           from its STDOUT. See also the core.askPass option in git-config(1).
+
+       GIT_TERMINAL_PROMPT
+           If this environment variable is set to 0, git will not prompt on the terminal (e.g., when asking for HTTP
+           authentication).
+
+       GIT_CONFIG_NOSYSTEM
+           Whether to skip reading settings from the system-wide $(prefix)/etc/gitconfig file. This environment variable can be
+           used along with $HOME and $XDG_CONFIG_HOME to create a predictable environment for a picky script, or you can set it
+           temporarily to avoid using a buggy /etc/gitconfig file while waiting for someone with sufficient permissions to fix
+           it.
+
+       GIT_FLUSH
+           If this environment variable is set to "1", then commands such as git blame (in incremental mode), git rev-list, git
+           log, git check-attr and git check-ignore will force a flush of the output stream after each record have been flushed.
+           If this variable is set to "0", the output of these commands will be done using completely buffered I/O. If this
+           environment variable is not set, Git will choose buffered or record-oriented flushing based on whether stdout appears
+           to be redirected to a file or not.
+
+       GIT_TRACE
+           Enables general trace messages, e.g. alias expansion, built-in command execution and external command execution.
+
+           If this variable is set to "1", "2" or "true" (comparison is case insensitive), trace messages will be printed to
+           stderr.
+
+           If the variable is set to an integer value greater than 2 and lower than 10 (strictly) then Git will interpret this
+           value as an open file descriptor and will try to write the trace messages into this file descriptor.
+
+           Alternatively, if the variable is set to an absolute path (starting with a / character), Git will interpret this as a
+           file path and will try to append the trace messages to it.
+
+           Unsetting the variable, or setting it to empty, "0" or "false" (case insensitive) disables trace messages.
+
+       GIT_TRACE_FSMONITOR
+           Enables trace messages for the filesystem monitor extension. See GIT_TRACE for available trace output options.
+
+       GIT_TRACE_PACK_ACCESS
+           Enables trace messages for all accesses to any packs. For each access, the pack file name and an offset in the pack is
+           recorded. This may be helpful for troubleshooting some pack-related performance problems. See GIT_TRACE for available
+           trace output options.
+
+       GIT_TRACE_PACKET
+           Enables trace messages for all packets coming in or out of a given program. This can help with debugging object
+           negotiation or other protocol issues. Tracing is turned off at a packet starting with "PACK" (but see
+           GIT_TRACE_PACKFILE below). See GIT_TRACE for available trace output options.
+
+       GIT_TRACE_PACKFILE
+           Enables tracing of packfiles sent or received by a given program. Unlike other trace output, this trace is verbatim:
+           no headers, and no quoting of binary data. You almost certainly want to direct into a file (e.g.,
+           GIT_TRACE_PACKFILE=/tmp/my.pack) rather than displaying it on the terminal or mixing it with other trace output.
+
+           Note that this is currently only implemented for the client side of clones and fetches.
+
+       GIT_TRACE_PERFORMANCE
+           Enables performance related trace messages, e.g. total execution time of each Git command. See GIT_TRACE for available
+           trace output options.
+
+       GIT_TRACE_SETUP
+           Enables trace messages printing the .git, working tree and current working directory after Git has completed its setup
+           phase. See GIT_TRACE for available trace output options.
+
+       GIT_TRACE_SHALLOW
+           Enables trace messages that can help debugging fetching / cloning of shallow repositories. See GIT_TRACE for available
+           trace output options.
+
+       GIT_TRACE_CURL
+           Enables a curl full trace dump of all incoming and outgoing data, including descriptive information, of the git
+           transport protocol. This is similar to doing curl --trace-ascii on the command line. This option overrides setting the
+           GIT_CURL_VERBOSE environment variable. See GIT_TRACE for available trace output options.
+
+       GIT_TRACE_CURL_NO_DATA
+           When a curl trace is enabled (see GIT_TRACE_CURL above), do not dump data (that is, only dump info lines and headers).
+
+       GIT_REDACT_COOKIES
+           This can be set to a comma-separated list of strings. When a curl trace is enabled (see GIT_TRACE_CURL above),
+           whenever a "Cookies:" header sent by the client is dumped, values of cookies whose key is in that list
+           (case-sensitive) are redacted.
+
+       GIT_LITERAL_PATHSPECS
+           Setting this variable to 1 will cause Git to treat all pathspecs literally, rather than as glob patterns. For example,
+           running GIT_LITERAL_PATHSPECS=1 git log -- '*.c' will search for commits that touch the path *.c, not any paths that
+           the glob *.c matches. You might want this if you are feeding literal paths to Git (e.g., paths previously given to you
+           by git ls-tree, --raw diff output, etc).
+
+       GIT_GLOB_PATHSPECS
+           Setting this variable to 1 will cause Git to treat all pathspecs as glob patterns (aka "glob" magic).
+
+       GIT_NOGLOB_PATHSPECS
+           Setting this variable to 1 will cause Git to treat all pathspecs as literal (aka "literal" magic).
+
+       GIT_ICASE_PATHSPECS
+           Setting this variable to 1 will cause Git to treat all pathspecs as case-insensitive.
+
+       GIT_REFLOG_ACTION
+           When a ref is updated, reflog entries are created to keep track of the reason why the ref was updated (which is
+           typically the name of the high-level command that updated the ref), in addition to the old and new values of the ref.
+           A scripted Porcelain command can use set_reflog_action helper function in git-sh-setup to set its name to this
+           variable when it is invoked as the top level command by the end user, to be recorded in the body of the reflog.
+
+       GIT_REF_PARANOIA
+           If set to 1, include broken or badly named refs when iterating over lists of refs. In a normal, non-corrupted
+           repository, this does nothing. However, enabling it may help git to detect and abort some operations in the presence
+           of broken refs. Git sets this variable automatically when performing destructive operations like git-prune(1). You
+           should not need to set it yourself unless you want to be paranoid about making sure an operation has touched every ref
+           (e.g., because you are cloning a repository to make a backup).
+
+       GIT_ALLOW_PROTOCOL
+           If set to a colon-separated list of protocols, behave as if protocol.allow is set to never, and each of the listed
+           protocols has protocol.<name>.allow set to always (overriding any existing configuration). In other words, any
+           protocol not mentioned will be disallowed (i.e., this is a whitelist, not a blacklist). See the description of
+           protocol.allow in git-config(1) for more details.
+
+       GIT_PROTOCOL_FROM_USER
+           Set to 0 to prevent protocols used by fetch/push/clone which are configured to the user state. This is useful to
+           restrict recursive submodule initialization from an untrusted repository or for programs which feed
+           potentially-untrusted URLS to git commands. See git-config(1) for more details.
+
+       GIT_PROTOCOL
+           For internal use only. Used in handshaking the wire protocol. Contains a colon : separated list of keys with optional
+           values key[=value]. Presence of unknown keys and values must be ignored.
+
+       GIT_OPTIONAL_LOCKS
+           If set to 0, Git will complete any requested operation without performing any optional sub-operations that require
+           taking a lock. For example, this will prevent git status from refreshing the index as a side effect. This is useful
+           for processes running in the background which do not want to cause lock contention with other operations on the
+           repository. Defaults to 1.
+
+       GIT_REDIRECT_STDIN, GIT_REDIRECT_STDOUT, GIT_REDIRECT_STDERR
+           Windows-only: allow redirecting the standard input/output/error handles to paths specified by the environment
+           variables. This is particularly useful in multi-threaded applications where the canonical way to pass standard handles
+           via CreateProcess() is not an option because it would require the handles to be marked inheritable (and consequently
+           every spawned process would inherit them, possibly blocking regular Git operations). The primary intended use case is
+           to use named pipes for communication (e.g.  \\.\pipe\my-git-stdin-123).
+
+           Two special values are supported: off will simply close the corresponding standard handle, and if GIT_REDIRECT_STDERR
+           is 2>&1, standard error will be redirected to the same handle as standard output.
+
+       GIT_PRINT_SHA1_ELLIPSIS (deprecated)
+           If set to yes, print an ellipsis following an (abbreviated) SHA-1 value. This affects indications of detached HEADs
+           (git-checkout(1)) and the raw diff output (git-diff(1)). Printing an ellipsis in the cases mentioned is no longer
+           considered adequate and support for it is likely to be removed in the foreseeable future (along with the variable).
+
+DISCUSSION
+       More detail on the following is available from the Git concepts chapter of the user-manual[2] and gitcore-tutorial(7).
+
+       A Git project normally consists of a working directory with a ".git" subdirectory at the top level. The .git directory
+       contains, among other things, a compressed object database representing the complete history of the project, an "index"
+       file which links that history to the current contents of the working tree, and named pointers into that history such as
+       tags and branch heads.
+
+       The object database contains objects of three main types: blobs, which hold file data; trees, which point to blobs and
+       other trees to build up directory hierarchies; and commits, which each reference a single tree and some number of parent
+       commits.
+
+       The commit, equivalent to what other systems call a "changeset" or "version", represents a step in the project’s history,
+       and each parent represents an immediately preceding step. Commits with more than one parent represent merges of
+       independent lines of development.
+
+       All objects are named by the SHA-1 hash of their contents, normally written as a string of 40 hex digits. Such names are
+       globally unique. The entire history leading up to a commit can be vouched for by signing just that commit. A fourth object
+       type, the tag, is provided for this purpose.
+
+       When first created, objects are stored in individual files, but for efficiency may later be compressed together into "pack
+       files".
+
+       Named pointers called refs mark interesting points in history. A ref may contain the SHA-1 name of an object or the name
+       of another ref. Refs with names beginning ref/head/ contain the SHA-1 name of the most recent commit (or "head") of a
+       branch under development. SHA-1 names of tags of interest are stored under ref/tags/. A special ref named HEAD contains
+       the name of the currently checked-out branch.
+
+       The index file is initialized with a list of all paths and, for each path, a blob object and a set of attributes. The blob
+       object represents the contents of the file as of the head of the current branch. The attributes (last modified time, size,
+       etc.) are taken from the corresponding file in the working tree. Subsequent changes to the working tree can be found by
+       comparing these attributes. The index may be updated with new content, and new commits may be created from the content
+       stored in the index.
+
+       The index is also capable of storing multiple entries (called "stages") for a given pathname. These stages are used to
+       hold the various unmerged version of a file when a merge is in progress.
+
+FURTHER DOCUMENTATION
+       See the references in the "description" section to get started using Git. The following is probably more detail than
+       necessary for a first-time user.
+
+       The Git concepts chapter of the user-manual[2] and gitcore-tutorial(7) both provide introductions to the underlying Git
+       architecture.
+
+       See gitworkflows(7) for an overview of recommended workflows.
+
+       See also the howto[3] documents for some useful examples.
+
+       The internals are documented in the Git API documentation[4].
+
+       Users migrating from CVS may also want to read gitcvs-migration(7).
+
+AUTHORS
+       Git was started by Linus Torvalds, and is currently maintained by Junio C Hamano. Numerous contributions have come from
+       the Git mailing list <git@vger.kernel.org[5]>. http://www.openhub.net/p/git/contributors/summary gives you a more complete
+       list of contributors.
+
+       If you have a clone of git.git itself, the output of git-shortlog(1) and git-blame(1) can show you the authors for
+       specific parts of the project.
+
+REPORTING BUGS
+       Report bugs to the Git mailing list <git@vger.kernel.org[5]> where the development and maintenance is primarily done. You
+       do not have to be subscribed to the list to send a message there. See the list archive at https://public-inbox.org/git for
+       previous bug reports and other discussions.
+
+       Issues which are security relevant should be disclosed privately to the Git Security mailing list
+       <git-security@googlegroups.com[6]>.
+
+SEE ALSO
+       gittutorial(7), gittutorial-2(7), giteveryday(7), gitcvs-migration(7), gitglossary(7), gitcore-tutorial(7), gitcli(7), The
+       Git User’s Manual[1], gitworkflows(7)
+
+GIT
+       Part of the git(1) suite
+
+NOTES
+        1. Git User’s Manual
+           file:///usr/share/doc/git/html/user-manual.html
+
+        2. Git concepts chapter of the user-manual
+           file:///usr/share/doc/git/html/user-manual.html#git-concepts
+
+        3. howto
+           file:///usr/share/doc/git/html/howto-index.html
+
+        4. Git API documentation
+           file:///usr/share/doc/git/html/technical/api-index.html
+
+        5. git@vger.kernel.org
+           mailto:git@vger.kernel.org
+
+        6. git-security@googlegroups.com
+           mailto:git-security@googlegroups.com
+
+Git 2.20.1                                                  04/07/2022                                                     GIT(1)
+```
+
+### grep
+
+```
+GREP(1)                                                   User Commands                                                   GREP(1)
+
+NAME
+       grep, egrep, fgrep, rgrep - print lines that match patterns
+
+SYNOPSIS
+       grep [OPTION...] PATTERNS [FILE...]
+       grep [OPTION...] -e PATTERNS ... [FILE...]
+       grep [OPTION...] -f PATTERN_FILE ... [FILE...]
+
+DESCRIPTION
+       grep  searches  for  PATTERNS  in each FILE.  PATTERNS is one or patterns separated by newline characters, and grep prints
+       each line that matches a pattern.
+
+       A FILE of “-” stands for standard input.  If no FILE is given, recursive  searches  examine  the  working  directory,  and
+       nonrecursive searches read standard input.
+
+       In  addition,  the  variant  programs  egrep, fgrep and rgrep are the same as grep -E, grep -F, and grep -r, respectively.
+       These variants are deprecated, but are provided for backward compatibility.
+
+OPTIONS
+   Generic Program Information
+       --help Output a usage message and exit.
+
+       -V, --version
+              Output the version number of grep and exit.
+
+   Matcher Selection
+       -E, --extended-regexp
+              Interpret PATTERNS as extended regular expressions (EREs, see below).
+
+       -F, --fixed-strings
+              Interpret PATTERNS as fixed strings, not regular expressions.
+
+       -G, --basic-regexp
+              Interpret PATTERNS as basic regular expressions (BREs, see below).  This is the default.
+
+       -P, --perl-regexp
+              Interpret PATTERNS as Perl-compatible regular expressions (PCREs).  This option is experimental when combined  with
+              the -z (--null-data) option, and grep -P may warn of unimplemented features.
+
+   Matching Control
+       -e PATTERNS, --regexp=PATTERNS
+              Use  PATTERNS  as  the patterns.  If this option is used multiple times or is combined with the -f (--file) option,
+              search for all patterns given.  This option can be used to protect a pattern beginning with “-”.
+
+       -f FILE, --file=FILE
+              Obtain patterns from FILE, one per line.  If this option is  used  multiple  times  or  is  combined  with  the  -e
+              (--regexp)  option,  search  for  all patterns given.  The empty file contains zero patterns, and therefore matches
+              nothing.
+
+       -i, --ignore-case
+              Ignore case distinctions, so that characters that differ only in case match each other.
+
+       -v, --invert-match
+              Invert the sense of matching, to select non-matching lines.
+
+       -w, --word-regexp
+              Select only those lines containing matches that form whole words.  The test is that  the  matching  substring  must
+              either  be  at  the  beginning of the line, or preceded by a non-word constituent character.  Similarly, it must be
+              either at the end of the line or followed by a non-word constituent  character.   Word-constituent  characters  are
+              letters, digits, and the underscore.  This option has no effect if -x is also specified.
+
+       -x, --line-regexp
+              Select  only  those  matches  that  exactly  match  the whole line.  For a regular expression pattern, this is like
+              parenthesizing the pattern and then surrounding it with ^ and $.
+
+       -y     Obsolete synonym for -i.
+
+   General Output Control
+       -c, --count
+              Suppress normal output; instead print a count of matching lines for each input file.  With the  -v,  --invert-match
+              option (see below), count non-matching lines.
+
+       --color[=WHEN], --colour[=WHEN]
+              Surround  the  matched  (non-empty) strings, matching lines, context lines, file names, line numbers, byte offsets,
+              and separators (for fields and groups of context lines) with escape sequences to  display  them  in  color  on  the
+              terminal.   The  colors  are  defined by the environment variable GREP_COLORS.  The deprecated environment variable
+              GREP_COLOR is still supported, but its setting does not have priority.  WHEN is never, always, or auto.
+
+       -L, --files-without-match
+              Suppress normal output; instead print the name of each input file from which no output  would  normally  have  been
+              printed.  The scanning will stop on the first match.
+
+       -l, --files-with-matches
+              Suppress  normal  output;  instead  print  the  name  of each input file from which output would normally have been
+              printed.  The scanning will stop on the first match.
+
+       -m NUM, --max-count=NUM
+              Stop reading a file after NUM matching lines.  If the input is standard input from a regular file, and NUM matching
+              lines  are  output,  grep ensures that the standard input is positioned to just after the last matching line before
+              exiting, regardless of the presence of trailing context lines.  This enables a calling process to resume a  search.
+              When  grep stops after NUM matching lines, it outputs any trailing context lines.  When the -c or --count option is
+              also used, grep does not output a count greater than NUM.  When the -v or --invert-match option is also used,  grep
+              stops after outputting NUM non-matching lines.
+
+       -o, --only-matching
+              Print only the matched (non-empty) parts of a matching line, with each such part on a separate output line.
+
+       -q, --quiet, --silent
+              Quiet;  do not write anything to standard output.  Exit immediately with zero status if any match is found, even if
+              an error was detected.  Also see the -s or --no-messages option.
+
+       -s, --no-messages
+              Suppress error messages about nonexistent or unreadable files.
+
+   Output Line Prefix Control
+       -b, --byte-offset
+              Print the 0-based byte offset within the input file before  each  line  of  output.   If  -o  (--only-matching)  is
+              specified, print the offset of the matching part itself.
+
+       -H, --with-filename
+              Print the file name for each match.  This is the default when there is more than one file to search.
+
+       -h, --no-filename
+              Suppress  the prefixing of file names on output.  This is the default when there is only one file (or only standard
+              input) to search.
+
+       --label=LABEL
+              Display input actually coming from standard input as input coming from file LABEL.  This is especially useful  when
+              implementing tools like zgrep, e.g., gzip -cd foo.gz | grep --label=foo -H something.  See also the -H option.
+
+       -n, --line-number
+              Prefix each line of output with the 1-based line number within its input file.
+
+       -T, --initial-tab
+              Make  sure  that the first character of actual line content lies on a tab stop, so that the alignment of tabs looks
+              normal.  This is useful with options that prefix their output to the actual content: -H,-n, and -b.   In  order  to
+              improve  the probability that lines from a single file will all start at the same column, this also causes the line
+              number and byte offset (if present) to be printed in a minimum size field width.
+
+       -u, --unix-byte-offsets
+              Report Unix-style byte offsets.  This switch causes grep to report byte offsets as if the file  were  a  Unix-style
+              text  file,  i.e.,  with CR characters stripped off.  This will produce results identical to running grep on a Unix
+              machine.  This option has no effect unless -b option is also used; it has no effect on platforms other than  MS-DOS
+              and MS-Windows.
+
+       -Z, --null
+              Output  a  zero  byte  (the  ASCII  NUL character) instead of the character that normally follows a file name.  For
+              example, grep -lZ outputs a zero byte after each file name instead of the usual newline.   This  option  makes  the
+              output  unambiguous,  even  in the presence of file names containing unusual characters like newlines.  This option
+              can be used with commands like find -print0, perl -0, sort -z, and xargs -0 to process arbitrary file  names,  even
+              those that contain newline characters.
+
+   Context Line Control
+       -A NUM, --after-context=NUM
+              Print  NUM lines of trailing context after matching lines.  Places a line containing a group separator (--) between
+              contiguous groups of matches.  With the -o or --only-matching option, this has no effect and a warning is given.
+
+       -B NUM, --before-context=NUM
+              Print NUM lines of leading context before matching lines.  Places a line containing a group separator (--)  between
+              contiguous groups of matches.  With the -o or --only-matching option, this has no effect and a warning is given.
+
+       -C NUM, -NUM, --context=NUM
+              Print  NUM  lines  of output context.  Places a line containing a group separator (--) between contiguous groups of
+              matches.  With the -o or --only-matching option, this has no effect and a warning is given.
+
+   File and Directory Selection
+       -a, --text
+              Process a binary file as if it were text; this is equivalent to the --binary-files=text option.
+
+       --binary-files=TYPE
+              If a file's data or metadata indicate that the file contains binary data, assume that the file  is  of  type  TYPE.
+              Non-text  bytes  indicate  binary  data;  these are either output bytes that are improperly encoded for the current
+              locale, or null input bytes when the -z option is not given.
+
+              By default, TYPE is binary, and when grep discovers that a file is binary it suppresses  any  further  output,  and
+              instead outputs either a one-line message saying that a binary file matches, or no message if there is no match.
+
+              If  TYPE  is without-match, when grep discovers that a file is binary it assumes that the rest of the file does not
+              match; this is equivalent to the -I option.
+
+              If TYPE is text, grep processes a binary file as if it were text; this is equivalent to the -a option.
+
+              When type is binary, grep may treat non-text bytes as line terminators even without  the  -z  option.   This  means
+              choosing  binary  versus  text  can  affect whether a pattern matches a file.  For example, when type is binary the
+              pattern q$ might match q immediately followed by a null byte, even though this is not matched when  type  is  text.
+              Conversely, when type is binary the pattern . (period) might not match a null byte.
+
+              Warning:  The  -a option might output binary garbage, which can have nasty side effects if the output is a terminal
+              and if the terminal driver interprets some of it as commands.  On the other hand, when  reading  files  whose  text
+              encodings  are  unknown, it can be helpful to use -a or to set LC_ALL='C' in the environment, in order to find more
+              matches even if the matches are unsafe for direct display.
+
+       -D ACTION, --devices=ACTION
+              If an input file is a device, FIFO or socket, use ACTION to process it.  By default, ACTION is  read,  which  means
+              that devices are read just as if they were ordinary files.  If ACTION is skip, devices are silently skipped.
+
+       -d ACTION, --directories=ACTION
+              If an input file is a directory, use ACTION to process it.  By default, ACTION is read, i.e., read directories just
+              as if they were ordinary files.  If ACTION is skip, silently skip directories.  If  ACTION  is  recurse,  read  all
+              files  under  each  directory, recursively, following symbolic links only if they are on the command line.  This is
+              equivalent to the -r option.
+
+       --exclude=GLOB
+              Skip any command-line file with a name suffix that matches the pattern GLOB, using wildcard matching; a name suffix
+              is  either  the  whole name, or any suffix starting after a / and before a non-/.  When searching recursively, skip
+              any subfile whose base name matches GLOB; the base name is the part after the last /.  A pattern can use *, ?,  and
+              [...] as wildcards, and \ to quote a wildcard or backslash character literally.
+
+       --exclude-from=FILE
+              Skip  files whose base name matches any of the file-name globs read from FILE (using wildcard matching as described
+              under --exclude).
+
+       --exclude-dir=GLOB
+              Skip any command-line directory with a name suffix that matches the pattern GLOB.  When searching recursively, skip
+              any subdirectory whose base name matches GLOB.  Ignore any redundant trailing slashes in GLOB.
+
+       -I     Process   a   binary   file   as   if   it   did   not   contain   matching   data;   this  is  equivalent  to  the
+              --binary-files=without-match option.
+
+       --include=GLOB
+              Search only files whose base name matches GLOB (using wildcard matching as described under --exclude).
+
+       -r, --recursive
+              Read all files under each directory, recursively, following symbolic links only if they are on  the  command  line.
+              Note  that  if no file operand is given, grep searches the working directory.  This is equivalent to the -d recurse
+              option.
+
+       -R, --dereference-recursive
+              Read all files under each directory, recursively.  Follow all symbolic links, unlike -r.
+
+   Other Options
+       --line-buffered
+              Use line buffering on output.  This can cause a performance penalty.
+
+       -U, --binary
+              Treat the file(s) as binary.  By default, under MS-DOS and MS-Windows, grep guesses  whether  a  file  is  text  or
+              binary  as  described  for  the  --binary-files  option.  If grep decides the file is a text file, it strips the CR
+              characters from the original file contents (to make regular expressions with ^ and $ work  correctly).   Specifying
+              -U  overrules  this  guesswork,  causing all files to be read and passed to the matching mechanism verbatim; if the
+              file is a text file with CR/LF pairs at the end of each line, this will cause some  regular  expressions  to  fail.
+              This option has no effect on platforms other than MS-DOS and MS-Windows.
+
+       -z, --null-data
+              Treat input and output data as sequences of lines, each terminated by a zero byte (the ASCII NUL character) instead
+              of a newline.  Like the -Z or --null option, this option can  be  used  with  commands  like  sort  -z  to  process
+              arbitrary file names.
+
+REGULAR EXPRESSIONS
+       A  regular  expression  is  a pattern that describes a set of strings.  Regular expressions are constructed analogously to
+       arithmetic expressions, by using various operators to combine smaller expressions.
+
+       grep understands three different versions of regular expression syntax: “basic” (BRE), “extended” (ERE) and “perl” (PCRE).
+       In  GNU  grep  there  is  no  difference  in  available  functionality  between  basic  and  extended  syntaxes.  In other
+       implementations, basic regular expressions are less powerful.  The  following  description  applies  to  extended  regular
+       expressions;  differences  for  basic  regular expressions are summarized afterwards.  Perl-compatible regular expressions
+       give additional functionality, and are documented in pcresyntax(3) and pcrepattern(3), but work only if PCRE is  available
+       in the system.
+
+       The fundamental building blocks are the regular expressions that match a single character.  Most characters, including all
+       letters and digits, are regular expressions that match themselves.  Any meta-character with special meaning may be  quoted
+       by preceding it with a backslash.
+
+       The period . matches any single character.  It is unspecified whether it matches an encoding error.
+
+   Character Classes and Bracket Expressions
+       A  bracket  expression is a list of characters enclosed by [ and ].  It matches any single character in that list.  If the
+       first character of the list is the caret ^ then it matches any character not in the list; it  is  unspecified  whether  it
+       matches an encoding error.  For example, the regular expression [0123456789] matches any single digit.
+
+       Within  a  bracket expression, a range expression consists of two characters separated by a hyphen.  It matches any single
+       character that sorts between the two characters, inclusive, using the locale's collating sequence and character set.   For
+       example, in the default C locale, [a-d] is equivalent to [abcd].  Many locales sort characters in dictionary order, and in
+       these locales [a-d] is typically not equivalent to [abcd]; it might be equivalent to [aBbCcDd], for  example.   To  obtain
+       the traditional interpretation of bracket expressions, you can use the C locale by setting the LC_ALL environment variable
+       to the value C.
+
+       Finally, certain named classes of characters are predefined within bracket expressions, as follows.  Their names are  self
+       explanatory,  and  they  are  [:alnum:],  [:alpha:],  [:cntrl:],  [:digit:],  [:graph:],  [:lower:], [:print:], [:punct:],
+       [:space:], [:upper:], and [:xdigit:].  For example, [[:alnum:]] means the character class of numbers and  letters  in  the
+       current  locale.   In  the  C  locale  and  ASCII character set encoding, this is the same as [0-9A-Za-z].  (Note that the
+       brackets in these class names are part of the symbolic names, and must be included in addition to the brackets  delimiting
+       the  bracket  expression.)   Most  meta-characters  lose  their  special meaning inside bracket expressions.  To include a
+       literal ] place it first in the list.  Similarly, to include a literal ^ place it anywhere but first.  Finally, to include
+       a literal - place it last.
+
+   Anchoring
+       The caret ^ and the dollar sign $ are meta-characters that respectively match the empty string at the beginning and end of
+       a line.
+
+   The Backslash Character and Special Expressions
+       The symbols \< and \> respectively match the empty string at the beginning and end of a word.  The symbol \b  matches  the
+       empty  string  at the edge of a word, and \B matches the empty string provided it's not at the edge of a word.  The symbol
+       \w is a synonym for [_[:alnum:]] and \W is a synonym for [^_[:alnum:]].
+
+   Repetition
+       A regular expression may be followed by one of several repetition operators:
+       ?      The preceding item is optional and matched at most once.
+       *      The preceding item will be matched zero or more times.
+       +      The preceding item will be matched one or more times.
+       {n}    The preceding item is matched exactly n times.
+       {n,}   The preceding item is matched n or more times.
+       {,m}   The preceding item is matched at most m times.  This is a GNU extension.
+       {n,m}  The preceding item is matched at least n times, but not more than m times.
+
+   Concatenation
+       Two regular expressions may be concatenated; the resulting regular expression matches any string formed  by  concatenating
+       two substrings that respectively match the concatenated expressions.
+
+   Alternation
+       Two  regular  expressions  may  be  joined  by  the  infix operator |; the resulting regular expression matches any string
+       matching either alternate expression.
+
+   Precedence
+       Repetition takes precedence over concatenation, which in turn takes precedence over alternation.  A whole  expression  may
+       be enclosed in parentheses to override these precedence rules and form a subexpression.
+
+   Back References and Subexpressions
+       The  back-reference  \n,  where  n  is  a  single digit, matches the substring previously matched by the nth parenthesized
+       subexpression of the regular expression.
+
+   Basic vs Extended Regular Expressions
+       In basic regular expressions the meta-characters ?, +, {, |, (,  and  )  lose  their  special  meaning;  instead  use  the
+       backslashed versions \?, \+, \{, \|, \(, and \).
+
+ENVIRONMENT VARIABLES
+       The behavior of grep is affected by the following environment variables.
+
+       The  locale  for  category  LC_foo is specified by examining the three environment variables LC_ALL, LC_foo, LANG, in that
+       order.  The first of these variables that is set specifies the locale.  For example, if LC_ALL is not set, but LC_MESSAGES
+       is  set to pt_BR, then the Brazilian Portuguese locale is used for the LC_MESSAGES category.  The C locale is used if none
+       of these environment variables are set, if the locale catalog is not installed, or if grep was not compiled with  national
+       language support (NLS).  The shell command locale -a lists locales that are currently available.
+
+       GREP_OPTIONS
+              This  variable  specifies  default  options to be placed in front of any explicit options.  As this causes problems
+              when writing portable scripts, this feature will be removed in a future release of grep, and grep warns  if  it  is
+              used.  Please use an alias or script instead.
+
+       GREP_COLOR
+              This  variable  specifies  the  color  used  to  highlight  matched (non-empty) text.  It is deprecated in favor of
+              GREP_COLORS, but still supported.  The mt, ms, and mc capabilities of GREP_COLORS have priority over  it.   It  can
+              only specify the color used to highlight the matching non-empty text in any matching line (a selected line when the
+              -v command-line option is omitted, or a context line when -v is specified).  The default is 01;31,  which  means  a
+              bold red foreground text on the terminal's default background.
+
+       GREP_COLORS
+              Specifies  the  colors  and  other attributes used to highlight various parts of the output.  Its value is a colon-
+              separated list of capabilities that defaults to ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36 with the  rv  and
+              ne boolean capabilities omitted (i.e., false).  Supported capabilities are as follows.
+
+              sl=    SGR  substring for whole selected lines (i.e., matching lines when the -v command-line option is omitted, or
+                     non-matching lines when -v is specified).  If however the boolean rv  capability  and  the  -v  command-line
+                     option  are  both  specified, it applies to context matching lines instead.  The default is empty (i.e., the
+                     terminal's default color pair).
+
+              cx=    SGR substring for whole context lines (i.e., non-matching lines when the -v command-line option is  omitted,
+                     or  matching  lines  when  -v  is  specified).  If however the boolean rv capability and the -v command-line
+                     option are both specified, it applies to selected non-matching lines instead.  The default is  empty  (i.e.,
+                     the terminal's default color pair).
+
+              rv     Boolean  value  that  reverses (swaps) the meanings of the sl= and cx= capabilities when the -v command-line
+                     option is specified.  The default is false (i.e., the capability is omitted).
+
+              mt=01;31
+                     SGR substring for matching non-empty text in any matching line (i.e., a selected line when the  -v  command-
+                     line option is omitted, or a context line when -v is specified).  Setting this is equivalent to setting both
+                     ms= and mc= at once to the same value.  The default is a bold red text  foreground  over  the  current  line
+                     background.
+
+              ms=01;31
+                     SGR  substring  for matching non-empty text in a selected line.  (This is only used when the -v command-line
+                     option is omitted.)  The effect of the sl= (or cx= if rv) capability remains active when this kicks in.  The
+                     default is a bold red text foreground over the current line background.
+
+              mc=01;31
+                     SGR  substring  for  matching non-empty text in a context line.  (This is only used when the -v command-line
+                     option is specified.)  The effect of the cx= (or sl= if rv) capability remains active when  this  kicks  in.
+                     The default is a bold red text foreground over the current line background.
+
+              fn=35  SGR  substring for file names prefixing any content line.  The default is a magenta text foreground over the
+                     terminal's default background.
+
+              ln=32  SGR substring for line numbers prefixing any content line.  The default is a green text foreground over  the
+                     terminal's default background.
+
+              bn=32  SGR  substring for byte offsets prefixing any content line.  The default is a green text foreground over the
+                     terminal's default background.
+
+              se=36  SGR substring for separators that are inserted between  selected  line  fields  (:),  between  context  line
+                     fields,  (-), and between groups of adjacent lines when nonzero context is specified (--).  The default is a
+                     cyan text foreground over the terminal's default background.
+
+              ne     Boolean value that prevents clearing to the end of line using Erase in Line (EL) to Right (\33[K) each  time
+                     a colorized item ends.  This is needed on terminals on which EL is not supported.  It is otherwise useful on
+                     terminals for which the back_color_erase (bce) boolean terminfo capability does not apply, when  the  chosen
+                     highlight  colors  do  not  affect  the  background, or when EL is too slow or causes too much flicker.  The
+                     default is false (i.e., the capability is omitted).
+
+              Note that boolean capabilities have no =... part.  They are omitted (i.e., false) by default and become  true  when
+              specified.
+
+              See the Select Graphic Rendition (SGR) section in the documentation of the text terminal that is used for permitted
+              values and their meaning as character attributes.  These substring values are integers  in  decimal  representation
+              and  can  be  concatenated  with semicolons.  grep takes care of assembling the result into a complete SGR sequence
+              (\33[...m).  Common values to concatenate include 1 for bold, 4 for underline, 5 for blink, 7 for inverse,  39  for
+              default  foreground  color, 30 to 37 for foreground colors, 90 to 97 for 16-color mode foreground colors, 38;5;0 to
+              38;5;255 for 88-color and 256-color modes foreground colors,  49  for  default  background  color,  40  to  47  for
+              background  colors,  100  to  107  for  16-color  mode  background  colors, and 48;5;0 to 48;5;255 for 88-color and
+              256-color modes background colors.
+
+       LC_ALL, LC_COLLATE, LANG
+              These variables specify the locale for the LC_COLLATE category, which determines the  collating  sequence  used  to
+              interpret range expressions like [a-z].
+
+       LC_ALL, LC_CTYPE, LANG
+              These  variables specify the locale for the LC_CTYPE category, which determines the type of characters, e.g., which
+              characters are whitespace.  This category also determines the character encoding, that is, whether text is  encoded
+              in UTF-8, ASCII, or some other encoding.  In the C or POSIX locale, all characters are encoded as a single byte and
+              every byte is a valid character.
+
+       LC_ALL, LC_MESSAGES, LANG
+              These variables specify the locale for the LC_MESSAGES category, which determines the language that grep  uses  for
+              messages.  The default C locale uses American English messages.
+
+       POSIXLY_CORRECT
+              If  set, grep behaves as POSIX requires; otherwise, grep behaves more like other GNU programs.  POSIX requires that
+              options that follow file names must be treated as file names; by default, such options are permuted to the front of
+              the  operand  list  and  are  treated  as  options.  Also, POSIX requires that unrecognized options be diagnosed as
+              “illegal”, but since they are  not  really  against  the  law  the  default  is  to  diagnose  them  as  “invalid”.
+              POSIXLY_CORRECT also disables _N_GNU_nonoption_argv_flags_, described below.
+
+       _N_GNU_nonoption_argv_flags_
+              (Here  N  is  grep's  numeric  process ID.)  If the ith character of this environment variable's value is 1, do not
+              consider the ith operand of grep to be an option, even if it appears to be one.  A shell can put this  variable  in
+              the environment for each command it runs, specifying which operands are the results of file name wildcard expansion
+              and therefore should not be treated as options.  This behavior is available only with the GNU C library,  and  only
+              when POSIXLY_CORRECT is not set.
+
+EXIT STATUS
+       Normally the exit status is 0 if a line is selected, 1 if no lines were selected, and 2 if an error occurred.  However, if
+       the -q or --quiet or --silent is used and a line is selected, the exit status is 0 even if an error occurred.
+
+COPYRIGHT
+       Copyright 1998–2000, 2002, 2005–2018 Free Software Foundation, Inc.
+
+       This is free software; see the source for copying conditions.  There is NO  warranty;  not  even  for  MERCHANTABILITY  or
+       FITNESS FOR A PARTICULAR PURPOSE.
+
+BUGS
+   Reporting Bugs
+       Email     bug     reports     to     the     bug-reporting     address     ⟨bug-grep@gnu.org⟩.      An    email    archive
+       ⟨https://lists.gnu.org/mailman/listinfo/bug-grep⟩              and               a               bug               tracker
+       ⟨https://debbugs.gnu.org/cgi/pkgreport.cgi?package=grep⟩ are available.
+
+   Known Bugs
+       Large  repetition  counts in the {n,m} construct may cause grep to use lots of memory.  In addition, certain other obscure
+       regular expressions require exponential time and space, and may cause grep to run out of memory.
+
+       Back-references are very slow, and may require exponential time.
+
+SEE ALSO
+   Regular Manual Pages
+       awk(1), cmp(1), diff(1), find(1), gzip(1), perl(1), sed(1), sort(1), xargs(1), zgrep(1), read(2), pcre(3),  pcresyntax(3),
+       pcrepattern(3), terminfo(5), glob(7), regex(7).
+
+   POSIX Programmer's Manual Page
+       grep(1p).
+
+   Full Documentation
+       A  complete  manual  ⟨https://www.gnu.org/software/grep/manual/⟩ is available.  If the info and grep programs are properly
+       installed at your site, the command
+
+              info grep
+
+       should give you access to the complete manual.
+
+NOTES
+       This man page is maintained only fitfully; the full documentation is often more up-to-date.
+
+GNU grep 3.3                                                2018-05-11                                                    GREP(1)
+```
