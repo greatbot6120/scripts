@@ -20,7 +20,7 @@
     * [diff](#diff)
     * [dirname](#dirname)
     * [dmesg](#dmesg)
-    * [dpkg](dpkg)
+    * [dpkg](#dpkg)
     * [echo](#echo)
     * [eject](#eject)
     * [find](#find)
