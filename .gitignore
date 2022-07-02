@@ -1,2 +1,5 @@
-#Ignore swap files of vim
+#swap files of vim
 *.swp
+
+#PDFs
+*.pdf
