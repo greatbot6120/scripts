@@ -49,8 +49,7 @@ echo "Hello $REPLY"
 
 read -p "Enter again your name: " namePrompt    #Using the -p option to enter a name variable to store
 echo "Hello $namePrompt" 
-
-
+read -sn1 -p "Press  any key to exit: "          #Control the visibility and limiting the number of the entered characters
 
 
 
